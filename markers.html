@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Attach a popup to a marker instance</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        #marker {
+            background-image: url('./assets/lol.png');
+            /* background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg'); */
+            background-size: cover;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+    </style>
+
+    <div id="map"></div>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
+
+        const chiang_mai = [98.9858802,18.7882778];
+
+        const map = new mapboxgl.Map({
+            container: 'map',
+            //style: 'mapbox://styles/mapbox/light-v11',
+            //style: 'mapbox://styles/mapbox/navigation-day-v1',
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: chiang_mai,
+            zoom: 10
+        });
+
+        /************************************************
+         * Example 1: Marker with an image and associated popup
+         * 
+         * Note marker image is defined as part of CSS style
+         * Is there any way to do this in the script itself?
+         ***********************************************/
+
+        const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+            'What up brooooo'
+        )
+        const el = document.createElement('div');
+        el.id = 'marker';
+        new mapboxgl.Marker(el)
+            .setLngLat(chiang_mai)
+            .setPopup(popup) // sets a popup on this marker
+            .addTo(map);
+
+        /************************************************
+         * Example 2: Pulsating Dot
+         * https://docs.mapbox.com/mapbox-gl-js/example/add-image-animated/
+         * 
+         * Pulsating image?
+         ***********************************************/
+        const size = 200;
+        const pulsingDot = {
+            width: size,
+            height: size,
+            data: new Uint8Array(size * size * 4),
+
+            // When a new layer is added to the map, 
+            // get the rendering context for the map canvas
+            onAdd: function() {
+                const canvas = document.createElement('canvas');
+                canvas.width = this.width;
+                canvas.height = this.width;
+                this.context = canvas.getContext('2d');
+            },
+
+            // call once before every frame where the icon will be used
+            render: function() {
+                const duration = 2000;
+                const t = (performance.now() % duration) / duration;
+
+                const radius = (size / 2) * 0.5;
+                const outerRadius = (size / 2) * 0.7 * t + radius;
+                const context = this.context;
+
+                // Draw outer circle
+                context.clearRect(0, 0, this.width, this.height);
+                context.beginPath();
+                context.arc(
+                    this.width / 2,
+                    this.height / 2,
+                    outerRadius,
+                    0,
+                    Math.PI * 2
+                );
+                context.fillStyle = `rgba(255, 200, 200, ${1 - t}`;
+                context.fill();
+
+                // Draw inner circle
+                // context.beginPath();
+                // context.arc(
+                //     this.width / 2,
+                //     this.height / 2,
+                //     radius,
+                //     0,
+                //     Math.PI * 2
+                // );
+                // context.fillStyle = 'rgba(255, 100, 100, 1)';
+                // context.strokeStyle = 'white';
+                // context.lineWidth = 2 + 4 * (1 - t);
+                // context.fill();
+                // context.stroke();
+
+
+                // update this image's data with data from the canvas
+                this.data = context.getImageData(
+                    0,
+                    0,
+                    this.width, 
+                    this.height
+                ).data;
+
+                // continuously repait the map, resulting in the smooth animation of the dot.
+                map.triggerRepaint();
+
+                // return 'true' to let the map know the image was updated
+                return true;
+            }
+        };
+
+        map.on('load', () => {
+            map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
+
+            map.addSource('dot-point', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': chiang_mai
+                            }
+                        }
+                    ]
+                }
+            });
+
+            map.addLayer({
+                'id': 'layer-with-pulsing-dot',
+                'type': 'symbol',
+                'source': 'dot-point',
+                'layout': {
+                    'icon-image': 'pulsing-dot'
+                }
+            });
+
+
+            /************************************************
+             * Example 3: Add Image to Map
+             * https://docs.mapbox.com/mapbox-gl-js/example/add-image/
+             * 
+             ***********************************************/
+            map.loadImage(
+                'https://images.unsplash.com/photo-1571988840298-3b5301d5109b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=120&q=80',
+                //'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
+                (error, image) => {
+                    if(error) throw error;
+
+                    // Add image to map style
+                    map.addImage('cat', image);
+
+                    // Add data source containing one point feature (the image)
+                    map.addSource('point', {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'FeatureCollection',
+                            'features': [
+                                {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-77.0353, 38.7895]
+
+                                    }
+                                }
+                            ]
+                        }
+                    });
+
+                    // Add layer to use image to represent the data
+                    map.addLayer({
+                        'id': 'points',
+                        'type': 'symbol', 
+                        'source': 'point',      // reference the data point
+                        'layout': {
+                            'icon-image': 'cat', // reference the image
+                            'icon-size': 0.25
+                        }
+                    });
+                }
+            )
+        });
+
+    </script>
+</body>
+</html>
