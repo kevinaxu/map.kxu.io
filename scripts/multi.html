@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Add custom icons with Markers</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        .marker {
+            display: block;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 0;
+        }
+    </style>
+
+    <div id="map"></div>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
+
+        const iconSize = [60, 60];
+
+        const geojson = {
+            'type': 'FeatureCollection',
+            'features': [
+                // Phuket
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'message': 'Phuket',
+                        'iconSize': iconSize,
+                        'imageUrl': './assets/koh_tao.jpg',
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [98.386793,7.888931]
+                    }
+                },
+
+                // Chiang Mai 
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'message': 'Chiang Mai',
+                        'iconSize': iconSize,
+                        'imageUrl': './assets/chiang_mai.jpg',
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [98.9858802,18.7882778]
+                    }
+                },
+
+                // Bangkok
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'message': 'Bangkok',
+                        'iconSize': iconSize,
+                        'imageUrl': './assets/bangkok.jpg',
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [100.4935089,13.7524938]
+                    }
+                }
+            ]
+        };
+
+        const map = new mapboxgl.Map({
+            container: 'map',
+            // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [100.4935089,13.7524938],
+            zoom: 5
+        });
+
+        // Add markers to the map.
+        for (const marker of geojson.features) {
+            // Create a DOM element for each marker.
+            const el = document.createElement('div');
+            const width = marker.properties.iconSize[0];
+            const height = marker.properties.iconSize[1];
+            el.className = 'marker';
+            el.style.backgroundImage = `url(${marker.properties.imageUrl})`;
+            el.style.width = `${width}px`;
+            el.style.height = `${height}px`;
+            el.style.backgroundSize = '100%';
+
+            el.addEventListener('click', () => {
+                window.alert(marker.properties.message);
+            });
+
+            // Add markers to the map.
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
+        }
+    </script>
+
+</body>
+
+</html>

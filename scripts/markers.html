@@ -24,17 +24,29 @@
 <body>
     <style>
         #marker {
-            background-image: url('./assets/lol.png');
-            /* background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg'); */
+            background-image: url('./assets/jetpack.png');
             background-size: cover;
             width: 75px;
             height: 75px;
             border-radius: 50%;
+            /* filter: grayscale(100); */
             cursor: pointer;
         }
 
-        .mapboxgl-popup {
-            max-width: 200px;
+        .popup {
+            max-width: 300px;
+        }
+        .popup-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-container {
+            display:flex;
+            transition: transform 0.3s ease-in-out;
+        }
+        .carousel-image {
+            width: 100px;
+            height: auto;
         }
     </style>
 
@@ -61,9 +73,26 @@
          * Is there any way to do this in the script itself?
          ***********************************************/
 
-        const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-            'What up brooooo'
-        )
+        const popupContent = `
+            <div class="popup">
+                <h3 class="popup-title">Chiang Mai</h3>
+                <div class="popup-carousel">
+                    <div class="carousel-container">
+                        <img src="/assets/bangkok.jpg"      alt="Image 1" class="carousel-image">
+                        <img src="/assets/chiang_mai.jpg"   alt="Image 2" class="carousel-image">
+                        <img src="/assets/koh_tao.jpg"      alt="Image 3" class="carousel-image">
+                    </div>
+                </div>
+            </div>
+        `;
+        const popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        }).setLngLat(chiang_mai)
+            .setHTML(popupContent)
+            .addTo(map);
+
+
         const el = document.createElement('div');
         el.id = 'marker';
         new mapboxgl.Marker(el)
@@ -71,12 +100,12 @@
             .setPopup(popup) // sets a popup on this marker
             .addTo(map);
 
+
         /************************************************
          * Example 2: Pulsating Dot
          * https://docs.mapbox.com/mapbox-gl-js/example/add-image-animated/
-         * 
-         * Pulsating image?
          ***********************************************/
+
         const size = 200;
         const pulsingDot = {
             width: size,
@@ -113,22 +142,6 @@
                 );
                 context.fillStyle = `rgba(255, 200, 200, ${1 - t}`;
                 context.fill();
-
-                // Draw inner circle
-                // context.beginPath();
-                // context.arc(
-                //     this.width / 2,
-                //     this.height / 2,
-                //     radius,
-                //     0,
-                //     Math.PI * 2
-                // );
-                // context.fillStyle = 'rgba(255, 100, 100, 1)';
-                // context.strokeStyle = 'white';
-                // context.lineWidth = 2 + 4 * (1 - t);
-                // context.fill();
-                // context.stroke();
-
 
                 // update this image's data with data from the canvas
                 this.data = context.getImageData(
@@ -173,52 +186,6 @@
                     'icon-image': 'pulsing-dot'
                 }
             });
-
-
-            /************************************************
-             * Example 3: Add Image to Map
-             * https://docs.mapbox.com/mapbox-gl-js/example/add-image/
-             * 
-             ***********************************************/
-            map.loadImage(
-                'https://images.unsplash.com/photo-1571988840298-3b5301d5109b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=120&q=80',
-                //'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
-                (error, image) => {
-                    if(error) throw error;
-
-                    // Add image to map style
-                    map.addImage('cat', image);
-
-                    // Add data source containing one point feature (the image)
-                    map.addSource('point', {
-                        'type': 'geojson',
-                        'data': {
-                            'type': 'FeatureCollection',
-                            'features': [
-                                {
-                                    'type': 'Feature',
-                                    'geometry': {
-                                        'type': 'Point',
-                                        'coordinates': [-77.0353, 38.7895]
-
-                                    }
-                                }
-                            ]
-                        }
-                    });
-
-                    // Add layer to use image to represent the data
-                    map.addLayer({
-                        'id': 'points',
-                        'type': 'symbol', 
-                        'source': 'point',      // reference the data point
-                        'layout': {
-                            'icon-image': 'cat', // reference the image
-                            'icon-size': 0.25
-                        }
-                    });
-                }
-            )
         });
 
     </script>
