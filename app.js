@@ -11,7 +11,6 @@ function generateMap(coordinates) {
 
 
     // Add Layer with Markers
-    const iconSize = [60, 60];
     const geojson = {
         'type': 'FeatureCollection',
         'features': [
@@ -20,7 +19,6 @@ function generateMap(coordinates) {
                 'type': 'Feature',
                 'properties': {
                     'message': 'Phuket',
-                    'iconSize': iconSize,
                     'imageUrl': './assets/lol.png',
                 },
                 'geometry': {
@@ -34,7 +32,6 @@ function generateMap(coordinates) {
                 'type': 'Feature',
                 'properties': {
                     'message': 'Chiang Mai',
-                    'iconSize': iconSize,
                     'imageUrl': './assets/jetpack.png',
                 },
                 'geometry': {
@@ -48,7 +45,6 @@ function generateMap(coordinates) {
                 'type': 'Feature',
                 'properties': {
                     'message': 'Bangkok',
-                    'iconSize': iconSize,
                     'imageUrl': './assets/bangkok.jpg',
                 },
                 'geometry': {
@@ -64,14 +60,8 @@ function generateMap(coordinates) {
 
         // Create a DOM element for each marker.
         const el = document.createElement('div');
-        const width = marker.properties.iconSize[0];
-        const height = marker.properties.iconSize[1];
-
         el.className = 'marker';
         el.style.backgroundImage = `url(${marker.properties.imageUrl})`;
-        // el.style.width = `${width}px`;
-        // el.style.height = `${height}px`;
-        // el.style.backgroundSize = '100%';
 
         el.addEventListener('click', () => {
             window.alert(marker.properties.message);
