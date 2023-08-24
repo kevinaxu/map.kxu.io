@@ -2,58 +2,15 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
 const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v12',
+    // style: 'mapbox://styles/mapbox/streets-v12',
+    style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
     center: [98.9858802, 18.7882778],
     zoom: 10
 });
 
-function generateMap(coordinates) {
+function generateMap(data) {
 
-
-    // Add Layer with Markers
-    const geojson = {
-        'type': 'FeatureCollection',
-        'features': [
-            // Phuket
-            {
-                'type': 'Feature',
-                'properties': {
-                    'message': 'Phuket',
-                    'imageUrl': './assets/lol.png',
-                },
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [98.386793, 7.888931]
-                }
-            },
-
-            // Chiang Mai 
-            {
-                'type': 'Feature',
-                'properties': {
-                    'message': 'Chiang Mai',
-                    'imageUrl': './assets/jetpack.png',
-                },
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [98.9858802, 18.7882778]
-                }
-            },
-
-            // Bangkok
-            {
-                'type': 'Feature',
-                'properties': {
-                    'message': 'Bangkok',
-                    'imageUrl': './assets/bangkok.jpg',
-                },
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [100.4935089, 13.7524938]
-                }
-            }
-        ]
-    };
+    const geojson = data.markers;
 
     // Add markers to the map.
     for (const marker of geojson.features) {
@@ -74,6 +31,7 @@ function generateMap(coordinates) {
     }
 
     var pulsingDot = generatePulsingDot()
+    const coordinates = data.coordinates;
 
     map.on('load', () => {
 
@@ -190,7 +148,7 @@ function generatePulsingDot() {
 }
 
 
-fetch('coordinates.json')
+fetch('mapbox_data.json')
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

@@ -16,7 +16,12 @@ const markers = [
     {
         name: "Bangkok",
         coordinates: [100.4935089, 13.7524938],
-        image: "./assets/bandkok.jpg",
+        image: "./assets/bangkok.jpg",
+    },
+    {
+        name: "Chiang Dao",
+        coordinates: [98.953466, 19.550373],
+        image: "./assets/lol.png",
     },
 ];
 
@@ -68,6 +73,7 @@ async function getRouteCoordinates() {
     const apiUrl = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
 
     const coordinatesString = markers.map(marker => marker.coordinates.join(',')).join(';');
+    console.log(coordinatesString);
 
     try {
         const apiParameters = `${apiUrl}${coordinatesString}?alternatives=true&steps=true&geometries=geojson&overview=full&access_token=${accessToken}`;
