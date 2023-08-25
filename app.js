@@ -1,3 +1,6 @@
+// Read from client first?
+
+
 // Initialize Map
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
 const map = new mapboxgl.Map({
@@ -147,18 +150,20 @@ function generatePulsingDot() {
     };
 }
 
-
-fetch('mapbox_data.json')
+const fetchData = fetch('mapbox_data.json')
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         return response.json();
     })
-    .then(data => {
-        // console.log("size of JSON", data.length);
-        generateMap(data);
-    })
     .catch(error => {
         console.error('Error fetching the file:', error);
     });
+
+
+fetchData.then(data => {
+    if (data) {
+        generateMap(data);
+    }
+})
