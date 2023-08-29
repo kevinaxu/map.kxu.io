@@ -60,7 +60,13 @@ function generateMap(data) {
             },
             'paint': {
                 'line-color': '#888',
-                'line-width': 8
+                'line-width': 8,
+                "line-dasharray":{
+                    "stops": [
+                        [0, [5, 1]],
+                        [8, [3, 2]]
+                    ]
+                }
             }
         });
 
