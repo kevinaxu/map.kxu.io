@@ -9,6 +9,8 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         body {
             margin: 0;
@@ -22,6 +24,13 @@
             width: 100%;
         }
 
+        * {
+            margin: 0;
+        }
+
+
+        /* Mapbox Marker */
+
         #marker {
             background-image: url('./assets/lol.png');
             background-size: cover;
@@ -32,29 +41,28 @@
             cursor: pointer;
         }
 
-
-        * {
-            margin: 0;
-        }
+        /* Polaroid Card Component */ 
 
         .mapboxgl-popup-content {
-            padding: 24px;
-            width: 600px;
-        }
-        .carousel-container {
-            position: relative;
-            margin: 1em auto .5em auto;
-            width: 100%;
+            padding: 18px;
+            width: 360px;
+            border-radius: .5em;
+            box-shadow: 0 0 5px rgb(204, 204, 204);
         }
 
-        .carousel-container,
-        .carousel-caption {
-            box-shadow: 0 0 5px rgb(204, 204, 204);
-            ;
+
+        /* Carousel */
+
+        .carousel-container {
+            position: relative;
+            margin: .5em auto .5em auto;
+            width: 100%;
         }
 
         .carousel-container img {
             border-radius: .5em;
+            width: 100%;
+
         }
 
         .hidden {
@@ -124,8 +132,10 @@
         .dot:hover {
             box-shadow: 0 0 5px #fff;
         }
+    
 
-        .carousel-caption {
+        /*
+        .carousel-caption h3{
             text-align: center;
             font-family: 'Nanum Gothic', serif;
             background-color: rgba(204, 204, 204, .8);
@@ -134,6 +144,7 @@
             padding: 1em 0;
             border-radius: .5em;
         }
+        */
     </style>
 </head>
 
@@ -151,6 +162,14 @@
             center: [-74.5, 40],
             zoom: 9
         });
+
+        const scale = new mapboxgl.ScaleControl({
+            maxWidth: 80,
+            unit: 'imperial'
+        });
+        map.addControl(scale);
+        scale.setUnit('metric');
+
 
         // Create an array of marker data
         const markers = [
@@ -176,27 +195,28 @@
                 .addTo(map);
 
             const popupHTML = `
-            <div class="popup">
-            <div class="carousel-container">
-                <div class="carousel-imgs">
-                <img src="https://i.imgur.com/3rCW1xj.png" class="carousel-img visible"/>
-                <img src="https://i.imgur.com/AsXzjqX.png" class="carousel-img  hidden"/>
-                <img src="https://i.imgur.com/aJndu7X.png" class="carousel-img  hidden"/>
-                </div>
-                    <a class="prev arrow">&#10094;</a>
-                    <a class="next arrow">&#10095;</a>
-                <div class="slide-numbers">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-                
-                </div>
-                <div class="carousel-captions">
-                <p class="carousel-caption visible">Mountain Range 1</p>
-                <p class="carousel-caption hidden">Mountain Range 2</p>
-                <p class="carousel-caption hidden">Mountain Range 3</p>
-                </div>
+                <div class="popup">
+                    <div class="carousel-container">
+                        <div class="carousel-imgs">
+                            <img src="https://i.imgur.com/3rCW1xj.png" class="carousel-img visible"/>
+                            <img src="https://i.imgur.com/AsXzjqX.png" class="carousel-img  hidden"/>
+                            <img src="https://i.imgur.com/aJndu7X.png" class="carousel-img  hidden"/>
+                        </div>
+
+                        <a class="prev arrow">&#10094;</a>
+                        <a class="next arrow">&#10095;</a>
+                        <div class="slide-numbers">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+
+
+                        <div class="carousel-caption">
+                            <h3 class="text-xl">Carousel Caption</h3>
+                            <p>Carousel Caption</p>
+                        </div>
+                    </div>
                 </div>
                 `;
             const popup = new mapboxgl.Popup({ closeOnClick: true })
