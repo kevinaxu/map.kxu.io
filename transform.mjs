@@ -6,22 +6,62 @@ const markers = [
     {
         name: "Phuket",
         coordinates: [98.386793, 7.888931],
-        image: "./assets/lol.png",
+        icon: "./assets/lol.png",
+        images: [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ],
+        captions: [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
     },
     {
         name: "Chiang Mai",
         coordinates: [98.9858802, 18.7882778],
-        image: "./assets/jetpack.png",
+        icon: "./assets/jetpack.png",
+        images: [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ],
+        captions: [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
     },
     {
         name: "Bangkok",
         coordinates: [100.4935089, 13.7524938],
-        image: "./assets/bangkok.jpg",
+        icon: "./assets/bangkok.jpg",
+        images: [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ],
+        captions: [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
     },
     {
         name: "Chiang Dao",
         coordinates: [98.953466, 19.550373],
-        image: "./assets/lol.png",
+        icon: "./assets/lol.png",
+        images: [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ],
+        captions: [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
     },
 ];
 
@@ -39,7 +79,9 @@ function generateMarkerFeatureCollection(markers) {
             type: "Feature",
             properties: {
                 message: item.name,
-                imageUrl: item.image,
+                icon: item.icon,
+                images: item.images,
+                captions: item.captions,
             },
             geometry: {
                 type: "Point",

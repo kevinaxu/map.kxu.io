@@ -11,26 +11,148 @@ const map = new mapboxgl.Map({
     zoom: 10
 });
 
+
+
+// ********************************************************************/
+
+// first image and caption is visible, the rest are hidden
+function generateImageHTML(images) {
+    var strings = [];
+    for (var i = 0; i < images.length; i++) {
+        var status = (i === 0 ? "visible" : "hidden");
+        strings.push(`<img src="${images[i]}" class="carousel-img ${status}"/>`);
+    }
+    return strings.join("\n");
+}
+
+function generateCaptionHTML(captions) {
+    var strings = [];
+    for (var i = 0; i < captions.length; i++) {
+        var status = (i === 0 ? "visible" : "hidden");
+        strings.push(`<p class="carousel-caption ${status}">${captions[i]}</p>`);
+    }
+    return strings.join("\n");
+}
+
+function getPopupHTML(images, captions) {
+    const popupHTML = `
+        <div class="popup">
+            <div class="carousel-container">
+                <div class="carousel-imgs">
+                    ${generateImageHTML(images)}
+                </div>
+                <a class="prev arrow">&#10094;</a>
+                <a class="next arrow">&#10095;</a>
+                <div class="slide-numbers">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <div class="carousel-captions">
+                    ${generateCaptionHTML(captions)}
+                </div>
+            </div>
+        </div>
+        `;
+    return popupHTML;
+}
+
+// For each marker, a popup is created with a button
+// The event listener for the button is now set inside the popup's 'open' event, 
+// ensuring that each button is correctly associated with its respective marker's message.
+function attachPopupListeners(popup) {
+
+    // Variables
+    let prev = popup.getElement().querySelector('.prev');
+    let next = popup.getElement().querySelector('.next');
+    let imgs = popup.getElement().querySelectorAll('.carousel-img');
+    let dots = popup.getElement().querySelectorAll('.dot');
+    let captions = popup.getElement().querySelectorAll('.carousel-caption')
+
+    let totalImgs = imgs.length;
+    let imgPosition = 0;
+
+    // Event Listeners
+    next.addEventListener('click', nextImg);
+    prev.addEventListener('click', prevImg);
+
+    // Update Position
+    function updatePosition() {
+        //   Images
+        for (let img of imgs) {
+            img.classList.remove('visible');
+            img.classList.add('hidden');
+        }
+        imgs[imgPosition].classList.remove('hidden');
+        imgs[imgPosition].classList.add('visible')
+        //   Dots
+        for (let dot of dots) {
+            dot.className = dot.className.replace(" active", "");
+        }
+        dots[imgPosition].classList.add('active');
+        //   Captions
+        for (let caption of captions) {
+            caption.classList.remove('visible');
+            caption.classList.add('hidden');
+        }
+
+        captions[imgPosition].classList.remove('hidden');
+        captions[imgPosition].classList.add('visible')
+    }
+
+    // Next Img
+    function nextImg() {
+        if (imgPosition === totalImgs - 1) {
+            imgPosition = 0;
+        } else {
+            imgPosition++;
+        }
+        updatePosition();
+    }
+    //Previous Image
+    function prevImg() {
+        if (imgPosition === 0) {
+            imgPosition = totalImgs - 1;
+        } else {
+            imgPosition--;
+        }
+        updatePosition();
+    }
+    // Dot Position
+    dots.forEach((dot, dotPosition) => {
+        dot.addEventListener("click", () => {
+            imgPosition = dotPosition
+            updatePosition(dotPosition)
+        })
+    })
+}
+
 function generateMap(data) {
 
     const geojson = data.markers;
 
     // Add markers to the map.
-    for (const marker of geojson.features) {
+    for (const feature of geojson.features) {
 
         // Create a DOM element for each marker.
         const el = document.createElement('div');
         el.className = 'marker';
-        el.style.backgroundImage = `url(${marker.properties.imageUrl})`;
-
-        el.addEventListener('click', () => {
-            window.alert(marker.properties.message);
-        });
+        el.style.backgroundImage = `url(${feature.properties.icon})`;
 
         // Add markers to the map.
-        new mapboxgl.Marker(el)
-            .setLngLat(marker.geometry.coordinates)
+        var marker = new mapboxgl.Marker(el)
+            .setLngLat(feature.geometry.coordinates)
             .addTo(map);
+
+        const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
+        const popup = new mapboxgl.Popup({ offset: 25, closeOnClick: true, closeButton: false })
+            .setHTML(popupHTML);
+
+        popup.on('open', () => {
+            attachPopupListeners(popup);
+        });
+
+        marker.setPopup(popup);
     }
 
     var pulsingDot = generatePulsingDot()
@@ -59,6 +181,7 @@ function generateMap(data) {
                 'line-cap': 'round'
             },
             'paint': {
+                /*
                 'line-color': '#888',
                 'line-width': 8,
                 "line-dasharray":{
@@ -67,6 +190,11 @@ function generateMap(data) {
                         [8, [3, 2]]
                     ]
                 }
+                */
+
+                'line-width': 4,
+                'line-color': 'gray',
+                'line-dasharray': [4, 4] // Set the line to be dotted (alternating 2 units of line followed by 2 units of gap)
             }
         });
 
@@ -173,3 +301,4 @@ fetchData.then(data => {
         generateMap(data);
     }
 })
+
