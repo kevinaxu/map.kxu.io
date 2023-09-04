@@ -133,18 +133,6 @@
             box-shadow: 0 0 5px #fff;
         }
     
-
-        /*
-        .carousel-caption h3{
-            text-align: center;
-            font-family: 'Nanum Gothic', serif;
-            background-color: rgba(204, 204, 204, .8);
-            max-width: 600px;
-            margin: .5em auto;
-            padding: 1em 0;
-            border-radius: .5em;
-        }
-        */
     </style>
 </head>
 
@@ -154,8 +142,123 @@
 
     <div id='map'></div>
     <script>
+
+        // first image and caption is visible, the rest are hidden
+        function generateImageHTML(images) {
+            var strings = [];
+            for (var i = 0; i < images.length; i++) {
+                var status = (i === 0 ? "visible" : "hidden");
+                strings.push(`<img src="${images[i]}" class="carousel-img ${status}"/>`);
+            }
+            return strings.join("\n");
+        }
+        
+        function generateCaptionHTML(captions) {
+            var strings = [];
+            for (var i = 0; i < images.length; i++) {
+                var status = (i === 0 ? "visible" : "hidden");
+                strings.push(`<p class="carousel-caption ${status}">${captions[i]}</p>`);
+            }
+            return strings.join("\n");
+        }
+
+        function getPopupHTML(images, captions) {
+            const popupHTML = `
+                <div class="popup">
+                    <div class="carousel-container">
+                        <div class="carousel-imgs">
+                            ${generateImageHTML(images)}
+                        </div>
+                        <a class="prev arrow">&#10094;</a>
+                        <a class="next arrow">&#10095;</a>
+                        <div class="slide-numbers">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="carousel-captions">
+                            ${generateCaptionHTML(captions)}
+                        </div>
+                    </div>
+                </div>
+                `;
+            console.log(popupHTML);
+            return popupHTML;
+        }
+
+        // For each marker, a popup is created with a button
+        // The event listener for the button is now set inside the popup's 'open' event, 
+        // ensuring that each button is correctly associated with its respective marker's message.
+        function attachPopupListeners(popup) {
+
+            // Variables
+            let prev = popup.getElement().querySelector('.prev');
+            let next = popup.getElement().querySelector('.next');
+            let imgs = popup.getElement().querySelectorAll('.carousel-img');
+            let dots = popup.getElement().querySelectorAll('.dot');
+            let captions = popup.getElement().querySelectorAll('.carousel-caption')
+
+            let totalImgs = imgs.length;
+            let imgPosition = 0;
+
+            // Event Listeners
+            next.addEventListener('click', nextImg);
+            prev.addEventListener('click', prevImg);
+
+            // Update Position
+            function updatePosition() {
+                //   Images
+                for (let img of imgs) {
+                    img.classList.remove('visible');
+                    img.classList.add('hidden');
+                }
+                imgs[imgPosition].classList.remove('hidden');
+                imgs[imgPosition].classList.add('visible')
+                //   Dots
+                for (let dot of dots) {
+                    dot.className = dot.className.replace(" active", "");
+                }
+                dots[imgPosition].classList.add('active');
+                //   Captions
+                for (let caption of captions) {
+                    caption.classList.remove('visible');
+                    caption.classList.add('hidden');
+                }
+
+                captions[imgPosition].classList.remove('hidden');
+                captions[imgPosition].classList.add('visible')
+            }
+
+            // Next Img
+            function nextImg() {
+                if (imgPosition === totalImgs - 1) {
+                    imgPosition = 0;
+                } else {
+                    imgPosition++;
+                }
+                updatePosition();
+            }
+            //Previous Image
+            function prevImg() {
+                if (imgPosition === 0) {
+                    imgPosition = totalImgs - 1;
+                } else {
+                    imgPosition--;
+                }
+                updatePosition();
+            }
+            // Dot Position
+            dots.forEach((dot, dotPosition) => {
+                dot.addEventListener("click", () => {
+                    imgPosition = dotPosition
+                    updatePosition(dotPosition)
+                })
+            })
+        }
+
         mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
 
+        // INITIALIZE
         const map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -171,7 +274,8 @@
         scale.setUnit('metric');
 
 
-        // Create an array of marker data
+        // INPUTS: Marker Coordinates, Image URLs, Captions
+        // these will eventually be inputs from Map config file
         const markers = [
             {
                 coordinates: [-74.5, 40],
@@ -186,7 +290,16 @@
                 message: 'Marker 3 clicked!' 
             }
         ];
-
+        const images = [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ]
+        const captions = [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
 
         // Add markers and popups
         markers.forEach(markerData => {
@@ -194,104 +307,16 @@
                 .setLngLat(markerData.coordinates)
                 .addTo(map);
 
-            const popupHTML = `
-                <div class="popup">
-                    <div class="carousel-container">
-                        <div class="carousel-imgs">
-                            <img src="https://i.imgur.com/3rCW1xj.png" class="carousel-img visible"/>
-                            <img src="https://i.imgur.com/AsXzjqX.png" class="carousel-img  hidden"/>
-                            <img src="https://i.imgur.com/aJndu7X.png" class="carousel-img  hidden"/>
-                        </div>
+            const popupHTML = getPopupHTML(images, captions);
 
-                        <a class="prev arrow">&#10094;</a>
-                        <a class="next arrow">&#10095;</a>
-                        <div class="slide-numbers">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
-
-
-                        <div class="carousel-caption">
-                            <h3 class="text-xl">Carousel Caption</h3>
-                            <p>Carousel Caption</p>
-                        </div>
-                    </div>
-                </div>
-                `;
             const popup = new mapboxgl.Popup({ closeOnClick: true })
                 .setHTML(popupHTML);
-            marker.setPopup(popup);
 
-            // For each marker, a popup is created with a button
-            // The event listener for the button is now set inside the popup's 'open' event, 
-            // ensuring that each button is correctly associated with its respective marker's message.
             popup.on('open', () => {
-                console.log("popup opened!");
-
-                // Variables
-                let prev = popup.getElement().querySelector('.prev');
-                let next = popup.getElement().querySelector('.next');
-                let imgs = popup.getElement().querySelectorAll('.carousel-img');
-                let dots = popup.getElement().querySelectorAll('.dot');
-                let captions = popup.getElement().querySelectorAll('.carousel-caption')
-                let totalImgs = imgs.length;
-                let imgPosition = 0;
-
-                // Event Listeners
-                next.addEventListener('click', nextImg);
-                prev.addEventListener('click', prevImg);
-
-                // Update Position
-                function updatePosition (){
-                //   Images
-                for(let img of imgs){
-                    img.classList.remove('visible');
-                    img.classList.add('hidden');
-                }
-                imgs[imgPosition].classList.remove('hidden');
-                imgs[imgPosition].classList.add('visible')
-                //   Dots
-                for (let dot of dots) {
-                    dot.className = dot.className.replace(" active", "");
-                }
-                    dots[imgPosition].classList.add('active');
-                //   Captions
-                for (let caption of captions) {
-                    caption.classList.remove('visible');
-                    caption.classList.add('hidden');
-                }
-                    captions[imgPosition].classList.remove('hidden');
-                    captions[imgPosition].classList.add('visible')
-                }
-
-                // Next Img
-                function nextImg(){
-                if (imgPosition === totalImgs -1){
-                        imgPosition = 0;
-                    } else{
-                        imgPosition++;
-                    }
-                    updatePosition();
-                }
-                //Previous Image
-                function prevImg(){
-                if (imgPosition === 0){
-                        imgPosition = totalImgs-1;
-                    } else{
-                        imgPosition--;
-                    }
-                    updatePosition();
-                }
-
-                // Dot Position
-                dots.forEach((dot, dotPosition) => {
-                    dot.addEventListener("click", () => {
-                        imgPosition = dotPosition
-                        updatePosition(dotPosition)
-                    })
-                })
+                addCarouselListeners(popup);
             });
+
+            marker.setPopup(popup);
         });
 
 
