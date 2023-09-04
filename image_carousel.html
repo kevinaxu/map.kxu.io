@@ -45,17 +45,23 @@
 
         .mapboxgl-popup-content {
             padding: 18px;
-            width: 360px;
+            width: 600px;
             border-radius: .5em;
             box-shadow: 0 0 5px rgb(204, 204, 204);
         }
-
+        /* Media query for screens with a maximum width of 767px (adjust as needed) */
+        @media screen and (max-width: 767px) {
+            .mapboxgl-popup-content {
+                padding: 12px;
+                width: 300px;           /* Set width for smaller screens */
+            }
+        }
 
         /* Carousel */
 
         .carousel-container {
             position: relative;
-            margin: .5em auto .5em auto;
+            margin: 0 auto 0 auto;
             width: 100%;
         }
 
@@ -92,6 +98,12 @@
             border-radius: .5em;
             user-select: none;
             background-color: rgba(204, 204, 204, 0.3);
+        }
+        /* Media query for screens with a maximum width of 767px (adjust as needed) */
+        @media screen and (max-width: 767px) {
+            .arrow {
+                padding: .5em;
+            }
         }
 
         .next {
@@ -182,7 +194,6 @@
                     </div>
                 </div>
                 `;
-            console.log(popupHTML);
             return popupHTML;
         }
 
@@ -279,15 +290,12 @@
         const markers = [
             {
                 coordinates: [-74.5, 40],
-                message: 'Marker 1 clicked!'
             },
             {
                 coordinates: [-74.6, 40.1],
-                message: 'Marker 2 clicked!' 
             },
             { 
                 coordinates: [-74.4, 39.9], 
-                message: 'Marker 3 clicked!' 
             }
         ];
         const images = [
@@ -309,11 +317,11 @@
 
             const popupHTML = getPopupHTML(images, captions);
 
-            const popup = new mapboxgl.Popup({ closeOnClick: true })
+            const popup = new mapboxgl.Popup({ offset: 25, closeOnClick: true, closeButton: false })
                 .setHTML(popupHTML);
 
             popup.on('open', () => {
-                addCarouselListeners(popup);
+                attachPopupListeners(popup);
             });
 
             marker.setPopup(popup);
