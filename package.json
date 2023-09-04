@@ -1,0 +1,32 @@
+{
+  "name": "map.kxu.io",
+  "version": "1.0.0",
+  "description": "Follow along with our adventures!",
+  "main": "index.html",
+  "dependencies": {
+    "data-uri-to-buffer": "^4.0.1",
+    "fetch-blob": "^3.2.0",
+    "formdata-polyfill": "^4.0.10",
+    "node-domexception": "^1.0.0",
+    "web-streams-polyfill": "^3.2.1"
+  },
+  "devDependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinaxu/map.kxu.io.git"
+  },
+  "keywords": [
+    "mapboxgl"
+  ],
+  "author": "Kevin Xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinaxu/map.kxu.io/issues"
+  },
+  "homepage": "https://github.com/kevinaxu/map.kxu.io#readme"
+}
