@@ -1,69 +1,7 @@
 
 // MAIN CONFIG FOR MARKERS AND ROUTE THAT ARE GENERATED
 import fetch from 'node-fetch';
-
-const markers = [
-    {
-        name: "Phuket",
-        coordinates: [98.386793, 7.888931],
-        icon: "./assets/lol.png",
-        images: [
-            "https://i.imgur.com/3rCW1xj.png",
-            "https://i.imgur.com/AsXzjqX.png",
-            "https://i.imgur.com/aJndu7X.png"
-        ],
-        captions: [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
-    },
-    {
-        name: "Chiang Mai",
-        coordinates: [98.9858802, 18.7882778],
-        icon: "./assets/jetpack.png",
-        images: [
-            "https://i.imgur.com/3rCW1xj.png",
-            "https://i.imgur.com/AsXzjqX.png",
-            "https://i.imgur.com/aJndu7X.png"
-        ],
-        captions: [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
-    },
-    {
-        name: "Bangkok",
-        coordinates: [100.4935089, 13.7524938],
-        icon: "./assets/bangkok.jpg",
-        images: [
-            "https://i.imgur.com/3rCW1xj.png",
-            "https://i.imgur.com/AsXzjqX.png",
-            "https://i.imgur.com/aJndu7X.png"
-        ],
-        captions: [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
-    },
-    {
-        name: "Chiang Dao",
-        coordinates: [98.953466, 19.550373],
-        icon: "./assets/lol.png",
-        images: [
-            "https://i.imgur.com/3rCW1xj.png",
-            "https://i.imgur.com/AsXzjqX.png",
-            "https://i.imgur.com/aJndu7X.png"
-        ],
-        captions: [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
-    },
-];
+import { readFile } from 'fs/promises';
 
 /*******************************************************************
  * Transform list of Markers into Mapbox-consumable geoJSON
@@ -110,12 +48,11 @@ function generateMarkerFeatureCollection(markers) {
  * 
  ********************************************************************/
 
-async function getRouteCoordinates() {
+async function getRouteCoordinates(markers) {
     const accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
     const apiUrl = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
 
     const coordinatesString = markers.map(marker => marker.coordinates.join(',')).join(';');
-    console.log(coordinatesString);
 
     try {
         const apiParameters = `${apiUrl}${coordinatesString}?alternatives=true&steps=true&geometries=geojson&overview=full&access_token=${accessToken}`;
@@ -148,12 +85,23 @@ function transformCoordinates(response) {
     return sampledCoordinates;
 }
 
+async function readLocalJSONFile(filename) {
+    try {
+        const data = await readFile(filename, 'utf-8');
+        const jsonData = JSON.parse(data);
+        return jsonData;
+    } catch (error) {
+        console.error(`Error reading ${filename}:`, error);
+    }
+}
 
 (async () => {
-    const geoJSON = generateMarkerFeatureCollection(markers);
-    // console.log("geoJSON", JSON.stringify(transformedData, null, 2));
+    const filename = "trip_config.json";
+    const markers = await readLocalJSONFile(filename);
 
-    const coordinates = await getRouteCoordinates();
+    const geoJSON = generateMarkerFeatureCollection(markers);
+
+    const coordinates = await getRouteCoordinates(markers);
 
     const payload = {
         "coordinates": coordinates,

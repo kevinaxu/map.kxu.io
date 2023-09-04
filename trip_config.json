@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Phuket",
+        "coordinates": [98.386793, 7.888931],
+        "icon": "./assets/lol.png",
+        "images": [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ],
+        "captions": [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
+    },
+    {
+        "name": "Chiang Mai",
+        "coordinates": [98.9858802, 18.7882778],
+        "icon": "./assets/jetpack.png",
+        "images": [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ],
+        "captions": [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
+    },
+    {
+        "name": "Bangkok",
+        "coordinates": [100.4935089, 13.7524938],
+        "icon": "./assets/bangkok.jpg",
+        "images": [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ],
+        "captions": [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
+    },
+    {
+        "name": "Chiang Dao",
+        "coordinates": [98.953466, 19.550373],
+        "icon": "./assets/lol.png",
+        "images": [
+            "https://i.imgur.com/3rCW1xj.png",
+            "https://i.imgur.com/AsXzjqX.png",
+            "https://i.imgur.com/aJndu7X.png"
+        ],
+        "captions": [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3"
+        ]
+    }
+]
