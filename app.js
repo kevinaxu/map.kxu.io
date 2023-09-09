@@ -7,8 +7,8 @@ const map = new mapboxgl.Map({
     container: 'map',
     // style: 'mapbox://styles/mapbox/streets-v12',
     style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
-    center: [98.9858802, 18.7882778],
-    zoom: 10
+    center: [98.339102,7.938135],
+    zoom: 10.5
 });
 
 
@@ -181,25 +181,14 @@ function generateMap(data) {
                 'line-cap': 'round'
             },
             'paint': {
-                /*
-                'line-color': '#888',
-                'line-width': 8,
-                "line-dasharray":{
-                    "stops": [
-                        [0, [5, 1]],
-                        [8, [3, 2]]
-                    ]
-                }
-                */
-
                 'line-width': 4,
                 'line-color': 'gray',
-                'line-dasharray': [4, 4] // Set the line to be dotted (alternating 2 units of line followed by 2 units of gap)
+                'line-dasharray': [2, 2]        // Set the line to be dotted (alternating 2 units of line followed by 2 units of gap)
             }
         });
 
         // Pulsing dot
-        const chiang_mai = [98.9858802,18.7882778];
+        const chiang_mai = [98.390708,7.884694];
         map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
         map.addSource('dot-point', {
             'type': 'geojson',
@@ -230,7 +219,7 @@ function generateMap(data) {
 
 function generatePulsingDot() {
 
-    const size = 200;
+    const size = 220;
     return {
         width: size,
         height: size,
@@ -250,7 +239,7 @@ function generatePulsingDot() {
             const duration = 2000;
             const t = (performance.now() % duration) / duration;
 
-            const radius = (size / 2) * 0.5;
+            const radius = (size / 2) * 0.3;
             const outerRadius = (size / 2) * 0.7 * t + radius;
             const context = this.context;
 
