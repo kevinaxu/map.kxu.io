@@ -1,8 +1,8 @@
 [
     {
-        "name": "Phuket",
-        "coordinates": [98.386793, 7.888931],
-        "icon": "./assets/lol.png",
+        "name": "Phuket International Airport",
+        "coordinates": [98.3115345,8.1104865],
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&palette=1&width=350",
         "images": [
             "https://images.unsplash.com/photo-1563492065599-3520f775eeed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
             "https://i.imgur.com/AsXzjqX.png",
@@ -15,9 +15,9 @@
         ]
     },
     {
-        "name": "Chiang Mai",
-        "coordinates": [98.9858802, 18.7882778],
-        "icon": "./assets/jetpack.png",
+        "name": "Sky and Sea Condos",
+        "coordinates": [98.3013584,7.8311951],
+        "icon": "https://render.bitstrips.com/v2/cpanel/10219112-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&palette=1&width=300",
         "images": [
             "https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&1=80",
             "https://i.imgur.com/AsXzjqX.png",
@@ -30,26 +30,11 @@
         ]
     },
     {
-        "name": "Bangkok",
-        "coordinates": [100.4935089, 13.7524938],
-        "icon": "./assets/bangkok.jpg",
+        "name": "Old Town Phuket",
+        "coordinates": [98.390708,7.884694],
+        "icon": "https://render.bitstrips.com/v2/cpanel/10211966-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&palette=1&width=300",
         "images": [
             "https://i.imgur.com/3rCW1xj.png",
-            "https://i.imgur.com/AsXzjqX.png",
-            "https://i.imgur.com/aJndu7X.png"
-        ],
-        "captions": [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
-    },
-    {
-        "name": "Chiang Dao",
-        "coordinates": [98.953466, 19.550373],
-        "icon": "./assets/lol.png",
-        "images": [
-            "https://plus.unsplash.com/premium_photo-1664910706524-e783eed89e71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
             "https://i.imgur.com/AsXzjqX.png",
             "https://i.imgur.com/aJndu7X.png"
         ],
