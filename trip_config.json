@@ -8,11 +8,7 @@
             "/assets/phuket/airport_2.jpg",
             "/assets/phuket/airport_3.jpg"
         ],
-        "captions": [
-            "Geared up and ready to go!",
-            "Total combined weight: 53 lbs",
-            "Dulles International (DC)"
-        ]
+        "captions": "Ready for the journey..."
     },
     {
         "name": "Sky and Sea Condos",
@@ -23,11 +19,7 @@
             "/assets/phuket/sea_and_sky_2.jpg",
             "/assets/phuket/sea_and_sky_3.jpg"
         ],
-        "captions": [
-            "Pool #1",
-            "Pool #2",
-            "View from the balcony"
-        ]
+        "captions": "Home in Phuket for the first week"
     },
     {
         "name": "The Big Bhudda",
@@ -38,11 +30,7 @@
             "/assets/phuket/big_bhudda_2.jpg",
             "/assets/phuket/big_bhudda_3.jpg"
         ],
-        "captions": [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
+        "captions": "Bushwacking up to the Big Bhudda. Not pictured, getting bounced at the entrance for not covering up our shoulders... "
     },
     {
         "name": "Sky and Sea Condos",
@@ -58,11 +46,7 @@
             "/assets/phuket/kata_2.jpg",
             "/assets/phuket/kata_3.jpg"
         ],
-        "captions": [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
+        "captions": "Exploring Kata beach! "
     },
     {
         "name": "Sky and Sea Condos",
@@ -80,11 +64,7 @@
             "/assets/phuket/old_town_4.jpg",
             "/assets/phuket/old_town_5.jpg"
         ],
-        "captions": [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
+        "captions": "Shopping in Old Town "
     },
     {
         "name": "Naka Night Market",
@@ -96,11 +76,7 @@
             "/assets/phuket/naka_3.jpg",
             "/assets/phuket/naka_4.jpg"
         ],
-        "captions": [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
+        "captions": "Naka Night Market"
     },
     {
         "name": "Sky and Sea Condos",
@@ -116,11 +92,7 @@
             "/assets/phuket/festival_2.jpg",
             "/assets/phuket/festival_3.jpg"
         ],
-        "captions": [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
+        "captions": "huge shopping mall" 
     },
     {
         "name": "Laem Hin Seafood",
@@ -133,11 +105,7 @@
             "/assets/phuket/laem_hin_4.jpg",
             "/assets/phuket/laem_hin_5.jpg"
         ],
-        "captions": [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
+        "captions": "Enjoying sights and seafood locals at Laem Hin"
     },
     {
         "name": "Chillva Night Market",
@@ -151,11 +119,7 @@
             "/assets/phuket/chillva_5.jpg",
             "/assets/phuket/chillva_6.jpg"
         ],
-        "captions": [
-            "Caption 1",
-            "Caption 2",
-            "Caption 3"
-        ]
+        "captions": "chillva night market"
     },
     {
         "name": "Sky and Sea Condos",

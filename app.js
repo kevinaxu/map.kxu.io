@@ -7,7 +7,6 @@ const map_center    = [98.339370,7.964535];
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
 const map = new mapboxgl.Map({
     container: 'map',
-    // style: 'mapbox://styles/mapbox/streets-v12',
     style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
     center: map_center,
     zoom: 10.5
@@ -15,7 +14,7 @@ const map = new mapboxgl.Map({
 
 // ********************************************************************/
 
-// first image and caption is visible, the rest are hidden
+// first image is visible, the rest are hidden
 function generateImageHTML(images) {
     var strings = [];
     for (var i = 0; i < images.length; i++) {
@@ -25,16 +24,20 @@ function generateImageHTML(images) {
     return strings.join("\n");
 }
 
-function generateCaptionHTML(captions) {
+function generateDotHTML(count) {
+
     var strings = [];
-    for (var i = 0; i < captions.length; i++) {
-        var status = (i === 0 ? "visible" : "hidden");
-        strings.push(`<p class="carousel-caption ${status}">${captions[i]}</p>`);
+    for (var i = 0; i < count; i++) {
+        if (i === 0) {
+            strings.push(`<span class="dot active"></span>`);
+        } else {
+            strings.push(`<span class="dot"></span>`);
+        }
     }
     return strings.join("\n");
 }
 
-function getPopupHTML(images, captions) {
+function getPopupHTML(images, caption) {
     const popupHTML = `
         <div class="popup">
             <div class="carousel-container">
@@ -44,13 +47,9 @@ function getPopupHTML(images, captions) {
                 <a class="prev arrow">&#10094;</a>
                 <a class="next arrow">&#10095;</a>
                 <div class="slide-numbers">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    ${generateDotHTML(images.length)}
                 </div>
-                <div class="carousel-captions">
-                    ${generateCaptionHTML(captions)}
-                </div>
+                <p class="carousel-caption">${caption}</p>
             </div>
         </div>
         `;
@@ -67,7 +66,6 @@ function attachPopupListeners(popup) {
     let next = popup.getElement().querySelector('.next');
     let imgs = popup.getElement().querySelectorAll('.carousel-img');
     let dots = popup.getElement().querySelectorAll('.dot');
-    let captions = popup.getElement().querySelectorAll('.carousel-caption')
 
     let totalImgs = imgs.length;
     let imgPosition = 0;
@@ -78,6 +76,7 @@ function attachPopupListeners(popup) {
 
     // Update Position
     function updatePosition() {
+
         //   Images
         for (let img of imgs) {
             img.classList.remove('visible');
@@ -85,19 +84,12 @@ function attachPopupListeners(popup) {
         }
         imgs[imgPosition].classList.remove('hidden');
         imgs[imgPosition].classList.add('visible')
+
         //   Dots
         for (let dot of dots) {
             dot.className = dot.className.replace(" active", "");
         }
         dots[imgPosition].classList.add('active');
-        //   Captions
-        for (let caption of captions) {
-            caption.classList.remove('visible');
-            caption.classList.add('hidden');
-        }
-
-        captions[imgPosition].classList.remove('hidden');
-        captions[imgPosition].classList.add('visible')
     }
 
     // Next Img
