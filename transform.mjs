@@ -20,6 +20,7 @@ function generateMarkerFeatureCollection(markers) {
                 icon: item.icon,
                 images: item.images,
                 captions: item.captions,
+                ignore: item.ignore,
             },
             geometry: {
                 type: "Point",
@@ -50,7 +51,7 @@ function generateMarkerFeatureCollection(markers) {
 
 async function getRouteCoordinates(markers) {
     const accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
-    const apiUrl = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
+    const apiUrl = 'https://api.mapbox.com/directions/v5/mapbox/walking/';
 
     const coordinatesString = markers.map(marker => marker.coordinates.join(',')).join(';');
 

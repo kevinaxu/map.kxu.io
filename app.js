@@ -1,5 +1,7 @@
-// Read from client first?
 
+// TODO: make these dynamic by pulling from trip_config
+const pulsing_dot   = [98.3013584,7.8311951];
+const map_center    = [98.339370,7.964535];
 
 // Initialize Map
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
@@ -7,11 +9,9 @@ const map = new mapboxgl.Map({
     container: 'map',
     // style: 'mapbox://styles/mapbox/streets-v12',
     style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
-    center: [98.339102,7.938135],
+    center: map_center,
     zoom: 10.5
 });
-
-
 
 // ********************************************************************/
 
@@ -133,6 +133,9 @@ function generateMap(data) {
 
     // Add markers to the map.
     for (const feature of geojson.features) {
+        if (feature.properties.ignore === true) {
+            continue;
+        }
 
         // Create a DOM element for each marker.
         const el = document.createElement('div');
@@ -188,7 +191,6 @@ function generateMap(data) {
         });
 
         // Pulsing dot
-        const chiang_mai = [98.390708,7.884694];
         map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
         map.addSource('dot-point', {
             'type': 'geojson',
@@ -199,7 +201,7 @@ function generateMap(data) {
                         'type': 'Feature',
                         'geometry': {
                             'type': 'Point',
-                            'coordinates': chiang_mai
+                            'coordinates': pulsing_dot
                         }
                     }
                 ]
