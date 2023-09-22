@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SNAAdmin</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/assets/favicon/site.webmanifest">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <style>
+            * {
+                outline: 1px solid red;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="m-4 bg-blue-100">
+            <div id="" class="marker">
+                <div class="p-2">
+                    <p class="text-lg font-semibold">The Big Bhudda</p>
+                    <p class="text-xs text-gray-700">[98.3128945, 7.8277395]</p>
+                    <p class="mt-2 text-sm">Text caption blah blah blah blah derrrrrrr ralksdjf;laksjdf;aklsd fwopa eviaovj</p>
+                </div>
+                <div id="imageList" class="">
+                    <div class="inline-block w-24 h-full m-2">
+                        <div data-position="1" class="h-24 w-24">
+                            <img src="assets/koh_tao/nang_yuan_5.jpg" class="object-cover w-full h-full rounded-md ">                
+                        </div>
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                            x
+                        </button>
+                    </div>
+
+                    <div class="inline-block w-24 h-full m-2">
+                        <div data-position="2" class="h-24 w-24">
+                            <img src="assets/koh_tao/nang_yuan_4.jpg" class="object-cover w-full h-full rounded-md ">                
+                        </div>
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                            x
+                        </button>
+                    </div>
+
+                    <div class="inline-block w-24 h-full m-2">
+                        <div data-position="3" class="h-24 w-24">
+                            <img src="assets/koh_tao/nang_yuan_3.jpg" class="object-cover w-full h-full rounded-md ">                
+                        </div>
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                            x
+                        </button>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded">
+                        Add Image
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <script>
+            // read from trip_config.json 
+            const fetchData = fetch('trip_config.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .catch(error => {
+                    console.error('Error fetching the file:', error);
+                });
+            fetchData.then(data => {
+                if (data) {
+                    //generateHTML(data);
+                    initSortable();
+                }
+            })
+
+            function generateHTML(data) {
+                // inject this into the body 
+                const HTML = `
+                    <div class="m-4 bg-blue-100">
+                        ${generateMarker(data[2])}
+                    </div>
+                `;
+                document.body.innerHTML = HTML;
+            }
+
+            function generateMarker(marker) {
+                console.log("marker:", marker);
+
+                const markerHTML = `
+                    <div id="" class="marker">
+                        <div class="p-2">
+                            <p class="text-lg font-semibold">${marker.name}</p>
+                            <p class="text-sm">${marker.captions}</p>
+                            <p class="text-sm">${marker.coordinates}</p>
+                        </div>
+                        <div id="imageList" class="">
+                            ${generateMarkerImageHTML(marker.images)}
+                        </div>
+                    </div>
+                `;
+                return markerHTML;
+            }
+
+            function generateMarkerImageHTML(images) {
+                var strings = [];
+                for (var i = 0; i < images.length; i++) {
+                    strings.push(`
+                        <div class="inline-block w-24 h-full m-2">
+                            <div data-position="1" class="h-24 w-24">
+                                <img src="${images[i]}" class="object-cover w-full h-full rounded-md ">                
+                            </div>
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                                x
+                            </button>
+                        </div>
+                    `);
+                }
+                return strings.join("\n");
+            }
+
+            // initialize the sortable list - this should apply to all Marker > Image lists
+            function initSortable() {
+                const sortableList = new Sortable(document.getElementById('imageList'), {
+                    animation: 150, // Animation speed in milliseconds
+                    onEnd: (evt) => {
+                        // Update the position attribute of each item after reordering
+                        const items = evt.from.children;
+                        for (let i = 0; i < items.length; i++) {
+                            items[i].setAttribute('data-position', i + 1);
+                        }
+
+                        // Update the trip_config file with the updated ordering
+                        saveState(); 
+                    }, 
+                });
+            }
+
+            function saveState() {
+                var objects = [];
+
+                const markers = document.querySelectorAll('.marker');
+                markers.forEach((marker, index) => {
+
+                    // marker metadata 
+                    var markerObject = {
+                        name: marker.children[0].children[0].innerHTML,
+                        coordinates: JSON.parse(marker.children[0].children[1].innerHTML),
+                        captions: marker.children[0].children[2].innerHTML,
+                    };
+
+                    // grab images src
+                    const images = marker.querySelectorAll('img');
+                    var strings = [];
+                    Array.from(images).forEach((item, index) => {
+                        var imageSrc = item.getAttribute('src');
+                        strings.push(imageSrc);
+                    });
+                    markerObject.images = strings;
+
+                    objects.push(markerObject);
+                });
+                console.log("updated object", JSON.stringify(objects, null, 2));
+            }
+        </script>
+    </body>
