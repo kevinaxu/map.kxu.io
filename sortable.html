@@ -18,14 +18,13 @@
     </head>
     <body>
 
-        <!-- -->
+        <!--
         <div class="bg-white m-4">
             <div id="" class="marker mt-4 bg-blue-100">
                 <div class="p-2">
-                    <p class="editable-text" onclick="makeEditable(this)">Click me to edit</p>
-                    <p class="text-lg font-semibold" >Sky and Sea Condos</p>
-                    <p class="text-xs text-gray-700">[98.3013584,7.8311951]</p>
-                    <p class="mt-2 text-sm">WHAT UPPPPPPPPPP week</p>
+                    <p class="text-lg font-semibold" onclick="makeEditable(this)">Sky and Sea Condos</p>
+                    <p class="text-xs text-gray-700" onclick="makeEditable(this)">[98.3013584,7.8311951]</p>
+                    <p class="mt-2 text-sm" onclick="makeEditable(this)">WHAT UPPPPPPPPPP week</p>
                     <p class="hidden">https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&palette=1&width=300</p>
                 </div>
                 <div id="" class="sortable-container">
@@ -131,7 +130,7 @@
             </div>
         </div>
 
-        <!-- -->
+        -->
 
 
         <script>
@@ -149,7 +148,7 @@
                 });
             fetchData.then(data => {
                 if (data) {
-                    // generateHTML(data);
+                    generateHTML(data);
                     initSortable();
                     initImageListener();
                     // initEditableText();
@@ -157,12 +156,20 @@
             })
 
 
+            // Original:
+            //      <p class="editable-text" onclick="makeEditable(this)">Click me to edit</p>
+            // When field is active: 
+            //      <input type="text">
             function makeEditable(element) {
 
                 // Create a new input element
                 const inputElement = document.createElement("input");
                 inputElement.type = "text";
-                inputElement.value = element.textContent;
+                inputElement.value = element.textContent
+                
+                const textClassName = element.className
+
+                console.log("element classes:", textClassName, textClassName.split(' '));
 
                 // Replace the original element with the input field
                 element.replaceWith(inputElement);
@@ -181,7 +188,11 @@
 
                         // Create a new text element with the updated value
                         const newTextElement = document.createElement("p");
+                        newTextElement.className = textClassName;
                         newTextElement.textContent = updatedValue;
+
+                        // TODO: update class names
+                        // newTextElement.classList.add("editable-text");
 
                         // Replace the input field with the new text element
                         inputElement.replaceWith(newTextElement);
@@ -193,11 +204,9 @@
                     }
                 });
 
-                inputElement.addEventListener("click", function (event) {
-                    console.log("evnt target", event.target);
-                });
 
             }
+
 
 
 
@@ -246,9 +255,9 @@
                 const markerHTML = `
                     <div id="" class="marker mt-4 bg-blue-100">
                         <div class="p-2">
-                            <p class="text-lg font-semibold">${marker.name}</p>
-                            <p class="text-xs text-gray-700">${JSON.stringify(marker.coordinates)}</p>
-                            <p class="mt-2 text-sm">${marker.captions}</p>
+                            <p class="text-lg font-semibold" onclick="makeEditable(this)">${marker.name}</p>
+                            <p class="text-xs text-gray-700" onclick="makeEditable(this)">${JSON.stringify(marker.coordinates)}</p>
+                            <p class="mt-2 text-sm" onclick="makeEditable(this)">${marker.captions}</p>
                             <p class="hidden">${marker.icon}</p>
                         </div>
                         <div id="" class="sortable-container">
@@ -322,32 +331,12 @@
                 });
             }
 
-
+            // Add an event listener to handle changes when the user presses Enter
             function initEditableText() {
                 const textInputs = document.querySelectorAll('.editable-text');
                 textInputs.forEach((inputElement) => {
-
-                    // Add an event listener to handle changes when the user presses Enter
-                    inputElement.addEventListener("keydown", function (event) {
-                        if (event.key === "Enter") {
-                            // Prevent the default Enter key behavior (e.g., form submission)
-                            event.preventDefault();
-                            
-                            // Get the updated value from the input field
-                            const updatedValue = inputElement.value;
-
-                            // Create a new text element with the updated value
-                            const newTextElement = document.createElement("p");
-                            newTextElement.textContent = updatedValue;
-
-                            // Replace the input field with the new text element
-                            inputElement.replaceWith(newTextElement);
-
-                            // Reattach the click event listener for editing
-                            newTextElement.addEventListener("click", function () {
-                                makeEditable(newTextElement);
-                            });
-                        }
+                    inputElement.addEventListener("click", function (event) {
+                        makeEditable(inputElement);
                     });
                 });
             }
