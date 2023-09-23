@@ -32,6 +32,7 @@
                         <div data-position="1" class="h-24 w-24">
                             <img src="assets/phuket/sea_and_sky_1.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
+                        <p class="truncate text-xs text-sm w-24" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_1.jpg</p>
                         <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
                             onclick="deleteImage(this.parentElement)">
                             x
@@ -42,6 +43,7 @@
                         <div data-position="2" class="h-24 w-24">
                             <img src="assets/phuket/sea_and_sky_4.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
+                        <p class="truncate text-xs text-sm w-24" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_4.jpg</p>
                         <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
                             onclick="deleteImage(this.parentElement)">
                             x
@@ -52,6 +54,7 @@
                         <div data-position="3" class="h-24 w-24">
                             <img src="assets/phuket/sea_and_sky_3.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
+                        <p class="truncate text-xs text-sm w-24" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_2.jpg</p>
                         <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
                             onclick="deleteImage(this.parentElement)">                            
                             x
@@ -152,6 +155,57 @@
                     initImageListener();
                 }
             })
+
+
+            function makeEditableImage(element) {
+                console.log("makeEditableImage()");
+
+                // get the actual image element associated with this text input
+                const imgElement = element.parentNode.querySelector('img');
+
+                const imgSrc = imgElement.getAttribute('src');
+
+                // save the original class name
+                const textClassName = element.className
+
+                // Create a new input element and replace original element 
+                const inputElement = document.createElement("input");
+                inputElement.type = "text";
+                inputElement.value = element.textContent
+                element.replaceWith(inputElement);
+
+                // Focus on the input field to allow editing
+                inputElement.focus();
+
+                // Add an event listener to handle changes when the user presses Enter
+                inputElement.addEventListener("keydown", function (event) {
+                    if (event.key === "Enter") {
+                        // Prevent the default Enter key behavior (e.g., form submission)
+                        event.preventDefault();
+                        
+                        // Get the updated value from the input field
+                        const updatedValue = inputElement.value;
+
+                        // Create a new text element with the updated value
+                        const textElement = document.createElement("p");
+                        textElement.className = textClassName;
+                        textElement.textContent = updatedValue;
+
+                        // Replace the input field with the new text element
+                        inputElement.replaceWith(textElement);
+
+                        // update <img src> to the new value
+                        console.log("updated value", updatedValue);
+
+                        imgElement.setAttribute('src', updatedValue);
+
+                        // Reattach the click event listener for editing
+                        textElement.addEventListener("click", function () {
+                            makeEditableImage(textElement);
+                        });
+                    }
+                });
+            }
 
 
             // Original:
@@ -277,6 +331,7 @@
                         <div class="h-24 w-24">
                             <img src="${imageSrc}" class="object-cover w-full h-full rounded-md ">                
                         </div>
+                        <p class="truncate text-xs text-sm w-24" onclick="makeEditableImage(this)">${imageSrc}</p>
                         <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
                             onclick="deleteImage(this.parentElement)">                            
                             x
