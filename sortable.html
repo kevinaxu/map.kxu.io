@@ -32,7 +32,8 @@
                         <div data-position="1" class="h-24 w-24">
                             <img src="assets/phuket/sea_and_sky_1.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
+                            onclick="deleteImage(this.parentElement)">
                             x
                         </button>
                     </div>
@@ -41,7 +42,8 @@
                         <div data-position="2" class="h-24 w-24">
                             <img src="assets/phuket/sea_and_sky_4.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
+                            onclick="deleteImage(this.parentElement)">
                             x
                         </button>
                     </div>
@@ -50,7 +52,8 @@
                         <div data-position="3" class="h-24 w-24">
                             <img src="assets/phuket/sea_and_sky_3.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
+                            onclick="deleteImage(this.parentElement)">                            
                             x
                         </button>
                     </div>
@@ -81,7 +84,8 @@
                         <div data-position="1" class="h-24 w-24">
                             <img src="assets/koh_tao/nang_yuan_5.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
+                            onclick="deleteImage(this.parentElement)">                            
                             x
                         </button>
                     </div>
@@ -90,7 +94,8 @@
                         <div data-position="2" class="h-24 w-24">
                             <img src="assets/koh_tao/nang_yuan_4.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
+                            onclick="deleteImage(this.parentElement)">                            
                             x
                         </button>
                     </div>
@@ -99,7 +104,8 @@
                         <div data-position="3" class="h-24 w-24">
                             <img src="assets/koh_tao/nang_yuan_3.jpg" class="object-cover w-full h-full rounded-md ">                
                         </div>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
+                            onclick="deleteImage(this.parentElement)">                            
                             x
                         </button>
                     </div>
@@ -213,7 +219,8 @@
                             <div data-position="1" class="h-24 w-24">
                                 <img src="${images[i]}" class="object-cover w-full h-full rounded-md ">                
                             </div>
-                            <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded">
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
+                                onclick="deleteImage(this.parentElement)">                            
                                 x
                             </button>
                         </div>
@@ -233,6 +240,11 @@
                         }, 
                     });
                 });
+            }
+
+            function deleteImage(element) {
+                console.log("deleting:", element);
+                element.remove();
             }
 
             function dumpState() {
@@ -269,8 +281,7 @@
 
                 navigator.clipboard.writeText(text).then(function() {
                     console.log('Async: Copying to clipboard was successful!');
-                    // Alert the copied text
-                    alert("Copied the config to clipboard! Paste into trip_config.json to save the changes");
+                    alert(`Copied the config to clipboard!\nPaste into trip_config.json to save the changes`);
                 }, function(err) {
                     console.error('Async: Could not copy text: ', err);
                 });
