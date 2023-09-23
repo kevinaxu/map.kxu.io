@@ -135,7 +135,6 @@
 
         <script>
 
-            // read from trip_config.json 
             const fetchData = fetch('trip_config.json')
                 .then(response => {
                     if (!response.ok) {
@@ -151,7 +150,6 @@
                     generateHTML(data);
                     initSortable();
                     initImageListener();
-                    // initEditableText();
                 }
             })
 
@@ -162,16 +160,13 @@
             //      <input type="text">
             function makeEditable(element) {
 
-                // Create a new input element
+                // save the original class name
+                const textClassName = element.className
+
+                // Create a new input element and replace original element 
                 const inputElement = document.createElement("input");
                 inputElement.type = "text";
                 inputElement.value = element.textContent
-                
-                const textClassName = element.className
-
-                console.log("element classes:", textClassName, textClassName.split(' '));
-
-                // Replace the original element with the input field
                 element.replaceWith(inputElement);
 
                 // Focus on the input field to allow editing
@@ -187,27 +182,20 @@
                         const updatedValue = inputElement.value;
 
                         // Create a new text element with the updated value
-                        const newTextElement = document.createElement("p");
-                        newTextElement.className = textClassName;
-                        newTextElement.textContent = updatedValue;
-
-                        // TODO: update class names
-                        // newTextElement.classList.add("editable-text");
+                        const textElement = document.createElement("p");
+                        textElement.className = textClassName;
+                        textElement.textContent = updatedValue;
 
                         // Replace the input field with the new text element
-                        inputElement.replaceWith(newTextElement);
+                        inputElement.replaceWith(textElement);
 
                         // Reattach the click event listener for editing
-                        newTextElement.addEventListener("click", function () {
-                            makeEditable(newTextElement);
+                        textElement.addEventListener("click", function () {
+                            makeEditable(textElement);
                         });
                     }
                 });
-
-
             }
-
-
 
 
             function generateHTML(data) {
@@ -327,16 +315,6 @@
                             const sortableContainer = imageInput.parentElement.previousElementSibling;
                             sortableContainer.insertAdjacentHTML('beforeend', markerHTML);
                         }
-                    });
-                });
-            }
-
-            // Add an event listener to handle changes when the user presses Enter
-            function initEditableText() {
-                const textInputs = document.querySelectorAll('.editable-text');
-                textInputs.forEach((inputElement) => {
-                    inputElement.addEventListener("click", function (event) {
-                        makeEditable(inputElement);
                     });
                 });
             }
