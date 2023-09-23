@@ -18,12 +18,12 @@
     </head>
     <body>
 
-        <!-- -->
+        <!--
         <div class="bg-white m-4">
             <div id="" class="marker mt-4 bg-blue-100">
 
                 <div class="flex flex-row">
-                    <div class="p-2">
+                    <div class="p-2 mr-2">
                         <img class="h-20" src="https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&palette=1&width=300" />
                     </div>
                     <div class="p-2 w-full">
@@ -85,11 +85,16 @@
             </div>
 
             <div id="" class="marker mt-4 bg-blue-100">
-                <div class="p-2">
-                    <p class="text-lg font-semibold">The Big Bhudda</p>
-                    <p class="text-xs text-gray-700">[98.3128945, 7.8277395]</p>
-                    <p class="mt-2 text-sm">Text caption blah blah blah blah derrrrrrr ralksdjf;laksjdf;aklsd fwopa eviaovj</p>
-                    <p class="hidden">https://render.bitstrips.com/v2/cpanel/10214710-132533800_29-s1-v1.png?transparent=1&palette=1&width=300</p>
+                <div class="flex flex-row">
+                    <div class="p-2 mr-2">
+                        <img class="h-20" src="https://render.bitstrips.com/v2/cpanel/10214710-132533800_29-s1-v1.png?transparent=1&palette=1&width=300" />
+                    </div>
+                    <div class="p-2 w-full">
+                        <p class="text-lg font-semibold" onclick="makeEditable(this)">The Big Bhudda</p>
+                        <p class="text-xs text-gray-700" onclick="makeEditable(this)">[98.3128945, 7.8277395]</p>
+                        <p class="pt-2 text-xs text-gray-700" onclick="makeEditableImage(this, true)">https://render.bitstrips.com/v2/cpanel/10214710-132533800_29-s1-v1.png?transparent=1&palette=1&width=300</p>
+                        <p class="pt-2 text-sm" onclick="makeEditable(this)">Text caption blah blah blah blah derrrrrrr ralksdjf;laksjdf;aklsd fwopa eviaovj</p>
+                    </div>
                 </div>
                 <div id="" class="sortable-container">
                     <div class="inline-block w-36 h-full m-4">
@@ -143,7 +148,7 @@
             </div>
         </div>
 
-        <!-- -->
+        -->
 
 
         <script>
@@ -160,7 +165,7 @@
                 });
             fetchData.then(data => {
                 if (data) {
-                    // generateHTML(data);
+                    generateHTML(data);
                     initSortable();
                     initImageListener();
                 }
@@ -298,10 +303,10 @@
 
             function generateHiddenMarker(marker) {
                 const markerHTML = `
-                    <div id="" class="marker hidden">
+                    <div class="marker hidden">
                         <div class="p-2">
-                            <p class="text-lg font-semibold">${marker.name}</p>
-                            <p class="text-xs text-gray-700">${JSON.stringify(marker.coordinates)}</p>
+                            <p class="marker-name text-lg font-semibold">${marker.name}</p>
+                            <p class="marker-coordinates text-xs text-gray-700">${JSON.stringify(marker.coordinates)}</p>
                         </div>
                     </div>
                 `;
@@ -312,12 +317,17 @@
                 // console.log("marker:", marker);
 
                 const markerHTML = `
-                    <div id="" class="marker mt-4 bg-blue-100">
-                        <div class="p-2">
-                            <p class="text-lg font-semibold" onclick="makeEditable(this)">${marker.name}</p>
-                            <p class="text-xs text-gray-700" onclick="makeEditable(this)">${JSON.stringify(marker.coordinates)}</p>
-                            <p class="mt-2 text-sm" onclick="makeEditable(this)">${marker.captions}</p>
-                            <p class="hidden">${marker.icon}</p>
+                    <div class="marker mt-4 bg-blue-100">
+                        <div class="flex flex-row">
+                            <div class="p-2 mr-2">
+                                <img class="h-20" src="${marker.icon}" />
+                            </div>
+                            <div class="p-2 w-full">
+                                <p class="marker-name text-lg font-semibold" onclick="makeEditable(this)">${marker.name}</p>
+                                <p class="marker-coordinates text-xs text-gray-700" onclick="makeEditable(this)">${JSON.stringify(marker.coordinates)}</p>
+                                <p class="marker-icon pt-2 text-xs text-gray-700" onclick="makeEditableImage(this, true)">${marker.icon}</p>
+                                <p class="marker-captions pt-2 text-sm" onclick="makeEditable(this)">${marker.captions}</p>
+                            </div>
                         </div>
                         <div id="" class="sortable-container">
                             ${generateMarkerImageHTML(marker.images)}
@@ -346,7 +356,7 @@
                 const markerImageHTML = `
                     <div class="inline-block w-36 h-full m-4">
                         <div class="h-24 w-36">
-                            <img src="${imageSrc}" class="object-cover w-full h-full rounded-md ">                
+                            <img src="${imageSrc}" class="marker-image object-cover w-full h-full rounded-md ">                
                         </div>
                         <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">${imageSrc}</p>
                         <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
@@ -409,18 +419,18 @@
                 markers.forEach((marker, index) => {
 
                     var markerObject = {
-                        name: marker.children[0].children[0].innerHTML,
-                        coordinates: JSON.parse(marker.children[0].children[1].innerHTML)
+                        name: marker.querySelector('.marker-name').innerHTML,
+                        coordinates: JSON.parse(marker.querySelector('.marker-coordinates').innerHTML)
                     };
 
                     if (marker.classList.contains('hidden')) {
                         markerObject.ignore = true;
                     } else {
-                        markerObject.captions = marker.children[0].children[2].innerHTML;
-                        markerObject.icon = marker.children[0].children[3].innerHTML;
+                        markerObject.captions = marker.querySelector('.marker-captions').innerHTML;
+                        markerObject.icon = marker.querySelector('.marker-icon').innerHTML;
 
                         // grab images src
-                        const images = marker.querySelectorAll('img');
+                        const images = marker.querySelectorAll('.marker-image');
                         var strings = [];
                         Array.from(images).forEach((item, index) => {
                             var imageSrc = item.getAttribute('src');
