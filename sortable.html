@@ -18,7 +18,7 @@
     </head>
     <body>
 
-        <!--
+        <!-- -->
         <div class="bg-white m-4">
             <div id="" class="marker mt-4 bg-blue-100">
                 <div class="p-2">
@@ -59,7 +59,9 @@
                     </div>
                 </div>
                 <div class="p-2">
-                    <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded">
+                    <input class="image-input hidden" type="file" accept="image/*">
+                    <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded"
+                        onclick="addImage(this)">
                         Add Image
                     </button>
                 </div>
@@ -111,7 +113,9 @@
                     </div>
                 </div>
                 <div class="p-2">
-                    <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded">
+                    <input class="image-input hidden" type="file" accept="image/*">
+                    <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded"
+                        onclick="addImage(this)">
                         Add Image
                     </button>
                 </div>
@@ -126,7 +130,7 @@
             </div>
         </div>
 
-        -->
+        <!-- -->
 
 
         <script>
@@ -143,8 +147,9 @@
                 });
             fetchData.then(data => {
                 if (data) {
-                    generateHTML(data);
+                    // generateHTML(data);
                     initSortable();
+                    initImageListener();
                 }
             })
 
@@ -214,19 +219,26 @@
             function generateMarkerImageHTML(images) {
                 var strings = [];
                 for (var i = 0; i < images.length; i++) {
-                    strings.push(`
-                        <div class="inline-block w-24 h-full m-2">
-                            <div data-position="1" class="h-24 w-24">
-                                <img src="${images[i]}" class="object-cover w-full h-full rounded-md ">                
-                            </div>
-                            <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
-                                onclick="deleteImage(this.parentElement)">                            
-                                x
-                            </button>
-                        </div>
-                    `);
+                    strings.push(
+                        createMarkerImage(images[i])
+                    );
                 }
                 return strings.join("\n");
+            }
+
+            function createMarkerImage(imageSrc) {
+                const markerImageHTML = `
+                    <div class="inline-block w-24 h-full m-2">
+                        <div class="h-24 w-24">
+                            <img src="${imageSrc}" class="object-cover w-full h-full rounded-md ">                
+                        </div>
+                        <button class="bg-red-400 hover:bg-red-500 text-white text-white text-sm font-semibold px-1 rounded"
+                            onclick="deleteImage(this.parentElement)">                            
+                            x
+                        </button>
+                    </div>
+                `;
+                return markerImageHTML;
             }
 
             // initialize the sortable list - this should apply to all Marker > Image lists
@@ -242,9 +254,35 @@
                 });
             }
 
+            function initImageListener() {
+                const imageInputs = document.querySelectorAll('.image-input');
+                imageInputs.forEach((imageInput) => {
+                    imageInput.addEventListener("change", function () {
+                        const selectedImage = imageInput.files[0];
+                        if (selectedImage) {
+
+                            // TODO: UPDATE THIS HARD CODE
+                            const filePrefix = "assets/koh_tao";
+                            const markerHTML = createMarkerImage(`${filePrefix}/${selectedImage.name}`);
+
+                            // find the associated sibling sortable container
+                            // add the created marker image to the END of the sortable container
+                            const sortableContainer = imageInput.parentElement.previousElementSibling;
+                            sortableContainer.insertAdjacentHTML('beforeend', markerHTML);
+                        }
+                    });
+                });
+            }
+
             function deleteImage(element) {
-                console.log("deleting:", element);
+                console.log("deleteImage()", element);
                 element.remove();
+            }
+
+            function addImage(element) {
+                console.log("addImage()", element);
+                const imageInput = element.previousElementSibling;
+                imageInput.click();
             }
 
             function dumpState() {
