@@ -16,74 +16,84 @@ const path = require('path');
 const jimp = require('jimp');
 const convert = require('heic-convert');
 
-const INPUT_DIR = "./media/test";
-const OUTPUT_DIR = "./assets/test"; 
+// TODO: update these to the correct directories whenever photos get added!
+const INPUT_DIR = "./media/koh_tao";
+const OUTPUT_DIR = "./assets/koh_tao"; 
+processImages(INPUT_DIR, OUTPUT_DIR);
 
-processImages(INPUT_DIR);
+async function processImages(inFileDir, outFileDir) {
+    const inFiles   = fs.readdirSync(inFileDir);
+    
+    for (var i = 0; i < inFiles.length; i++) {
+        const inFileName = inFiles[i];
+        const outFileName = getNewFileName(inFileName);
 
-async function processImages(inputFileDirectory) {
-    files = fs.readdirSync(inputFileDirectory);
+        const inFilePath = inFileDir + "/" + inFileName;
+        const outFilePath = outFileDir + "/" + outFileName;
 
-    for (var i = 0; i < files.length; i++) {
-        const file = files[i];
-        console.log("Processing File:", inputFileDirectory + "/" + file);
+        console.log("in", inFilePath);
+        console.log("out:", outFilePath);
 
-        if (path.extname(file).toLowerCase() == ".heic") {
-            await processHEIC(inputFileDirectory + "/" + file);
-        } else if (path.extname(file).toLowerCase() == ".jpg") {
-            await processJPG(inputFileDirectory + "/" + file);
-        } else {
-            console.log("Skipping file:", file);
+        try {
+            // check if output file already exists
+            if (fs.existsSync(outFilePath)) {
+                console.log("Output file already exists\n");
+                continue;
+            }
+
+            if (path.extname(inFileName).toLowerCase() == ".heic") {
+                await processHEIC(inFilePath, outFilePath);
+            } else if (path.extname(file).toLowerCase() == ".jpg") {
+                await processJPG(inFilePath, outFilePath);
+            } else {
+                console.log("Skipping file:\n", inFilePath);
+            }
+        } catch (err) {
+            console.error("Error processing image:", err);
         }
-        console.log("\n");
+
     }
 }
 
+
 // convert HEIC --> JPG, resize JPG
-async function processHEIC(inputFilePath) {
+async function processHEIC(inFilePath, outFilePath) {
     console.log("convertHEIC()");
     try {
         // Read the HEIC file into memory
-        const inputBuffer = fs.readFileSync(inputFilePath);
-        const outputFilePath = getNewFilePath(getFileNameFromPath(inputFilePath));
+        const inputBuffer = fs.readFileSync(inFilePath);
 
         const outputBuffer = await convert({
             buffer: inputBuffer, // the HEIC file buffer
             format: 'JPEG',      // output format
             quality: 1          // the jpeg compression quality, between 0 and 1
         });
-
         const image = await jimp.read(outputBuffer);
         image
             .resize(1280, jimp.AUTO) // Resize the image to a width of 300 pixels
             .quality(80) // Set the quality to 80%
-            .write(outputFilePath); // Save the image to a file 
-        console.log("Saving File:", outputFilePath);
+            .write(outFilePath); // Save the image to a file 
+        console.log("Saving File:", outFilePath);
     } catch (error) {
         console.error('Error in convertHEIC():', error);
     }
 }
 
-async function processJPG(inputFilePath) {
+async function processJPG(inFilePath, outFilePath) {
     console.log("resizeJPG()");
     try {
-        const inputBuffer = fs.readFileSync(inputFilePath);
-        const outputFilePath = getNewFilePath(getFileNameFromPath(inputFilePath));
-
+        const inputBuffer = fs.readFileSync(inFilePath);
         const image = await jimp.read(inputBuffer);
         image
             .resize(1560, jimp.AUTO) // Resize the image to a width of 300 pixels
             .quality(80) // Set the quality to 80%
-            .write(outputFilePath); // Save the image to a file 
-        console.log(`Saving File: ${outputFilePath}`);
+            .write(outFilePath); // Save the image to a file 
+        console.log(`Saving File: ${outFilePath}`);
     } catch (error) {
         console.error('Error in resizeJPG():', error);
     }
 }
 
-function getFileNameFromPath(inputFilePath) {
-    return path.basename(inputFilePath);
-}
 function getNewFileName(fileName) {
     return fileName.toLowerCase().split(".").shift() + ".jpg";
 }
