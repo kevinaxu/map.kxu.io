@@ -17,8 +17,8 @@ const jimp = require('jimp');
 const convert = require('heic-convert');
 
 // TODO: update these to the correct directories whenever photos get added!
-const INPUT_DIR = "./media/koh_tao";
-const OUTPUT_DIR = "./assets/koh_tao"; 
+const INPUT_DIR = "./media/phuket";
+const OUTPUT_DIR = "./assets/phuket"; 
 processImages(INPUT_DIR, OUTPUT_DIR);
 
 async function processImages(inFileDir, outFileDir) {
@@ -43,11 +43,12 @@ async function processImages(inFileDir, outFileDir) {
 
             if (path.extname(inFileName).toLowerCase() == ".heic") {
                 await processHEIC(inFilePath, outFilePath);
-            } else if (path.extname(file).toLowerCase() == ".jpg") {
+            } else if (path.extname(inFileName).toLowerCase() == ".jpg") {
                 await processJPG(inFilePath, outFilePath);
             } else {
                 console.log("Skipping file:\n", inFilePath);
             }
+            console.log("\n");
         } catch (err) {
             console.error("Error processing image:", err);
         }
