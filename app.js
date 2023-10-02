@@ -119,9 +119,8 @@ function attachPopupListeners(popup) {
     })
 }
 
-function generateMap(data) {
-
-    const geojson = data.markers;
+function generateRegion(region) {
+    const geojson = region.markers;
 
     // Add markers to the map.
     for (const feature of geojson.features) {
@@ -150,27 +149,17 @@ function generateMap(data) {
         marker.setPopup(popup);
     }
 
-    var pulsingDot = generatePulsingDot()
-    const coordinates = data.coordinates;
-
     map.on('load', () => {
 
         // Add Layer for Route 
-        map.addSource('route', {
-            'type': 'geojson',
-            'data': {
-                'type': 'Feature',
-                'properties': {},
-                'geometry': {
-                    'type': 'LineString',
-                    'coordinates': coordinates
-                }
-            }
-        });
+        // TODO: delete this as logic is moved to etl.js
+
+        var sourceId = "route-" + region.name.toLowerCase().replace(/\s/g, '-');
+        map.addSource(sourceId, region.coordinates);
         map.addLayer({
-            'id': 'route',
+            'id': sourceId,
             'type': 'line',
-            'source': 'route',
+            'source': sourceId,
             'layout': {
                 'line-join': 'round',
                 'line-cap': 'round'
@@ -181,7 +170,18 @@ function generateMap(data) {
                 'line-dasharray': [2, 2]        // Set the line to be dotted (alternating 2 units of line followed by 2 units of gap)
             }
         });
+    });
+}
 
+// data {name, markers, coordinates}
+function generateMap(data) {
+
+    for (var i = 0; i < data.length; i++) {
+        generateRegion(data[i]);
+    }
+    var pulsingDot = generatePulsingDot();
+
+    map.on('load', () => {
         // Pulsing dot
         map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
         map.addSource('dot-point', {
@@ -208,6 +208,8 @@ function generateMap(data) {
             }
         });
     });
+
+
 };
 
 
@@ -267,7 +269,7 @@ function generatePulsingDot() {
     };
 }
 
-const fetchData = fetch('mapbox_data.json')
+const fetchData = fetch('data.json')
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

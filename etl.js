@@ -15,8 +15,17 @@ async function readTripConfig() {
     const data = fs.readFileSync(TRIP_CONFIG_PATH);
     const regions = JSON.parse(data);
 
-    const markerLayers  = generateMarkerLayers(regions);
-    const routeLayers   = await generateRouteLayers(regions);
+    var output = [];
+    for (var i = 0; i < regions.length; i++) {
+        const region = regions[i];
+        output.push({
+            name: region.name,
+            markers: generateMarkerFeatureCollection(region.markers),
+            coordinates: await getRouteCoordinates(region.markers) 
+        });
+    }
+
+    console.log(JSON.stringify(output, null, 2));
 }
 
 
@@ -27,24 +36,6 @@ async function readTripConfig() {
  * Input:  [] markers for each region (trip_config.json)
  * Output: [] geoJSON that can be used directly as Mapbox 'source'
  ********************************************************************/
-
-
-async function generateRouteLayers(regions) {
-    var routeLayers = [];
-    for (var i = 0; i < regions.length; i++) {
-        const region = regions[i];
-
-        console.log(`Generating Route layer for ${region.name}...`);
-        const routeLayer = await getRouteCoordinates(region.markers);
-        routeLayers.push(
-            routeLayer
-        );
-        // break;
-    }
-    // console.log(JSON.stringify(routeLayers, null, 2));
-    return routeLayers;
-}
-
 
 async function getRouteCoordinates(markers) {
 
@@ -72,13 +63,9 @@ async function getRouteCoordinates(markers) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        // console.log(JSON.stringify(data, null, 0));
-
         const coordinates = transformCoordinates(data);
-        // console.log(JSON.stringify(coordinates, null, 0));
 
-
-        // Add Layer for Route 
+        // Add Layer for Route in MapBox format
         return {
             type: 'geojson',
             data: {
@@ -118,22 +105,6 @@ function transformCoordinates(response) {
  * Output: [] geoJSON that can be used directly as Mapbox 'source'
  * 
  ********************************************************************/
-
-function generateMarkerLayers(regions) {
-    var markerLayers = [];
-    for (var i = 0; i < regions.length; i++) {
-        const region = regions[i];
-
-        console.log(`Generating Marker layer for ${region.name}...`);
-        markerLayers.push(
-            generateMarkerFeatureCollection(region.markers)
-        );
-        // break;
-    }
-    console.log(JSON.stringify(markerLayers, null, 2));
-    return markerLayers;
-}
-
 
 function generateMarkerFeatureCollection(markers) {
     const transformedFeatures = markers.map(item => {
