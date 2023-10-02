@@ -24,7 +24,7 @@
             Copy
             </button>       
         </div>
-        <div class="m-4 py-1 bg-white rounded">
+        <div class="region m-4 py-1 bg-white rounded">
             <div class="m-4">
                 <p class="pt-2 text-2xl font-bold">Phuket</p>
             </div>
@@ -295,9 +295,9 @@
 
             function generateRegion(region) {
                 const regionHTML = `
-                    <div class="m-4 py-1 bg-white rounded">
+                    <div class="region m-4 py-1 bg-white rounded">
                         <div class="m-4">
-                            <p class="pt-2 text-2xl font-bold">${region.name}</p>
+                            <p class="region-name pt-2 text-2xl font-bold">${region.name}</p>
                         </div>
                         <div class="m-4">
                             ${generateMarkers(region.markers)}
@@ -402,7 +402,6 @@
             function initImageListener() {
                 const imageInputs = document.querySelectorAll('.image-input');
                 imageInputs.forEach((imageInput) => {
-                    console.log("imageInput", imageInput);
                     imageInput.addEventListener("change", function () {
                         const selectedImage = imageInput.files[0];
                         if (selectedImage) {
@@ -432,9 +431,34 @@
             }
 
             function dumpState() {
+
                 var objects = [];
 
-                const markers = document.querySelectorAll('.marker');
+                const regions = document.querySelectorAll('.region');
+                regions.forEach((region, index) => {
+                    const name = region.querySelector('.region-name').innerHTML;
+
+                    objects.push({
+                        name: name,
+                        markers: dumpMarkers(region)
+                    });
+                });
+                console.log(JSON.stringify(objects, null, 2));
+                var text = JSON.stringify(objects, null, 2);
+
+                navigator.clipboard.writeText(text).then(function() {
+                    console.log('Async: Copying to clipboard was successful!');
+                    // alert(`Copied the config to clipboard!\nPaste into trip_config.json to save the changes`);
+                }, function(err) {
+                    console.error('Async: Could not copy text: ', err);
+                });
+
+            }
+
+            function dumpMarkers(regionElement) {
+                var objects = [];
+
+                const markers = regionElement.querySelectorAll('.marker');
                 markers.forEach((marker, index) => {
 
                     var markerObject = {
@@ -460,19 +484,7 @@
 
                     objects.push(markerObject);
                 });
-                console.log(JSON.stringify(objects, null, 2));
-                var text = JSON.stringify(objects, null, 2);
-
-                navigator.clipboard.writeText(text).then(function() {
-                    console.log('Async: Copying to clipboard was successful!');
-                    // alert(`Copied the config to clipboard!\nPaste into trip_config.json to save the changes`);
-                }, function(err) {
-                    console.error('Async: Could not copy text: ', err);
-                });
-
+                return objects;
             }
-
-
-
         </script>
     </body>
