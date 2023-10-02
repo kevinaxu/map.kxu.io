@@ -65,7 +65,7 @@ async function getRouteCoordinates(markers) {
         const data = await response.json();
         const coordinates = transformCoordinates(data);
 
-        // Add Layer for Route in MapBox format
+        // Add Layer for Route in Mapbox source formats
         return {
             type: 'geojson',
             data: {
