@@ -1,187 +1,317 @@
 [
-    {
-      "name": "Phuket International Airport",
-      "coordinates": [
-        98.3115345,
-        8.1104865
-      ],
-      "captions": "Ready for the journey...",
-      "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
-      "images": [
-        "/assets/phuket/airport_1.jpg",
-        "/assets/phuket/airport_2.jpg",
-        "/assets/phuket/airport_3.jpg"
+  {
+      "name":"Koh Tao",
+      "markers":[
+          {
+              "name":"Charina",
+              "coordinates":[
+                  99.830464,
+                  10.089049
+              ],
+              "captions":"Our AirBnB in Koh Tao",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+              "images":[
+                  
+              ]
+          },
+          {
+              "name":"Sairee Beach",
+              "coordinates":[
+                  99.829385,
+                  10.099625
+              ],
+              "captions":"Scuba School",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+              "images":[
+                  "/assets/koh_tao/sairee_1.jpg",
+                  "/assets/koh_tao/sairee_2.jpg",
+                  "/assets/koh_tao/sairee_3.jpg"
+              ]
+          },
+          {
+              "name":"Charina",
+              "coordinates":[
+                  99.830464,
+                  10.089049
+              ],
+              "ignore":true
+          },
+          {
+              "name":"Tanote Bay",
+              "coordinates":[
+                  99.848052,
+                  10.084799
+              ],
+              "captions":"Shallow reef snorkeling at Tanote Bay",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+              "images":[
+                  "/assets/koh_tao/tenote_bay_1.jpg",
+                  "/assets/koh_tao/tenote_bay_2.jpg",
+                  "/assets/koh_tao/tenote_bay_3.jpg"
+              ]
+          },
+          {
+              "name":"Charina",
+              "coordinates":[
+                  99.830464,
+                  10.089049
+              ],
+              "ignore":true
+          },
+          {
+              "name":"Sai Nuan Beach",
+              "coordinates":[
+                  99.816124,
+                  10.072388
+              ],
+              "captions":"Sunset at Sai Nuan Beach",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+              "images":[
+                  "/assets/koh_tao/sai_nuan_1.jpg"
+              ]
+          },
+          {
+              "name":"Charina",
+              "coordinates":[
+                  99.830464,
+                  10.089049
+              ],
+              "ignore":true
+          },
+          {
+              "name":"Koh Nang Yuan",
+              "coordinates":[
+                  99.814075,
+                  10.115006
+              ],
+              "captions":"Exploring the famous Nang Yuan viewpoint",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+              "images":[
+                  "/assets/koh_tao/nang_yuan_1.jpg",
+                  "/assets/koh_tao/nang_yuan_2.jpg",
+                  "/assets/koh_tao/nang_yuan_3.jpg",
+                  "/assets/koh_tao/nang_yuan_4.jpg",
+                  "/assets/koh_tao/nang_yuan_5.jpg"
+              ]
+          },
+          {
+              "name":"Charina",
+              "coordinates":[
+                  99.830464,
+                  10.089049
+              ],
+              "ignore":true
+          },
+          {
+              "name":"Shark Bay",
+              "coordinates":[
+                  99.830803,
+                  10.063688
+              ],
+              "captions":"Shark Bay, famous for its... turtles",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+              "images":[
+                  
+              ]
+          },
+          {
+              "name":"Charina",
+              "coordinates":[
+                  99.830464,
+                  10.089049
+              ],
+              "ignore":true
+          }
       ]
-    },
-    {
-      "name": "Sky and Sea Condos",
-      "coordinates": [
-        98.3013584,
-        7.8311951
-      ],
-      "captions": "WHAT UPPPPPPPPPP week",
-      "icon": "https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
-      "images": [
-        "/assets/phuket/sea_and_sky_1.jpg",
-        "/assets/phuket/sea_and_sky_2.jpg",
-        "/assets/phuket/sea_and_sky_3.jpg",
-        "/assets/phuket/sea_and_sky_4.jpg"
+  },
+  {
+      "name":"Phuket",
+      "markers":[
+          {
+              "name":"Phuket International Airport",
+              "coordinates":[
+                  98.3115345,
+                  8.1104865
+              ],
+              "captions":"Ready for the journey...",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+              "images":[
+                  "/assets/phuket/airport_1.jpg",
+                  "/assets/phuket/airport_2.jpg",
+                  "/assets/phuket/airport_3.jpg"
+              ]
+          },
+          {
+              "name":"Sky and Sea Condos",
+              "coordinates":[
+                  98.3013584,
+                  7.8311951
+              ],
+              "captions":"WHAT UPPPPPPPPPP week",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+              "images":[
+                  "/assets/phuket/sea_and_sky_1.jpg",
+                  "/assets/phuket/sea_and_sky_2.jpg",
+                  "/assets/phuket/sea_and_sky_3.jpg",
+                  "/assets/phuket/sea_and_sky_4.jpg"
+              ]
+          },
+          {
+              "name":"The Big Bhudda",
+              "coordinates":[
+                  98.3128945,
+                  7.8277395
+              ],
+              "captions":"Bushwacking up to the Big Bhudda. Not pictured, getting bounced at the entrance for not covering up our shoulders... ",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10214710-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+              "images":[
+                  "/assets/phuket/big_bhudda_1.jpg",
+                  "/assets/phuket/big_bhudda_2.jpg",
+                  "/assets/phuket/big_bhudda_3.jpg",
+                  "/assets/phuket/big_bhudda_4.jpg",
+                  "/assets/phuket/big_bhudda_5.jpg",
+                  "/assets/phuket/big_bhudda_6.jpg",
+                  "/assets/phuket/big_bhudda_7.jpg",
+                  "/assets/phuket/big_bhudda_8.jpg",
+                  "/assets/phuket/big_bhudda_9.jpg"
+              ]
+          },
+          {
+              "name":"Sky and Sea Condos",
+              "coordinates":[
+                  98.3013584,
+                  7.8311951
+              ],
+              "ignore":true
+          },
+          {
+              "name":"Kata Beach",
+              "coordinates":[
+                  98.29875,
+                  7.806194
+              ],
+              "captions":"Exploring Kata beach! ",
+              "icon":"https://render.bitstrips.com/v2/cpanel/9669304-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+              "images":[
+                  "/assets/phuket/kata_1.jpg",
+                  "/assets/phuket/kata_2.jpg",
+                  "/assets/phuket/kata_3.jpg"
+              ]
+          },
+          {
+              "name":"Sky and Sea Condos",
+              "coordinates":[
+                  98.3013584,
+                  7.8311951
+              ],
+              "ignore":true
+          },
+          {
+              "name":"Old Town Phuket",
+              "coordinates":[
+                  98.387904,
+                  7.884795
+              ],
+              "captions":"Shopping in Old Town ",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10211966-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+              "images":[
+                  "/assets/phuket/old_town_1.jpg",
+                  "/assets/phuket/old_town_2.jpg",
+                  "/assets/phuket/old_town_2_5.jpg",
+                  "/assets/phuket/old_town_3.jpg",
+                  "/assets/phuket/old_town_4.jpg",
+                  "/assets/phuket/old_town_5.jpg",
+                  "/assets/phuket/old_town_6.jpg",
+                  "/assets/phuket/old_town_7.jpg",
+                  "/assets/phuket/old_town_8.jpg",
+                  "/assets/phuket/old_town_9.jpg",
+                  "/assets/phuket/old_town_10.jpg",
+                  "/assets/phuket/old_town_11.jpg",
+                  "/assets/phuket/old_town_12.jpg",
+                  "/assets/phuket/old_town_13.jpg",
+                  "/assets/phuket/old_town_14.jpg",
+                  "/assets/phuket/old_town_15.jpg",
+                  "/assets/phuket/old_town_16.jpg"
+              ]
+          },
+          {
+              "name":"Naka Night Market",
+              "coordinates":[
+                  98.365697,
+                  7.880731
+              ],
+              "captions":"Naka Night Market",
+              "icon":"https://render.bitstrips.com/v2/cpanel/9754270-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+              "images":[
+                  "/assets/phuket/naka_1.jpg",
+                  "/assets/phuket/naka_2.jpg",
+                  "/assets/phuket/naka_3.jpg",
+                  "/assets/phuket/naka_4.jpg"
+              ]
+          },
+          {
+              "name":"Sky and Sea Condos",
+              "coordinates":[
+                  98.3013584,
+                  7.8311951
+              ],
+              "ignore":true
+          },
+          {
+              "name":"Central Phuket (Festival)",
+              "coordinates":[
+                  98.367425,
+                  7.891839
+              ],
+              "captions":"huge shopping mall",
+              "icon":"https://render.bitstrips.com/v2/cpanel/9176167-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+              "images":[
+                  "/assets/phuket/festival_1.jpg",
+                  "/assets/phuket/festival_2.jpg",
+                  "/assets/phuket/festival_3.jpg"
+              ]
+          },
+          {
+              "name":"Laem Hin Seafood",
+              "coordinates":[
+                  98.408215,
+                  7.93509
+              ],
+              "captions":"Enjoying sights and seafood locals at Laem Hin",
+              "icon":"https://render.bitstrips.com/v2/cpanel/10211669-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+              "images":[
+                  "/assets/phuket/laem_hin_1.jpg",
+                  "/assets/phuket/laem_hin_2.jpg",
+                  "/assets/phuket/laem_hin_3.jpg",
+                  "/assets/phuket/laem_hin_4.jpg",
+                  "/assets/phuket/laem_hin_5.jpg"
+              ]
+          },
+          {
+              "name":"Chillva Night Market",
+              "coordinates":[
+                  98.373646,
+                  7.907278
+              ],
+              "captions":"chillva night market",
+              "icon":"https://render.bitstrips.com/v2/cpanel/9754270-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+              "images":[
+                  "/assets/phuket/chillva_1.jpg",
+                  "/assets/phuket/chillva_2.jpg",
+                  "/assets/phuket/chillva_3.jpg",
+                  "/assets/phuket/chillva_4.jpg",
+                  "/assets/phuket/chillva_5.jpg",
+                  "/assets/phuket/chillva_6.jpg"
+              ]
+          },
+          {
+              "name":"Sky and Sea Condos",
+              "coordinates":[
+                  98.3013584,
+                  7.8311951
+              ],
+              "ignore":true
+          }
       ]
-    },
-    {
-      "name": "The Big Bhudda",
-      "coordinates": [
-        98.3128945,
-        7.8277395
-      ],
-      "captions": "Bushwacking up to the Big Bhudda. Not pictured, getting bounced at the entrance for not covering up our shoulders... ",
-      "icon": "https://render.bitstrips.com/v2/cpanel/10214710-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
-      "images": [
-        "/assets/phuket/big_bhudda_1.jpg",
-        "/assets/phuket/big_bhudda_2.jpg",
-        "/assets/phuket/big_bhudda_3.jpg",
-        "/assets/phuket/big_bhudda_4.jpg",
-        "/assets/phuket/big_bhudda_5.jpg",
-        "/assets/phuket/big_bhudda_6.jpg",
-        "/assets/phuket/big_bhudda_7.jpg",
-        "/assets/phuket/big_bhudda_8.jpg",
-        "/assets/phuket/big_bhudda_9.jpg"
-      ]
-    },
-    {
-      "name": "Sky and Sea Condos",
-      "coordinates": [
-        98.3013584,
-        7.8311951
-      ],
-      "ignore": true
-    },
-    {
-      "name": "Kata Beach",
-      "coordinates": [
-        98.29875,
-        7.806194
-      ],
-      "captions": "Exploring Kata beach! ",
-      "icon": "https://render.bitstrips.com/v2/cpanel/9669304-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
-      "images": [
-        "/assets/phuket/kata_1.jpg",
-        "/assets/phuket/kata_2.jpg",
-        "/assets/phuket/kata_3.jpg"
-      ]
-    },
-    {
-      "name": "Sky and Sea Condos",
-      "coordinates": [
-        98.3013584,
-        7.8311951
-      ],
-      "ignore": true
-    },
-    {
-      "name": "Old Town Phuket",
-      "coordinates": [
-        98.387904,
-        7.884795
-      ],
-      "captions": "Shopping in Old Town ",
-      "icon": "https://render.bitstrips.com/v2/cpanel/10211966-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
-      "images": [
-        "/assets/phuket/old_town_1.jpg",
-        "/assets/phuket/old_town_2.jpg",
-        "/assets/phuket/old_town_2_5.jpg",
-        "/assets/phuket/old_town_3.jpg",
-        "/assets/phuket/old_town_4.jpg",
-        "/assets/phuket/old_town_5.jpg",
-        "/assets/phuket/old_town_6.jpg",
-        "/assets/phuket/old_town_7.jpg",
-        "/assets/phuket/old_town_8.jpg",
-        "/assets/phuket/old_town_9.jpg",
-        "/assets/phuket/old_town_10.jpg",
-        "/assets/phuket/old_town_11.jpg",
-        "/assets/phuket/old_town_12.jpg",
-        "/assets/phuket/old_town_13.jpg",
-        "/assets/phuket/old_town_14.jpg",
-        "/assets/phuket/old_town_15.jpg",
-        "/assets/phuket/old_town_16.jpg"
-      ]
-    },
-    {
-      "name": "Naka Night Market",
-      "coordinates": [
-        98.365697,
-        7.880731
-      ],
-      "captions": "Naka Night Market",
-      "icon": "https://render.bitstrips.com/v2/cpanel/9754270-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
-      "images": [
-        "/assets/phuket/naka_1.jpg",
-        "/assets/phuket/naka_2.jpg",
-        "/assets/phuket/naka_3.jpg",
-        "/assets/phuket/naka_4.jpg"
-      ]
-    },
-    {
-      "name": "Sky and Sea Condos",
-      "coordinates": [
-        98.3013584,
-        7.8311951
-      ],
-      "ignore": true
-    },
-    {
-      "name": "Central Phuket (Festival)",
-      "coordinates": [
-        98.367425,
-        7.891839
-      ],
-      "captions": "huge shopping mall",
-      "icon": "https://render.bitstrips.com/v2/cpanel/9176167-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
-      "images": [
-        "/assets/phuket/festival_1.jpg",
-        "/assets/phuket/festival_2.jpg",
-        "/assets/phuket/festival_3.jpg"
-      ]
-    },
-    {
-      "name": "Laem Hin Seafood",
-      "coordinates": [
-        98.408215,
-        7.93509
-      ],
-      "captions": "Enjoying sights and seafood locals at Laem Hin",
-      "icon": "https://render.bitstrips.com/v2/cpanel/10211669-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
-      "images": [
-        "/assets/phuket/laem_hin_1.jpg",
-        "/assets/phuket/laem_hin_2.jpg",
-        "/assets/phuket/laem_hin_3.jpg",
-        "/assets/phuket/laem_hin_4.jpg",
-        "/assets/phuket/laem_hin_5.jpg"
-      ]
-    },
-    {
-      "name": "Chillva Night Market",
-      "coordinates": [
-        98.373646,
-        7.907278
-      ],
-      "captions": "chillva night market",
-      "icon": "https://render.bitstrips.com/v2/cpanel/9754270-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
-      "images": [
-        "/assets/phuket/chillva_1.jpg",
-        "/assets/phuket/chillva_2.jpg",
-        "/assets/phuket/chillva_3.jpg",
-        "/assets/phuket/chillva_4.jpg",
-        "/assets/phuket/chillva_5.jpg",
-        "/assets/phuket/chillva_6.jpg"
-      ]
-    },
-    {
-      "name": "Sky and Sea Condos",
-      "coordinates": [
-        98.3013584,
-        7.8311951
-      ],
-      "ignore": true
-    }
-  ]
+  }
+]
