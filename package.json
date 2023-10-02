@@ -10,10 +10,8 @@
     "heic-convert": "^1.2.4",
     "jimp": "^0.22.10",
     "node-domexception": "^1.0.0",
+    "node-fetch": "^2.7.0",
     "web-streams-polyfill": "^3.2.1"
-  },
-  "devDependencies": {
-    "node-fetch": "^3.3.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
