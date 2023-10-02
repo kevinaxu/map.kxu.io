@@ -18,7 +18,7 @@
     </head>
     <body class="bg-gray-100">
 
-        <!-- -->
+        <!--
         <div class="fixed top-2 right-2">
             <button class="bg-gray-400 hover:bg-gray-500 text-white text-sm font-bold py-2 px-4 rounded" onclick="dumpState()">
             Copy
@@ -29,118 +29,123 @@
                 <p class="pt-2 text-2xl font-bold">Phuket</p>
             </div>
             <div class="m-4">
-            <div class="marker mt-4 bg-blue-100 rounded">
-                <div class="flex flex-row">
-                    <div class="p-2 mr-2">
-                        <img class="h-20" src="https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350" />
-                    </div>
-                    <div class="p-2 w-full">
-                        <p class="marker-name text-lg font-semibold" onclick="makeEditable(this)">Phuket International Airport</p>
-                        <p class="marker-coordinates text-xs text-gray-700" onclick="makeEditable(this)">[98.3115345,8.1104865]</p>
-                        <p class="marker-icon pt-2 text-xs text-gray-700" onclick="makeEditableImage(this, true)">https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350</p>
-                        <p class="marker-captions pt-2 text-sm" onclick="makeEditable(this)">Ready for the journey...</p>
-                    </div>
-                </div>
-                <div id="" class="sortable-container">
-                    <div class="inline-block w-36 h-full m-4">
-                        <div class="h-24 w-36">
-                            <img src="/assets/phuket/airport_1.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                <div class="marker mt-4 bg-blue-100 rounded">
+                    <div class="flex flex-row">
+                        <div class="p-2 mr-2">
+                            <img class="h-20" src="https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350" />
                         </div>
-                        <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/airport_1.jpg</p>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
-                            onclick="deleteImage(this.parentElement)">                            
-                        x
-                        </button>
-                    </div>
-                    <div class="inline-block w-36 h-full m-4">
-                        <div class="h-24 w-36">
-                            <img src="/assets/phuket/airport_2.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                        <div class="p-2 w-full">
+                            <p class="marker-name text-lg font-semibold" onclick="makeEditable(this)">Phuket International Airport</p>
+                            <p class="marker-coordinates text-xs text-gray-700" onclick="makeEditable(this)">[98.3115345,8.1104865]</p>
+                            <p class="marker-icon pt-2 text-xs text-gray-700" onclick="makeEditableImage(this, true)">https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350</p>
+                            <p class="marker-captions pt-2 text-sm" onclick="makeEditable(this)">Ready for the journey...</p>
                         </div>
-                        <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/airport_2.jpg</p>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
-                            onclick="deleteImage(this.parentElement)">                            
-                        x
-                        </button>
                     </div>
-                    <div class="inline-block w-36 h-full m-4">
-                        <div class="h-24 w-36">
-                            <img src="/assets/phuket/airport_3.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                    <div id="" class="sortable-container">
+                        <div class="inline-block w-36 h-full m-4">
+                            <div class="h-24 w-36">
+                                <img src="/assets/phuket/airport_1.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                            </div>
+                            <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/airport_1.jpg</p>
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
+                                onclick="deleteImage(this.parentElement)">                            
+                            x
+                            </button>
                         </div>
-                        <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/airport_3.jpg</p>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
-                            onclick="deleteImage(this.parentElement)">                            
-                        x
-                        </button>
-                    </div>
-                </div>
-                <div class="p-2">
-                    <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded">
-                    Add Image
-                    </button>
-                </div>
-            </div>
-            <div class="marker mt-4 bg-blue-100 rounded">
-                <div class="flex flex-row">
-                    <div class="p-2 mr-2">
-                        <img class="h-20" src="https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300" />
-                    </div>
-                    <div class="p-2 w-full">
-                        <p class="marker-name text-lg font-semibold" onclick="makeEditable(this)">Sky and Sea Condos</p>
-                        <p class="marker-coordinates text-xs text-gray-700" onclick="makeEditable(this)">[98.3013584,7.8311951]</p>
-                        <p class="marker-icon pt-2 text-xs text-gray-700" onclick="makeEditableImage(this, true)">https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300</p>
-                        <p class="marker-captions pt-2 text-sm" onclick="makeEditable(this)">WHAT UPPPPPPPPPP week</p>
-                    </div>
-                </div>
-                <div id="" class="sortable-container">
-                    <div class="inline-block w-36 h-full m-4">
-                        <div class="h-24 w-36">
-                            <img src="/assets/phuket/sea_and_sky_1.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                        <div class="inline-block w-36 h-full m-4">
+                            <div class="h-24 w-36">
+                                <img src="/assets/phuket/airport_2.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                            </div>
+                            <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/airport_2.jpg</p>
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
+                                onclick="deleteImage(this.parentElement)">                            
+                            x
+                            </button>
                         </div>
-                        <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_1.jpg</p>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
-                            onclick="deleteImage(this.parentElement)">                            
-                        x
-                        </button>
-                    </div>
-                    <div class="inline-block w-36 h-full m-4">
-                        <div class="h-24 w-36">
-                            <img src="/assets/phuket/sea_and_sky_2.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                        <div class="inline-block w-36 h-full m-4">
+                            <div class="h-24 w-36">
+                                <img src="/assets/phuket/airport_3.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                            </div>
+                            <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/airport_3.jpg</p>
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
+                                onclick="deleteImage(this.parentElement)">                            
+                            x
+                            </button>
                         </div>
-                        <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_2.jpg</p>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
-                            onclick="deleteImage(this.parentElement)">                            
-                        x
-                        </button>
                     </div>
-                    <div class="inline-block w-36 h-full m-4">
-                        <div class="h-24 w-36">
-                            <img src="/assets/phuket/sea_and_sky_3.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
-                        </div>
-                        <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_3.jpg</p>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
-                            onclick="deleteImage(this.parentElement)">                            
-                        x
-                        </button>
-                    </div>
-                    <div class="inline-block w-36 h-full m-4">
-                        <div class="h-24 w-36">
-                            <img src="/assets/phuket/sea_and_sky_4.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
-                        </div>
-                        <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_4.jpg</p>
-                        <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
-                            onclick="deleteImage(this.parentElement)">                            
-                        x
+                    <div class="p-2">
+                        <input class="image-input hidden" type="file" accept="image/*">
+                        <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded"
+                            onclick="addImage(this)">
+                            Add Image
                         </button>
                     </div>
                 </div>
-                <div class="p-2">
-                    <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded">
-                    Add Image
-                    </button>
+                <div class="marker mt-4 bg-blue-100 rounded">
+                    <div class="flex flex-row">
+                        <div class="p-2 mr-2">
+                            <img class="h-20" src="https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300" />
+                        </div>
+                        <div class="p-2 w-full">
+                            <p class="marker-name text-lg font-semibold" onclick="makeEditable(this)">Sky and Sea Condos</p>
+                            <p class="marker-coordinates text-xs text-gray-700" onclick="makeEditable(this)">[98.3013584,7.8311951]</p>
+                            <p class="marker-icon pt-2 text-xs text-gray-700" onclick="makeEditableImage(this, true)">https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300</p>
+                            <p class="marker-captions pt-2 text-sm" onclick="makeEditable(this)">WHAT UPPPPPPPPPP week</p>
+                        </div>
+                    </div>
+                    <div id="" class="sortable-container">
+                        <div class="inline-block w-36 h-full m-4">
+                            <div class="h-24 w-36">
+                                <img src="/assets/phuket/sea_and_sky_1.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                            </div>
+                            <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_1.jpg</p>
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
+                                onclick="deleteImage(this.parentElement)">                            
+                            x
+                            </button>
+                        </div>
+                        <div class="inline-block w-36 h-full m-4">
+                            <div class="h-24 w-36">
+                                <img src="/assets/phuket/sea_and_sky_2.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                            </div>
+                            <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_2.jpg</p>
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
+                                onclick="deleteImage(this.parentElement)">                            
+                            x
+                            </button>
+                        </div>
+                        <div class="inline-block w-36 h-full m-4">
+                            <div class="h-24 w-36">
+                                <img src="/assets/phuket/sea_and_sky_3.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                            </div>
+                            <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_3.jpg</p>
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
+                                onclick="deleteImage(this.parentElement)">                            
+                            x
+                            </button>
+                        </div>
+                        <div class="inline-block w-36 h-full m-4">
+                            <div class="h-24 w-36">
+                                <img src="/assets/phuket/sea_and_sky_4.jpg" class="marker-image object-cover w-full h-full rounded-md ">                
+                            </div>
+                            <p class="truncate text-xs text-sm w-36" onclick="makeEditableImage(this)">/assets/phuket/sea_and_sky_4.jpg</p>
+                            <button class="bg-red-400 hover:bg-red-500 text-white text-sm font-semibold px-1 rounded"
+                                onclick="deleteImage(this.parentElement)">                            
+                            x
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <input class="image-input hidden" type="file" accept="image/*">
+                        <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded"
+                            onclick="addImage(this)">
+                            Add Image
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- -->
+        -->
 
 
         <script>
@@ -157,8 +162,7 @@
                 });
             fetchData.then(data => {
                 if (data) {
-                
-                    // generateHTML(data[1].markers);
+                    generateHTML(data);
                     initSortable();
                     initImageListener();
                 }
@@ -275,12 +279,32 @@
                             Copy
                         </button>       
                     </div>
-                    <div class="bg-white m-4">
-                        ${generateMarkers(data)}
+                    ${generateRegions(data)}
+                `;
+                document.body.innerHTML = HTML;
+            }
+
+            function generateRegions(data) {
+                var strings = [];
+                for (var i = 0; i < data.length; i++) {
+                    const region = data[i];
+                    strings.push(generateRegion(region));
+                }
+                return strings.join("\n");
+            }
+
+            function generateRegion(region) {
+                const regionHTML = `
+                    <div class="m-4 py-1 bg-white rounded">
+                        <div class="m-4">
+                            <p class="pt-2 text-2xl font-bold">${region.name}</p>
+                        </div>
+                        <div class="m-4">
+                            ${generateMarkers(region.markers)}
+                        </div>
                     </div>
                 `;
-                console.log(HTML);
-                document.body.innerHTML = HTML;
+                return regionHTML;
             }
 
             function generateMarkers(markers) {
@@ -309,7 +333,7 @@
                 // console.log("marker:", marker);
 
                 const markerHTML = `
-                    <div class="marker mt-4 bg-blue-100">
+                    <div class="marker mt-4 bg-blue-100 rounded">
                         <div class="flex flex-row">
                             <div class="p-2 mr-2">
                                 <img class="h-20" src="${marker.icon}" />
@@ -325,7 +349,9 @@
                             ${generateMarkerImageHTML(marker.images)}
                         </div>
                         <div class="p-2">
-                            <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded">
+                            <input class="image-input hidden" type="file" accept="image/*">
+                            <button class="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded"
+                                onclick="addImage(this)">
                                 Add Image
                             </button>
                         </div>
@@ -376,6 +402,7 @@
             function initImageListener() {
                 const imageInputs = document.querySelectorAll('.image-input');
                 imageInputs.forEach((imageInput) => {
+                    console.log("imageInput", imageInput);
                     imageInput.addEventListener("change", function () {
                         const selectedImage = imageInput.files[0];
                         if (selectedImage) {
