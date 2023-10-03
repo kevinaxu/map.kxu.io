@@ -24,7 +24,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sairee Beach",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10212244-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;palette=1&amp;width=350",
             "images": [
               "/assets/koh_tao/sairee_1.jpg",
               "/assets/koh_tao/sairee_2.jpg",
@@ -58,7 +58,7 @@
           "type": "Feature",
           "properties": {
             "message": "Tanote Bay",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/tenote_bay_1.jpg",
               "/assets/koh_tao/tenote_bay_2.jpg",
@@ -92,7 +92,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sai Nuan Beach",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20054618-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/sai_nuan_1.jpg"
             ],
@@ -124,7 +124,7 @@
           "type": "Feature",
           "properties": {
             "message": "Koh Nang Yuan",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10212447-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/nang_yuan_1.jpg",
               "/assets/koh_tao/nang_yuan_2.jpg",
@@ -160,7 +160,7 @@
           "type": "Feature",
           "properties": {
             "message": "Shark Bay",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20033232-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": "Shark Bay, famous for its... turtles"
           },
@@ -4906,7 +4906,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10219413-132533800_29-s1-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+            "icon": "https://sdk.bitmoji.com/render/panel/10225328-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/sea_and_sky_1.jpg",
               "/assets/phuket/sea_and_sky_2.jpg",
@@ -4927,7 +4927,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Big Bhudda",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10214710-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+            "icon": "https://sdk.bitmoji.com/render/panel/20035433-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/big_bhudda_1.jpg",
               "/assets/phuket/big_bhudda_2.jpg",
@@ -5001,7 +5001,7 @@
           "type": "Feature",
           "properties": {
             "message": "Old Town Phuket",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10211966-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+            "icon": "https://sdk.bitmoji.com/render/panel/20051260-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/old_town_1.jpg",
               "/assets/phuket/old_town_2.jpg",
@@ -5112,7 +5112,7 @@
           "type": "Feature",
           "properties": {
             "message": "Chillva Night Market",
-            "icon": "https://render.bitstrips.com/v2/cpanel/9754270-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+            "icon": "https://sdk.bitmoji.com/render/panel/20040693-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/chillva_1.jpg",
               "/assets/phuket/chillva_2.jpg",
