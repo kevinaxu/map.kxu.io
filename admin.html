@@ -150,6 +150,9 @@
 
         <script>
 
+
+            const IMAGE_FILE_PREFIX = "assets/koh_samui";
+
             const fetchData = fetch('trip_config.json')
                 .then(response => {
                     if (!response.ok) {
@@ -406,9 +409,7 @@
                         const selectedImage = imageInput.files[0];
                         if (selectedImage) {
 
-                            // TODO: UPDATE THIS HARD CODE
-                            const filePrefix = "assets/koh_tao";
-                            const markerHTML = createMarkerImage(`${filePrefix}/${selectedImage.name}`);
+                            const markerHTML = createMarkerImage(`${IMAGE_FILE_PREFIX}/${selectedImage.name}`);
 
                             // find the associated sibling sortable container
                             // add the created marker image to the END of the sortable container
