@@ -5,99 +5,104 @@
       {
         "name": "Changi Airport",
         "coordinates": [
-          103.9884945,1.35601825
+          103.9884945,
+          1.35601825
         ],
         "captions": "For those times when you want see a waterfall during your layovers",
-        "icon": "https://sdk.bitmoji.com/render/panel/20006615-102140752402_2-s5-v1.webp?transparent=1&width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20006615-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "images": []
       },
       {
         "name": "The Pod",
         "coordinates": [
-          103.860678,1.300783
+          103.860678,
+          1.300783
         ],
         "captions": "From private villa to living in a window-less box... welcome to the city",
-        "icon": "https://sdk.bitmoji.com/render/panel/10217067-102140752402_2-s5-v1.webp?transparent=1&width=350",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/10217067-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "images": []
       },
       {
         "name": "Masjid Sultan",
         "coordinates": [
-          103.858991,1.302222
+          103.858991,
+          1.302222
         ],
         "captions": "First day exploring Little India",
-        "icon": "https://sdk.bitmoji.com/render/panel/10079860-132533800_29-s1-v1.webp?transparent=1&scale=1",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/10079860-132533800_29-s1-v1.webp?transparent=1&amp;scale=1",
+        "images": []
       },
       {
         "name": "The Pod",
         "coordinates": [
-          103.860678,1.300783
+          103.860678,
+          1.300783
         ],
         "ignore": true
       },
       {
         "name": "Golden Mile",
         "coordinates": [
-          103.864644,1.303086        
+          103.864644,
+          1.303086
         ],
         "captions": "Hainese Chicken Rice",
-        "icon": "https://sdk.bitmoji.com/render/panel/10226603-102140752402_2-s5-v1.webp?transparent=1&width=350",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/10226603-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "images": []
       },
       {
         "name": "The Pod",
         "coordinates": [
-          103.860678,1.300783
+          103.860678,
+          1.300783
         ],
         "ignore": true
       },
       {
         "name": "Gardens by the Bay",
         "coordinates": [
-          103.863932,1.282868        
+          103.863932,
+          1.282868
         ],
         "captions": "Gardens by the Bay",
-        "icon": "https://sdk.bitmoji.com/render/panel/20049506-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&width=350",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/20049506-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": []
       },
       {
         "name": "The Pod",
         "coordinates": [
-          103.860678,1.300783
+          103.860678,
+          1.300783
         ],
         "ignore": true
       },
       {
         "name": "Marina Bay Sands",
         "coordinates": [
-          103.860693,1.283685        
+          103.860693,
+          1.283685
         ],
         "captions": "Marina Bay Sands",
-        "icon": "https://sdk.bitmoji.com/render/panel/20090344-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&width=350",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/20090344-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": []
       },
       {
         "name": "The Pod",
         "coordinates": [
-          103.860678,1.300783
+          103.860678,
+          1.300783
         ],
         "ignore": true
       },
       {
         "name": "Maxwell Food Center",
         "coordinates": [
-          103.844742,1.280291        
+          103.844742,
+          1.280291
         ],
         "captions": "Maxwell Food Center",
-        "icon": "https://sdk.bitmoji.com/render/panel/10237599-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&width=350",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/10237599-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": []
       }
     ]
   },
@@ -107,7 +112,8 @@
       {
         "name": "Airport",
         "coordinates": [
-          100.063072,9.547981
+          100.063072,
+          9.547981
         ],
         "captions": "The coziest airport on the plains",
         "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
@@ -116,39 +122,40 @@
       {
         "name": "SAII Choengmon",
         "coordinates": [
-          100.083838,9.559925
+          100.083838,
+          9.559925
         ],
         "captions": "Feeling a level of relaxation that has never before been achieved",
-        "icon": "https://sdk.bitmoji.com/render/panel/10222908-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&width=350",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/10222908-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": []
       },
       {
         "name": "Pralarn Pier",
         "coordinates": [
-          99.984544,9.584210
+          99.984544,
+          9.58421
         ],
         "captions": "Catching the ferry to Koh Tao",
-        "icon": "https://sdk.bitmoji.com/render/panel/20083342-132533800_29-s1-v1.webp?transparent=1&width=350",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/20083342-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": []
       },
       {
         "name": "SAII Choengmon",
         "coordinates": [
-          100.083838,9.559925
+          100.083838,
+          9.559925
         ],
         "ignore": true
       },
       {
         "name": "Mango Mania",
         "coordinates": [
-          100.082256,9.569544
+          100.082256,
+          9.569544
         ],
         "captions": "Enjoying duck quesadillas and mango smoothies",
-        "icon": "https://sdk.bitmoji.com/render/panel/20052321-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&width=350",
-        "images": [
-        ]
+        "icon": "https://sdk.bitmoji.com/render/panel/20052321-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "images": []
       }
     ]
   },
