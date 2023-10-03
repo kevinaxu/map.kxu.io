@@ -30,7 +30,12 @@
         ],
         "captions": "First day exploring Little India",
         "icon": "https://sdk.bitmoji.com/render/panel/10079860-132533800_29-s1-v1.webp?transparent=1&amp;scale=1",
-        "images": []
+        "images": [
+          "assets/singapore/sultan_2.jpg",
+          "assets/singapore/sultan_1.jpg",
+          "assets/singapore/sultan_4.jpg",
+          "assets/singapore/sultan_3.jpg"
+        ]
       },
       {
         "name": "The Pod",
@@ -66,7 +71,13 @@
         ],
         "captions": "Gardens by the Bay",
         "icon": "https://sdk.bitmoji.com/render/panel/20049506-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
-        "images": []
+        "images": [
+          "assets/singapore/gardens_6.jpg",
+          "assets/singapore/gardens_4.jpg",
+          "assets/singapore/gardens_3.jpg",
+          "assets/singapore/gardens_1.jpg",
+          "assets/singapore/gardens_7.jpg"
+        ]
       },
       {
         "name": "The Pod",
@@ -84,7 +95,29 @@
         ],
         "captions": "Marina Bay Sands",
         "icon": "https://sdk.bitmoji.com/render/panel/20090344-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
-        "images": []
+        "images": [
+          "assets/singapore/sands_1.jpg"
+        ]
+      },
+      {
+        "name": "The Pod",
+        "coordinates": [
+          103.860678,
+          1.300783
+        ],
+        "ignore": true
+      },
+      {
+        "name": "ION Orchard",
+        "coordinates": [
+          103.83195025,
+          1.304287125
+        ],
+        "captions": "Shopping",
+        "icon": "https://sdk.bitmoji.com/render/panel/10234037-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/singapore/orchard_1.jpg"
+        ]
       },
       {
         "name": "The Pod",
@@ -127,7 +160,16 @@
         ],
         "captions": "Feeling a level of relaxation that has never before been achieved",
         "icon": "https://sdk.bitmoji.com/render/panel/10222908-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
-        "images": []
+        "images": [
+          "assets/koh_samui/saii_7.jpg",
+          "assets/koh_samui/saii_3.jpg",
+          "assets/koh_samui/saii_10.jpg",
+          "assets/koh_samui/saii_8.jpg",
+          "assets/koh_samui/saii_9.jpg",
+          "assets/koh_samui/saii_6.jpg",
+          "assets/koh_samui/saii_5.jpg",
+          "assets/koh_samui/saii_1.jpg"
+        ]
       },
       {
         "name": "Pralarn Pier",
@@ -148,14 +190,37 @@
         "ignore": true
       },
       {
-        "name": "Mango Mania",
+        "name": "Nanyuan Noodles",
         "coordinates": [
           100.082256,
           9.569544
         ],
         "captions": "Enjoying duck quesadillas and mango smoothies",
         "icon": "https://sdk.bitmoji.com/render/panel/20052321-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
-        "images": []
+        "images": [
+          "assets/koh_samui/saii_4.jpg"
+        ]
+      },
+      {
+        "name": "SAII Choengmon",
+        "coordinates": [
+          100.083838,
+          9.559925
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Fisherman's Village",
+        "coordinates": [
+          100.027855,
+          9.558399
+        ],
+        "captions": "Night market",
+        "icon": "https://sdk.bitmoji.com/render/panel/20060362-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/koh_samui/fishermans_1.jpg",
+          "assets/koh_samui/fishermans_2.jpg"
+        ]
       }
     ]
   },
@@ -169,8 +234,10 @@
           10.089049
         ],
         "captions": "Our AirBnB in Koh Tao",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
-        "images": []
+        "icon": "https://sdk.bitmoji.com/render/panel/20080246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/koh_tao/charina_1.jpg"
+        ]
       },
       {
         "name": "Sairee Beach",
@@ -179,33 +246,11 @@
           10.099625
         ],
         "captions": "Scuba School",
-        "icon": "https://sdk.bitmoji.com/render/panel/10212244-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;palette=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20088271-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&width=350",
         "images": [
           "/assets/koh_tao/sairee_1.jpg",
           "/assets/koh_tao/sairee_2.jpg",
           "/assets/koh_tao/sairee_3.jpg"
-        ]
-      },
-      {
-        "name": "Charina",
-        "coordinates": [
-          99.830464,
-          10.089049
-        ],
-        "ignore": true
-      },
-      {
-        "name": "Tanote Bay",
-        "coordinates": [
-          99.848052,
-          10.084799
-        ],
-        "captions": "Shallow reef snorkeling at Tanote Bay",
-        "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
-        "images": [
-          "/assets/koh_tao/tenote_bay_1.jpg",
-          "/assets/koh_tao/tenote_bay_2.jpg",
-          "/assets/koh_tao/tenote_bay_3.jpg"
         ]
       },
       {
@@ -277,6 +322,38 @@
           10.089049
         ],
         "ignore": true
+      },
+      {
+        "name": "Mae Haad Pier",
+        "coordinates": [
+          99.823642,
+          10.084211
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/10212244-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;palette=1&amp;width=350",
+        "images": []
+      },
+      {
+        "name": "Charina",
+        "coordinates": [
+          99.830464,
+          10.089049
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Tanote Bay",
+        "coordinates": [
+          99.848052,
+          10.084799
+        ],
+        "captions": "Shallow reef snorkeling at Tanote Bay",
+        "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "/assets/koh_tao/tenote_bay_1.jpg",
+          "/assets/koh_tao/tenote_bay_2.jpg",
+          "/assets/koh_tao/tenote_bay_3.jpg"
+        ]
       }
     ]
   },
