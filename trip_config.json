@@ -1,5 +1,107 @@
 [
   {
+    "name": "Singapore",
+    "markers": [
+      {
+        "name": "Changi Airport",
+        "coordinates": [
+          103.9884945,1.35601825
+        ],
+        "captions": "For those times when you want see a waterfall during your layovers",
+        "icon": "https://sdk.bitmoji.com/render/panel/20006615-102140752402_2-s5-v1.webp?transparent=1&width=350",
+        "images": []
+      },
+      {
+        "name": "The Pod",
+        "coordinates": [
+          103.860678,1.300783
+        ],
+        "captions": "From private villa to living in a window-less box... welcome to the city",
+        "icon": "https://sdk.bitmoji.com/render/panel/10217067-102140752402_2-s5-v1.webp?transparent=1&width=350",
+        "images": [
+        ]
+      },
+      {
+        "name": "Masjid Sultan",
+        "coordinates": [
+          103.858991,1.302222
+        ],
+        "captions": "First day exploring Little India",
+        "icon": "https://sdk.bitmoji.com/render/panel/10079860-132533800_29-s1-v1.webp?transparent=1&scale=1",
+        "images": [
+        ]
+      },
+      {
+        "name": "The Pod",
+        "coordinates": [
+          103.860678,1.300783
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Golden Mile",
+        "coordinates": [
+          103.864644,1.303086        
+        ],
+        "captions": "Hainese Chicken Rice",
+        "icon": "https://sdk.bitmoji.com/render/panel/10226603-102140752402_2-s5-v1.webp?transparent=1&width=350",
+        "images": [
+        ]
+      },
+      {
+        "name": "The Pod",
+        "coordinates": [
+          103.860678,1.300783
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Gardens by the Bay",
+        "coordinates": [
+          103.863932,1.282868        
+        ],
+        "captions": "Gardens by the Bay",
+        "icon": "https://sdk.bitmoji.com/render/panel/20049506-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&width=350",
+        "images": [
+        ]
+      },
+      {
+        "name": "The Pod",
+        "coordinates": [
+          103.860678,1.300783
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Marina Bay Sands",
+        "coordinates": [
+          103.860693,1.283685        
+        ],
+        "captions": "Marina Bay Sands",
+        "icon": "https://sdk.bitmoji.com/render/panel/20090344-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&width=350",
+        "images": [
+        ]
+      },
+      {
+        "name": "The Pod",
+        "coordinates": [
+          103.860678,1.300783
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Maxwell Food Center",
+        "coordinates": [
+          103.844742,1.280291        
+        ],
+        "captions": "Maxwell Food Center",
+        "icon": "https://sdk.bitmoji.com/render/panel/10237599-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&width=350",
+        "images": [
+        ]
+      }
+    ]
+  },
+  {
     "name": "Koh Samui",
     "markers": [
       {
