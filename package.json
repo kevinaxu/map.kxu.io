@@ -1,6 +1,6 @@
 {
   "name": "map.kxu.io",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "Follow along with our adventures!",
   "main": "index.html",
   "dependencies": {
@@ -14,7 +14,7 @@
     "web-streams-polyfill": "^3.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "reload": "node scripts/etl.js > data.json"
   },
   "repository": {
     "type": "git",
