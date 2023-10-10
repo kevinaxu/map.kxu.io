@@ -1,41 +1,121 @@
+/*******************************************************************
+ * Main Map Client-Side Logic
+ * 
+ * This file handles: 
+ * - Rendering Mapbox map
+ * - Adding a pulsing dot to the current location as a separate Layer
+ * - Load data.json which contains Route and Marker data
+ * - Display each Region's Routes and Markers as separate Layers
+ * 
+ * Inputs: data.json
+ * Output: Mapbox map
+ * 
+ ********************************************************************/
 
-// TODO: make these dynamic by pulling from trip_config
-const pulsing_dot   = [98.3013584, 7.8311951];
-const map_center    = [115.257839, -8.471635];
+// TODO: make these dynamic by pulling from trip_config? 
+const COORD_PULSING_DOT = [
+    98.3013584,
+    7.8311951
+];
+const COORD_CENTER = [
+    98.339370,
+    7.964535
+];
 
-// Initialize Map
-mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
+const fetchData = fetch('data.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error('Error fetching the file:', error);
+    });
+fetchData.then(data => {
+    if (data) {
+        generateMap(data);
+    }
+})
+
+/*******************************************************************
+ * 
+ * Map Generation
+ * 
+ ********************************************************************/
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';;
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
-    center: map_center,
+    center: COORD_CENTER,
     zoom: 9.5
 });
 
-// ********************************************************************/
 
-// first image is visible, the rest are hidden
-function generateImageHTML(images) {
-    var strings = [];
-    for (var i = 0; i < images.length; i++) {
-        var status = (i === 0 ? "visible" : "hidden");
-        strings.push(`<img src="${images[i]}" class="carousel-img ${status}"/>`);
+// data {name, markers, coordinates}
+function generateMap(data) {
+    for (var i = 0; i < data.length; i++) {
+        generateRegion(data[i]);
     }
-    return strings.join("\n");
-}
+    renderPulsingDot();
+};
 
-function generateDotHTML(count) {
+function generateRegion(region) {
+    const geojson = region.markers;
 
-    var strings = [];
-    for (var i = 0; i < count; i++) {
-        if (i === 0) {
-            strings.push(`<span class="dot active"></span>`);
-        } else {
-            strings.push(`<span class="dot"></span>`);
+    // Markers
+    for (const feature of geojson.features) {
+        if (feature.properties.ignore === true) {
+            continue;
         }
+
+        // Create a DOM element for each marker.
+        const el = document.createElement('div');
+        el.className = 'marker';
+        el.style.backgroundImage = `url(${feature.properties.icon})`;
+
+        var marker = new mapboxgl.Marker(el)
+            .setLngLat(feature.geometry.coordinates)
+            .addTo(map);
+
+        const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
+        const popup = new mapboxgl.Popup({ offset: 25, closeOnClick: true, closeButton: false })
+            .setHTML(popupHTML);
+
+        popup.on('open', () => {
+            attachPopupListeners(popup);
+        });
+
+        marker.setPopup(popup);
     }
-    return strings.join("\n");
+
+    // Route
+    map.on('load', () => {
+        var sourceId = "route-" + region.name.toLowerCase().replace(/\s/g, '-');
+        map.addSource(sourceId, region.coordinates);
+        map.addLayer({
+            "id": sourceId,
+            "type": "line",
+            "source": sourceId,
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-width": 4,
+                "line-color": "gray",
+                "line-dasharray": [2, 2]        // Set the line to be dotted (alternating 2 units of line followed by 2 units of gap)
+            }
+        });
+    });
 }
+
+/*******************************************************************
+ * 
+ * Markers
+ * 
+ ********************************************************************/
 
 function getPopupHTML(images, caption) {
     const popupHTML = `
@@ -56,6 +136,27 @@ function getPopupHTML(images, caption) {
     return popupHTML;
 }
 
+function generateImageHTML(images) {
+    var strings = [];
+    for (var i = 0; i < images.length; i++) {
+        var status = (i === 0 ? "visible" : "hidden");
+        strings.push(`<img src="${images[i]}" class="carousel-img ${status}"/>`);
+    }
+    return strings.join("\n");
+}
+
+function generateDotHTML(count) {
+    var strings = [];
+    for (var i = 0; i < count; i++) {
+        if (i === 0) {
+            strings.push(`<span class="dot active"></span>`);
+        } else {
+            strings.push(`<span class="dot"></span>`);
+        }
+    }
+    return strings.join("\n");
+}
+
 // For each marker, a popup is created with a button
 // The event listener for the button is now set inside the popup's 'open' event, 
 // ensuring that each button is correctly associated with its respective marker's message.
@@ -74,10 +175,8 @@ function attachPopupListeners(popup) {
     next.addEventListener('click', nextImg);
     prev.addEventListener('click', prevImg);
 
-    // Update Position
+    // Update Image / Dot position 
     function updatePosition() {
-
-        //   Images
         for (let img of imgs) {
             img.classList.remove('visible');
             img.classList.add('hidden');
@@ -119,99 +218,42 @@ function attachPopupListeners(popup) {
     })
 }
 
-function generateRegion(region) {
-    const geojson = region.markers;
 
-    // Add markers to the map.
-    for (const feature of geojson.features) {
-        if (feature.properties.ignore === true) {
-            continue;
-        }
+/*******************************************************************
+ * 
+ * Pulsing Dot
+ * 
+ ********************************************************************/
 
-        // Create a DOM element for each marker.
-        const el = document.createElement('div');
-        el.className = 'marker';
-        el.style.backgroundImage = `url(${feature.properties.icon})`;
-
-        // Add markers to the map.
-        var marker = new mapboxgl.Marker(el)
-            .setLngLat(feature.geometry.coordinates)
-            .addTo(map);
-
-        const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
-        const popup = new mapboxgl.Popup({ offset: 25, closeOnClick: true, closeButton: false })
-            .setHTML(popupHTML);
-
-        popup.on('open', () => {
-            attachPopupListeners(popup);
-        });
-
-        marker.setPopup(popup);
-    }
-
-    map.on('load', () => {
-
-        // Add Layer for Route 
-        // TODO: delete this as logic is moved to etl.js
-
-        var sourceId = "route-" + region.name.toLowerCase().replace(/\s/g, '-');
-        map.addSource(sourceId, region.coordinates);
-        map.addLayer({
-            'id': sourceId,
-            'type': 'line',
-            'source': sourceId,
-            'layout': {
-                'line-join': 'round',
-                'line-cap': 'round'
-            },
-            'paint': {
-                'line-width': 4,
-                'line-color': 'gray',
-                'line-dasharray': [2, 2]        // Set the line to be dotted (alternating 2 units of line followed by 2 units of gap)
-            }
-        });
-    });
-}
-
-// data {name, markers, coordinates}
-function generateMap(data) {
-
-    for (var i = 0; i < data.length; i++) {
-        generateRegion(data[i]);
-    }
+function renderPulsingDot() {
     var pulsingDot = generatePulsingDot();
-
-    map.on('load', () => {
-        // Pulsing dot
-        map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
-        map.addSource('dot-point', {
-            'type': 'geojson',
-            'data': {
-                'type': 'FeatureCollection',
-                'features': [
+    map.on("load", () => {
+        map.addImage("pulsing-dot", pulsingDot, { pixelRatio: 2 });
+        map.addSource("dot-point", {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [
                     {
-                        'type': 'Feature',
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': pulsing_dot
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": COORD_PULSING_DOT
                         }
                     }
                 ]
             }
         });
         map.addLayer({
-            'id': 'layer-with-pulsing-dot',
-            'type': 'symbol',
-            'source': 'dot-point',
-            'layout': {
-                'icon-image': 'pulsing-dot'
+            "id": "layer-with-pulsing-dot",
+            "type": "symbol",
+            "source": "dot-point",
+            "layout": {
+                "icon-image": "pulsing-dot"
             }
         });
     });
-
-
-};
-
+}
 
 function generatePulsingDot() {
 
@@ -268,22 +310,3 @@ function generatePulsingDot() {
         }
     };
 }
-
-const fetchData = fetch('data.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .catch(error => {
-        console.error('Error fetching the file:', error);
-    });
-
-
-fetchData.then(data => {
-    if (data) {
-        generateMap(data);
-    }
-})
-
