@@ -17,8 +17,8 @@ const jimp = require('jimp');
 const convert = require('heic-convert');
 
 // TODO: update these to the correct directories whenever photos get added!
-const INPUT_DIR = "./media/koh_samui_2";
-const OUTPUT_DIR = "./assets/koh_samui_2"; 
+const INPUT_DIR = "./media/singapore";
+const OUTPUT_DIR = "./assets/singapore"; 
 processImages(INPUT_DIR, OUTPUT_DIR);
 
 async function processImages(inFileDir, outFileDir) {
@@ -33,6 +33,9 @@ async function processImages(inFileDir, outFileDir) {
 
         console.log("in", inFilePath);
         console.log("out:", outFilePath);
+
+
+        // TODO: check if directory doesn't exist, in which case create it
 
         try {
             // check if output file already exists
@@ -72,7 +75,7 @@ async function processHEIC(inFilePath, outFilePath) {
         const image = await jimp.read(outputBuffer);
         image
             .resize(1280, jimp.AUTO) // Resize the image to a width of 300 pixels
-            .quality(80) // Set the quality to 80%
+            .quality(85) // Set the quality to 80%
             .write(outFilePath); // Save the image to a file 
         console.log("Saving File:", outFilePath);
     } catch (error) {
