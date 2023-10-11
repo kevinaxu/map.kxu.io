@@ -11,7 +11,9 @@
         "captions": "For those times when you want see a waterfall during your layovers",
         "icon": "https://sdk.bitmoji.com/render/panel/20006615-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "assets/singapore/changi_1.jpg"
+          "assets/singapore/changi_1.jpg",
+          "assets/singapore/changi_2.jpg",
+          "assets/singapore/changi_3.jpg"
         ]
       },
       {
@@ -22,7 +24,9 @@
         ],
         "captions": "From private villa to living in a window-less box... welcome to the city",
         "icon": "https://sdk.bitmoji.com/render/panel/10217067-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
-        "images": []
+        "images": [
+          "assets/singapore/pod_1.jpg"
+        ]
       },
       {
         "name": "Masjid Sultan",
@@ -33,10 +37,10 @@
         "captions": "First day exploring Little India",
         "icon": "https://sdk.bitmoji.com/render/panel/10079860-132533800_29-s1-v1.webp?transparent=1&amp;scale=1",
         "images": [
-          "assets/singapore/sultan_2.jpg",
-          "assets/singapore/sultan_1.jpg",
-          "assets/singapore/sultan_4.jpg",
-          "assets/singapore/sultan_3.jpg"
+          "assets/singapore/masjid_1.jpg",
+          "assets/singapore/masjid_2.jpg",
+          "assets/singapore/masjid_3.jpg",
+          "assets/singapore/masjid_4.jpg"
         ]
       },
       {
@@ -74,11 +78,29 @@
         "captions": "Gardens by the Bay",
         "icon": "https://sdk.bitmoji.com/render/panel/20049506-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "assets/singapore/gardens_6.jpg",
-          "assets/singapore/gardens_4.jpg",
-          "assets/singapore/gardens_3.jpg",
           "assets/singapore/gardens_1.jpg",
-          "assets/singapore/gardens_7.jpg"
+          "assets/singapore/gardens_2.jpg",
+          "assets/singapore/gardens_3.jpg",
+          "assets/singapore/gardens_4.jpg",
+          "assets/singapore/gardens_5.jpg",
+          "assets/singapore/gardens_6.jpg",
+          "assets/singapore/gardens_7.jpg",
+          "assets/singapore/gardens_8.jpg",
+          "assets/singapore/gardens_9.jpg",
+          "assets/singapore/gardens_10.jpg",
+          "assets/singapore/gardens_11.jpg",
+          "assets/singapore/gardens_12.jpg",
+          "assets/singapore/gardens_13.jpg",
+          "assets/singapore/gardens_14.jpg",
+          "assets/singapore/gardens_15.jpg",
+          "assets/singapore/gardens_16.jpg",
+          "assets/singapore/gardens_17.jpg",
+          "assets/singapore/gardens_18.jpg",
+          "assets/singapore/gardens_19.jpg",
+          "assets/singapore/gardens_20.jpg",
+          "assets/singapore/gardens_21.jpg",
+          "assets/singapore/gardens_22.jpg",
+          "assets/singapore/gardens_23.jpg"
         ]
       },
       {
@@ -98,7 +120,9 @@
         "captions": "Marina Bay Sands",
         "icon": "https://sdk.bitmoji.com/render/panel/20090344-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "assets/singapore/sands_1.jpg"
+          "assets/singapore/marina_1.jpg",
+          "assets/singapore/marina_2.jpg",
+          "assets/singapore/marina_3.jpg"
         ]
       },
       {
@@ -118,7 +142,7 @@
         "captions": "Shopping",
         "icon": "https://sdk.bitmoji.com/render/panel/10234037-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "assets/singapore/orchard_1.jpg"
+          "assets/singapore/mall_1.jpg"
         ]
       },
       {
@@ -171,8 +195,7 @@
           "assets/koh_samui/saii_6.jpg",
           "assets/koh_samui/saii_5.jpg",
           "assets/koh_samui/saii_1.jpg",
-          "assets/koh_samui/saii_11.jpg",
-          "assets/koh_samui/saii_12.jpg"
+          "assets/koh_samui/saii_2.jpg"
         ]
       },
       {
@@ -202,7 +225,7 @@
         "captions": "Enjoying duck quesadillas and mango smoothies",
         "icon": "https://sdk.bitmoji.com/render/panel/20052321-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "assets/koh_samui/saii_4.jpg"
+          "assets/koh_samui/nanyuan_1.jpg"
         ]
       },
       {
@@ -252,10 +275,28 @@
         "captions": "Scuba School",
         "icon": "https://sdk.bitmoji.com/render/panel/20088271-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "assets/koh_tao/sairee_4.jpg",
-          "/assets/koh_tao/sairee_1.jpg",
-          "/assets/koh_tao/sairee_2.jpg",
-          "/assets/koh_tao/sairee_3.jpg"
+          "/assets/koh_tao/sairee_1.jpg"
+        ]
+      },
+      {
+        "name": "Charina",
+        "coordinates": [
+          99.830464,
+          10.089049
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Cafes",
+        "coordinates": [
+          99.828757,
+          10.09394
+        ],
+        "captions": "Local cafes",
+        "icon": "https://sdk.bitmoji.com/render/panel/20054618-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "/assets/koh_tao/panda_1.jpg",
+          "/assets/koh_tao/panda_2.jpg"
         ]
       },
       {
@@ -275,8 +316,7 @@
         "captions": "Sunset at Sai Nuan Beach",
         "icon": "https://sdk.bitmoji.com/render/panel/20054618-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "/assets/koh_tao/sai_nuan_1.jpg",
-          "assets/koh_tao/sai_nuan_2.jpg"
+          "/assets/koh_tao/sai_nuan_1.jpg"
         ]
       },
       {
@@ -296,11 +336,11 @@
         "captions": "Exploring the famous Nang Yuan viewpoint",
         "icon": "https://sdk.bitmoji.com/render/panel/10212447-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "/assets/koh_tao/nang_yuan_1.jpg",
-          "/assets/koh_tao/nang_yuan_2.jpg",
-          "/assets/koh_tao/nang_yuan_3.jpg",
-          "/assets/koh_tao/nang_yuan_4.jpg",
-          "/assets/koh_tao/nang_yuan_5.jpg"
+          "/assets/koh_tao/island_1.jpg",
+          "/assets/koh_tao/island_2.jpg",
+          "/assets/koh_tao/island_3.jpg",
+          "/assets/koh_tao/island_4.jpg",
+          "/assets/koh_tao/island_5.jpg"
         ]
       },
       {
@@ -320,10 +360,7 @@
         "captions": "Shark Bay, famous for its... turtles",
         "icon": "https://sdk.bitmoji.com/render/panel/20033232-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "assets/koh_tao/shark_4.jpg",
-          "assets/koh_tao/shark_1.jpg",
-          "assets/koh_tao/shark_2.jpg",
-          "assets/koh_tao/shark_3.jpg"
+          "assets/koh_tao/shark_1.jpg"
         ]
       },
       {
@@ -362,18 +399,7 @@
         "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
           "/assets/koh_tao/tanote_1.jpg",
-          "/assets/koh_tao/tanote_2.jpg",
-          "/assets/koh_tao/tanote_3.jpg",
-          "assets/koh_tao/tanote_4.jpg",
-          "assets/koh_tao/tanote_5.jpg",
-          "assets/koh_tao/tanote_6.jpg",
-          "assets/koh_tao/tanote_7.jpg",
-          "assets/koh_tao/tanote_8.jpg",
-          "assets/koh_tao/tanote_9.jpg",
-          "assets/koh_tao/tanote_11.jpg",
-          "assets/koh_tao/tanote_12.jpg",
-          "assets/koh_tao/tanote_13.jpg",
-          "assets/koh_tao/tanote_14.jpg"
+          "/assets/koh_tao/tanote_2.jpg"
         ]
       }
     ]
@@ -401,13 +427,52 @@
           98.3013584,
           7.8311951
         ],
-        "captions": "WHAT UPPPPPPPPPP week",
+        "captions": "First stop in southeast asia, Phuket!",
         "icon": "https://sdk.bitmoji.com/render/panel/10225328-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "/assets/phuket/sea_and_sky_1.jpg",
-          "/assets/phuket/sea_and_sky_2.jpg",
-          "/assets/phuket/sea_and_sky_3.jpg",
-          "/assets/phuket/sea_and_sky_4.jpg"
+          "/assets/phuket/sky_1.jpg",
+          "/assets/phuket/sky_2.jpg",
+          "/assets/phuket/sky_3.jpg",
+          "/assets/phuket/sky_4.jpg",
+          "/assets/phuket/salem_1.jpg"
+        ]
+      },
+      {
+        "name": "The Pad Thai Shop",
+        "coordinates": [
+          98.300061,
+          7.831572
+        ],
+        "captions": "Local pad thai shop down the street - first meal of our trip!",
+        "icon": "https://sdk.bitmoji.com/render/panel/10225328-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "/assets/phuket/pad_thai_1.jpg",
+          "/assets/phuket/pad_thai_2.jpg"
+        ]
+      },
+      {
+        "name": "Sky and Sea Condos",
+        "coordinates": [
+          98.3013584,
+          7.8311951
+        ],
+        "ignore": true
+      },
+      {
+        "name": "The Big Bhudda Hike",
+        "coordinates": [
+          98.308232,
+          7.83135
+        ],
+        "captions": "Bushwacking up to the Big Bhudda ",
+        "icon": "https://sdk.bitmoji.com/render/panel/20035433-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "/assets/phuket/hike_1.jpg",
+          "/assets/phuket/hike_2.jpg",
+          "/assets/phuket/hike_3.jpg",
+          "/assets/phuket/hike_4.jpg",
+          "/assets/phuket/hike_5.jpg",
+          "/assets/phuket/hike_6.jpg"
         ]
       },
       {
@@ -419,15 +484,12 @@
         "captions": "Bushwacking up to the Big Bhudda. Not pictured, getting bounced at the entrance for not covering up our shoulders... ",
         "icon": "https://sdk.bitmoji.com/render/panel/20035433-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
-          "/assets/phuket/big_bhudda_1.jpg",
-          "/assets/phuket/big_bhudda_2.jpg",
-          "/assets/phuket/big_bhudda_3.jpg",
-          "/assets/phuket/big_bhudda_4.jpg",
-          "/assets/phuket/big_bhudda_5.jpg",
-          "/assets/phuket/big_bhudda_6.jpg",
-          "/assets/phuket/big_bhudda_7.jpg",
-          "/assets/phuket/big_bhudda_8.jpg",
-          "/assets/phuket/big_bhudda_9.jpg"
+          "/assets/phuket/bhudda_1.jpg",
+          "/assets/phuket/bhudda_2.jpg",
+          "/assets/phuket/bhudda_3.jpg",
+          "/assets/phuket/bhudda_4.jpg",
+          "/assets/phuket/bhudda_5.jpg",
+          "/assets/phuket/bhudda_6.jpg"
         ]
       },
       {
@@ -448,8 +510,7 @@
         "icon": "https://render.bitstrips.com/v2/cpanel/9669304-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
         "images": [
           "/assets/phuket/kata_1.jpg",
-          "/assets/phuket/kata_2.jpg",
-          "/assets/phuket/kata_3.jpg"
+          "/assets/phuket/kata_2.jpg"
         ]
       },
       {
@@ -461,17 +522,32 @@
         "ignore": true
       },
       {
+        "name": "Hog's Head",
+        "coordinates": [
+          98.387291,
+          7.883368
+        ],
+        "captions": "Straight outta Hogsmead! ",
+        "icon": "https://render.bitstrips.com/v2/cpanel/9669304-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+        "images": [
+          "/assets/phuket/hp_1.jpg",
+          "/assets/phuket/hp_2.jpg",
+          "/assets/phuket/hp_3.jpg",
+          "/assets/phuket/hp_4.jpg",
+          "/assets/phuket/hp_5.jpg"
+        ]
+      },
+      {
         "name": "Old Town Phuket",
         "coordinates": [
-          98.387904,
-          7.884795
+          98.391017,
+          7.885927
         ],
         "captions": "Shopping in Old Town ",
         "icon": "https://sdk.bitmoji.com/render/panel/20051260-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
           "/assets/phuket/old_town_1.jpg",
           "/assets/phuket/old_town_2.jpg",
-          "/assets/phuket/old_town_2_5.jpg",
           "/assets/phuket/old_town_3.jpg",
           "/assets/phuket/old_town_4.jpg",
           "/assets/phuket/old_town_5.jpg",
@@ -479,13 +555,50 @@
           "/assets/phuket/old_town_7.jpg",
           "/assets/phuket/old_town_8.jpg",
           "/assets/phuket/old_town_9.jpg",
-          "/assets/phuket/old_town_10.jpg",
-          "/assets/phuket/old_town_11.jpg",
-          "/assets/phuket/old_town_12.jpg",
-          "/assets/phuket/old_town_13.jpg",
-          "/assets/phuket/old_town_14.jpg",
-          "/assets/phuket/old_town_15.jpg"
+          "/assets/phuket/old_town_10.jpg"
         ]
+      },
+      {
+        "name": "Sama Onsen",
+        "coordinates": [
+          98.395599,
+          7.870509
+        ],
+        "captions": "Japanese spa day",
+        "icon": "https://render.bitstrips.com/v2/cpanel/9669304-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+        "images": [
+          "/assets/phuket/onsen_1.jpg",
+          "/assets/phuket/onsen_2.jpg",
+          "/assets/phuket/onsen_3.jpg"
+        ]
+      },
+      {
+        "name": "Sky and Sea Condos",
+        "coordinates": [
+          98.3013584,
+          7.8311951
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Avista",
+        "coordinates": [
+          98.294872,
+          7.826126
+        ],
+        "captions": "Avista resorts",
+        "icon": "https://render.bitstrips.com/v2/cpanel/9754270-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+        "images": [
+          "/assets/phuket/resort_1.jpg"
+        ]
+      },
+      {
+        "name": "Sky and Sea Condos",
+        "coordinates": [
+          98.3013584,
+          7.8311951
+        ],
+        "ignore": true
       },
       {
         "name": "Naka Night Market",
@@ -499,7 +612,9 @@
           "/assets/phuket/naka_1.jpg",
           "/assets/phuket/naka_2.jpg",
           "/assets/phuket/naka_3.jpg",
-          "/assets/phuket/naka_4.jpg"
+          "/assets/phuket/naka_4.jpg",
+          "/assets/phuket/naka_5.jpg",
+          "/assets/phuket/naka_6.jpg"
         ]
       },
       {
@@ -518,11 +633,7 @@
         ],
         "captions": "huge shopping mall",
         "icon": "https://render.bitstrips.com/v2/cpanel/9176167-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
-        "images": [
-          "/assets/phuket/festival_1.jpg",
-          "/assets/phuket/festival_2.jpg",
-          "/assets/phuket/festival_3.jpg"
-        ]
+        "images": []
       },
       {
         "name": "Laem Hin Seafood",
@@ -533,11 +644,11 @@
         "captions": "Enjoying sights and seafood locals at Laem Hin",
         "icon": "https://render.bitstrips.com/v2/cpanel/10211669-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
         "images": [
-          "/assets/phuket/laem_hin_1.jpg",
-          "/assets/phuket/laem_hin_2.jpg",
-          "/assets/phuket/laem_hin_3.jpg",
-          "/assets/phuket/laem_hin_4.jpg",
-          "/assets/phuket/laem_hin_5.jpg"
+          "/assets/phuket/laem_1.jpg",
+          "/assets/phuket/laem_2.jpg",
+          "/assets/phuket/laem_3.jpg",
+          "/assets/phuket/laem_4.jpg",
+          "/assets/phuket/laem_5.jpg"
         ]
       },
       {
@@ -551,10 +662,7 @@
         "images": [
           "/assets/phuket/chillva_1.jpg",
           "/assets/phuket/chillva_2.jpg",
-          "/assets/phuket/chillva_3.jpg",
-          "/assets/phuket/chillva_4.jpg",
-          "/assets/phuket/chillva_5.jpg",
-          "/assets/phuket/chillva_6.jpg"
+          "/assets/phuket/chillva_3.jpg"
         ]
       },
       {
