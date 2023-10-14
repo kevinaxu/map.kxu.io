@@ -26,7 +26,51 @@
             ],
             zoom: 9
         });
+
+        var center = [                                
+            115.14205,
+            -8.655942
+        ];
+
+        const bounds = map.getBounds();
+        var height = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
+        var width = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+
+        const OFFSET_PERCENTAGE = 0.10;
+        var h_offset = height * OFFSET_PERCENTAGE;
+        var w_offset = width * OFFSET_PERCENTAGE;
+
+        map.on('load', () => {
+            // Add a GeoJSON source with 3 points.
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            center[0] - w_offset,
+                            center[1] - h_offset
+                        ]
+                    }
+                }
+            });
+            // Add a circle layer
+            map.addLayer({
+                'id': 'der',
+                'type': 'circle',
+                'source': 'points',
+                'paint': {
+                    'circle-color': '#4264fb',
+                    'circle-radius': 38,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff'
+                }
+            });
+        });
+
         
+        /*
         const data = [
         {
             "markers": {
@@ -116,15 +160,20 @@
                 'type': 'circle',
                 'source': 'points',
                 'paint': {
-                    "circle-opacity": 0,
-                    'circle-radius': 24,
+                    'circle-color': '#4264fb',
+                    'circle-radius': 38,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff'
                 }
             });
             
             // Center the map on the coordinates of any clicked circle from the 'circle' layer.
             map.on('click', 'der', (e) => {
                 map.flyTo({
-                    center: e.features[0].geometry.coordinates
+                    center: e.features[0].geometry.coordinates,
+                    speed: 0.2,
+                    essential: true // This animation is considered essential with
+//respect to prefers-reduced-motion
                 });
             });
             
@@ -138,6 +187,7 @@
                 map.getCanvas().style.cursor = '';
             });
         });
+        */
     </script>
     
 </body>
