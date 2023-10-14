@@ -14,8 +14,8 @@
 
 // TODO: make these dynamic by pulling from trip_config? 
 const COORD_PULSING_DOT = [
-    98.3013584,
-    7.8311951
+    115.253722,
+    -8.485309
 ];
 const COORD_CENTER = [
     115.257839, 
