@@ -1,94 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Center the map on a clicked feature</title>
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-<style>
-body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
-</style>
+    <meta charset="utf-8">
+    <title>Center the map on a clicked feature</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
 </head>
 <body>
-<div id="map"></div>
-<script>
-
-	mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
-    const map = new mapboxgl.Map({
-        container: 'map',
-        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-        style: 'mapbox://styles/mapbox/light-v11',
-        center: [-90.96, -0.47],
-        zoom: 7.2
-    });
-
-    map.on('load', () => {
-        // Add a GeoJSON source with 3 points.
-        map.addSource('points', {
-            'type': 'geojson',
-            'data': {
-                'type': 'FeatureCollection',
-                'features': [
-                    {
-                        'type': 'Feature',
-                        'properties': {},
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-91.3952, -0.9145]
-                        }
+    <div id="map"></div>
+    <script>
+        
+        mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+            style: 'mapbox://styles/mapbox/light-v11',
+            center: [                                
+                115.14205,
+                -8.655942
+            ],
+            zoom: 9
+        });
+        
+        const data = [
+        {
+            "markers": {
+                "type": "FeatureCollection",
+                "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "message": "Despensar Airport",
+                        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+                        "images": [],
+                        "captions": "2 hours later... finally into Indonesia!"
                     },
-                    {
-                        'type': 'Feature',
-                        'properties': {},
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-90.3295, -0.6344]
-                        }
-                    },
-                    {
-                        'type': 'Feature',
-                        'properties': {},
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-91.3403, 0.0164]
-                        }
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                        115.16648950000001,
+                        -8.746112499999999
+                        ]
                     }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "message": "Pondok Kita",
+                        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+                        "images": [],
+                        "captions": "Guesthouse in Canggu"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                        115.14205,
+                        -8.655942
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "message": "Batu Balong Beach",
+                        "icon": "https://sdk.bitmoji.com/render/panel/20090589-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+                        "images": [],
+                        "captions": ""
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                        115.130244,
+                        -8.659581
+                        ]
+                    }
+                }
                 ]
             }
-        });
-        // Add a circle layer
-        map.addLayer({
-            'id': 'der',
-            'type': 'circle',
-            'source': 'points',
-            'paint': {
-                'circle-color': '#4264fb',
-                'circle-radius': 8,
-                'circle-stroke-width': 2,
-                'circle-stroke-color': '#ffffff'
-            }
-        });
+        }
+        ];
 
-        // Center the map on the coordinates of any clicked circle from the 'circle' layer.
-        map.on('click', 'der', (e) => {
-            map.flyTo({
-                center: e.features[0].geometry.coordinates
+
+        const popupHTML = `
+            <div class="popup">
+                <h3 class="popup-title">Derr</h3>
+            </div>
+        `;
+
+        for (var i = 0; i < data[0].markers.features.length; i++) {
+            const marker = data[0].markers.features[i];
+
+            const popup = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: false
+            }).setLngLat(marker.geometry.coordinates)
+                .setHTML(popupHTML)
+                .addTo(map);
+        }  
+
+        
+        map.on('load', () => {
+            // Add a GeoJSON source with 3 points.
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': data[0].markers
+            });
+            // Add a circle layer
+            map.addLayer({
+                'id': 'der',
+                'type': 'circle',
+                'source': 'points',
+                'paint': {
+                    "circle-opacity": 0,
+                    'circle-radius': 24,
+                }
+            });
+            
+            // Center the map on the coordinates of any clicked circle from the 'circle' layer.
+            map.on('click', 'der', (e) => {
+                map.flyTo({
+                    center: e.features[0].geometry.coordinates
+                });
+            });
+            
+            // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
+            map.on('mouseenter', 'der', () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+            
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'der', () => {
+                map.getCanvas().style.cursor = '';
             });
         });
-
-        // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
-        map.on('mouseenter', 'der', () => {
-            map.getCanvas().style.cursor = 'pointer';
-        });
-
-        // Change it back to a pointer when it leaves.
-        map.on('mouseleave', 'der', () => {
-            map.getCanvas().style.cursor = '';
-        });
-    });
-</script>
-
+    </script>
+    
 </body>
 </html>
