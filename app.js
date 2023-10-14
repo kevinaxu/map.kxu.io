@@ -1,7 +1,7 @@
 
 // TODO: make these dynamic by pulling from trip_config
-const pulsing_dot   = [98.3013584,7.8311951];
-const map_center    = [98.339370,7.964535];
+const pulsing_dot   = [98.3013584, 7.8311951];
+const map_center    = [115.257839, -8.471635];
 
 // Initialize Map
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
@@ -9,7 +9,7 @@ const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
     center: map_center,
-    zoom: 10.5
+    zoom: 9.5
 });
 
 // ********************************************************************/
