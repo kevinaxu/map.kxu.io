@@ -18,8 +18,8 @@ const COORD_PULSING_DOT = [
     7.8311951
 ];
 const COORD_CENTER = [
-    98.339370,
-    7.964535
+    115.257839, 
+    -8.471635
 ];
 
 const fetchData = fetch('data.json')
