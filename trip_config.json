@@ -1,5 +1,239 @@
 [
   {
+    "name": "Bali",
+    "markers": [
+      {
+        "name": "Despensar Airport",
+        "coordinates": [
+          115.16648950000001,
+          -8.746112499999999
+        ],
+        "captions": "2 hours later... finally into Indonesia!",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "images": []
+      },
+      {
+        "name": "Pondok Kita",
+        "coordinates": [
+          115.14205,
+          -8.655942
+        ],
+        "captions": "Guesthouse in Canggu",
+        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "images": []
+      },
+      {
+        "name": "Batu Balong Beach",
+        "coordinates": [
+          115.130244,
+          -8.659581
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20090589-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "images": []
+      },
+      {
+        "name": "Pondok Kita",
+        "coordinates": [
+          115.14205,
+          -8.655942
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Dwana Ubud",
+        "coordinates": [
+          115.253722,
+          -8.485309
+        ],
+        "captions": "Private villa and private pool in the jungle",
+        "icon": "https://sdk.bitmoji.com/render/panel/20000963-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/bali/dwana_1.jpg",
+          "assets/bali/dwana_2.jpg"
+        ]
+      },
+      {
+        "name": "Taluh Bebek Cafe",
+        "coordinates": [
+          115.257839,
+          -8.471635
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20081647-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;scale=1",
+        "images": [
+          "assets/bali/villa_1.jpg",
+          "assets/bali/villa_2.jpg"
+        ]
+      },
+      {
+        "name": "Talagallang",
+        "coordinates": [
+          115.278768,
+          -8.434252
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/10212236-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/bali/rice_1.jpg",
+          "assets/bali/rice_2.jpg",
+          "assets/bali/rice_3.jpg"
+        ]
+      },
+      {
+        "name": "Dwana Ubud",
+        "coordinates": [
+          115.253722,
+          -8.485309
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Goa Gajah",
+        "coordinates": [
+          115.264099,
+          -8.507874
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Let's Dive Tulamben",
+        "coordinates": [
+          115.591833,
+          -8.276724
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "images": []
+      },
+      {
+        "name": "Dwana Ubud",
+        "coordinates": [
+          115.253722,
+          -8.485309
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Wisata Kayu Putih",
+        "coordinates": [
+          115.18824,
+          -8.33348
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20020408-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/bali/banyan_1.jpg",
+          "assets/bali/banyan_2.jpg",
+          "assets/bali/banyan_3.jpg",
+          "assets/bali/banyan_4.jpg",
+          "assets/bali/famo_1.jpg",
+          "assets/bali/famo_2.jpg",
+          "assets/bali/famo_3.jpg",
+          "assets/bali/famo_4.jpg",
+          "assets/bali/famo_5.jpg"
+        ]
+      },
+      {
+        "name": "Ulun Danu Beratan Temple",
+        "coordinates": [
+          115.171471,
+          -8.25862
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20003415-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/bali/ulan_1.jpg",
+          "assets/bali/ulan_2.jpg",
+          "assets/bali/ulan_3.jpg",
+          "assets/bali/ulan_4.jpg",
+          "assets/bali/ulan_5.jpg"
+        ]
+      },
+      {
+        "name": "The Lost Cafe",
+        "coordinates": [
+          115.175506,
+          -8.299077
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20074506-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/bali/lost_cafe_1.jpg"
+        ]
+      },
+      {
+        "name": "Ritakala Cafe",
+        "coordinates": [
+          115.32154,
+          -8.22051
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20052334-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/bali/batur_1.jpg",
+          "assets/bali/batur_2.jpg",
+          "assets/bali/batur_3.jpg"
+        ]
+      },
+      {
+        "name": "Dwana Ubud",
+        "coordinates": [
+          115.253722,
+          -8.485309
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Balistar Luwak Coffee",
+        "coordinates": [
+          115.263822,
+          -8.510364
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20074502-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/bali/ubud_1.jpg",
+          "assets/bali/ubud_2.jpg",
+          "assets/bali/ubud_3.jpg"
+        ]
+      },
+      {
+        "name": "Sacred Monkey Forest",
+        "coordinates": [
+          115.25948,
+          -8.518191
+        ],
+        "captions": "After many years of tireless service, here rests the best water bottle I've ever had (thanks Algolia)",
+        "icon": "https://sdk.bitmoji.com/render/panel/10220061-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "images": [
+          "assets/bali/monkey_1.jpg",
+          "assets/bali/monkey_2.jpg",
+          "assets/bali/monkey_3.jpg",
+          "assets/bali/monkey_4.jpg",
+          "assets/bali/monkey_5.jpg",
+          "assets/bali/monkey_6.jpg"
+        ]
+      },
+      {
+        "name": "Dwana Ubud",
+        "coordinates": [
+          115.253722,
+          -8.485309
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Despensar Airport",
+        "coordinates": [
+          115.16648950000001,
+          -8.746112499999999
+        ],
+        "ignore": true
+      }
+    ]
+  },
+  {
     "name": "Singapore",
     "markers": [
       {
