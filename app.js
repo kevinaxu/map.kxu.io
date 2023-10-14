@@ -35,6 +35,8 @@ const fetchData = fetch('data.json')
 fetchData.then(data => {
     if (data) {
         generateMap(data);
+        renderPulsingDot();
+        initFlyTo(data);
     }
 })
 
@@ -58,7 +60,6 @@ function generateMap(data) {
     for (var i = 0; i < data.length; i++) {
         generateRegion(data[i]);
     }
-    renderPulsingDot();
 };
 
 function generateRegion(region) {
@@ -116,6 +117,61 @@ function generateRegion(region) {
  * Markers
  * 
  ********************************************************************/
+
+
+// this method takes in ALL markers
+// map on load: 
+//  addSource(all marker coordinates)
+//  addLayer using the source
+//  create a event listener on map click which will fly to clicked circles
+//  test interaction withs with the popup
+function initFlyTo(data) {
+    var features = [];
+    for (var i = 0; i < data.length; i++) {
+        features = features.concat(data[i].markers.features);
+    }
+
+    map.on('load', () => {
+        map.addSource('points', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': features
+            }
+        });
+
+        // Add a circle layer
+        map.addLayer({
+            'id': 'fly-to-points',
+            'type': 'circle',
+            'source': 'points',
+            'paint': {
+                "circle-opacity": 0,
+                'circle-radius': 40,
+                //'circle-stroke-width': 2,
+                //'circle-stroke-color': '#FF0000'
+            }
+        });
+        
+        // Center the map on the coordinates of any clicked circle from the 'circle' layer.
+        map.on('click', 'fly-to-points', (e) => {
+            console.log("clicked on map");
+            map.flyTo({
+                center: e.features[0].geometry.coordinates
+            });
+        });
+        
+        // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
+        map.on('mouseenter', 'fly-to-points', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+        
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'fly-to-points', () => {
+            map.getCanvas().style.cursor = '';
+        });
+    });
+}
 
 function getPopupHTML(images, caption) {
     const popupHTML = `
