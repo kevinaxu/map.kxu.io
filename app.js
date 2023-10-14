@@ -81,7 +81,13 @@ function generateRegion(region) {
             .addTo(map);
 
         const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
-        const popup = new mapboxgl.Popup({ offset: 25, closeOnClick: true, closeButton: false })
+        const popup = new mapboxgl
+            .Popup({ 
+                anchor: "bottom-left",
+                offset: [0, -20],
+                closeOnClick: true,
+                closeButton: false
+            })
             .setHTML(popupHTML);
 
         popup.on('open', () => {
@@ -155,9 +161,24 @@ function initFlyTo(data) {
         
         // Center the map on the coordinates of any clicked circle from the 'circle' layer.
         map.on('click', 'fly-to-points', (e) => {
-            console.log("clicked on map");
+
+            var center = e.features[0].geometry.coordinates;
+
+            const bounds = map.getBounds();
+            var height = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
+            var width = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+    
+            const OFFSET_PERCENTAGE = 0.15;
+            var h_offset = height * OFFSET_PERCENTAGE;
+            var w_offset = width * OFFSET_PERCENTAGE;
+
             map.flyTo({
-                center: e.features[0].geometry.coordinates
+                center: [
+                    center[0] + w_offset,
+                    center[1] + h_offset
+                ],
+                speed: 0.4,
+                essential: true // This animation is considered essential with
             });
         });
         
