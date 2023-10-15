@@ -42,11 +42,19 @@
         }
 
         /* Polaroid Card Component */ 
+        .mapboxgl-popup-tip {
+            display: none;
+        }
+        .mapboxgl-popup-content {
+            font-family: monospace;
+            font-size: 20px;
+        }
 
         .mapboxgl-popup-content {
-            padding: 18px;
-            width: 600px;
-            border-radius: .5em;
+            padding: 16px;
+            width: 480px;
+            height: 560px;
+            border-radius: .1em;
             box-shadow: 0 0 5px rgb(204, 204, 204);
         }
         /* Media query for screens with a maximum width of 767px (adjust as needed) */
@@ -58,17 +66,16 @@
         }
 
         /* Carousel */
-
         .carousel-container {
             position: relative;
             margin: 0 auto 0 auto;
             width: 100%;
         }
-
         .carousel-container img {
-            border-radius: .5em;
+            border-radius: .1em;
             width: 100%;
-
+            height: 480px;
+            object-fit: cover;
         }
 
         .hidden {
@@ -272,7 +279,7 @@
         // INITIALIZE
         const map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
+            style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
             center: [-74.5, 40],
             zoom: 9
         });
@@ -299,6 +306,11 @@
             }
         ];
         const images = [
+            "../../assets/bali/rice_1.jpg",
+          "../../assets/bali/rice_2.jpg",
+          "../../assets/bali/rice_3.jpg"
+        ]
+        const images2 = [
             "https://i.imgur.com/3rCW1xj.png",
             "https://i.imgur.com/AsXzjqX.png",
             "https://i.imgur.com/aJndu7X.png"
@@ -309,15 +321,23 @@
             "Caption 3"
         ]
 
-        // Add markers and popups
-        markers.forEach(markerData => {
+        for (var i = 0; i < markers.length; i++) {
+            const markerData = markers[i];
+
             const marker = new mapboxgl.Marker()
                 .setLngLat(markerData.coordinates)
                 .addTo(map);
 
-            const popupHTML = getPopupHTML(images, captions);
+            const popupHTML = (i === 0) ? 
+                getPopupHTML(images, captions) : 
+                getPopupHTML(images2, captions);
 
-            const popup = new mapboxgl.Popup({ offset: 25, closeOnClick: true, closeButton: false })
+            const popup = new mapboxgl.Popup({
+                anchor: "bottom-left",
+                offset: [20, -20],
+                closeOnClick: true, 
+                closeButton: false 
+            })
                 .setHTML(popupHTML);
 
             popup.on('open', () => {
@@ -325,8 +345,7 @@
             });
 
             marker.setPopup(popup);
-        });
-
+        }
 
     </script>
 
