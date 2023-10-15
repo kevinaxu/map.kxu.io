@@ -57,7 +57,8 @@
         @media screen and (max-width: 767px) {
             .mapboxgl-popup-content {
                 padding: 12px;
-                width: 300px;           /* Set width for smaller screens */
+                width: 360px;
+                height: 100%;            
             }
         }
 
@@ -94,7 +95,6 @@
         .arrow {
             display: inline;
         }
-
         .prev,
         .arrow {
             cursor: pointer;
@@ -111,17 +111,9 @@
             user-select: none;
             background-color: rgba(204, 204, 204, 0.3);
         }
-        /* Media query for screens with a maximum width of 767px (adjust as needed) */
-        @media screen and (max-width: 767px) {
-            .arrow {
-                padding: .5em;
-            }
-        }
-
         .next {
             right: 0;
         }
-
         .prev:hover,
         .next:hover {
             box-shadow: 0 0 5px #fff;
@@ -320,7 +312,7 @@
             "https://i.imgur.com/aJndu7X.png"
         ]
         const captions = [
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry..",
             "Caption 2",
             "Caption 3"
         ]
@@ -337,8 +329,8 @@
                 getPopupHTML(images2, captions);
 
             const popup = new mapboxgl.Popup({
-                anchor: "top-left",
-                offset: [150, -500],
+                anchor: "top",
+                offset: [-60, -700],
                 closeOnClick: true, 
                 closeButton: false 
             })
@@ -410,13 +402,12 @@
                 var height = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
                 var width = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
         
-                const OFFSET_PERCENTAGE = 0.25;
+                const OFFSET_PERCENTAGE = 0.35;
                 var h_offset = height * OFFSET_PERCENTAGE;
-                var w_offset = width * OFFSET_PERCENTAGE;
 
                 map.flyTo({
                     center: [
-                        center[0] + w_offset,
+                        center[0],
                         center[1] + h_offset
                     ],
                     speed: 0.4,
