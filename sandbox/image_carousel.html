@@ -45,15 +45,11 @@
         .mapboxgl-popup-tip {
             display: none;
         }
-        .mapboxgl-popup-content {
-            font-family: monospace;
-            font-size: 20px;
-        }
 
         .mapboxgl-popup-content {
             padding: 16px;
             width: 480px;
-            height: 560px;
+            height: 100%;
             border-radius: .1em;
             box-shadow: 0 0 5px rgb(204, 204, 204);
         }
@@ -66,6 +62,9 @@
         }
 
         /* Carousel */
+        .popup {
+            height: 100%;
+        }
         .carousel-container {
             position: relative;
             margin: 0 auto 0 auto;
@@ -76,6 +75,12 @@
             width: 100%;
             height: 480px;
             object-fit: cover;
+        }
+        .carousel-captions {
+            width: 100%;
+            font-family: monospace;
+            font-size: 20px;
+            margin-top: .5em;
         }
 
         .hidden {
@@ -183,24 +188,22 @@
 
         function getPopupHTML(images, captions) {
             const popupHTML = `
-                <div class="popup">
-                    <div class="carousel-container">
-                        <div class="carousel-imgs">
-                            ${generateImageHTML(images)}
-                        </div>
-                        <a class="prev arrow">&#10094;</a>
-                        <a class="next arrow">&#10095;</a>
-                        <div class="slide-numbers">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
-                        <div class="carousel-captions">
-                            ${generateCaptionHTML(captions)}
-                        </div>
+                <div class="carousel-container">
+                    <div class="carousel-imgs">
+                        ${generateImageHTML(images)}
+                    </div>
+                    <a class="prev arrow">&#10094;</a>
+                    <a class="next arrow">&#10095;</a>
+                    <div class="slide-numbers">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                     </div>
                 </div>
-                `;
+                <div class="carousel-captions">
+                    ${generateCaptionHTML(captions)}
+                </div>
+            `;
             return popupHTML;
         }
 
@@ -291,6 +294,7 @@
         map.addControl(scale);
         scale.setUnit('metric');
 
+        initFlyTo();
 
         // INPUTS: Marker Coordinates, Image URLs, Captions
         // these will eventually be inputs from Map config file
@@ -316,7 +320,7 @@
             "https://i.imgur.com/aJndu7X.png"
         ]
         const captions = [
-            "Caption 1",
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
             "Caption 2",
             "Caption 3"
         ]
@@ -333,8 +337,8 @@
                 getPopupHTML(images2, captions);
 
             const popup = new mapboxgl.Popup({
-                anchor: "bottom-left",
-                offset: [20, -20],
+                anchor: "top-left",
+                offset: [150, -500],
                 closeOnClick: true, 
                 closeButton: false 
             })
@@ -346,6 +350,92 @@
 
             marker.setPopup(popup);
         }
+
+
+    // this method takes in ALL markers
+    // map on load: 
+    //  addSource(all marker coordinates)
+    //  addLayer using the source
+    //  create a event listener on map click which will fly to clicked circles
+    //  test interaction withs with the popup
+    function initFlyTo() {
+
+        map.on('load', () => {
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': [
+                        {
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-74.5, 40]
+                            }
+                        },
+                        {
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-74.6, 40.1]
+                            }
+                        },
+                        {
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-74.4, 39.9]
+                            }
+                        }
+                    ]
+                }
+            });
+
+            // Add a circle layer
+            map.addLayer({
+                'id': 'fly-to-points',
+                'type': 'circle',
+                'source': 'points',
+                'paint': {
+                    "circle-opacity": 0,
+                    'circle-radius': 40,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#FF0000'
+                }
+            });
+            
+            // Center the map on the coordinates of any clicked circle from the 'circle' layer.
+            map.on('click', 'fly-to-points', (e) => {
+
+                var center = e.features[0].geometry.coordinates;
+
+                const bounds = map.getBounds();
+                var height = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
+                var width = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+        
+                const OFFSET_PERCENTAGE = 0.25;
+                var h_offset = height * OFFSET_PERCENTAGE;
+                var w_offset = width * OFFSET_PERCENTAGE;
+
+                map.flyTo({
+                    center: [
+                        center[0] + w_offset,
+                        center[1] + h_offset
+                    ],
+                    speed: 0.4,
+                    essential: true // This animation is considered essential with
+                });
+            });
+            
+            // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
+            map.on('mouseenter', 'fly-to-points', () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+            
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'fly-to-points', () => {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+    }
+
 
     </script>
 
