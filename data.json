@@ -74259,7 +74259,7 @@
             "images": [
               "assets/koh_tao/charina_1.jpg"
             ],
-            "captions": "Our AirBnB in Koh Tao"
+            "captions": "Cozy "
           },
           "geometry": {
             "type": "Point",
@@ -74305,12 +74305,12 @@
           "type": "Feature",
           "properties": {
             "message": "Cafes",
-            "icon": "https://sdk.bitmoji.com/render/panel/20054618-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20083780-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/panda_1.jpg",
               "/assets/koh_tao/panda_2.jpg"
             ],
-            "captions": "Local cafes"
+            "captions": "Had a nice time exploring the cafes and restaurants around the island"
           },
           "geometry": {
             "type": "Point",
@@ -74338,11 +74338,11 @@
           "type": "Feature",
           "properties": {
             "message": "Sai Nuan Beach",
-            "icon": "https://sdk.bitmoji.com/render/panel/20054618-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20089003-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/sai_nuan_1.jpg"
             ],
-            "captions": "Sunset at Sai Nuan Beach"
+            "captions": "Chasing the sunset on the motorbike  "
           },
           "geometry": {
             "type": "Point",
@@ -74370,7 +74370,7 @@
           "type": "Feature",
           "properties": {
             "message": "Koh Nang Yuan",
-            "icon": "https://sdk.bitmoji.com/render/panel/10212447-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20089006-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/island_1.jpg",
               "/assets/koh_tao/island_2.jpg",
@@ -74378,7 +74378,7 @@
               "/assets/koh_tao/island_4.jpg",
               "/assets/koh_tao/island_5.jpg"
             ],
-            "captions": "Exploring the famous Nang Yuan viewpoint"
+            "captions": "Day trip to Nang Yuan island on our last day, which was much needed after our scuba training turned out more exhausting than expected. The island was deserted - we only saw a handful of other people the entire time! Nang Yuan is not just one island but two islands connected by a strip of sand. At high-tide, the sandbar disappears under the water, but come low tide you're able to walk between two perfect wading beaches! "
           },
           "geometry": {
             "type": "Point",
@@ -74407,10 +74407,8 @@
           "properties": {
             "message": "Shark Bay",
             "icon": "https://sdk.bitmoji.com/render/panel/20033232-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
-            "images": [
-              "assets/koh_tao/shark_1.jpg"
-            ],
-            "captions": "Shark Bay, famous for its... turtles"
+            "images": [],
+            "captions": "Scuba School took up most of our time and energy while we were in Koh Tao, but the sea life was so incredible that I [Kevin]  did a little solo trek down to Shark Bay. I got in the water as the sun was starting to set. I didn't expect to see anything we hadn't already seen, but was startled by a massive turtle peacefully crunching on some coral. It was unfazed by my presence and we were eventually joined by another one of his friends."
           },
           "geometry": {
             "type": "Point",
@@ -74440,7 +74438,7 @@
             "message": "Mae Haad Pier",
             "icon": "https://sdk.bitmoji.com/render/panel/10212244-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;palette=1&amp;width=350",
             "images": [],
-            "captions": ""
+            "captions": "First impressions from the ferry... lots of westerners being shepherded by their Thai handlers"
           },
           "geometry": {
             "type": "Point",
@@ -74470,10 +74468,11 @@
             "message": "Tanote Bay",
             "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
+              "/assets/koh_tao/tanote_2.jpg",
               "/assets/koh_tao/tanote_1.jpg",
-              "/assets/koh_tao/tanote_2.jpg"
+              "assets/koh_tao/shark_1.jpg"
             ],
-            "captions": "Shallow reef snorkeling at Tanote Bay"
+            "captions": "Our first experience in the water at Koh Tao! We had no expectations other than a few things we read online - it ended up being the most incredible snorkeling experience! Just a few feet into the water, we encountered brightly colored Parrot Fish, meandering Sea Cucumbers, coral in all shapes and sizes. The water was warm with barely any current, and we were able to stay among the fish until the sunset. Truly a stunning moment in a beautiful place."
           },
           "geometry": {
             "type": "Point",

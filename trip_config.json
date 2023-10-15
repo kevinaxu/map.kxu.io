@@ -494,7 +494,7 @@
           99.830464,
           10.089049
         ],
-        "captions": "Our AirBnB in Koh Tao",
+        "captions": "Cozy ",
         "icon": "https://sdk.bitmoji.com/render/panel/20080246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
           "assets/koh_tao/charina_1.jpg"
@@ -526,8 +526,8 @@
           99.828757,
           10.09394
         ],
-        "captions": "Local cafes",
-        "icon": "https://sdk.bitmoji.com/render/panel/20054618-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "captions": "Had a nice time exploring the cafes and restaurants around the island",
+        "icon": "https://sdk.bitmoji.com/render/panel/20083780-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
           "/assets/koh_tao/panda_1.jpg",
           "/assets/koh_tao/panda_2.jpg"
@@ -547,8 +547,8 @@
           99.816124,
           10.072388
         ],
-        "captions": "Sunset at Sai Nuan Beach",
-        "icon": "https://sdk.bitmoji.com/render/panel/20054618-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+        "captions": "Chasing the sunset on the motorbike  ",
+        "icon": "https://sdk.bitmoji.com/render/panel/20089003-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
           "/assets/koh_tao/sai_nuan_1.jpg"
         ]
@@ -567,8 +567,8 @@
           99.814075,
           10.115006
         ],
-        "captions": "Exploring the famous Nang Yuan viewpoint",
-        "icon": "https://sdk.bitmoji.com/render/panel/10212447-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+        "captions": "Day trip to Nang Yuan island on our last day, which was much needed after our scuba training turned out more exhausting than expected. The island was deserted - we only saw a handful of other people the entire time! Nang Yuan is not just one island but two islands connected by a strip of sand. At high-tide, the sandbar disappears under the water, but come low tide you're able to walk between two perfect wading beaches! ",
+        "icon": "https://sdk.bitmoji.com/render/panel/20089006-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
           "/assets/koh_tao/island_1.jpg",
           "/assets/koh_tao/island_2.jpg",
@@ -591,11 +591,9 @@
           99.830803,
           10.063688
         ],
-        "captions": "Shark Bay, famous for its... turtles",
+        "captions": "Scuba School took up most of our time and energy while we were in Koh Tao, but the sea life was so incredible that I [Kevin]  did a little solo trek down to Shark Bay. I got in the water as the sun was starting to set. I didn't expect to see anything we hadn't already seen, but was startled by a massive turtle peacefully crunching on some coral. It was unfazed by my presence and we were eventually joined by another one of his friends.",
         "icon": "https://sdk.bitmoji.com/render/panel/20033232-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
-        "images": [
-          "assets/koh_tao/shark_1.jpg"
-        ]
+        "images": []
       },
       {
         "name": "Charina",
@@ -611,7 +609,7 @@
           99.823642,
           10.084211
         ],
-        "captions": "",
+        "captions": "First impressions from the ferry... lots of westerners being shepherded by their Thai handlers",
         "icon": "https://sdk.bitmoji.com/render/panel/10212244-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;palette=1&amp;width=350",
         "images": []
       },
@@ -629,11 +627,12 @@
           99.848052,
           10.084799
         ],
-        "captions": "Shallow reef snorkeling at Tanote Bay",
+        "captions": "Our first experience in the water at Koh Tao! We had no expectations other than a few things we read online - it ended up being the most incredible snorkeling experience! Just a few feet into the water, we encountered brightly colored Parrot Fish, meandering Sea Cucumbers, coral in all shapes and sizes. The water was warm with barely any current, and we were able to stay among the fish until the sunset. Truly a stunning moment in a beautiful place.",
         "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "images": [
+          "/assets/koh_tao/tanote_2.jpg",
           "/assets/koh_tao/tanote_1.jpg",
-          "/assets/koh_tao/tanote_2.jpg"
+          "assets/koh_tao/shark_1.jpg"
         ]
       }
     ]
