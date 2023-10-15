@@ -65,6 +65,14 @@ function generateMap(data) {
 function generateRegion(region) {
     const geojson = region.markers;
 
+    // MEDIA QUERY CHECK 
+    var anchor = (window.innerWidth < 767) ?
+        "top" :             // mobile 
+        "top-left";         // desktop
+    var offset = (window.innerWidth < 767) ?
+        [-60, -700] :       // mobile 
+        [150, -500];        // desktop 
+
     // Markers
     for (const feature of geojson.features) {
         if (feature.properties.ignore === true) {
@@ -83,8 +91,8 @@ function generateRegion(region) {
         const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
         const popup = new mapboxgl
             .Popup({ 
-                anchor: "bottom-left",
-                offset: [0, -20],
+                anchor: anchor,
+                offset: offset,
                 closeOnClick: true,
                 closeButton: false
             })
@@ -161,25 +169,39 @@ function initFlyTo(data) {
         
         // Center the map on the coordinates of any clicked circle from the 'circle' layer.
         map.on('click', 'fly-to-points', (e) => {
-
             var center = e.features[0].geometry.coordinates;
-
             const bounds = map.getBounds();
-            var height = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
-            var width = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
-    
-            const OFFSET_PERCENTAGE = 0.15;
-            var h_offset = height * OFFSET_PERCENTAGE;
-            var w_offset = width * OFFSET_PERCENTAGE;
+            var height  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
+            var width   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
 
-            map.flyTo({
-                center: [
+            // if mobile view, then offset Marker to bottom center of Map
+            // otherwise, offset to bottom left
+
+            var newCenter = [];
+            if (window.innerWidth < 767) {
+                console.log('Mobile!');
+                const OFFSET_PERCENTAGE = 0.35;
+                var h_offset = height * OFFSET_PERCENTAGE;
+                newCenter = [
+                    center[0],
+                    center[1] + h_offset
+                ];
+            } else {
+                console.log('Desktop!');
+                var h_offset = height * 0.25;
+                var w_offset = width * 0.20;
+                newCenter = [
                     center[0] + w_offset,
                     center[1] + h_offset
-                ],
+                ];
+            }
+    
+            map.flyTo({
+                center: newCenter,
                 speed: 0.4,
                 essential: true // This animation is considered essential with
             });
+
         });
         
         // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
@@ -196,20 +218,18 @@ function initFlyTo(data) {
 
 function getPopupHTML(images, caption) {
     const popupHTML = `
-        <div class="popup">
-            <div class="carousel-container">
-                <div class="carousel-imgs">
-                    ${generateImageHTML(images)}
-                </div>
-                <a class="prev arrow">&#10094;</a>
-                <a class="next arrow">&#10095;</a>
-                <div class="slide-numbers">
-                    ${generateDotHTML(images.length)}
-                </div>
-                <p class="carousel-caption">${caption}</p>
+        <div class="carousel-container">
+            <div class="carousel-imgs">
+                ${generateImageHTML(images)}
+            </div>
+            <a class="prev arrow">&#10094;</a>
+            <a class="next arrow">&#10095;</a>
+            <div class="slide-numbers">
+                ${generateDotHTML(images.length)}
             </div>
         </div>
-        `;
+        <p class="carousel-caption">${caption}</p>
+    `;
     return popupHTML;
 }
 

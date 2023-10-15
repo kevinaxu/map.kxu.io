@@ -35,41 +35,52 @@
     }
 
     /* Polaroid Card Component */
-
+    .mapboxgl-popup-tip {
+        display: none;
+    }
     .mapboxgl-popup-content {
-        padding: 18px;
-        width: 540px;
-        border-radius: .5em;
+        padding: 16px;
+        width: 480px;
+        height: 100%;
+        border-radius: .1em;
         box-shadow: 0 0 5px rgb(204, 204, 204);
     }
-
     /* Media query for screens with a maximum width of 767px (adjust as needed) */
     @media screen and (max-width: 767px) {
         .mapboxgl-popup-content {
             padding: 12px;
-            width: 300px;
-            /* Set width for smaller screens */
+            width: 360px;
+            height: 100%;            
         }
     }
 
     /* Carousel */
-
     .carousel-container {
         position: relative;
         margin: 0 auto 0 auto;
         width: 100%;
     }
-
     .carousel-container img {
-        border-radius: .5em;
+        border-radius: .1em;
         width: 100%;
-
+        height: 480px;
+        object-fit: cover;
+    }
+    /* Media query for screens with a maximum width of 767px (adjust as needed) */
+    @media screen and (max-width: 767) {
+        .mapboxgl-popup-content {
+            padding: 12px;
+            width: 360px;
+            height: 100%;            
+        }
+    }
+    .carousel-captions {
+        width: 100%;
+        font-family: monospace;
+        font-size: 20px;
+        margin-top: .5em;
     }
 
-    .carousel-caption {
-        font-family: 'Caveat';
-        font-size: 32px;
-    }
 
     .hidden {
         display: none;
@@ -100,13 +111,6 @@
         background-color: rgba(204, 204, 204, 0.3);
     }
 
-    /* Media query for screens with a maximum width of 767px (adjust as needed) */
-    @media screen and (max-width: 767px) {
-        .arrow {
-            padding: .5em;
-        }
-    }
-
     .next {
         right: 0;
     }
@@ -123,8 +127,9 @@
         bottom: 5em;
         left: 0px;
         width: 100%;
-
     }
+
+
     /* Media query for screens with a maximum width of 767px (adjust as needed) */
     @media screen and (max-width: 767px) {
         .slide-numbers {
@@ -160,7 +165,6 @@
             width: 10px;
         }
     }
-
 
     .dot:hover {
         box-shadow: 0 0 5px #fff;
