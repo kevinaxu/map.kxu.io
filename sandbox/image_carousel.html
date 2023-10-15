@@ -30,7 +30,6 @@
 
 
         /* Mapbox Marker */
-
         #marker {
             background-image: url('./assets/lol.png');
             background-size: cover;
@@ -48,7 +47,7 @@
 
         .mapboxgl-popup-content {
             padding: 16px;
-            width: 560px;
+            width: 480px;
             height: 100%;
             border-radius: .1em;
             box-shadow: 0 0 5px rgb(204, 204, 204);
@@ -63,9 +62,6 @@
         }
 
         /* Carousel */
-        .popup {
-            height: 100%;
-        }
         .carousel-container {
             position: relative;
             margin: 0 auto 0 auto;
@@ -74,7 +70,7 @@
         .carousel-container img {
             border-radius: .1em;
             width: 100%;
-            height: 560px;
+            height: 480px;
             object-fit: cover;
         }
         /* Media query for screens with a maximum width of 767px (adjust as needed) */
@@ -127,7 +123,6 @@
             box-shadow: 0 0 5px #fff;
             border: 1px solid #fff;
         }
-
         .slide-numbers {
             text-align: center;
             position: absolute;
@@ -135,7 +130,6 @@
             left: 45%;
 
         }
-
         .dot {
             cursor: pointer;
             height: 10px;
@@ -145,14 +139,12 @@
             border-radius: 50%;
             display: inline-block;
         }
-
         .dot:hover,
         .active {
             background-color: rgb(204, 204, 204);
             height: 12px;
             width: 12px;
         }
-
         .dot:hover {
             box-shadow: 0 0 5px #fff;
         }
@@ -327,11 +319,11 @@
 
         // MEDIA QUERY CHECK 
         var anchor = (window.innerWidth < 767) ?
-            "top" : 
-            "top-left";
+            "top" :             // mobile 
+            "top-left";         // desktop
         var offset = (window.innerWidth < 767) ?
-            [-60, -700] :
-            [150, -500];
+            [-60, -700] :       // mobile 
+            [150, -500];        // desktop 
 
         for (var i = 0; i < markers.length; i++) {
             const markerData = markers[i];
@@ -431,9 +423,8 @@
                     ];
                 } else {
                     console.log('Desktop!');
-                    const OFFSET_PERCENTAGE = 0.15;
-                    var h_offset = height * OFFSET_PERCENTAGE;
-                    var w_offset = width * OFFSET_PERCENTAGE;
+                    var h_offset = height * 0.25;
+                    var w_offset = width * 0.20;
                     newCenter = [
                         center[0] + w_offset,
                         center[1] + h_offset
@@ -458,20 +449,6 @@
             });
         });
     }
-
-    function checkMediaQuery() {
-        if (window.innerWidth < 640) {
-            console.log('Mobile!');
-        }
-    }
-
-    // Initial check
-    checkMediaQuery();
-
-    // Add a listener for when the window resizes
-    window.addEventListener('resize', checkMediaQuery);
-
-
 
     </script>
 
