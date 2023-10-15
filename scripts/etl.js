@@ -20,7 +20,7 @@ async function readTripConfig() {
         const region = regions[i];
         output.push({
             name: region.name,
-            markers: generateMarkerFeatureCollection(region.markers),
+            markers: generateMarkerFeatureCollection(region.name, region.markers),
             coordinates: await getRouteCoordinates(region.markers) 
         });
     }
@@ -106,12 +106,13 @@ function transformCoordinates(response) {
  * 
  ********************************************************************/
 
-function generateMarkerFeatureCollection(markers) {
+function generateMarkerFeatureCollection(region, markers) {
     const transformedFeatures = markers.map(item => {
         return {
             type: "Feature",
             properties: {
                 message: item.name,
+                region: region,
                 icon: item.icon,
                 images: item.images,
                 captions: item.captions,

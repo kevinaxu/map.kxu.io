@@ -8,6 +8,7 @@
           "type": "Feature",
           "properties": {
             "message": "Despensar Airport",
+            "region": "Bali",
             "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
             "images": [],
             "captions": "2 hours later... finally into Indonesia!"
@@ -24,6 +25,7 @@
           "type": "Feature",
           "properties": {
             "message": "Pondok Kita",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": "Guesthouse in Canggu"
@@ -40,6 +42,7 @@
           "type": "Feature",
           "properties": {
             "message": "Batu Balong Beach",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20090589-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": ""
@@ -56,6 +59,7 @@
           "type": "Feature",
           "properties": {
             "message": "Pondok Kita",
+            "region": "Bali",
             "ignore": true
           },
           "geometry": {
@@ -70,6 +74,7 @@
           "type": "Feature",
           "properties": {
             "message": "Dwana Ubud",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20000963-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/dwana_1.jpg",
@@ -89,6 +94,7 @@
           "type": "Feature",
           "properties": {
             "message": "Taluh Bebek Cafe",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20081647-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;scale=1",
             "images": [
               "assets/bali/villa_1.jpg",
@@ -108,6 +114,7 @@
           "type": "Feature",
           "properties": {
             "message": "Talagallang",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/10212236-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/rice_1.jpg",
@@ -128,6 +135,7 @@
           "type": "Feature",
           "properties": {
             "message": "Dwana Ubud",
+            "region": "Bali",
             "ignore": true
           },
           "geometry": {
@@ -142,6 +150,7 @@
           "type": "Feature",
           "properties": {
             "message": "Goa Gajah",
+            "region": "Bali",
             "ignore": true
           },
           "geometry": {
@@ -156,6 +165,7 @@
           "type": "Feature",
           "properties": {
             "message": "Let's Dive Tulamben",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": ""
@@ -172,6 +182,7 @@
           "type": "Feature",
           "properties": {
             "message": "Dwana Ubud",
+            "region": "Bali",
             "ignore": true
           },
           "geometry": {
@@ -186,6 +197,7 @@
           "type": "Feature",
           "properties": {
             "message": "Wisata Kayu Putih",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20020408-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/banyan_1.jpg",
@@ -212,6 +224,7 @@
           "type": "Feature",
           "properties": {
             "message": "Ulun Danu Beratan Temple",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20003415-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/ulan_1.jpg",
@@ -234,6 +247,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Lost Cafe",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20074506-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/lost_cafe_1.jpg"
@@ -252,6 +266,7 @@
           "type": "Feature",
           "properties": {
             "message": "Ritakala Cafe",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20052334-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/batur_1.jpg",
@@ -272,6 +287,7 @@
           "type": "Feature",
           "properties": {
             "message": "Dwana Ubud",
+            "region": "Bali",
             "ignore": true
           },
           "geometry": {
@@ -286,6 +302,7 @@
           "type": "Feature",
           "properties": {
             "message": "Balistar Luwak Coffee",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20074502-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/ubud_1.jpg",
@@ -306,6 +323,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sacred Monkey Forest",
+            "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/10220061-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/monkey_1.jpg",
@@ -329,6 +347,7 @@
           "type": "Feature",
           "properties": {
             "message": "Dwana Ubud",
+            "region": "Bali",
             "ignore": true
           },
           "geometry": {
@@ -343,6 +362,7 @@
           "type": "Feature",
           "properties": {
             "message": "Despensar Airport",
+            "region": "Bali",
             "ignore": true
           },
           "geometry": {
@@ -59369,6 +59389,7 @@
           "type": "Feature",
           "properties": {
             "message": "Changi Airport",
+            "region": "Singapore",
             "icon": "https://sdk.bitmoji.com/render/panel/20006615-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/singapore/changi_1.jpg",
@@ -59389,6 +59410,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Pod",
+            "region": "Singapore",
             "icon": "https://sdk.bitmoji.com/render/panel/10217067-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/singapore/pod_1.jpg"
@@ -59407,6 +59429,7 @@
           "type": "Feature",
           "properties": {
             "message": "Masjid Sultan",
+            "region": "Singapore",
             "icon": "https://sdk.bitmoji.com/render/panel/10079860-132533800_29-s1-v1.webp?transparent=1&amp;scale=1",
             "images": [
               "assets/singapore/masjid_1.jpg",
@@ -59428,6 +59451,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Pod",
+            "region": "Singapore",
             "ignore": true
           },
           "geometry": {
@@ -59442,6 +59466,7 @@
           "type": "Feature",
           "properties": {
             "message": "Golden Mile",
+            "region": "Singapore",
             "icon": "https://sdk.bitmoji.com/render/panel/10226603-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": "Hainese Chicken Rice"
@@ -59458,6 +59483,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Pod",
+            "region": "Singapore",
             "ignore": true
           },
           "geometry": {
@@ -59472,6 +59498,7 @@
           "type": "Feature",
           "properties": {
             "message": "Gardens by the Bay",
+            "region": "Singapore",
             "icon": "https://sdk.bitmoji.com/render/panel/20049506-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/singapore/gardens_1.jpg",
@@ -59512,6 +59539,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Pod",
+            "region": "Singapore",
             "ignore": true
           },
           "geometry": {
@@ -59526,6 +59554,7 @@
           "type": "Feature",
           "properties": {
             "message": "Marina Bay Sands",
+            "region": "Singapore",
             "icon": "https://sdk.bitmoji.com/render/panel/20090344-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/singapore/marina_1.jpg",
@@ -59546,6 +59575,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Pod",
+            "region": "Singapore",
             "ignore": true
           },
           "geometry": {
@@ -59560,6 +59590,7 @@
           "type": "Feature",
           "properties": {
             "message": "ION Orchard",
+            "region": "Singapore",
             "icon": "https://sdk.bitmoji.com/render/panel/10234037-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/singapore/mall_1.jpg"
@@ -59578,6 +59609,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Pod",
+            "region": "Singapore",
             "ignore": true
           },
           "geometry": {
@@ -59592,6 +59624,7 @@
           "type": "Feature",
           "properties": {
             "message": "Maxwell Food Center",
+            "region": "Singapore",
             "icon": "https://sdk.bitmoji.com/render/panel/10237599-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": "Maxwell Food Center"
@@ -66892,6 +66925,7 @@
           "type": "Feature",
           "properties": {
             "message": "Airport",
+            "region": "Koh Samui",
             "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
             "images": [],
             "captions": "The coziest airport on the plains"
@@ -66908,6 +66942,7 @@
           "type": "Feature",
           "properties": {
             "message": "SAII Choengmon",
+            "region": "Koh Samui",
             "icon": "https://sdk.bitmoji.com/render/panel/10222908-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/koh_samui/saii_7.jpg",
@@ -66934,6 +66969,7 @@
           "type": "Feature",
           "properties": {
             "message": "Pralarn Pier",
+            "region": "Koh Samui",
             "icon": "https://sdk.bitmoji.com/render/panel/20083342-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": "Catching the ferry to Koh Tao"
@@ -66950,6 +66986,7 @@
           "type": "Feature",
           "properties": {
             "message": "SAII Choengmon",
+            "region": "Koh Samui",
             "ignore": true
           },
           "geometry": {
@@ -66964,6 +67001,7 @@
           "type": "Feature",
           "properties": {
             "message": "Nanyuan Noodles",
+            "region": "Koh Samui",
             "icon": "https://sdk.bitmoji.com/render/panel/20052321-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/koh_samui/nanyuan_1.jpg"
@@ -66982,6 +67020,7 @@
           "type": "Feature",
           "properties": {
             "message": "SAII Choengmon",
+            "region": "Koh Samui",
             "ignore": true
           },
           "geometry": {
@@ -66996,6 +67035,7 @@
           "type": "Feature",
           "properties": {
             "message": "Fisherman's Village",
+            "region": "Koh Samui",
             "icon": "https://sdk.bitmoji.com/render/panel/20060362-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/koh_samui/fishermans_1.jpg",
@@ -74255,6 +74295,7 @@
           "type": "Feature",
           "properties": {
             "message": "Charina",
+            "region": "Koh Tao",
             "icon": "https://sdk.bitmoji.com/render/panel/20080246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/koh_tao/charina_1.jpg"
@@ -74273,6 +74314,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sairee Beach",
+            "region": "Koh Tao",
             "icon": "https://sdk.bitmoji.com/render/panel/20088271-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/sairee_1.jpg"
@@ -74291,6 +74333,7 @@
           "type": "Feature",
           "properties": {
             "message": "Charina",
+            "region": "Koh Tao",
             "ignore": true
           },
           "geometry": {
@@ -74305,6 +74348,7 @@
           "type": "Feature",
           "properties": {
             "message": "Cafes",
+            "region": "Koh Tao",
             "icon": "https://sdk.bitmoji.com/render/panel/20083780-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/panda_1.jpg",
@@ -74324,6 +74368,7 @@
           "type": "Feature",
           "properties": {
             "message": "Charina",
+            "region": "Koh Tao",
             "ignore": true
           },
           "geometry": {
@@ -74338,6 +74383,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sai Nuan Beach",
+            "region": "Koh Tao",
             "icon": "https://sdk.bitmoji.com/render/panel/20089003-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/sai_nuan_1.jpg"
@@ -74356,6 +74402,7 @@
           "type": "Feature",
           "properties": {
             "message": "Charina",
+            "region": "Koh Tao",
             "ignore": true
           },
           "geometry": {
@@ -74370,6 +74417,7 @@
           "type": "Feature",
           "properties": {
             "message": "Koh Nang Yuan",
+            "region": "Koh Tao",
             "icon": "https://sdk.bitmoji.com/render/panel/20089006-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/island_1.jpg",
@@ -74392,6 +74440,7 @@
           "type": "Feature",
           "properties": {
             "message": "Charina",
+            "region": "Koh Tao",
             "ignore": true
           },
           "geometry": {
@@ -74406,6 +74455,7 @@
           "type": "Feature",
           "properties": {
             "message": "Shark Bay",
+            "region": "Koh Tao",
             "icon": "https://sdk.bitmoji.com/render/panel/20033232-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": "Scuba School took up most of our time and energy while we were in Koh Tao, but the sea life was so incredible that I [Kevin]  did a little solo trek down to Shark Bay. I got in the water as the sun was starting to set. I didn't expect to see anything we hadn't already seen, but was startled by a massive turtle peacefully crunching on some coral. It was unfazed by my presence and we were eventually joined by another one of his friends."
@@ -74422,6 +74472,7 @@
           "type": "Feature",
           "properties": {
             "message": "Charina",
+            "region": "Koh Tao",
             "ignore": true
           },
           "geometry": {
@@ -74436,6 +74487,7 @@
           "type": "Feature",
           "properties": {
             "message": "Mae Haad Pier",
+            "region": "Koh Tao",
             "icon": "https://sdk.bitmoji.com/render/panel/10212244-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;palette=1&amp;width=350",
             "images": [],
             "captions": "First impressions from the ferry... lots of westerners being shepherded by their Thai handlers"
@@ -74452,6 +74504,7 @@
           "type": "Feature",
           "properties": {
             "message": "Charina",
+            "region": "Koh Tao",
             "ignore": true
           },
           "geometry": {
@@ -74466,6 +74519,7 @@
           "type": "Feature",
           "properties": {
             "message": "Tanote Bay",
+            "region": "Koh Tao",
             "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/tanote_2.jpg",
@@ -78982,6 +79036,7 @@
           "type": "Feature",
           "properties": {
             "message": "Phuket International Airport",
+            "region": "Phuket",
             "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
             "images": [
               "/assets/phuket/airport_1.jpg",
@@ -79002,6 +79057,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/10225328-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/sky_4.jpg",
@@ -79024,6 +79080,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Pad Thai Shop",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/10237070-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/pad_thai_1.jpg",
@@ -79043,6 +79100,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
+            "region": "Phuket",
             "ignore": true
           },
           "geometry": {
@@ -79057,6 +79115,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Big Bhudda Hike",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/20035433-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/hike_5.jpg",
@@ -79080,6 +79139,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Big Bhudda",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/20000713-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/bhudda_1.jpg",
@@ -79103,6 +79163,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
+            "region": "Phuket",
             "ignore": true
           },
           "geometry": {
@@ -79117,6 +79178,7 @@
           "type": "Feature",
           "properties": {
             "message": "Kata Beach",
+            "region": "Phuket",
             "icon": "https://render.bitstrips.com/v2/cpanel/9669304-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
             "images": [
               "/assets/phuket/kata_1.jpg",
@@ -79136,6 +79198,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
+            "region": "Phuket",
             "ignore": true
           },
           "geometry": {
@@ -79150,6 +79213,7 @@
           "type": "Feature",
           "properties": {
             "message": "Hog's Head",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/10212708-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/hp_5.jpg",
@@ -79172,6 +79236,7 @@
           "type": "Feature",
           "properties": {
             "message": "Old Town Phuket",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/20085085-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/old_town_9.jpg",
@@ -79199,6 +79264,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sama Onsen",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/20051260-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/onsen_1.jpg",
@@ -79219,6 +79285,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
+            "region": "Phuket",
             "ignore": true
           },
           "geometry": {
@@ -79233,6 +79300,7 @@
           "type": "Feature",
           "properties": {
             "message": "Avista Resort",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/10232854-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/resort_1.jpg"
@@ -79251,6 +79319,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
+            "region": "Phuket",
             "ignore": true
           },
           "geometry": {
@@ -79265,6 +79334,7 @@
           "type": "Feature",
           "properties": {
             "message": "Naka Night Market",
+            "region": "Phuket",
             "icon": "https://render.bitstrips.com/v2/cpanel/9754270-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
             "images": [
               "/assets/phuket/naka_6.jpg",
@@ -79288,6 +79358,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
+            "region": "Phuket",
             "ignore": true
           },
           "geometry": {
@@ -79302,6 +79373,7 @@
           "type": "Feature",
           "properties": {
             "message": "Central Festival",
+            "region": "Phuket",
             "icon": "https://render.bitstrips.com/v2/cpanel/9176167-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
             "images": [],
             "captions": "One of our big goals of this trip was to find some nice clothing to bring back. Though the night markets were cheap... so was the quality! Central Festival in Phuket is an absolutely massive facility - essentially two separate malls connected by sky bridge. We explored both - one felt more local while the other had more international designers."
@@ -79318,6 +79390,7 @@
           "type": "Feature",
           "properties": {
             "message": "Laem Hin Seafood",
+            "region": "Phuket",
             "icon": "https://render.bitstrips.com/v2/cpanel/10211669-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
             "images": [
               "/assets/phuket/laem_1.jpg",
@@ -79340,6 +79413,7 @@
           "type": "Feature",
           "properties": {
             "message": "Chillva Night Market",
+            "region": "Phuket",
             "icon": "https://sdk.bitmoji.com/render/panel/20040693-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/chillva_1.jpg",
@@ -79360,6 +79434,7 @@
           "type": "Feature",
           "properties": {
             "message": "Sky and Sea Condos",
+            "region": "Phuket",
             "ignore": true
           },
           "geometry": {
@@ -86705,52 +86780,52 @@
               7.824309
             ],
             [
-              98.299477,
-              7.82439
+              98.299247,
+              7.824333
             ],
             [
-              98.299521,
-              7.824391
+              98.299451,
+              7.824414
             ],
             [
-              98.299685,
-              7.824546
+              98.299592,
+              7.824554
             ],
             [
-              98.299867,
-              7.824675
+              98.299651,
+              7.824595
             ],
             [
-              98.300082,
-              7.824756
+              98.299846,
+              7.824729
             ],
             [
-              98.300309,
-              7.824803
+              98.30005,
+              7.824821
             ],
             [
-              98.300454,
-              7.824792
+              98.300297,
+              7.824876
             ],
             [
-              98.300596,
-              7.824751
+              98.300606,
+              7.82481
             ],
             [
-              98.30082,
-              7.824738
+              98.300806,
+              7.824808
             ],
             [
-              98.301421,
-              7.824951
+              98.300853,
+              7.824825
             ],
             [
-              98.301405,
-              7.824996
+              98.300932,
+              7.824854
             ],
             [
-              98.301427,
-              7.825005
+              98.301395,
+              7.825023
             ],
             [
               98.301416,

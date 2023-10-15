@@ -22,6 +22,16 @@ const COORD_CENTER = [
     -8.471635
 ];
 const BOUND_BOX_WEB = {
+    "all": [
+        [
+            89.20004011241173, 
+            -12.342977303436726
+        ],
+        [
+            134.5055133573236, 
+            21.517103163038342
+        ]
+    ],
     "phuket": [
         [
             98.04800465357789,
@@ -111,10 +121,7 @@ fetchData.then(data => {
 
 function initFitTo() {
     document.getElementById('fit-all').addEventListener('click', () => {
-        map.fitBounds([
-            [89.20004011241173, -12.342977303436726],   // SW
-            [134.5055133573236, 21.517103163038342]     // NE
-        ]);  
+        map.fitBounds(BOUND_BOX_WEB["all"]);
     });
 }
 
@@ -132,6 +139,7 @@ const map = new mapboxgl.Map({
     zoom: 9.5
 });
 
+/*
 // Log zoom level and bounding coordinates when the map moves
 map.on('move', function() {
     var zoom = map.getZoom();
@@ -139,6 +147,7 @@ map.on('move', function() {
     console.log('Zoom Level:', zoom);
     console.log('Bounding Coordinates:', bounds.toArray()); // [southwest, northeast]
 });
+*/
 
 // data {name, markers, coordinates}
 function generateMap(data) {
@@ -190,7 +199,12 @@ function generateRegion(region) {
             .setHTML(popupHTML);
 
         popup.on('open', () => {
-            attachPopupListeners(popup);
+            // don't show popup if we're zooming to region 
+            if (shouldZoomToRegion()) {
+                popup.remove();
+            } else {
+                attachPopupListeners(popup);
+            }
         });
 
         marker.setPopup(popup);
@@ -217,6 +231,10 @@ function generateRegion(region) {
     });
 }
 
+function shouldZoomToRegion() {
+    const zoomThreshold = 9;
+    return map.getZoom() < zoomThreshold;
+}
 
 /*******************************************************************
  * 
@@ -239,36 +257,6 @@ function generateRegion(region) {
  * 
  ********************************************************************/
 
-
-// this method takes in ALL markers
-// map on load: 
-//  addSource(all marker coordinates)
-//  addLayer using the source
-//  create a event listener on map click which will fly to clicked circles
-//  test interaction withs with the popup
-
-
-// iterate over the regions
-// checking the cooridnate is in the region 
-// if yes, then return the bounding box for that region
-function lookupRegionBoundingBoxFromMarker(coordinateToCheck) {
-    for (const [region, coordinates] of Object.entries(BOUND_BOX_WEB)) {
-        if (isCoordinateInBoundingBox(coordinateToCheck, coordinates[0], coordinates[1])) {
-            console.log(`Marker is in ${region}`);
-            return coordinates;
-        } else {
-            return null;
-        }
-    }
-}
-
-function isCoordinateInBoundingBox(coordinate, bbox_sw, bbox_ne) {
-    const [minLng, minLat] = bbox_sw;
-    const [maxLng, maxLat] = bbox_ne
-    const [lng, lat] = coordinate;
-
-    return lng >= minLng && lng <= maxLng && lat >= minLat && lat <= maxLat;
-}
 
 function initFlyTo(data) {
     var features = [];
@@ -298,25 +286,19 @@ function initFlyTo(data) {
             }
         });
         
-        // "Center"" the map on the coordinates of any clicked circle from the 'circle' layer.
+        // "Center" the map on the coordinates of any clicked circle from the 'circle' layer.
         map.on('click', 'fly-to-points', (e) => {
-            var center = e.features[0].geometry.coordinates;
-        
-            const zoomThreshold = 9;
-            if (map.getZoom() < zoomThreshold) {
-                console.log("Marker click while map is zoomed out, fitting to Region");
-                console.log("Center:", center);
 
-                var bb = lookupRegionBoundingBoxFromMarker(center);
-                console.log("boudning box", bb);
-                if (bb == null) return;
+            if (shouldZoomToRegion()) {
+                var region = e
+                    .features[0].properties.region
+                    .toLowerCase().replaceAll(" ", "_");
+                map.fitBounds(BOUND_BOX_WEB[region]);
 
-                map.fitBounds(
-                    lookupRegionBoundingBoxFromMarker(center)
-                );
             } else {
                 // if mobile view, then offset Marker to bottom center of Map
                 // otherwise, offset to bottom left
+                const center = e.features[0].geometry.coordinates;
                 const bounds = map.getBounds();
                 var height  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
                 var width   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
@@ -345,9 +327,8 @@ function initFlyTo(data) {
                     speed: 0.4,
                     essential: true // This animation is considered essential with
                 });
+
             }
-
-
         });
         
         // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
