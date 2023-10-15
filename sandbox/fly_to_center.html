@@ -14,19 +14,99 @@
 <body>
     <div id="map"></div>
     <script>
-        
-        mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
-        const map = new mapboxgl.Map({
-            container: 'map',
-            // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-            style: 'mapbox://styles/mapbox/light-v11',
-            center: [                                
+
+        const fetchData = fetch('../../data.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Error fetching the file:', error);
+            });
+        fetchData.then(data => {
+            if (data) run(data);
+
+            /*
+                generateMap(data);
+                renderPulsingDot();
+                initFlyTo(data);
+            }
+            */
+        })
+
+        function run(data) {
+            mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';
+            const map = new mapboxgl.Map({
+                container: 'map',
+                // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+                style: 'mapbox://styles/mapbox/light-v11',
+                center: [                                
+                    115.14205,
+                    -8.655942
+                ],
+                zoom: 9
+            });
+
+            map.on("load", function () {
+                console.log("map", map);
+            });
+
+            animate();
+        }
+
+        function animate() {
+            console.log("animate()", map.getBounds());
+        }
+
+        function foo(mapInstance, data) {
+            console.log("foo()", mapInstance);
+
+            var center = [                                
                 115.14205,
                 -8.655942
-            ],
-            zoom: 9
-        });
+            ];
 
+            const bounds = map.getBounds();
+            var height = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
+            var width = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+
+            const OFFSET_PERCENTAGE = 0.10;
+            var h_offset = height * OFFSET_PERCENTAGE;
+            var w_offset = width * OFFSET_PERCENTAGE;
+
+            // Add a GeoJSON source with 3 points.
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            center[0] - w_offset,
+                            center[1] - h_offset
+                        ]
+                    }
+                }
+            });
+            // Add a circle layer
+            map.addLayer({
+                'id': 'der',
+                'type': 'circle',
+                'source': 'points',
+                'paint': {
+                    'circle-color': '#4264fb',
+                    'circle-radius': 38,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff'
+                }
+            });        }
+        function bar(data) {
+            console.log("bar", map);
+        }
+
+        /*
         var center = [                                
             115.14205,
             -8.655942
@@ -68,6 +148,7 @@
                 }
             });
         });
+        */
 
         
         /*
