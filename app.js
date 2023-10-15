@@ -21,6 +21,59 @@ const COORD_CENTER = [
     115.257839, 
     -8.471635
 ];
+const BOUND_BOX_WEB = {
+    "phuket": [
+        [
+            98.04800465357789,
+            7.752937661996512
+        ],
+        [
+            98.78154160177911,
+            8.151493527213887
+        ]
+    ],
+    "koh_tao": [
+        [
+            99.77328594670786,
+            10.057355608026043
+        ],
+        [
+            99.90416289309269,
+            10.128045073024353
+        ]
+    ],
+    "koh_samui": [
+        [
+            99.91289481290858,
+            9.460125644081558
+        ],
+        [
+            100.17605827641927,
+            9.602506950752613
+        ]
+    ],
+    "singapore": [
+        [
+            103.81646041963853,
+            1.2562628408730916
+        ],
+        [
+            104.00478793236795,
+            1.3995564154381697
+        ]
+    ],
+    "bali": [
+        [
+            114.70468978030357,
+            -8.832635626031418
+        ],
+        [
+            115.99704104218546,
+            -8.13139681745605
+        ]
+    ]
+}
+
 
 const fetchData = fetch('data.json')
     .then(response => {
@@ -37,8 +90,33 @@ fetchData.then(data => {
         generateMap(data);
         renderPulsingDot();
         initFlyTo(data);
+        initFitTo();
     }
 })
+
+
+
+
+/*******************************************************************
+ * 
+ * Fit All 
+ * 
+ * When a user clicks the button, `fitBounds()` zooms and pans
+ * the viewport to contain a bounding box surrounding all Markers.
+ * The [lng, lat] pairs are the southwestern and northeastern
+ * corners of the specified geographical bounds.
+ * 
+ ********************************************************************/
+
+
+function initFitTo() {
+    document.getElementById('fit-all').addEventListener('click', () => {
+        map.fitBounds([
+            [89.20004011241173, -12.342977303436726],   // SW
+            [134.5055133573236, 21.517103163038342]     // NE
+        ]);  
+    });
+}
 
 /*******************************************************************
  * 
@@ -54,6 +132,13 @@ const map = new mapboxgl.Map({
     zoom: 9.5
 });
 
+// Log zoom level and bounding coordinates when the map moves
+map.on('move', function() {
+    var zoom = map.getZoom();
+    var bounds = map.getBounds();
+    console.log('Zoom Level:', zoom);
+    console.log('Bounding Coordinates:', bounds.toArray()); // [southwest, northeast]
+});
 
 // data {name, markers, coordinates}
 function generateMap(data) {
@@ -87,6 +172,12 @@ function generateRegion(region) {
         var marker = new mapboxgl.Marker(el)
             .setLngLat(feature.geometry.coordinates)
             .addTo(map);
+
+        // don't add popup if there are no images
+        if (feature.properties.images.length == 0) {
+            // console.log("No images for this marker, skipping popup...", feature.properties.message);
+            continue;
+        }
 
         const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
         const popup = new mapboxgl
@@ -126,6 +217,22 @@ function generateRegion(region) {
     });
 }
 
+
+/*******************************************************************
+ * 
+ * Zoom Region
+ * 
+ * When the map is very zoomed out, we want to only display a single
+ * Marker from the region to prevent Markers from rendering over each
+ * other. 
+ * 
+ * Then, we want to add event listener so that onClick of those Markers,
+ * we zoom in to that region and display all Markers.
+ *  - map.fitBounds() - hard code
+ *  - zoom level - hard code 
+ * 
+ ********************************************************************/
+
 /*******************************************************************
  * 
  * Markers
@@ -139,6 +246,30 @@ function generateRegion(region) {
 //  addLayer using the source
 //  create a event listener on map click which will fly to clicked circles
 //  test interaction withs with the popup
+
+
+// iterate over the regions
+// checking the cooridnate is in the region 
+// if yes, then return the bounding box for that region
+function lookupRegionBoundingBoxFromMarker(coordinateToCheck) {
+    for (const [region, coordinates] of Object.entries(BOUND_BOX_WEB)) {
+        if (isCoordinateInBoundingBox(coordinateToCheck, coordinates[0], coordinates[1])) {
+            console.log(`Marker is in ${region}`);
+            return coordinates;
+        } else {
+            return null;
+        }
+    }
+}
+
+function isCoordinateInBoundingBox(coordinate, bbox_sw, bbox_ne) {
+    const [minLng, minLat] = bbox_sw;
+    const [maxLng, maxLat] = bbox_ne
+    const [lng, lat] = coordinate;
+
+    return lng >= minLng && lng <= maxLng && lat >= minLat && lat <= maxLat;
+}
+
 function initFlyTo(data) {
     var features = [];
     for (var i = 0; i < data.length; i++) {
@@ -167,40 +298,55 @@ function initFlyTo(data) {
             }
         });
         
-        // Center the map on the coordinates of any clicked circle from the 'circle' layer.
+        // "Center"" the map on the coordinates of any clicked circle from the 'circle' layer.
         map.on('click', 'fly-to-points', (e) => {
             var center = e.features[0].geometry.coordinates;
-            const bounds = map.getBounds();
-            var height  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
-            var width   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+        
+            const zoomThreshold = 9;
+            if (map.getZoom() < zoomThreshold) {
+                console.log("Marker click while map is zoomed out, fitting to Region");
+                console.log("Center:", center);
 
-            // if mobile view, then offset Marker to bottom center of Map
-            // otherwise, offset to bottom left
+                var bb = lookupRegionBoundingBoxFromMarker(center);
+                console.log("boudning box", bb);
+                if (bb == null) return;
 
-            var newCenter = [];
-            if (window.innerWidth < 767) {
-                console.log('Mobile!');
-                const OFFSET_PERCENTAGE = 0.35;
-                var h_offset = height * OFFSET_PERCENTAGE;
-                newCenter = [
-                    center[0],
-                    center[1] + h_offset
-                ];
+                map.fitBounds(
+                    lookupRegionBoundingBoxFromMarker(center)
+                );
             } else {
-                console.log('Desktop!');
-                var h_offset = height * 0.25;
-                var w_offset = width * 0.20;
-                newCenter = [
-                    center[0] + w_offset,
-                    center[1] + h_offset
-                ];
+                // if mobile view, then offset Marker to bottom center of Map
+                // otherwise, offset to bottom left
+                const bounds = map.getBounds();
+                var height  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
+                var width   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+
+                var newCenter = [];
+                if (window.innerWidth < 767) {
+                    // console.log('Mobile!');
+                    const OFFSET_PERCENTAGE = 0.35;
+                    var h_offset = height * OFFSET_PERCENTAGE;
+                    newCenter = [
+                        center[0],
+                        center[1] + h_offset
+                    ];
+                } else {
+                    // console.log('Desktop!');
+                    var h_offset = height * 0.25;
+                    var w_offset = width * 0.20;
+                    newCenter = [
+                        center[0] + w_offset,
+                        center[1] + h_offset
+                    ];
+                }
+        
+                map.flyTo({
+                    center: newCenter,
+                    speed: 0.4,
+                    essential: true // This animation is considered essential with
+                });
             }
-    
-            map.flyTo({
-                center: newCenter,
-                speed: 0.4,
-                essential: true // This animation is considered essential with
-            });
+
 
         });
         

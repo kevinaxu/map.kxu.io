@@ -13,6 +13,8 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
     body {
         margin: 0;
@@ -141,12 +143,40 @@
         box-shadow: 0 0 5px #fff;
     }
 
+    /* Zoom Buttons */
+    .zoom-container {
+        position: fixed; 
+        top: 0.5rem; 
+        left: 0.5rem; 
+    }
+    .zoom-button {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem; 
+        padding-left: .5rem;
+        padding-right: .5rem; 
+        border-radius: 0.1rem; 
+        font-family: monospace;
+        font-size: 12px;
+        line-height: 1rem; 
+        font-weight: 600; 
+        color: #6B7280; 
+        background-color: #ffffff; 
+    }
+    .zoom-button:hover {
+        background-color: #cbcfd5; 
+    }
+
     </style>
 
 </head>
 
 <body>
     <div id="map"></div>
+    <div class="zoom-container">
+        <button id="fit-all" class="zoom-button">
+            Fit All
+        </button>    
+    </div>
     <script src="app.js"></script>
 </body>
 
