@@ -258,33 +258,17 @@ function addPopUpToMarker(feature, marker) {
             popup.remove();
             currentOpenPopup = null;
         } else {
-
-            // PopupListeners(popup);
             var carousel = new PopupCarousel(popup);
             currentOpenPopup = carousel;
-            carousel.initEventListeners();
         }
-        console.log("currentOpenPopup 1", currentOpenPopup);
     });
     popup.on('close', () => {
         currentOpenPopup = null;
-        console.log("currentOpenPopup 2", currentOpenPopup);
     });
     marker.setPopup(popup);
 }
 
 class PopupCarousel {
-    popup;
-    imagePosition;
-    imageCount;
-    prev;
-    next;
-    imgs; 
-    dots;
-
-    printDots() {
-        console.log(this.dots);
-    }
 
     updatePosition() {
         for (let img of this.imgs) {
@@ -301,12 +285,7 @@ class PopupCarousel {
         this.dots[this.imagePosition].classList.add('active');
     }
 
-    // TODO
-    // clicking on next / prev button is throwing error: Uncaught TypeError: this.updatePosition is not a function
-    // "this" = "<a class="prev arrow">❮</a>"
-    // we need "this" to be the PopupCarousel object
     nextImage() {
-        console.log("nextImage()");
         if (this.imagePosition === this.imageCount - 1) {
             this.imagePosition = 0;
         } else {
@@ -315,14 +294,11 @@ class PopupCarousel {
         this.updatePosition();
     }; 
     prevImage() {
-        console.log("prevImage()");
-
         if (this.imagePosition === 0) {
             this.imagePosition = this.imageCount - 1;
         } else {
             this.imagePosition--;
         }
-        console.log("prevImage()", this);
         this.updatePosition();
     }
 
@@ -344,11 +320,12 @@ class PopupCarousel {
         this.popup = popup;
         this.prev = document.querySelector('.prev');
         this.next = document.querySelector('.next');
-        console.log("next", this.next);
         this.imgs = document.querySelectorAll('.carousel-img');
         this.dots = document.querySelectorAll('.dot');
         this.imagePosition = 0;
         this.imageCount = this.imgs.length;
+
+        this.initEventListeners();
     }
 }
 
@@ -607,77 +584,6 @@ function initializeSwipeEventListeners() {
         }
     });
 }
-
-
-
-// For each marker, a popup is created with a button
-// The event listener for the button is now set inside the popup's 'open' event, 
-// ensuring that each button is correctly associated with its respective marker's message.
-function attachPopupListeners(popup) {
-
-    // Variables
-    let prev = popup.getElement.querySelector('.prev');
-    let next = popup.getElement.querySelector('.next');
-    let imgs = popup.getElement.querySelectorAll('.carousel-img');
-    let dots = popup.getElement.querySelectorAll('.dot');
-    //console.log("dots", dots);
-
-    let totalImgs = imgs.length;
-    let imgPosition = 0;
-
-    // Event Listeners
-    next.addEventListener('click', nextImg);
-    prev.addEventListener('click', prevImg);
-
-    // Update Image / Dot position 
-    function updatePosition() {
-        for (let img of imgs) {
-            img.classList.remove('visible');
-            img.classList.add('hidden');
-        }
-        imgs[imgPosition].classList.remove('hidden');
-        imgs[imgPosition].classList.add('visible')
-
-        //   Dots
-        for (let dot of dots) {
-            dot.className = dot.className.replace(" active", "");
-        }
-        dots[imgPosition].classList.add('active');
-
-        console.log("state", imgPosition);
-    }
-
-    // Next Img
-    function nextImg() {
-        if (imgPosition === totalImgs - 1) {
-            imgPosition = 0;
-        } else {
-            imgPosition++;
-        }
-        updatePosition();
-    }
-    //Previous Image
-    function prevImg() {
-        if (imgPosition === 0) {
-            imgPosition = totalImgs - 1;
-        } else {
-            imgPosition--;
-        }
-        updatePosition();
-    }
-
-    // Dot Position
-    dots.forEach((dot, dotPosition) => {
-        dot.addEventListener("click", () => {
-            imgPosition = dotPosition
-            updatePosition(dotPosition)
-        })
-    })
-
-    return popup;
-}
-
-
 
 
 /*******************************************************************
