@@ -24,11 +24,11 @@ const COORD_CENTER = [
 const BOUND_BOX_WEB = {
     "all": [
         [
-            89.20004011241173, 
+            89.20004011241173,
             -12.342977303436726
         ],
         [
-            134.5055133573236, 
+            134.5055133573236,
             21.517103163038342
         ]
     ],
@@ -83,6 +83,68 @@ const BOUND_BOX_WEB = {
         ]
     ]
 }
+const BOUND_BOX_MOBILE = {
+    "all": [
+        [
+            95.37898714168989,
+            -17.928112411988835
+        ],
+        [
+            118.42122415521891,
+            30.142620141057122
+        ]
+    ],
+    "phuket": [
+        [
+            98.25700520854429,
+            7.7597966960227325
+        ],
+        [
+            98.44581871661205,
+            8.164468533165461
+        ]
+    ],
+    "koh_tao": [
+        [
+            99.8067872380941,
+            10.038027352920338
+        ],
+        [
+            99.85593274052593,
+            10.14273819607466
+        ]
+    ],
+    "koh_samui": [
+        [
+            99.94224535787339,
+            9.312283169989882
+        ],
+        [
+            100.11190345587522,
+            9.674411747420763
+        ]
+    ],
+    "singapore":[
+        [
+            103.793504757118,
+            1.103401776461638
+        ],
+        [
+            104.02827547922914,
+            1.6113254662341348
+        ]
+    ],
+    "bali": [
+        [
+            115.02402650911682,
+            -9.279355792538908
+        ],
+        [
+            115.70661479062204,
+            -7.818618975760501
+        ]
+    ]
+}
 
 
 const fetchData = fetch('data.json')
@@ -99,7 +161,7 @@ fetchData.then(data => {
     if (data) {
         generateMap(data);
         renderPulsingDot();
-        initFlyTo(data);
+        initMarkerCirclesAndEventListeners(data);
         initFitBoundsAllMarkers();
     }
 })
@@ -139,7 +201,6 @@ const map = new mapboxgl.Map({
     zoom: 9.5
 });
 
-/*
 // DEBUG: Log zoom level and bounding coordinates when the map moves
 map.on('move', function() {
     var zoom = map.getZoom();
@@ -147,7 +208,6 @@ map.on('move', function() {
     console.log('Zoom Level:', zoom);
     console.log('Bounding Coordinates:', bounds.toArray()); // [southwest, northeast]
 });
-*/
 
 function generateMap(data) {
     for (var i = 0; i < data.length; i++) {
@@ -206,7 +266,6 @@ function addPopUpToMarker(feature, marker) {
  * @param {Object} region - The region object containing markers and coordinates for the route.
  */
 function generateRegion(region) {
-    // Markers
     for (const feature of region.markers.features) {
 
         // do not display markers that were only used for route building
@@ -275,72 +334,87 @@ function isMobileScreenSize() {
  * 
  ********************************************************************/
 
-function initFlyTo(data) {
+/**
+ * Initializes the map with marker circles and event listeners
+ * @param {Object} data - The data containing the markers to be added to the map.
+ */
+function initMarkerCirclesAndEventListeners(data) {
     var features = data.map(item => item.markers.features).flat();
-
     map.on('load', () => {
-
-        // Markers are separate from Layers in Mapbox
-        // Instead of adding individual callbacks to Markers, 
-        // create a separate Layer with transparent circles over Marker coordinates
-        // add a single callback to control Zoom behavior 
-        map.addSource('points', {
-            'type': 'geojson',
-            'data': {
-                'type': 'FeatureCollection',
-                'features': features
-            }
-        });
-        map.addLayer({
-            'id': 'fly-to-points',
-            'type': 'circle',
-            'source': 'points',
-            'paint': {
-                "circle-opacity": 0,
-                'circle-radius': 40,
-                //'circle-stroke-width': 2,
-                //'circle-stroke-color': '#FF0000'
-            }
+        const layerID = 'marker-circles';
+        addLayerForMarkerCircles(features, layerID);
+        
+        map.on('click', layerID, (event) => {
+            handleMarkerCircleClickEvent(event);
         });
         
-        // "Center" the map on the coordinates of any clicked circle from the 'circle' layer
-        // There are a few different actions that happen when the Marker Circle is clicked: 
-        //  - If the zoom level is high enough
-        //      clicking on a Marker will instead zoom to region 
-        //  - If the zoom level is low
-        //      clicking on a Marker will zoom in to that Marker
-        map.on('click', 'fly-to-points', (e) => {
-
-            if (shouldZoomToRegion()) {
-
-                // TODO: mobile zoom 
-                var region = e
-                    .features[0].properties.region
-                    .toLowerCase().replaceAll(" ", "_");
-                map.fitBounds(BOUND_BOX_WEB[region]);
-
-            } else {
-                var center = calculatePopupOpenPosition(e.features[0].geometry.coordinates);
-                map.flyTo({
-                    center: center,
-                    speed: 0.4,
-                    essential: true // This animation is considered essential with
-                });
-            }
-        });
-        
-        // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
-        map.on('mouseenter', 'fly-to-points', () => {
+        // Cursor becomes Pointer when cursor enters any Marker 'circle' object
+        map.on('mouseenter', layerID, () => {
             map.getCanvas().style.cursor = 'pointer';
         });
-        
-        // Change it back to a pointer when it leaves.
-        map.on('mouseleave', 'fly-to-points', () => {
+        map.on('mouseleave', layerID, () => {
             map.getCanvas().style.cursor = '';
         });
     });
 }
 
+/**
+ * "Center" the map on the coordinates of any clicked marker circle
+ *  - If the zoom level is high enough
+ *      clicking on a Marker will instead zoom to region 
+ *  - If the zoom level is low
+ *      clicking on a Marker will zoom in to that Marker
+ * If shouldZoomToRegion() returns true, zooms the map to the region of the clicked marker.
+ * Otherwise, calculates the popup open position and flies to it.
+ * @param {Object} e - The event object.
+ */
+function handleMarkerCircleClickEvent(e) {
+    if (shouldZoomToRegion()) {
+        var region = e
+            .features[0].properties.region
+            .toLowerCase().replaceAll(" ", "_");
+        (isMobileScreenSize()) ? 
+            map.fitBounds(BOUND_BOX_MOBILE[region]) :
+            map.fitBounds(BOUND_BOX_WEB[region]);
+    } else {
+        var center = calculatePopupOpenPosition(e.features[0].geometry.coordinates);
+        map.flyTo({
+            center: center,
+            speed: 0.4,
+            essential: true
+        });
+    }
+}
+
+/**
+ * Adds a layer for marker circles to the map.
+ * Markers are separate from Layers in Mapbox
+ * Instead of adding individual callbacks to Markers, 
+ * create a separate Layer with transparent circles over Marker coordinates
+ * @param {Object[]} features - An array of GeoJSON features.
+ * @param {string} layerID - The ID of the layer to be added.
+ */
+function addLayerForMarkerCircles(features, layerID) {
+    map.addSource('points', {
+        'type': 'geojson',
+        'data': {
+            'type': 'FeatureCollection',
+            'features': features
+        }
+    });
+    map.addLayer({
+        'id': layerID,
+        'type': 'circle',
+        'source': 'points',
+        'paint': {
+            "circle-opacity": 0,
+            'circle-radius': 40,
+            // DEBUG: uncomment to see circles
+            //'circle-stroke-width': 2,
+            //'circle-stroke-color': '#FF0000'
+        }
+    });
+}
 
 /**
  * Calculates the position to open a popup on the map based on the given coordinates.
