@@ -24,11 +24,11 @@ const COORD_CENTER = [
 const BOUND_BOX_WEB = {
     "all": [
         [
-            89.20004011241173,
+            89.20004011241173, 
             -12.342977303436726
         ],
-        [
-            134.5055133573236,
+        [   
+            134.5055133573236,  
             21.517103163038342
         ]
     ],
@@ -145,6 +145,7 @@ const BOUND_BOX_MOBILE = {
         ]
     ]
 }
+var openPopup = null;
 
 
 const fetchData = fetch('data.json')
@@ -163,6 +164,7 @@ fetchData.then(data => {
         renderPulsingDot();
         initMarkerCirclesAndEventListeners(data);
         initFitBoundsAllMarkers();
+        initializeSwipeEventListeners();
     }
 })
 
@@ -201,6 +203,7 @@ const map = new mapboxgl.Map({
     zoom: 9.5
 });
 
+/*
 // DEBUG: Log zoom level and bounding coordinates when the map moves
 map.on('move', function() {
     var zoom = map.getZoom();
@@ -208,6 +211,7 @@ map.on('move', function() {
     console.log('Zoom Level:', zoom);
     console.log('Bounding Coordinates:', bounds.toArray()); // [southwest, northeast]
 });
+*/
 
 function generateMap(data) {
     for (var i = 0; i < data.length; i++) {
@@ -233,6 +237,7 @@ function addMarkerToMap(feature) {
     return marker;
 }
 
+var currentOpenPopup = null;
 function addPopUpToMarker(feature, marker) {
     var anchor = (isMobileScreenSize()) ? "top"         : "top-left";
     var offset = (isMobileScreenSize()) ? [-60, -700]   : [150, -500];
@@ -248,12 +253,30 @@ function addPopUpToMarker(feature, marker) {
         .setHTML(popupHTML);
 
     popup.on('open', () => {
+        /*
+        var currentPopup = null;
+        if (openPopup) {
+            console.log("pop is already open");
+            currentPopup = openPopup;
+        } else {
+            console.log("pop is NOT open");
+            currentPopup = popup;
+        }
+        */
+
         // don't show popup if we're zooming to region 
         if (shouldZoomToRegion()) {
             popup.remove();
+            currentOpenPopup = null;
         } else {
-            attachPopupListeners(popup);
+            //attachPopupListeners(popup);
+            var carousel = new PopupCarousel(popup);
+            console.log("carousel", carousel);
+            currentOpenPopup = carousel;
         }
+    });
+    popup.on('close', () => {
+        openPopup = null;
     });
     marker.setPopup(popup);
 }
@@ -409,6 +432,7 @@ function addLayerForMarkerCircles(features, layerID) {
         'paint': {
             "circle-opacity": 0,
             'circle-radius': 40,
+
             // DEBUG: uncomment to see circles
             //'circle-stroke-width': 2,
             //'circle-stroke-color': '#FF0000'
@@ -488,7 +512,123 @@ function generateDotHTML(count) {
     return strings.join("\n");
 }
 
+// HERE: When a swipe event is detected
+//  - swipe left: next
+//  - swipe right: prev
+function initializeSwipeEventListeners() {
+    let touchstartX = 0
+    let touchendX = 0
+    
+    document.addEventListener('touchstart', (event) => {
+        touchstartX = event.changedTouches[0].screenX
+    });
+    document.addEventListener('touchend', (event) => {
+        if (openPopup === null) return;
 
+        touchendX = event.changedTouches[0].screenX
+        if (touchendX < touchstartX) {
+            console.log('swiped left!');
+            getNextPopupImage();
+
+
+
+
+
+            //openPopup.nextImg();
+        }
+        if (touchendX > touchstartX) {
+            console.log('swiped right!')
+            //openPopup.prevImg();
+        }
+    });
+}
+
+
+// Store the open popup object in Global variable
+// in addition, store methods for: 
+//  - store image position and total number
+//  - interating to the next image
+//  - interating to the previous image
+//  - update the dots based on image position 
+
+// Usage
+//  - add event listener for clicking on buttons
+//  - if swiped, then call the methods for next/prev image
+//      which will update the global state
+function PopupCarousel(popup) {
+    this.popup = null;
+    this.imagePosition = 0;
+    this.imageCount = 0;
+    this.prev = null;
+    this.next = null;
+    this.imgs = null;
+    this.dots = null;
+
+    this.constructor = function(popup) {
+        console.log("popup", popup.getElement());
+
+        this.popup = popup;
+        this.prev = popup.getElement().querySelector('.prev');
+        this.next = popup.getElement().querySelector('.next');
+        this.imgs = popup.getElement().querySelector('.carousel-img');
+        this.dots = popup.getElement().querySelector('.dot');
+        this.imagePosition = 0;
+        this.imageCount = this.imgs.length;
+
+        console.log("dots", this.dots);
+
+        console.log("constructor popupCarousel()");
+        // Event Listeners: Button Click
+        this.next.addEventListener('click', this.nextImg);
+        this.prev.addEventListener('click', this.prevImg);
+
+        // Event Listeners: Dot Click
+        this.dots.forEach((dot, dotPosition) => {
+            dot.addEventListener("click", () => {
+                this.imagePosition = dotPosition;
+                this.updatePosition(dotPosition);
+            })
+        })
+    }
+
+    this.nextImage = function() {
+        console.log("nextImage()");
+
+        if (this.imagePosition === this.imageCount - 1) {
+            this.imagePosition = 0;
+        } else {
+            this.imagePosition++;
+        }
+        this.updatePosition();
+    };
+    this.prevImage = function() {
+        console.log("prevImage()");
+
+        if (this.imagePosition === 0) {
+            this.imagePosition = this.imageCount - 1;
+        } else {
+            this.imagePosition--;
+        }
+        this.updatePosition();
+    }
+
+    this.updatePosition = function() {
+        for (let img of this.imgs) {
+            img.classList.remove('visible');
+            img.classList.add('hidden');
+        }
+        this.imgs[imgPosition].classList.remove('hidden');
+        this.imgs[imgPosition].classList.add('visible')
+
+        //   Dots
+        for (let dot of this.dots) {
+            dot.className = dot.className.replace(" active", "");
+        }
+        this.dots[imgPosition].classList.add('active');
+    }
+
+    this.constructor(popup);
+}
 
 
 // For each marker, a popup is created with a button
@@ -501,6 +641,7 @@ function attachPopupListeners(popup) {
     let next = popup.getElement().querySelector('.next');
     let imgs = popup.getElement().querySelectorAll('.carousel-img');
     let dots = popup.getElement().querySelectorAll('.dot');
+    //console.log("dots", dots);
 
     let totalImgs = imgs.length;
     let imgPosition = 0;
@@ -523,6 +664,8 @@ function attachPopupListeners(popup) {
             dot.className = dot.className.replace(" active", "");
         }
         dots[imgPosition].classList.add('active');
+
+        console.log("state", imgPosition);
     }
 
     // Next Img
@@ -543,6 +686,7 @@ function attachPopupListeners(popup) {
         }
         updatePosition();
     }
+
     // Dot Position
     dots.forEach((dot, dotPosition) => {
         dot.addEventListener("click", () => {
@@ -550,7 +694,11 @@ function attachPopupListeners(popup) {
             updatePosition(dotPosition)
         })
     })
+
+    return popup;
 }
+
+
 
 
 /*******************************************************************
