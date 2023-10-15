@@ -100,26 +100,26 @@ fetchData.then(data => {
         generateMap(data);
         renderPulsingDot();
         initFlyTo(data);
-        initFitTo();
+        initFitBoundsAllMarkers();
     }
 })
 
 
-
-
 /*******************************************************************
  * 
- * Fit All 
+ * Actions
  * 
- * When a user clicks the button, `fitBounds()` zooms and pans
- * the viewport to contain a bounding box surrounding all Markers.
- * The [lng, lat] pairs are the southwestern and northeastern
- * corners of the specified geographical bounds.
+ * Fit All  
+ *  When a user clicks the button, `fitBounds()` zooms and pans
+ *  the viewport to contain a bounding box surrounding all Markers.
+ *  The [lng, lat] pairs are the southwestern and northeastern
+ *  corners of the specified geographical bounds.
+ * 
+ * - https://docs.mapbox.com/mapbox-gl-js/api/map/#map#fitbounds
  * 
  ********************************************************************/
 
-
-function initFitTo() {
+function initFitBoundsAllMarkers() {
     document.getElementById('fit-all').addEventListener('click', () => {
         map.fitBounds(BOUND_BOX_WEB["all"]);
     });
@@ -140,7 +140,7 @@ const map = new mapboxgl.Map({
 });
 
 /*
-// Log zoom level and bounding coordinates when the map moves
+// DEBUG: Log zoom level and bounding coordinates when the map moves
 map.on('move', function() {
     var zoom = map.getZoom();
     var bounds = map.getBounds();
@@ -149,65 +149,73 @@ map.on('move', function() {
 });
 */
 
-// data {name, markers, coordinates}
 function generateMap(data) {
     for (var i = 0; i < data.length; i++) {
         generateRegion(data[i]);
     }
 };
 
+
+/**
+ * Adds a marker to the map using the provided feature object.
+ * @param {Object} feature - The feature object containing the marker's properties and coordinates.
+ * @param {string} feature.properties.icon - The URL of the marker's icon image.
+ * @param {Array<number>} feature.geometry.coordinates - The longitude and latitude coordinates of the marker.
+ */
+function addMarkerToMap(feature) {
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.backgroundImage = `url(${feature.properties.icon})`;
+
+    var marker = new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .addTo(map);
+    return marker;
+}
+
+function addPopUpToMarker(feature, marker) {
+    var anchor = (isMobileScreenSize()) ? "top"         : "top-left";
+    var offset = (isMobileScreenSize()) ? [-60, -700]   : [150, -500];
+
+    const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
+    const popup = new mapboxgl
+        .Popup({ 
+            anchor: anchor,
+            offset: offset,
+            closeOnClick: true,
+            closeButton: false
+        })
+        .setHTML(popupHTML);
+
+    popup.on('open', () => {
+        // don't show popup if we're zooming to region 
+        if (shouldZoomToRegion()) {
+            popup.remove();
+        } else {
+            attachPopupListeners(popup);
+        }
+    });
+    marker.setPopup(popup);
+}
+
+/**
+ * Generates markers and a route on a map for a given region.
+ * Mobile and Desktop have different values for:
+ *  - anchor: popup display relative to marker
+ *  - offset: coordinates to move popup
+ * @param {Object} region - The region object containing markers and coordinates for the route.
+ */
 function generateRegion(region) {
-    const geojson = region.markers;
-
-    // MEDIA QUERY CHECK 
-    var anchor = (window.innerWidth < 767) ?
-        "top" :             // mobile 
-        "top-left";         // desktop
-    var offset = (window.innerWidth < 767) ?
-        [-60, -700] :       // mobile 
-        [150, -500];        // desktop 
-
     // Markers
-    for (const feature of geojson.features) {
-        if (feature.properties.ignore === true) {
-            continue;
-        }
+    for (const feature of region.markers.features) {
 
-        // Create a DOM element for each marker.
-        const el = document.createElement('div');
-        el.className = 'marker';
-        el.style.backgroundImage = `url(${feature.properties.icon})`;
+        // do not display markers that were only used for route building
+        if (feature.properties.ignore === true) continue;
+        var marker = addMarkerToMap(feature);
 
-        var marker = new mapboxgl.Marker(el)
-            .setLngLat(feature.geometry.coordinates)
-            .addTo(map);
-
-        // don't add popup if there are no images
-        if (feature.properties.images.length == 0) {
-            // console.log("No images for this marker, skipping popup...", feature.properties.message);
-            continue;
-        }
-
-        const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
-        const popup = new mapboxgl
-            .Popup({ 
-                anchor: anchor,
-                offset: offset,
-                closeOnClick: true,
-                closeButton: false
-            })
-            .setHTML(popupHTML);
-
-        popup.on('open', () => {
-            // don't show popup if we're zooming to region 
-            if (shouldZoomToRegion()) {
-                popup.remove();
-            } else {
-                attachPopupListeners(popup);
-            }
-        });
-
-        marker.setPopup(popup);
+        // do not add popup if there are no images
+        if (feature.properties.images.length == 0) continue;
+        var marker = addPopUpToMarker(feature, marker);
     }
 
     // Route
@@ -231,9 +239,19 @@ function generateRegion(region) {
     });
 }
 
+/*******************************************************************
+ * 
+ * Helpers
+ * 
+ ********************************************************************/
+
 function shouldZoomToRegion() {
     const zoomThreshold = 9;
     return map.getZoom() < zoomThreshold;
+}
+
+function isMobileScreenSize() {
+    return (window.innerWidth < 767);
 }
 
 /*******************************************************************
@@ -257,14 +275,15 @@ function shouldZoomToRegion() {
  * 
  ********************************************************************/
 
-
 function initFlyTo(data) {
-    var features = [];
-    for (var i = 0; i < data.length; i++) {
-        features = features.concat(data[i].markers.features);
-    }
+    var features = data.map(item => item.markers.features).flat();
 
     map.on('load', () => {
+
+        // Markers are separate from Layers in Mapbox
+        // Instead of adding individual callbacks to Markers, 
+        // create a separate Layer with transparent circles over Marker coordinates
+        // add a single callback to control Zoom behavior 
         map.addSource('points', {
             'type': 'geojson',
             'data': {
@@ -272,8 +291,6 @@ function initFlyTo(data) {
                 'features': features
             }
         });
-
-        // Add a circle layer
         map.addLayer({
             'id': 'fly-to-points',
             'type': 'circle',
@@ -286,48 +303,29 @@ function initFlyTo(data) {
             }
         });
         
-        // "Center" the map on the coordinates of any clicked circle from the 'circle' layer.
+        // "Center" the map on the coordinates of any clicked circle from the 'circle' layer
+        // There are a few different actions that happen when the Marker Circle is clicked: 
+        //  - If the zoom level is high enough
+        //      clicking on a Marker will instead zoom to region 
+        //  - If the zoom level is low
+        //      clicking on a Marker will zoom in to that Marker
         map.on('click', 'fly-to-points', (e) => {
 
             if (shouldZoomToRegion()) {
+
+                // TODO: mobile zoom 
                 var region = e
                     .features[0].properties.region
                     .toLowerCase().replaceAll(" ", "_");
                 map.fitBounds(BOUND_BOX_WEB[region]);
 
             } else {
-                // if mobile view, then offset Marker to bottom center of Map
-                // otherwise, offset to bottom left
-                const center = e.features[0].geometry.coordinates;
-                const bounds = map.getBounds();
-                var height  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
-                var width   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
-
-                var newCenter = [];
-                if (window.innerWidth < 767) {
-                    // console.log('Mobile!');
-                    const OFFSET_PERCENTAGE = 0.35;
-                    var h_offset = height * OFFSET_PERCENTAGE;
-                    newCenter = [
-                        center[0],
-                        center[1] + h_offset
-                    ];
-                } else {
-                    // console.log('Desktop!');
-                    var h_offset = height * 0.25;
-                    var w_offset = width * 0.20;
-                    newCenter = [
-                        center[0] + w_offset,
-                        center[1] + h_offset
-                    ];
-                }
-        
+                var center = calculatePopupOpenPosition(e.features[0].geometry.coordinates);
                 map.flyTo({
-                    center: newCenter,
+                    center: center,
                     speed: 0.4,
                     essential: true // This animation is considered essential with
                 });
-
             }
         });
         
@@ -342,6 +340,41 @@ function initFlyTo(data) {
         });
     });
 }
+
+
+/**
+ * Calculates the position to open a popup on the map based on the given coordinates.
+ *  - mobile: marker position bottom-center, popup position top-center
+ *  - desktop: marker position bottom-left, popup position center-right
+ * @param {number[]} coordinates - The coordinates to calculate the popup position from.
+ * @returns {number[]} - The new center coordinates for the popup.
+ */
+function calculatePopupOpenPosition(center) {
+    const bounds = map.getBounds();
+    var heightWindow  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat),
+        widthWindow   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+
+    var newCenter = [];
+    if (isMobileScreenSize()) {
+        newCenter = [
+            center[0] + (widthWindow * 0),
+            center[1] + (heightWindow * 0.35)
+        ];
+    } else {
+        newCenter = [
+            center[0] + (widthWindow * 0.20),
+            center[1] + (heightWindow * 0.25)
+        ];
+    }
+    return newCenter;
+}
+
+
+/*******************************************************************
+ * 
+ * Popup Static Generation
+ * 
+ ********************************************************************/
 
 function getPopupHTML(images, caption) {
     const popupHTML = `
@@ -380,6 +413,9 @@ function generateDotHTML(count) {
     }
     return strings.join("\n");
 }
+
+
+
 
 // For each marker, a popup is created with a button
 // The event listener for the button is now set inside the popup's 'open' event, 
