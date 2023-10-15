@@ -48,7 +48,7 @@
 
         .mapboxgl-popup-content {
             padding: 16px;
-            width: 480px;
+            width: 560px;
             height: 100%;
             border-radius: .1em;
             box-shadow: 0 0 5px rgb(204, 204, 204);
@@ -74,8 +74,16 @@
         .carousel-container img {
             border-radius: .1em;
             width: 100%;
-            height: 480px;
+            height: 560px;
             object-fit: cover;
+        }
+        /* Media query for screens with a maximum width of 767px (adjust as needed) */
+        @media screen and (max-width: 767) {
+            .mapboxgl-popup-content {
+                padding: 12px;
+                width: 360px;
+                height: 100%;            
+            }
         }
         .carousel-captions {
             width: 100%;
@@ -317,6 +325,14 @@
             "Caption 3"
         ]
 
+        // MEDIA QUERY CHECK 
+        var anchor = (window.innerWidth < 767) ?
+            "top" : 
+            "top-left";
+        var offset = (window.innerWidth < 767) ?
+            [-60, -700] :
+            [150, -500];
+
         for (var i = 0; i < markers.length; i++) {
             const markerData = markers[i];
 
@@ -329,8 +345,8 @@
                 getPopupHTML(images2, captions);
 
             const popup = new mapboxgl.Popup({
-                anchor: "top",
-                offset: [-60, -700],
+                anchor: anchor,
+                offset: offset,
                 closeOnClick: true, 
                 closeButton: false 
             })
@@ -397,19 +413,35 @@
             map.on('click', 'fly-to-points', (e) => {
 
                 var center = e.features[0].geometry.coordinates;
-
                 const bounds = map.getBounds();
-                var height = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
-                var width = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
-        
-                const OFFSET_PERCENTAGE = 0.35;
-                var h_offset = height * OFFSET_PERCENTAGE;
+                var height  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat);
+                var width   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
 
-                map.flyTo({
-                    center: [
+                // if mobile view, then offset Marker to bottom center of Map
+                // otherwise, offset to bottom left
+
+                var newCenter = [];
+                if (window.innerWidth < 767) {
+                    console.log('Mobile!');
+                    const OFFSET_PERCENTAGE = 0.35;
+                    var h_offset = height * OFFSET_PERCENTAGE;
+                    newCenter = [
                         center[0],
                         center[1] + h_offset
-                    ],
+                    ];
+                } else {
+                    console.log('Desktop!');
+                    const OFFSET_PERCENTAGE = 0.15;
+                    var h_offset = height * OFFSET_PERCENTAGE;
+                    var w_offset = width * OFFSET_PERCENTAGE;
+                    newCenter = [
+                        center[0] + w_offset,
+                        center[1] + h_offset
+                    ];
+                }
+        
+                map.flyTo({
+                    center: newCenter,
                     speed: 0.4,
                     essential: true // This animation is considered essential with
                 });
@@ -426,6 +458,19 @@
             });
         });
     }
+
+    function checkMediaQuery() {
+        if (window.innerWidth < 640) {
+            console.log('Mobile!');
+        }
+    }
+
+    // Initial check
+    checkMediaQuery();
+
+    // Add a listener for when the window resizes
+    window.addEventListener('resize', checkMediaQuery);
+
 
 
     </script>
