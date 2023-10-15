@@ -253,32 +253,103 @@ function addPopUpToMarker(feature, marker) {
         .setHTML(popupHTML);
 
     popup.on('open', () => {
-        /*
-        var currentPopup = null;
-        if (openPopup) {
-            console.log("pop is already open");
-            currentPopup = openPopup;
-        } else {
-            console.log("pop is NOT open");
-            currentPopup = popup;
-        }
-        */
-
         // don't show popup if we're zooming to region 
         if (shouldZoomToRegion()) {
             popup.remove();
             currentOpenPopup = null;
         } else {
-            //attachPopupListeners(popup);
+
+            // PopupListeners(popup);
             var carousel = new PopupCarousel(popup);
-            console.log("carousel", carousel);
             currentOpenPopup = carousel;
+            carousel.initEventListeners();
         }
+        console.log("currentOpenPopup 1", currentOpenPopup);
     });
     popup.on('close', () => {
-        openPopup = null;
+        currentOpenPopup = null;
+        console.log("currentOpenPopup 2", currentOpenPopup);
     });
     marker.setPopup(popup);
+}
+
+class PopupCarousel {
+    popup;
+    imagePosition;
+    imageCount;
+    prev;
+    next;
+    imgs; 
+    dots;
+
+    printDots() {
+        console.log(this.dots);
+    }
+
+    updatePosition() {
+        for (let img of this.imgs) {
+            img.classList.remove('visible');
+            img.classList.add('hidden');
+        }
+        this.imgs[this.imagePosition].classList.remove('hidden');
+        this.imgs[this.imagePosition].classList.add('visible')
+
+        //   Dots
+        for (let dot of this.dots) {
+            dot.className = dot.className.replace(" active", "");
+        }
+        this.dots[this.imagePosition].classList.add('active');
+    }
+
+    // TODO
+    // clicking on next / prev button is throwing error: Uncaught TypeError: this.updatePosition is not a function
+    // "this" = "<a class="prev arrow">❮</a>"
+    // we need "this" to be the PopupCarousel object
+    nextImage() {
+        console.log("nextImage()");
+        if (this.imagePosition === this.imageCount - 1) {
+            this.imagePosition = 0;
+        } else {
+            this.imagePosition++;
+        }
+        this.updatePosition();
+    }; 
+    prevImage() {
+        console.log("prevImage()");
+
+        if (this.imagePosition === 0) {
+            this.imagePosition = this.imageCount - 1;
+        } else {
+            this.imagePosition--;
+        }
+        console.log("prevImage()", this);
+        this.updatePosition();
+    }
+
+    initEventListeners() {
+        // Event Listeners: Button Click
+        this.next.addEventListener('click', this.nextImage.bind(this));
+        this.prev.addEventListener('click', this.prevImage.bind(this));
+
+        // Event Listeners: Dot Click
+        this.dots.forEach((dot, dotPosition) => {
+            dot.addEventListener("click", () => {
+                this.imagePosition = dotPosition;
+                this.updatePosition(dotPosition);
+            })
+        })
+    }
+
+    constructor(popup) {
+        this.popup = popup;
+        this.prev = document.querySelector('.prev');
+        this.next = document.querySelector('.next');
+        console.log("next", this.next);
+        this.imgs = document.querySelectorAll('.carousel-img');
+        this.dots = document.querySelectorAll('.dot');
+        this.imagePosition = 0;
+        this.imageCount = this.imgs.length;
+    }
 }
 
 /**
@@ -523,112 +594,20 @@ function initializeSwipeEventListeners() {
         touchstartX = event.changedTouches[0].screenX
     });
     document.addEventListener('touchend', (event) => {
-        if (openPopup === null) return;
+        if (currentOpenPopup === null) return;
 
         touchendX = event.changedTouches[0].screenX
         if (touchendX < touchstartX) {
             console.log('swiped left!');
-            getNextPopupImage();
-
-
-
-
-
-            //openPopup.nextImg();
+            currentOpenPopup.nextImage();
         }
         if (touchendX > touchstartX) {
             console.log('swiped right!')
-            //openPopup.prevImg();
+            currentOpenPopup.prevImage();
         }
     });
 }
 
-
-// Store the open popup object in Global variable
-// in addition, store methods for: 
-//  - store image position and total number
-//  - interating to the next image
-//  - interating to the previous image
-//  - update the dots based on image position 
-
-// Usage
-//  - add event listener for clicking on buttons
-//  - if swiped, then call the methods for next/prev image
-//      which will update the global state
-function PopupCarousel(popup) {
-    this.popup = null;
-    this.imagePosition = 0;
-    this.imageCount = 0;
-    this.prev = null;
-    this.next = null;
-    this.imgs = null;
-    this.dots = null;
-
-    this.constructor = function(popup) {
-        console.log("popup", popup.getElement());
-
-        this.popup = popup;
-        this.prev = popup.getElement().querySelector('.prev');
-        this.next = popup.getElement().querySelector('.next');
-        this.imgs = popup.getElement().querySelector('.carousel-img');
-        this.dots = popup.getElement().querySelector('.dot');
-        this.imagePosition = 0;
-        this.imageCount = this.imgs.length;
-
-        console.log("dots", this.dots);
-
-        console.log("constructor popupCarousel()");
-        // Event Listeners: Button Click
-        this.next.addEventListener('click', this.nextImg);
-        this.prev.addEventListener('click', this.prevImg);
-
-        // Event Listeners: Dot Click
-        this.dots.forEach((dot, dotPosition) => {
-            dot.addEventListener("click", () => {
-                this.imagePosition = dotPosition;
-                this.updatePosition(dotPosition);
-            })
-        })
-    }
-
-    this.nextImage = function() {
-        console.log("nextImage()");
-
-        if (this.imagePosition === this.imageCount - 1) {
-            this.imagePosition = 0;
-        } else {
-            this.imagePosition++;
-        }
-        this.updatePosition();
-    };
-    this.prevImage = function() {
-        console.log("prevImage()");
-
-        if (this.imagePosition === 0) {
-            this.imagePosition = this.imageCount - 1;
-        } else {
-            this.imagePosition--;
-        }
-        this.updatePosition();
-    }
-
-    this.updatePosition = function() {
-        for (let img of this.imgs) {
-            img.classList.remove('visible');
-            img.classList.add('hidden');
-        }
-        this.imgs[imgPosition].classList.remove('hidden');
-        this.imgs[imgPosition].classList.add('visible')
-
-        //   Dots
-        for (let dot of this.dots) {
-            dot.className = dot.className.replace(" active", "");
-        }
-        this.dots[imgPosition].classList.add('active');
-    }
-
-    this.constructor(popup);
-}
 
 
 // For each marker, a popup is created with a button
@@ -637,10 +616,10 @@ function PopupCarousel(popup) {
 function attachPopupListeners(popup) {
 
     // Variables
-    let prev = popup.getElement().querySelector('.prev');
-    let next = popup.getElement().querySelector('.next');
-    let imgs = popup.getElement().querySelectorAll('.carousel-img');
-    let dots = popup.getElement().querySelectorAll('.dot');
+    let prev = popup.getElement.querySelector('.prev');
+    let next = popup.getElement.querySelector('.next');
+    let imgs = popup.getElement.querySelectorAll('.carousel-img');
+    let dots = popup.getElement.querySelectorAll('.dot');
     //console.log("dots", dots);
 
     let totalImgs = imgs.length;
