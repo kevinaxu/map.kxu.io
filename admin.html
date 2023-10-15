@@ -345,6 +345,7 @@
                                 <p class="marker-name text-lg font-semibold" onclick="makeEditable(this)">${marker.name}</p>
                                 <p class="marker-coordinates text-xs text-gray-700" onclick="makeEditable(this)">${JSON.stringify(marker.coordinates)}</p>
                                 <p class="marker-icon pt-2 text-xs text-gray-700" onclick="makeEditableImage(this, true)">${marker.icon}</p>
+                                <p class="marker-region hidden">${marker.region}</p>
                                 <p class="marker-captions pt-2 text-sm" onclick="makeEditable(this)">${marker.captions}</p>
                             </div>
                         </div>
@@ -432,13 +433,11 @@
             }
 
             function dumpState() {
-
                 var objects = [];
 
                 const regions = document.querySelectorAll('.region');
                 regions.forEach((region, index) => {
                     const name = region.querySelector('.region-name').innerHTML;
-
                     objects.push({
                         name: name,
                         markers: dumpMarkers(region)
@@ -472,6 +471,7 @@
                     } else {
                         markerObject.captions = marker.querySelector('.marker-captions').innerHTML;
                         markerObject.icon = marker.querySelector('.marker-icon').innerHTML;
+                        markerObject.region = marker.querySelector('.marker-region').innerHTML;
 
                         // grab images src
                         const images = marker.querySelectorAll('.marker-image');
