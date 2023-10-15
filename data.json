@@ -78989,7 +78989,7 @@
               "/assets/phuket/airport_2.jpg",
               "/assets/phuket/airport_3.jpg"
             ],
-            "captions": "Ready for the journey..."
+            "captions": "All ready for the journey... just two bigs bags (thanks Lily and Cyrus) and a bowl full of Coq au Vin! "
           },
           "geometry": {
             "type": "Point",
@@ -79005,13 +79005,13 @@
             "message": "Sky and Sea Condos",
             "icon": "https://sdk.bitmoji.com/render/panel/10225328-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
-              "/assets/phuket/sky_1.jpg",
-              "/assets/phuket/sky_2.jpg",
-              "/assets/phuket/sky_3.jpg",
               "/assets/phuket/sky_4.jpg",
-              "/assets/phuket/salem_1.jpg"
+              "/assets/phuket/sky_2.jpg",
+              "/assets/phuket/salem_1.jpg",
+              "/assets/phuket/sky_1.jpg",
+              "/assets/phuket/sky_3.jpg"
             ],
-            "captions": "First stop in southeast asia, Phuket!"
+            "captions": "Relaxing at our very first stop of the trip. The AirBnB had great views of the city and a pool perfect for practicing for our scuba swim test! Kevin made friends with all the local strays (cats) "
           },
           "geometry": {
             "type": "Point",
@@ -79025,12 +79025,12 @@
           "type": "Feature",
           "properties": {
             "message": "The Pad Thai Shop",
-            "icon": "https://sdk.bitmoji.com/render/panel/10225328-132533800_29-s1-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10237070-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/pad_thai_1.jpg",
               "/assets/phuket/pad_thai_2.jpg"
             ],
-            "captions": "Local pad thai shop down the street - first meal of our trip!"
+            "captions": "We were starving after literally two full days of traveling... the moment we arrived, we dropped off our bags and headed straight to the local pad thai shop down the street. The menu was sparse but everything on it was delicious (and cheap!)"
           },
           "geometry": {
             "type": "Point",
@@ -79060,14 +79060,14 @@
             "message": "The Big Bhudda Hike",
             "icon": "https://sdk.bitmoji.com/render/panel/20035433-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
-              "/assets/phuket/hike_1.jpg",
+              "/assets/phuket/hike_5.jpg",
               "/assets/phuket/hike_2.jpg",
+              "/assets/phuket/hike_1.jpg",
               "/assets/phuket/hike_3.jpg",
               "/assets/phuket/hike_4.jpg",
-              "/assets/phuket/hike_5.jpg",
               "/assets/phuket/hike_6.jpg"
             ],
-            "captions": "Bushwacking up to the Big Bhudda "
+            "captions": "We were feeling adventurous and spontaneously decided to hike up to the Big Bhudda! Unfortunately, we went up with minimal research and ran into 90+ degree heat, swarms of mosquitos, and got lost in the jungle. After finally making it up, we were turned away for not being culturally sensitive and wearing appropriate attire."
           },
           "geometry": {
             "type": "Point",
@@ -79081,7 +79081,7 @@
           "type": "Feature",
           "properties": {
             "message": "The Big Bhudda",
-            "icon": "https://sdk.bitmoji.com/render/panel/20035433-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20000713-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/bhudda_1.jpg",
               "/assets/phuket/bhudda_2.jpg",
@@ -79090,7 +79090,7 @@
               "/assets/phuket/bhudda_5.jpg",
               "/assets/phuket/bhudda_6.jpg"
             ],
-            "captions": "Bushwacking up to the Big Bhudda. Not pictured, getting bounced at the entrance for not covering up our shoulders... "
+            "captions": "Big Bhudda: The Return. We were finally granted entrance after a change of clothes and a ride up the mountain. The Bhudda was much more magnificent in person and we had great views of the city below. On the way down, we encountered some friendly and photogenic monkeys! This was the last positive monkey encounter..."
           },
           "geometry": {
             "type": "Point",
@@ -79123,7 +79123,7 @@
               "/assets/phuket/kata_1.jpg",
               "/assets/phuket/kata_2.jpg"
             ],
-            "captions": "Exploring Kata beach! "
+            "captions": "A small but quaint Phuket beach. Loved the low tides and did a little snorkeling as part of our scuba training. "
           },
           "geometry": {
             "type": "Point",
@@ -79151,15 +79151,15 @@
           "type": "Feature",
           "properties": {
             "message": "Hog's Head",
-            "icon": "https://render.bitstrips.com/v2/cpanel/9669304-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+            "icon": "https://sdk.bitmoji.com/render/panel/10212708-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
-              "/assets/phuket/hp_1.jpg",
+              "/assets/phuket/hp_5.jpg",
               "/assets/phuket/hp_2.jpg",
-              "/assets/phuket/hp_3.jpg",
               "/assets/phuket/hp_4.jpg",
-              "/assets/phuket/hp_5.jpg"
+              "/assets/phuket/hp_1.jpg",
+              "/assets/phuket/hp_3.jpg"
             ],
-            "captions": "Straight outta Hogsmead! "
+            "captions": "Old Town in Phuket has it all - little cafes, shops, massage parlors. We stumbled into The Hog's Head, a knock-off Harry-Potter themed cafe in Hogsmead - this turned out to be the perfect spot to nurse some tea and get away from the heat as Kevin was beginning to feel the effects of an ill-advised hawker mango smoothie."
           },
           "geometry": {
             "type": "Point",
@@ -79173,20 +79173,20 @@
           "type": "Feature",
           "properties": {
             "message": "Old Town Phuket",
-            "icon": "https://sdk.bitmoji.com/render/panel/20051260-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20085085-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
-              "/assets/phuket/old_town_1.jpg",
-              "/assets/phuket/old_town_2.jpg",
-              "/assets/phuket/old_town_3.jpg",
+              "/assets/phuket/old_town_9.jpg",
+              "/assets/phuket/old_town_6.jpg",
               "/assets/phuket/old_town_4.jpg",
               "/assets/phuket/old_town_5.jpg",
-              "/assets/phuket/old_town_6.jpg",
-              "/assets/phuket/old_town_7.jpg",
+              "/assets/phuket/old_town_2.jpg",
+              "/assets/phuket/old_town_1.jpg",
               "/assets/phuket/old_town_8.jpg",
-              "/assets/phuket/old_town_9.jpg",
+              "/assets/phuket/old_town_3.jpg",
+              "/assets/phuket/old_town_7.jpg",
               "/assets/phuket/old_town_10.jpg"
             ],
-            "captions": "Shopping in Old Town "
+            "captions": "Loved Old Town area so much that we ended up coming back. Old Town is known for its architecture, which is influenced by both Chinese and Portuguese aesthetic. "
           },
           "geometry": {
             "type": "Point",
@@ -79200,13 +79200,13 @@
           "type": "Feature",
           "properties": {
             "message": "Sama Onsen",
-            "icon": "https://render.bitstrips.com/v2/cpanel/9669304-102140752402_2-s5-v1.png?transparent=1&amp;palette=1&amp;width=300",
+            "icon": "https://sdk.bitmoji.com/render/panel/20051260-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/onsen_1.jpg",
               "/assets/phuket/onsen_2.jpg",
               "/assets/phuket/onsen_3.jpg"
             ],
-            "captions": "Japanese spa day"
+            "captions": "When it's too hot to do anything else... it's time to hit the spa (thanks to Tahaiya for the recommendation!) This was a traditional Japanese-style Onsen, which combines massage with a relaxing soak. We loved it so much that we came twice! "
           },
           "geometry": {
             "type": "Point",
@@ -79233,12 +79233,12 @@
         {
           "type": "Feature",
           "properties": {
-            "message": "Avista",
-            "icon": "https://render.bitstrips.com/v2/cpanel/9754270-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+            "message": "Avista Resort",
+            "icon": "https://sdk.bitmoji.com/render/panel/10232854-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/resort_1.jpg"
             ],
-            "captions": "Avista resorts"
+            "captions": "Turns out just because you're a 5-star resort, doesn't mean you have 5-star food... "
           },
           "geometry": {
             "type": "Point",
@@ -79268,14 +79268,14 @@
             "message": "Naka Night Market",
             "icon": "https://render.bitstrips.com/v2/cpanel/9754270-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
             "images": [
-              "/assets/phuket/naka_1.jpg",
+              "/assets/phuket/naka_6.jpg",
               "/assets/phuket/naka_2.jpg",
               "/assets/phuket/naka_3.jpg",
-              "/assets/phuket/naka_4.jpg",
               "/assets/phuket/naka_5.jpg",
-              "/assets/phuket/naka_6.jpg"
+              "/assets/phuket/naka_1.jpg",
+              "/assets/phuket/naka_4.jpg"
             ],
-            "captions": "Naka Night Market"
+            "captions": "Our first night market experience was a hit! The market was bustling with activity - live music, a huge variety of food and drinks, locals and tourists alike. We had the best Thai Coffee, fried whole crab, and savory tarts."
           },
           "geometry": {
             "type": "Point",
@@ -79302,10 +79302,10 @@
         {
           "type": "Feature",
           "properties": {
-            "message": "Central Phuket (Festival)",
-            "icon": "https://render.bitstrips.com/v2/cpanel/9176167-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=300",
+            "message": "Central Festival",
+            "icon": "https://render.bitstrips.com/v2/cpanel/9176167-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
             "images": [],
-            "captions": "huge shopping mall"
+            "captions": "One of our big goals of this trip was to find some nice clothing to bring back. Though the night markets were cheap... so was the quality! Central Festival in Phuket is an absolutely massive facility - essentially two separate malls connected by sky bridge. We explored both - one felt more local while the other had more international designers."
           },
           "geometry": {
             "type": "Point",
@@ -79327,7 +79327,7 @@
               "/assets/phuket/laem_4.jpg",
               "/assets/phuket/laem_5.jpg"
             ],
-            "captions": "Enjoying sights and seafood locals at Laem Hin"
+            "captions": "One of the best hidden local spots known for its fresh \"sea-to-table\" seafood is Laem Hin. The restaurant was a huge venue sprawling across the water with live tanks filled with all sorts of edible sea life. Our favorite dish was the Black Pepper Crab - eating it reminded me of my childhood feasting on crab that Baba pain-stakingly prepared. "
           },
           "geometry": {
             "type": "Point",
@@ -79341,13 +79341,13 @@
           "type": "Feature",
           "properties": {
             "message": "Chillva Night Market",
-            "icon": "https://sdk.bitmoji.com/render/panel/20040693-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20040693-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/phuket/chillva_1.jpg",
               "/assets/phuket/chillva_2.jpg",
               "/assets/phuket/chillva_3.jpg"
             ],
-            "captions": "chillva night market"
+            "captions": "Compared to the chaos of Naka, Chillva Night Market was true to its name - CHILL. Because this is a permanent market as opposed to a weekend pop-up, the vendors, shops, and hawkers felt much more organized and established. We loved the vibe here!"
           },
           "geometry": {
             "type": "Point",
