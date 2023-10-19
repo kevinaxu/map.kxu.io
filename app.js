@@ -147,8 +147,6 @@ const BOUND_BOX_MOBILE = {
         ]
     ]
 }
-var openPopup = null;
-
 
 const fetchData = fetch('data.json')
     .then(response => {
@@ -241,8 +239,14 @@ function addMarkerToMap(feature) {
 
 var currentOpenPopup = null;
 function addPopUpToMarker(feature, marker) {
-    var anchor = (isMobileScreenSize()) ? "top"         : "top-left";
-    var offset = (isMobileScreenSize()) ? [-60, -700]   : [150, -500];
+
+    // TODO: mobile phone held horizontal should also have popup on the right-hand side 
+    var anchor = (isMobileScreenSize()) ?
+        "top" :         // mobile
+        "top-left";     // desktop 
+    var offset = (isMobileScreenSize()) ?
+        [-60, -700] :   // mobile 
+        [150, -500];    // desktop
 
     const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
     const popup = new mapboxgl
@@ -261,6 +265,8 @@ function addPopUpToMarker(feature, marker) {
             currentOpenPopup = null;
         } else {
             var carousel = new PopupCarousel(popup);
+            //carousel.popup.setOffset();
+            //carousel.popup.set
             currentOpenPopup = carousel;
         }
     });
@@ -270,8 +276,16 @@ function addPopUpToMarker(feature, marker) {
     marker.setPopup(popup);
 }
 
+
+
+/**
+ * Represents a PopupCarousel object that displays a carousel of images with navigation buttons and dots.
+ */
 class PopupCarousel {
 
+    /**
+     * Updates the position of the carousel images and dots based on the current image position.
+     */
     updatePosition() {
         for (let img of this.imgs) {
             img.classList.remove('visible');
@@ -287,6 +301,9 @@ class PopupCarousel {
         this.dots[this.imagePosition].classList.add('active');
     }
 
+    /**
+     * Moves to the next image in the carousel and updates the position.
+     */
     nextImage() {
         if (this.imagePosition === this.imageCount - 1) {
             this.imagePosition = 0;
@@ -295,6 +312,10 @@ class PopupCarousel {
         }
         this.updatePosition();
     }; 
+
+    /**
+     * Moves to the previous image in the carousel and updates the position.
+     */
     prevImage() {
         if (this.imagePosition === 0) {
             this.imagePosition = this.imageCount - 1;
@@ -304,6 +325,9 @@ class PopupCarousel {
         this.updatePosition();
     }
 
+    /**
+     * Initializes event listeners for the carousel navigation buttons and dots.
+     */
     initEventListeners() {
         // Event Listeners: Button Click
         this.next.addEventListener('click', this.nextImage.bind(this));
@@ -318,6 +342,10 @@ class PopupCarousel {
         })
     }
 
+    /**
+     * Creates a new PopupCarousel object.
+     * @param {HTMLElement} popup - The popup element that contains the carousel.
+     */
     constructor(popup) {
         this.popup = popup;
         this.prev = document.querySelector('.prev');
@@ -353,6 +381,7 @@ function generateRegion(region) {
     // Route
     map.on('load', () => {
         var sourceId = "route-" + region.name.toLowerCase().replace(/\s/g, '-');
+        // console.log(`sourceID: ${sourceId}`);
         map.addSource(sourceId, region.coordinates);
         map.addLayer({
             "id": sourceId,
