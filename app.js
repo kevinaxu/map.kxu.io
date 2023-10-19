@@ -1,16 +1,16 @@
 /*******************************************************************
- * Main Map Client-Side Logic
- * 
- * This file handles: 
- * - Rendering Mapbox map
- * - Adding a pulsing dot to the current location as a separate Layer
- * - Load data.json which contains Route and Marker data
- * - Display each Region's Routes and Markers as separate Layers
- * 
- * Inputs: data.json
- * Output: Mapbox map
- * 
- ********************************************************************/
+* Main Map Client-Side Logic
+* 
+* This file handles: 
+* - Rendering Mapbox map
+* - Adding a pulsing dot to the current location as a separate Layer
+* - Load data.json which contains Route and Marker data
+* - Display each Region's Routes and Markers as separate Layers
+* 
+* Inputs: data.json
+* Output: Mapbox map
+* 
+********************************************************************/
 
 const DEBUG = false;
 
@@ -20,17 +20,17 @@ const COORD_PULSING_DOT = [
     -8.485309
 ];
 const COORD_CENTER = [
-    115.257839, 
-    -8.471635
+    98.308232,
+    7.83135
 ];
 const BOUND_BOX_WEB = {
     "all": [
         [
-            89.20004011241173, 
+            89.20004011241173,
             -12.342977303436726
         ],
-        [   
-            134.5055133573236,  
+        [
+            134.5055133573236,
             21.517103163038342
         ]
     ],
@@ -149,51 +149,49 @@ const BOUND_BOX_MOBILE = {
 }
 
 const fetchData = fetch('data.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .catch(error => {
-        console.error('Error fetching the file:', error);
-    });
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
+.catch(error => {
+    console.error('Error fetching the file:', error);
+});
 fetchData.then(data => {
     if (data) {
         generateMap(data);
         renderPulsingDot();
         initMarkerCirclesAndEventListeners(data);
-        initFitBoundsAllMarkers();
+        initFitBoundsAllMarkers(data);
         initializeSwipeEventListeners();
     }
 })
 
 
 /*******************************************************************
- * 
- * Actions
- * 
- * Fit All  
- *  When a user clicks the button, `fitBounds()` zooms and pans
- *  the viewport to contain a bounding box surrounding all Markers.
- *  The [lng, lat] pairs are the southwestern and northeastern
- *  corners of the specified geographical bounds.
- * 
- * - https://docs.mapbox.com/mapbox-gl-js/api/map/#map#fitbounds
- * 
- ********************************************************************/
+* 
+* Controls - Fit All 
+*  When a user clicks the button, `fitBounds()` zooms and pans
+*  the viewport to contain a bounding box surrounding all Markers.
+*  The [lng, lat] pairs are the southwestern and northeastern
+*  corners of the specified geographical bounds.
+* 
+* - https://docs.mapbox.com/mapbox-gl-js/api/map/#map#fitbounds
+* 
+********************************************************************/
 
-function initFitBoundsAllMarkers() {
+function initFitBoundsAllMarkers(data) {
     document.getElementById('fit-all').addEventListener('click', () => {
         map.fitBounds(BOUND_BOX_WEB["all"]);
     });
 }
 
 /*******************************************************************
- * 
- * Map Generation
- * 
- ********************************************************************/
+* 
+* Map Generation
+* 
+********************************************************************/
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';;
 const map = new mapboxgl.Map({
@@ -202,7 +200,6 @@ const map = new mapboxgl.Map({
     center: COORD_CENTER,
     zoom: 9.5
 });
-
 
 if (DEBUG) {
     // Log zoom level and bounding coordinates when the map moves
@@ -214,170 +211,47 @@ if (DEBUG) {
     });
 }
 
+/**
+* Adds a marker to the map using the provided feature object.
+* @param {Object} feature - The feature object containing the marker's properties and coordinates.
+* @param {string} feature.properties.icon - The URL of the marker's icon image.
+* @param {Array<number>} feature.geometry.coordinates - The longitude and latitude coordinates of the marker.
+*/
+function addMarkerToMap(feature) {
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.backgroundImage = `url(${feature.properties.icon})`;
+    
+    var marker = new mapboxgl.Marker(el)
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
+    return marker;
+}
+
+/**
+* Generates markers and a route on a map for a given region.
+* Mobile and Desktop have different values for:
+*  - anchor: popup display relative to marker
+*  - offset: coordinates to move popup
+* @param {Object} region - The region object containing markers and coordinates for the route.
+*/
 function generateMap(data) {
     for (const region of data) {
         generateRegion(region);
     }
 };
-
-/**
- * Adds a marker to the map using the provided feature object.
- * @param {Object} feature - The feature object containing the marker's properties and coordinates.
- * @param {string} feature.properties.icon - The URL of the marker's icon image.
- * @param {Array<number>} feature.geometry.coordinates - The longitude and latitude coordinates of the marker.
- */
-function addMarkerToMap(feature) {
-    const el = document.createElement('div');
-    el.className = 'marker';
-    el.style.backgroundImage = `url(${feature.properties.icon})`;
-
-    var marker = new mapboxgl.Marker(el)
-        .setLngLat(feature.geometry.coordinates)
-        .addTo(map);
-    return marker;
-}
-
-var currentOpenPopup = null;
-function addPopUpToMarker(feature, marker) {
-
-    // TODO: mobile phone held horizontal should also have popup on the right-hand side 
-    var anchor = (isMobileScreenSize()) ?
-        "top" :         // mobile
-        "top-left";     // desktop 
-    var offset = (isMobileScreenSize()) ?
-        [-60, -700] :   // mobile 
-        [150, -500];    // desktop
-
-    const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
-    const popup = new mapboxgl
-        .Popup({ 
-            anchor: anchor,
-            offset: offset,
-            closeOnClick: true,
-            closeButton: false
-        })
-        .setHTML(popupHTML);
-
-    popup.on('open', () => {
-        // don't show popup if we're zooming to region 
-        if (shouldZoomToRegion()) {
-            popup.remove();
-            currentOpenPopup = null;
-        } else {
-            var carousel = new PopupCarousel(popup);
-            //carousel.popup.setOffset();
-            //carousel.popup.set
-            currentOpenPopup = carousel;
-        }
-    });
-    popup.on('close', () => {
-        currentOpenPopup = null;
-    });
-    marker.setPopup(popup);
-}
-
-
-
-/**
- * Represents a PopupCarousel object that displays a carousel of images with navigation buttons and dots.
- */
-class PopupCarousel {
-
-    /**
-     * Updates the position of the carousel images and dots based on the current image position.
-     */
-    updatePosition() {
-        for (let img of this.imgs) {
-            img.classList.remove('visible');
-            img.classList.add('hidden');
-        }
-        this.imgs[this.imagePosition].classList.remove('hidden');
-        this.imgs[this.imagePosition].classList.add('visible')
-
-        //   Dots
-        for (let dot of this.dots) {
-            dot.className = dot.className.replace(" active", "");
-        }
-        this.dots[this.imagePosition].classList.add('active');
-    }
-
-    /**
-     * Moves to the next image in the carousel and updates the position.
-     */
-    nextImage() {
-        if (this.imagePosition === this.imageCount - 1) {
-            this.imagePosition = 0;
-        } else {
-            this.imagePosition++;
-        }
-        this.updatePosition();
-    }; 
-
-    /**
-     * Moves to the previous image in the carousel and updates the position.
-     */
-    prevImage() {
-        if (this.imagePosition === 0) {
-            this.imagePosition = this.imageCount - 1;
-        } else {
-            this.imagePosition--;
-        }
-        this.updatePosition();
-    }
-
-    /**
-     * Initializes event listeners for the carousel navigation buttons and dots.
-     */
-    initEventListeners() {
-        // Event Listeners: Button Click
-        this.next.addEventListener('click', this.nextImage.bind(this));
-        this.prev.addEventListener('click', this.prevImage.bind(this));
-
-        // Event Listeners: Dot Click
-        this.dots.forEach((dot, dotPosition) => {
-            dot.addEventListener("click", () => {
-                this.imagePosition = dotPosition;
-                this.updatePosition(dotPosition);
-            })
-        })
-    }
-
-    /**
-     * Creates a new PopupCarousel object.
-     * @param {HTMLElement} popup - The popup element that contains the carousel.
-     */
-    constructor(popup) {
-        this.popup = popup;
-        this.prev = document.querySelector('.prev');
-        this.next = document.querySelector('.next');
-        this.imgs = document.querySelectorAll('.carousel-img');
-        this.dots = document.querySelectorAll('.dot');
-        this.imagePosition = 0;
-        this.imageCount = this.imgs.length;
-
-        this.initEventListeners();
-    }
-}
-
-/**
- * Generates markers and a route on a map for a given region.
- * Mobile and Desktop have different values for:
- *  - anchor: popup display relative to marker
- *  - offset: coordinates to move popup
- * @param {Object} region - The region object containing markers and coordinates for the route.
- */
 function generateRegion(region) {
     for (const feature of region.markers.features) {
-
+        
         // do not display markers that were only used for route building
         if (feature.properties.ignore === true) continue;
         var marker = addMarkerToMap(feature);
-
+        
         // do not add popup if there are no images
         if (feature.properties.images.length == 0) continue;
         var marker = addPopUpToMarker(feature, marker);
     }
-
+    
     // Route
     map.on('load', () => {
         var sourceId = "route-" + region.name.toLowerCase().replace(/\s/g, '-');
@@ -400,46 +274,69 @@ function generateRegion(region) {
     });
 }
 
+
 /*******************************************************************
- * 
- * Helpers
- * 
- ********************************************************************/
+* 
+* Bind Popups <--> Markers  
+* 
+********************************************************************/
+
+var currentOpenPopup = null;
+function addPopUpToMarker(feature, marker) {
+    // console.log("addPopUpToMarker()", feature.properties.message);
+    
+    var popupCarousel = new PopupCarousel(feature);
+    var popup = popupCarousel.getMapboxPopup();
+    
+    popup.on('open', () => {
+        console.log("popup onOpen()")
+        // don't show popup if we're zooming to region 
+        if (shouldZoomToRegion()) {
+            popupCarousel.remove();
+            currentOpenPopup = null;
+        } else {
+            popupCarousel.initializeCarouselControls();
+            popupCarousel.setPopupPositioning();
+            currentOpenPopup = popupCarousel;
+        }
+    });
+    popup.on('close', () => {
+        currentOpenPopup = null;
+    });
+    marker.setPopup(popup);
+}
 
 function shouldZoomToRegion() {
     const zoomThreshold = 9;
     return map.getZoom() < zoomThreshold;
 }
 
-function isMobileScreenSize() {
-    return (window.innerWidth < 767);
-}
 
 /*******************************************************************
- * 
- * Zoom Region
- * 
- * When the map is very zoomed out, we want to only display a single
- * Marker from the region to prevent Markers from rendering over each
- * other. 
- * 
- * Then, we want to add event listener so that onClick of those Markers,
- * we zoom in to that region and display all Markers.
- *  - map.fitBounds() - hard code
- *  - zoom level - hard code 
- * 
- ********************************************************************/
+* 
+* Zoom Region
+* 
+* When the map is very zoomed out, we want to only display a single
+* Marker from the region to prevent Markers from rendering over each
+* other. 
+* 
+* Then, we want to add event listener so that onClick of those Markers,
+* we zoom in to that region and display all Markers.
+*  - map.fitBounds() - hard code
+*  - zoom level - hard code 
+* 
+********************************************************************/
 
 /*******************************************************************
- * 
- * Markers
- * 
- ********************************************************************/
+* 
+* Markers
+* 
+********************************************************************/
 
 /**
- * Initializes the map with marker circles and event listeners
- * @param {Object} data - The data containing the markers to be added to the map.
- */
+* Initializes the map with marker circles and event listeners
+* @param {Object} data - The data containing the markers to be added to the map.
+*/
 function initMarkerCirclesAndEventListeners(data) {
     var features = data.map(item => item.markers.features).flat();
     map.on('load', () => {
@@ -461,25 +358,28 @@ function initMarkerCirclesAndEventListeners(data) {
 }
 
 /**
- * "Center" the map on the coordinates of any clicked marker circle
- *  - If the zoom level is high enough
- *      clicking on a Marker will instead zoom to region 
- *  - If the zoom level is low
- *      clicking on a Marker will zoom in to that Marker
- * If shouldZoomToRegion() returns true, zooms the map to the region of the clicked marker.
- * Otherwise, calculates the popup open position and flies to it.
- * @param {Object} e - The event object.
- */
+* "Center" the map on the coordinates of any clicked marker circle
+*  - If the zoom level is high enough
+*      clicking on a Marker will instead zoom to region 
+*  - If the zoom level is low
+*      clicking on a Marker will zoom in to that Marker
+* If shouldZoomToRegion() returns true, zooms the map to the region of the clicked marker.
+* Otherwise, calculates the popup open position and flies to it.
+* @param {Object} e - The event object.
+*/
 function handleMarkerCircleClickEvent(e) {
     if (shouldZoomToRegion()) {
         var region = e
             .features[0].properties.region
             .toLowerCase().replaceAll(" ", "_");
-        (isMobileScreenSize()) ? 
+        (isMobile()) ? 
             map.fitBounds(BOUND_BOX_MOBILE[region]) :
             map.fitBounds(BOUND_BOX_WEB[region]);
     } else {
+        
+        // input: coordinates of the marker circle that was clicked (eg Marker center location) 
         var center = calculatePopupOpenPosition(e.features[0].geometry.coordinates);
+        console.log("markers flyTo():", center);
         map.flyTo({
             center: center,
             speed: 0.4,
@@ -487,15 +387,27 @@ function handleMarkerCircleClickEvent(e) {
         });
     }
 }
+function isPortrait() {
+    return (window.innerWidth < window.innerHeight);
+}
+function isMobile() {
+    return (window.innerWidth <= 640);
+}
+function isTablet() {
+    return (window.innerWidth <= 768 && window.innerWidth > 640);
+}
+function isDesktop() {
+    return (window.innerWidth > 768);
+}
 
 /**
- * Adds a layer for marker circles to the map.
- * Markers are separate from Layers in Mapbox
- * Instead of adding individual callbacks to Markers, 
- * create a separate Layer with transparent circles over Marker coordinates
- * @param {Object[]} features - An array of GeoJSON features.
- * @param {string} layerID - The ID of the layer to be added.
- */
+* Adds a layer for marker circles to the map.
+* Markers are separate from Layers in Mapbox
+* Instead of adding individual callbacks to Markers, 
+* create a separate Layer with transparent circles over Marker coordinates
+* @param {Object[]} features - An array of GeoJSON features.
+* @param {string} layerID - The ID of the layer to be added.
+*/
 function addLayerForMarkerCircles(features, layerID) {
     map.addSource('points', {
         'type': 'geojson',
@@ -511,7 +423,7 @@ function addLayerForMarkerCircles(features, layerID) {
         'paint': {
             "circle-opacity": 0,
             'circle-radius': 40,
-
+            
             // DEBUG: uncomment to see circles
             //'circle-stroke-width': 2,
             //'circle-stroke-color': '#FF0000'
@@ -519,96 +431,46 @@ function addLayerForMarkerCircles(features, layerID) {
     });
 }
 
-/**
- * Calculates the position to open a popup on the map based on the given coordinates.
- *  - mobile: marker position bottom-center, popup position top-center
- *  - desktop: marker position bottom-left, popup position center-right
- * @param {number[]} coordinates - The coordinates to calculate the popup position from.
- * @returns {number[]} - The new center coordinates for the popup.
- */
+
+
 function calculatePopupOpenPosition(center) {
+    console.log("calculatePopupOpenPosition()");
     const bounds = map.getBounds();
     var heightWindow  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat),
         widthWindow   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
 
     var newCenter = [];
-    if (isMobileScreenSize()) {
+    if (isMobile() && isPortrait()) {
+        console.log("mobile portrait");
         newCenter = [
-            center[0] + (widthWindow * 0),
-            center[1] + (heightWindow * 0.35)
+            center[0],
+            center[1] + (heightWindow * 0.4)
         ];
     } else {
-        newCenter = [
-            center[0] + (widthWindow * 0.20),
-            center[1] + (heightWindow * 0.25)
-        ];
+        if (isDesktop()) {
+            console.log("desktop");
+            newCenter = [
+                center[0] + (widthWindow * .25),
+                center[1] + (heightWindow * 0.4)
+            ];
+        } else {
+            console.log("mobile landscape / tablet");
+            newCenter = [
+                center[0] + (widthWindow * 0.25),
+                center[1] + (heightWindow * 0.4)
+            ];
+        }
     }
     return newCenter;
 }
 
 
 /*******************************************************************
- * 
- * Popup Static Generation
- * 
- ********************************************************************/
+* 
+* Controls - Swipe Events 
+* 
+********************************************************************/
 
-function getPopupHTML(images, caption) {
-    const popupHTML = `
-        <div class="carousel-container">
-            <div class="carousel-imgs">
-                ${generateImageHTML(images)}
-            </div>
-            <a class="prev arrow">&#10094;</a>
-            <a class="next arrow">&#10095;</a>
-            <div class="slide-numbers">
-                ${generateDotHTML(images.length)}
-            </div>
-        </div>
-        <p class="carousel-caption">${caption}</p>
-    `;
-    return popupHTML;
-}
-
-// TODO: update this for video support
-function generateImageHTML(images) {
-    var strings = [];
-    for (var i = 0; i < images.length; i++) {
-
-        var status = (i === 0 ? "visible" : "hidden");
-
-        if (images[i].includes("mp4")) {
-            console.log(`video: ${images[i]}`);
-            strings.push(
-                `<video controls class="carousel-img object-cover ${status}">
-                    <source src="${images[i]}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-              `
-            );
-        } else {
-            console.log(`image: ${images[i]}`);
-            strings.push(`<img src="${images[i]}" class="carousel-img ${status}"/>`);
-        }
-    }
-    return strings.join("\n");
-}
-
-function generateDotHTML(count) {
-    var strings = [];
-    for (var i = 0; i < count; i++) {
-        if (i === 0) {
-            strings.push(`<span class="dot active"></span>`);
-        } else {
-            strings.push(`<span class="dot"></span>`);
-        }
-    }
-    return strings.join("\n");
-}
-
-// HERE: When a swipe event is detected
-//  - swipe left: next
-//  - swipe right: prev
 function initializeSwipeEventListeners() {
     let touchstartX = 0
     let touchendX = 0
@@ -618,7 +480,6 @@ function initializeSwipeEventListeners() {
     });
     document.addEventListener('touchend', (event) => {
         if (currentOpenPopup === null) return;
-
         touchendX = event.changedTouches[0].screenX
         if (touchendX < touchstartX) {
             console.log('swiped left!');
@@ -633,10 +494,10 @@ function initializeSwipeEventListeners() {
 
 
 /*******************************************************************
- * 
- * Pulsing Dot
- * 
- ********************************************************************/
+* 
+* UI - Pulsing Dot 
+* 
+********************************************************************/
 
 function renderPulsingDot() {
     var pulsingDot = generatePulsingDot();
@@ -666,60 +527,4 @@ function renderPulsingDot() {
             }
         });
     });
-}
-
-function generatePulsingDot() {
-
-    const size = 220;
-    return {
-        width: size,
-        height: size,
-        data: new Uint8Array(size * size * 4),
-
-        // When a new layer is added to the map, 
-        // get the rendering context for the map canvas
-        onAdd: function() {
-            const canvas = document.createElement('canvas');
-            canvas.width = this.width;
-            canvas.height = this.width;
-            this.context = canvas.getContext('2d');
-        },
-
-        // call once before every frame where the icon will be used
-        render: function() {
-            const duration = 2000;
-            const t = (performance.now() % duration) / duration;
-
-            const radius = (size / 2) * 0.3;
-            const outerRadius = (size / 2) * 0.7 * t + radius;
-            const context = this.context;
-
-            // Draw outer circle
-            context.clearRect(0, 0, this.width, this.height);
-            context.beginPath();
-            context.arc(
-                this.width / 2,
-                this.height / 2,
-                outerRadius,
-                0,
-                Math.PI * 2
-            );
-            context.fillStyle = `rgba(255, 200, 200, ${1 - t}`;
-            context.fill();
-
-            // update this image's data with data from the canvas
-            this.data = context.getImageData(
-                0,
-                0,
-                this.width, 
-                this.height
-            ).data;
-
-            // continuously repait the map, resulting in the smooth animation of the dot.
-            map.triggerRepaint();
-
-            // return 'true' to let the map know the image was updated
-            return true;
-        }
-    };
 }
