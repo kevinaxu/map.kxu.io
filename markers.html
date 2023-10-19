@@ -50,6 +50,10 @@
         padding: 16px;
         width: 400px;
     }
+    .popup-content-desktop .mapboxgl-popup-content {
+        padding: 16px;
+        width: 560px;
+    }
     .popup-content-mobile-landscape .mapboxgl-popup-content {
         padding: 16px;
         width: 240px;
@@ -65,35 +69,52 @@
     .carousel-container img {
         border-radius: .1em;
         width: 100%;
-        height: 360px;
+        height: 480px;
         object-fit: cover;
     }
     .carousel-container video {
         border-radius: .1em;
         width: 100%;
-        height: 360px;
+        height: 480px;
         object-fit: cover;
-    }
-    /* Media query for screens with a maximum width of 767px (adjust as needed) */
-    @media screen and (max-width: 767px) {
-        .carousel-container img {
-            height: 360px;
-        }
-        .carousel-container video {
-            height: 360px;
-        }
     }
     .carousel-caption {
         width: 100%;
         font-family: monospace;
-        margin-top: 1em;
         overflow: scroll;
         max-height: 10em;
-        font-size: 14px;
+        font-size: 16px;
+        line-height: normal;
     }
-
-
-
+    /* Media query for screens with a maximum width of 767px (adjust as needed) */
+    @media screen and (max-width: 767px) {
+        .carousel-container img {
+            height: 260px;
+        }
+        .carousel-container video {
+            height: 260px;
+        }
+        .carousel-caption {
+            max-height: 5em;
+            font-size: 12px;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        .carousel-container img {
+            height: 320px;
+        }
+        .carousel-container video {
+            height: 320px;
+        }
+        .carousel-caption {
+            max-height: 6em;
+            font-size: 14px;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }
 
 
     .hidden {
@@ -193,8 +214,8 @@ const COORD_PULSING_DOT = [
     -8.485309
 ];
 const COORD_CENTER = [
-    115.257839, 
-    -8.471635
+    98.308232,
+    7.83135
 ];
 
 const fetchData = fetch('../../data.json')
@@ -359,7 +380,7 @@ function addPopUpToMarker(feature, marker) {
         if (isMobile()) {
             if (isPortrait()) {
                 console.log("MOBILE PORTRAIT");
-                var padding = 16;
+                var padding = 8;
                 var maxPopupWidth =  340
                 var popupWidth = Math.min(
                     (window.innerWidth - (padding * 2)),
@@ -367,8 +388,6 @@ function addPopUpToMarker(feature, marker) {
                 );
                 popupContent.style.width = `${popupWidth}px`;
                 popupContent.style.padding = `${padding}px`;
-                carouselCaption.style.fontSize = `12px`;
-
 
                 const popupContentWidth = popupContent.clientWidth;
                 const popupContentHeight = popupContent.clientHeight;
@@ -399,7 +418,30 @@ function addPopUpToMarker(feature, marker) {
 
         } else if (isTablet()) {
             console.log("tablet landscape");
+            var padding = 10;
+            popupContent.style.width = `${popupWidth}px`;
+            popupContent.style.padding = `${padding}px`;
             popup.addClassName("popup-content-tablet");
+
+            const popupContentWidth = document.querySelector('.mapboxgl-popup-content').clientWidth;
+            const popupContentHeight = document.querySelector('.mapboxgl-popup-content').clientHeight;
+            console.log(`popup content width: ${popupContentWidth}, height ${popupContentHeight}`);
+
+            const offsetX = popupContentWidth;
+            const offsetY = popupContentHeight - 30;       // fixed padding? 
+
+            popup.setOffset([
+                100,       // x to the right of the Marker, width + fixed spacing
+                -offsetY        // y
+            ]);
+
+        } else {
+            console.log("desktop");
+            var padding = 16;
+            popupContent.style.width = `${popupWidth}px`;
+            popupContent.style.padding = `${padding}px`;
+
+            popup.addClassName("popup-content-desktop");
 
             const popupContentWidth = document.querySelector('.mapboxgl-popup-content').clientWidth;
             const popupContentHeight = document.querySelector('.mapboxgl-popup-content').clientHeight;
@@ -409,12 +451,9 @@ function addPopUpToMarker(feature, marker) {
             const offsetY = popupContentHeight;       // fixed padding? 
 
             popup.setOffset([
-                100,       // x to the right of the Marker, width + fixed spacing
+                50,       // x to the right of the Marker, width + fixed spacing
                 -offsetY        // y
             ]);
-
-        } else {
-
         }
 
         // don't show popup if we're zooming to region 
@@ -439,21 +478,26 @@ function calculatePopupOpenPosition(center) {
     console.log("calculatePopupOpenPosition()");
 
     var newCenter = [];
-    if (isMobile()) {
-        if (isPortrait()) {
-            console.log("mobile portrait");
+    if (isMobile() && isPortrait()) {
+        console.log("mobile portrait");
+        newCenter = [
+            center[0],
+            center[1] + (heightWindow * 0.4)
+        ];
+    } else {
+        if (isDesktop()) {
+            console.log("desktop");
             newCenter = [
-                center[0],
+                center[0] + (widthWindow * .25),
                 center[1] + (heightWindow * 0.4)
             ];
         } else {
-
+            console.log("mobile landscape / tablet");
+            newCenter = [
+                center[0] + (widthWindow * 0.25),
+                center[1] + (heightWindow * 0.4)
+            ];
         }
-    } else if (isTablet()) {
-
-    } else {
-
-
     }
     return newCenter;
 }
