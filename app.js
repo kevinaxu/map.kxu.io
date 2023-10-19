@@ -541,11 +541,26 @@ function getPopupHTML(images, caption) {
     return popupHTML;
 }
 
+// TODO: update this for video support
 function generateImageHTML(images) {
     var strings = [];
     for (var i = 0; i < images.length; i++) {
+
         var status = (i === 0 ? "visible" : "hidden");
-        strings.push(`<img src="${images[i]}" class="carousel-img ${status}"/>`);
+
+        if (images[i].includes("mp4")) {
+            console.log(`video: ${images[i]}`);
+            strings.push(
+                `<video controls class="carousel-img object-cover ${status}">
+                    <source src="${images[i]}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+              `
+            );
+        } else {
+            console.log(`image: ${images[i]}`);
+            strings.push(`<img src="${images[i]}" class="carousel-img ${status}"/>`);
+        }
     }
     return strings.join("\n");
 }
