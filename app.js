@@ -528,3 +528,57 @@ function renderPulsingDot() {
         });
     });
 }
+function generatePulsingDot() {
+    const size = 220;
+    return {
+        width: size,
+        height: size,
+        data: new Uint8Array(size * size * 4),
+
+        // When a new layer is added to the map, 
+        // get the rendering context for the map canvas
+        onAdd: function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = this.width;
+            canvas.height = this.width;
+            this.context = canvas.getContext('2d');
+        },
+
+        // call once before every frame where the icon will be used
+        render: function() {
+            const duration = 2000;
+            const t = (performance.now() % duration) / duration;
+
+            const radius = (size / 2) * 0.3;
+            const outerRadius = (size / 2) * 0.7 * t + radius;
+            const context = this.context;
+
+            // Draw outer circle
+            context.clearRect(0, 0, this.width, this.height);
+            context.beginPath();
+            context.arc(
+                this.width / 2,
+                this.height / 2,
+                outerRadius,
+                0,
+                Math.PI * 2
+            );
+            context.fillStyle = `rgba(255, 200, 200, ${1 - t}`;
+            context.fill();
+
+            // update this image's data with data from the canvas
+            this.data = context.getImageData(
+                0,
+                0,
+                this.width, 
+                this.height
+            ).data;
+
+            // continuously repait the map, resulting in the smooth animation of the dot.
+            map.triggerRepaint();
+
+            // return 'true' to let the map know the image was updated
+            return true;
+        }
+    };
+}
