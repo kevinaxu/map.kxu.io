@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Attach a popup to a marker instance</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+</head>
+
+<body>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .marker {
+        background-size: cover;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        /* filter: grayscale(100); */
+        cursor: pointer;
+    }
+
+    /* Polaroid Card Component */
+    .mapboxgl-popup-tip {
+        display: none;
+    }
+    .mapboxgl-popup-content {
+        border-radius: .1em;
+        box-shadow: 0 0 5px rgb(204, 204, 204);
+        height: 100%;
+    }
+    .popup-content-mobile .mapboxgl-popup-content {
+        padding: 16px;
+    }
+    .popup-content-tablet .mapboxgl-popup-content {
+        padding: 16px;
+        width: 400px;
+    }
+    .popup-content-mobile-landscape .mapboxgl-popup-content {
+        padding: 16px;
+        width: 240px;
+    }
+   
+
+    /* Carousel */
+    .carousel-container {
+        position: relative;
+        margin: 0 auto 0 auto;
+        width: 100%;
+    }
+    .carousel-container img {
+        border-radius: .1em;
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+    }
+    .carousel-container video {
+        border-radius: .1em;
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+    }
+    /* Media query for screens with a maximum width of 767px (adjust as needed) */
+    @media screen and (max-width: 767px) {
+        .carousel-container img {
+            height: 360px;
+        }
+        .carousel-container video {
+            height: 360px;
+        }
+    }
+    .carousel-caption {
+        width: 100%;
+        font-family: monospace;
+        margin-top: 1em;
+        overflow: scroll;
+        max-height: 10em;
+        font-size: 14px;
+    }
+
+
+
+
+
+    .hidden {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    .arrow {
+        display: inline;
+    }
+    .prev,
+    .arrow {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin: -1.5em .3em 0 .3em;
+        padding: 1em;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        transition: 0.3s ease;
+        border-radius: .5em;
+        user-select: none;
+        background-color: rgba(204, 204, 204, 0.3);
+    }
+    .next {
+        right: 0;
+    }
+    .prev:hover,
+    .next:hover {
+        box-shadow: 0 0 5px #fff;
+        border: 1px solid #fff;
+    }
+    .slide-numbers {
+        text-align: center;
+        position: absolute;
+        bottom: 1em;
+        left: 45%;
+
+    }
+    .dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 0 2px;
+        background-color: rgba(204, 204, 204, 0.3);
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .dot:hover,
+    .active {
+        background-color: rgb(204, 204, 204);
+        height: 12px;
+        width: 12px;
+    }
+    .dot:hover {
+        box-shadow: 0 0 5px #fff;
+    }
+
+    /* Zoom Buttons */
+    .zoom-container {
+        position: fixed; 
+        top: 0.5rem; 
+        left: 0.5rem; 
+    }
+    .zoom-button {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem; 
+        padding-left: 1rem;
+        padding-right: 1rem; 
+        border-radius: 0.1rem; 
+        font-family: monospace;
+        font-size: 16px;
+        line-height: 1rem; 
+        font-weight: 600; 
+        color: #6B7280; 
+        background-color: #ffffff; 
+    }
+    .zoom-button:hover {
+        background-color: #cbcfd5; 
+    }
+    </style>
+
+    <div id="map"></div>
+
+    <script>
+
+const DEBUG = false;
+
+// TODO: make these dynamic by pulling from trip_config? 
+const COORD_PULSING_DOT = [
+    115.253722,
+    -8.485309
+];
+const COORD_CENTER = [
+    115.257839, 
+    -8.471635
+];
+
+const fetchData = fetch('../../data.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error('Error fetching the file:', error);
+    });
+fetchData.then(data => {
+    if (data) {
+        generateMap(data);
+        initMarkerCirclesAndEventListeners(data);
+        initializeSwipeEventListeners();
+    }
+})
+
+/*******************************************************************
+ * 
+ * Map Generation
+ * 
+ ********************************************************************/
+
+ mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';;
+const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
+    center: COORD_CENTER,
+    zoom: 9.5
+});
+
+
+if (DEBUG) {
+    // Log zoom level and bounding coordinates when the map moves
+    map.on('move', function() {
+        var zoom = map.getZoom();
+        var bounds = map.getBounds();
+
+        console.log(JSON.stringify({
+            zoom: zoom,
+            bounds: bounds.toArray(),
+            width: `${window.innerWidth}px`,
+            height: `${window.innerHeight}px`,
+            orientation: (window.innerWidth > window.innerHeight) ? "landscape" : "portrait",
+            device: isMobileScreenSize(),
+        }));
+    });
+}
+
+function generateMap(data) {
+    for (const region of data) {
+        generateRegion(region);
+    }
+};
+
+/**
+ * Adds a marker to the map using the provided feature object.
+ * @param {Object} feature - The feature object containing the marker's properties and coordinates.
+ * @param {string} feature.properties.icon - The URL of the marker's icon image.
+ * @param {Array<number>} feature.geometry.coordinates - The longitude and latitude coordinates of the marker.
+ */
+function addMarkerToMap(feature) {
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.backgroundImage = `url(${feature.properties.icon})`;
+
+    var marker = new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .addTo(map);
+    return marker;
+}
+
+/**
+ * POPUP - updated
+ * 
+ * Depending on screen size / orientation, we will need to dynamically adjust:
+ * - popup anchor position on Marker
+ * - popup offset from Marker 
+ * - popup size (width)
+ * 
+ * NOTE: Anchor is currently set on the Mapbox Popup
+ * However, this is not dynamic and can't be modified after the Popup is created
+ * Instead, apply this as CSS on the popup class? 
+ * 
+ * In order to calculate those, we will use: 
+ * - screen size
+ * - bounds of map not necesary because it's full screen size
+ * - marker coordinates?
+ */
+ var currentOpenPopup = null;
+
+function dumpStats() {
+    // get the current screen size
+    const orientation = (window.innerWidth > window.innerHeight) ?
+        "landscape" : 
+        "portrait";
+
+    // DOES DEVICE TYPE EVEN MATTER?
+    var device = null;
+    if (window.innerWidth <= 640) {
+        device = "mobile";
+    } else if (window.innerWidth <= 768) {
+        device = "tablet";
+    } else {
+        device = "desktop";
+    }
+
+    console.log("screen:", JSON.stringify({
+        width: `${window.innerWidth}px`,
+        height: `${window.innerHeight}px`,
+        orientation: orientation,
+        device: device,
+    }, null, 2));
+}
+
+function isPortrait() {
+    return (window.innerWidth < window.innerHeight);
+}
+function isMobile() {
+    return (window.innerWidth <= 640);
+}
+function isTablet() {
+    return (window.innerWidth <= 768 && window.innerWidth > 640);
+}
+function isDesktop() {
+    return (window.innerWidth > 768);
+}
+
+// determine orientation
+// based on orientation and screen size
+// - calculate anchor
+// if desktop (landscape), mobile landscape, tablet landscape
+//  - anchor "top-left" 
+//  - offset - calculated based on the amount of space available 
+//  - size of the popup - calculated based on the amount of space available
+function addPopUpToMarker(feature, marker) {
+
+    const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
+    const popup = new mapboxgl
+        .Popup({ 
+            anchor: "top-left",
+            closeOnClick: true,
+            closeButton: false
+        })
+    popup.setHTML(popupHTML);
+
+    popup.on('open', (event) => {
+        dumpStats();
+
+        const popup = event.target;
+        console.log("popup:", popup);
+        console.log(`window width: ${window.innerWidth}`);
+        var popupContent = document.querySelector('.mapboxgl-popup-content');
+
+        var carouselCaption = document.querySelector('.carousel-caption');
+
+        console.log(".mapboxgl-popup-content:", popupContent);
+
+        if (isMobile()) {
+            if (isPortrait()) {
+                console.log("MOBILE PORTRAIT");
+                var padding = 16;
+                var maxPopupWidth =  340
+                var popupWidth = Math.min(
+                    (window.innerWidth - (padding * 2)),
+                    maxPopupWidth
+                );
+                popupContent.style.width = `${popupWidth}px`;
+                popupContent.style.padding = `${padding}px`;
+                carouselCaption.style.fontSize = `12px`;
+
+
+                const popupContentWidth = popupContent.clientWidth;
+                const popupContentHeight = popupContent.clientHeight;
+                console.log(`popup content width: ${popupContentWidth}, height ${popupContentHeight}`);
+
+                popup.setOffset([
+                    -(popupContentWidth / 2),           // x
+                    -(popupContentHeight + 50)          // y
+                ]);
+
+            } else {
+                // MOBILE LANDSCAPE 
+                console.log("mobile landscape");
+                popup.addClassName("popup-content-mobile-landscape");
+
+                const popupContentWidth = document.querySelector('.mapboxgl-popup-content').clientWidth;
+                const popupContentHeight = document.querySelector('.mapboxgl-popup-content').clientHeight;
+                console.log(`popup content width: ${popupContentWidth}, height ${popupContentHeight}`);
+
+                const offsetX = popupContentWidth;
+                const offsetY = popupContentHeight - 100;       // fixed padding? 
+
+                popup.setOffset([
+                    100,       // x to the right of the Marker, width + fixed spacing
+                    -offsetY        // y
+                ]);
+            }
+
+        } else if (isTablet()) {
+            console.log("tablet landscape");
+            popup.addClassName("popup-content-tablet");
+
+            const popupContentWidth = document.querySelector('.mapboxgl-popup-content').clientWidth;
+            const popupContentHeight = document.querySelector('.mapboxgl-popup-content').clientHeight;
+            console.log(`popup content width: ${popupContentWidth}, height ${popupContentHeight}`);
+
+            const offsetX = popupContentWidth;
+            const offsetY = popupContentHeight;       // fixed padding? 
+
+            popup.setOffset([
+                100,       // x to the right of the Marker, width + fixed spacing
+                -offsetY        // y
+            ]);
+
+        } else {
+
+        }
+
+        // don't show popup if we're zooming to region 
+        if (shouldZoomToRegion()) {
+            popup.remove();
+            currentOpenPopup = null;
+        } else {
+            var carousel = new PopupCarousel(popup);
+            currentOpenPopup = carousel;
+        }
+    });
+    popup.on('close', () => {
+        currentOpenPopup = null;
+    });
+    marker.setPopup(popup);
+}
+
+function calculatePopupOpenPosition(center) {
+    const bounds = map.getBounds();
+    var heightWindow  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat),
+        widthWindow   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+    console.log("calculatePopupOpenPosition()");
+
+    var newCenter = [];
+    if (isMobile()) {
+        if (isPortrait()) {
+            console.log("mobile portrait");
+            newCenter = [
+                center[0],
+                center[1] + (heightWindow * 0.4)
+            ];
+        } else {
+
+        }
+    } else if (isTablet()) {
+
+    } else {
+
+
+    }
+    return newCenter;
+}
+
+
+/**
+ * TODO: UPDATE THIS 
+ * Calculates the position to open a popup on the map based on the given coordinates.
+ *  - mobile: marker position bottom-center, popup position top-center
+ *  - desktop: marker position bottom-left, popup position center-right
+ * @param {number[]} coordinates - The coordinates to calculate the popup position from.
+ * @returns {number[]} - The new center coordinates for the popup.
+ 
+function calculatePopupOpenPosition(center) {
+    const bounds = map.getBounds();
+    var heightWindow  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat),
+        widthWindow   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
+
+    var newCenter = [];
+    if (isMobileScreenSize()) {
+        newCenter = [
+            center[0] + (widthWindow * 0),
+            center[1] + (heightWindow * 0.35)
+        ];
+    } else {
+        newCenter = [
+            center[0] + (widthWindow * 0.20),
+            center[1] + (heightWindow * 0.25)
+        ];
+    }
+    return newCenter;
+}
+*/
+
+
+/**
+ * Represents a PopupCarousel object that displays a carousel of images with navigation buttons and dots.
+ */
+ class PopupCarousel {
+
+/**
+ * Updates the position of the carousel images and dots based on the current image position.
+ */
+updatePosition() {
+    for (let img of this.imgs) {
+        img.classList.remove('visible');
+        img.classList.add('hidden');
+    }
+    this.imgs[this.imagePosition].classList.remove('hidden');
+    this.imgs[this.imagePosition].classList.add('visible')
+
+    //   Dots
+    for (let dot of this.dots) {
+        dot.className = dot.className.replace(" active", "");
+    }
+    this.dots[this.imagePosition].classList.add('active');
+}
+
+/**
+ * Moves to the next image in the carousel and updates the position.
+ */
+nextImage() {
+    if (this.imagePosition === this.imageCount - 1) {
+        this.imagePosition = 0;
+    } else {
+        this.imagePosition++;
+    }
+    this.updatePosition();
+}; 
+
+/**
+ * Moves to the previous image in the carousel and updates the position.
+ */
+prevImage() {
+    if (this.imagePosition === 0) {
+        this.imagePosition = this.imageCount - 1;
+    } else {
+        this.imagePosition--;
+    }
+    this.updatePosition();
+}
+
+/**
+ * Initializes event listeners for the carousel navigation buttons and dots.
+ */
+initEventListeners() {
+    // Event Listeners: Button Click
+    this.next.addEventListener('click', this.nextImage.bind(this));
+    this.prev.addEventListener('click', this.prevImage.bind(this));
+
+    // Event Listeners: Dot Click
+    this.dots.forEach((dot, dotPosition) => {
+        dot.addEventListener("click", () => {
+            this.imagePosition = dotPosition;
+            this.updatePosition(dotPosition);
+        })
+    })
+}
+
+/**
+ * Creates a new PopupCarousel object.
+ * @param {HTMLElement} popup - The popup element that contains the carousel.
+ */
+constructor(popup) {
+    this.popup = popup;
+    this.prev = document.querySelector('.prev');
+    this.next = document.querySelector('.next');
+    this.imgs = document.querySelectorAll('.carousel-img');
+    this.dots = document.querySelectorAll('.dot');
+    this.imagePosition = 0;
+    this.imageCount = this.imgs.length;
+
+    this.initEventListeners();
+}
+}
+
+
+
+
+
+/**
+ * POPUP - original code
+
+
+
+var currentOpenPopup = null;
+function addPopUpToMarker(feature, marker) {
+
+    // TODO: mobile phone held horizontal should also have popup on the right-hand side 
+    var anchor = (isMobileScreenSize()) ?
+        "top" :         // mobile
+        "top-left";     // desktop 
+    var offset = (isMobileScreenSize()) ?
+        [-60, -700] :   // mobile 
+        [150, -500];    // desktop
+
+    const popupHTML = getPopupHTML(feature.properties.images, feature.properties.captions);
+    const popup = new mapboxgl
+        .Popup({ 
+            anchor: anchor,
+            offset: offset,
+            closeOnClick: true,
+            closeButton: false
+        })
+        .setHTML(popupHTML);
+
+    popup.on('open', () => {
+        // don't show popup if we're zooming to region 
+        if (shouldZoomToRegion()) {
+            popup.remove();
+            currentOpenPopup = null;
+        } else {
+            var carousel = new PopupCarousel(popup);
+            //carousel.popup.setOffset();
+            //carousel.popup.set
+            currentOpenPopup = carousel;
+        }
+    });
+    popup.on('close', () => {
+        currentOpenPopup = null;
+    });
+    marker.setPopup(popup);
+}
+ */
+
+
+
+/**
+ * Generates markers and a route on a map for a given region.
+ * Mobile and Desktop have different values for:
+ *  - anchor: popup display relative to marker
+ *  - offset: coordinates to move popup
+ * @param {Object} region - The region object containing markers and coordinates for the route.
+ */
+function generateRegion(region) {
+    for (const feature of region.markers.features) {
+
+        // do not display markers that were only used for route building
+        if (feature.properties.ignore === true) continue;
+        var marker = addMarkerToMap(feature);
+
+        // do not add popup if there are no images
+        if (feature.properties.images.length == 0) continue;
+        var marker = addPopUpToMarker(feature, marker);
+    }
+
+    // Route
+    map.on('load', () => {
+        var sourceId = "route-" + region.name.toLowerCase().replace(/\s/g, '-');
+        // console.log(`sourceID: ${sourceId}`);
+        map.addSource(sourceId, region.coordinates);
+        map.addLayer({
+            "id": sourceId,
+            "type": "line",
+            "source": sourceId,
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-width": 4,
+                "line-color": "gray",
+                "line-dasharray": [2, 2]        // Set the line to be dotted (alternating 2 units of line followed by 2 units of gap)
+            }
+        });
+    });
+}
+
+/*******************************************************************
+ * 
+ * Helpers
+ * 
+ ********************************************************************/
+
+function shouldZoomToRegion() {
+    const zoomThreshold = 9;
+    return map.getZoom() < zoomThreshold;
+}
+
+function isMobileScreenSize() {
+    return (window.innerWidth < 767);
+}
+
+/*******************************************************************
+ * 
+ * Zoom Region
+ * 
+ * When the map is very zoomed out, we want to only display a single
+ * Marker from the region to prevent Markers from rendering over each
+ * other. 
+ * 
+ * Then, we want to add event listener so that onClick of those Markers,
+ * we zoom in to that region and display all Markers.
+ *  - map.fitBounds() - hard code
+ *  - zoom level - hard code 
+ * 
+ ********************************************************************/
+
+/*******************************************************************
+ * 
+ * Markers
+ * 
+ ********************************************************************/
+
+/**
+ * Initializes the map with marker circles and event listeners
+ * @param {Object} data - The data containing the markers to be added to the map.
+ */
+ function initMarkerCirclesAndEventListeners(data) {
+    var features = data.map(item => item.markers.features).flat();
+    map.on('load', () => {
+        const layerID = 'marker-circles';
+        addLayerForMarkerCircles(features, layerID);
+        
+        map.on('click', layerID, (event) => {
+            handleMarkerCircleClickEvent(event);
+        });
+        
+        // Cursor becomes Pointer when cursor enters any Marker 'circle' object
+        map.on('mouseenter', layerID, () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+        map.on('mouseleave', layerID, () => {
+            map.getCanvas().style.cursor = '';
+        });
+    });
+}
+
+/**
+ * "Center" the map on the coordinates of any clicked marker circle
+ *  - If the zoom level is high enough
+ *      clicking on a Marker will instead zoom to region 
+ *  - If the zoom level is low
+ *      clicking on a Marker will zoom in to that Marker
+ * If shouldZoomToRegion() returns true, zooms the map to the region of the clicked marker.
+ * Otherwise, calculates the popup open position and flies to it.
+ * @param {Object} e - The event object.
+ */
+function handleMarkerCircleClickEvent(e) {
+    if (shouldZoomToRegion()) {
+        var region = e
+            .features[0].properties.region
+            .toLowerCase().replaceAll(" ", "_");
+        (isMobileScreenSize()) ? 
+            map.fitBounds(BOUND_BOX_MOBILE[region]) :
+            map.fitBounds(BOUND_BOX_WEB[region]);
+    } else {
+        var center = calculatePopupOpenPosition(e.features[0].geometry.coordinates);
+        map.flyTo({
+            center: center,
+            //speed: 0.4,
+            essential: true
+        });
+    }
+}
+
+/**
+ * Adds a layer for marker circles to the map.
+ * Markers are separate from Layers in Mapbox
+ * Instead of adding individual callbacks to Markers, 
+ * create a separate Layer with transparent circles over Marker coordinates
+ * @param {Object[]} features - An array of GeoJSON features.
+ * @param {string} layerID - The ID of the layer to be added.
+ */
+function addLayerForMarkerCircles(features, layerID) {
+    map.addSource('points', {
+        'type': 'geojson',
+        'data': {
+            'type': 'FeatureCollection',
+            'features': features
+        }
+    });
+    map.addLayer({
+        'id': layerID,
+        'type': 'circle',
+        'source': 'points',
+        'paint': {
+            "circle-opacity": 0,
+            'circle-radius': 40,
+
+            // DEBUG: uncomment to see circles
+            //'circle-stroke-width': 2,
+            //'circle-stroke-color': '#FF0000'
+        }
+    });
+}
+
+
+
+/*******************************************************************
+ * 
+ * Popup Static Generation
+ * 
+ ********************************************************************/
+
+function getPopupHTML(images, caption) {
+    const popupHTML = `
+        <div class="carousel-container">
+            <div class="carousel-imgs">
+                ${generateImageHTML(images)}
+            </div>
+            <a class="prev arrow">&#10094;</a>
+            <a class="next arrow">&#10095;</a>
+            <div class="slide-numbers">
+                ${generateDotHTML(images.length)}
+            </div>
+        </div>
+        <p class="carousel-caption">${caption}</p>
+    `;
+    return popupHTML;
+}
+
+// TODO: update this for video support
+function generateImageHTML(images) {
+    var strings = [];
+    for (var i = 0; i < images.length; i++) {
+
+        var status = (i === 0 ? "visible" : "hidden");
+
+        if (images[i].includes("mp4")) {
+            //console.log(`video: ${images[i]}`);
+            strings.push(
+                `<video controls class="carousel-img object-cover ${status}">
+                    <source src="${images[i]}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+              `
+            );
+        } else {
+            //console.log(`image: ${images[i]}`);
+            strings.push(`<img src="${images[i]}" class="carousel-img ${status}"/>`);
+        }
+    }
+    return strings.join("\n");
+}
+
+function generateDotHTML(count) {
+    var strings = [];
+    for (var i = 0; i < count; i++) {
+        if (i === 0) {
+            strings.push(`<span class="dot active"></span>`);
+        } else {
+            strings.push(`<span class="dot"></span>`);
+        }
+    }
+    return strings.join("\n");
+}
+
+// HERE: When a swipe event is detected
+//  - swipe left: next
+//  - swipe right: prev
+function initializeSwipeEventListeners() {
+    let touchstartX = 0
+    let touchendX = 0
+    
+    document.addEventListener('touchstart', (event) => {
+        touchstartX = event.changedTouches[0].screenX
+    });
+    document.addEventListener('touchend', (event) => {
+        if (currentOpenPopup === null) return;
+
+        touchendX = event.changedTouches[0].screenX
+        if (touchendX < touchstartX) {
+            console.log('swiped left!');
+            currentOpenPopup.nextImage();
+        }
+        if (touchendX > touchstartX) {
+            console.log('swiped right!')
+            currentOpenPopup.prevImage();
+        }
+    });
+}
+
+
+
+    </script>
+</body>
+</html>
