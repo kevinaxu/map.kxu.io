@@ -1,5 +1,244 @@
 [
   {
+    "name": "Chiang Rai",
+    "markers": [
+      {
+        "name": "AirBnB",
+        "coordinates": [
+          99.8332739,
+          19.9068867     
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_rai",
+        "images": []
+      },
+      {
+        "name": "Wat Rong Khun (White Temple)",
+        "coordinates": [
+          99.874324,
+          20.17247  
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_rai",
+        "images": []
+      }
+    ]
+  },
+  {
+    "name": "Chiang Mai",
+    "markers": [
+      {
+        "name": "Chiang Mai International",
+        "coordinates": [
+          98.965265,
+          18.7682315     
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "Astra Sky River",
+        "coordinates": [
+          98.998390,
+          18.772510        
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "Chiang Mai Gate Night Market",
+        "coordinates": [
+          98.988009,
+          18.781268
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "Astra Sky River",
+        "coordinates": [
+          98.998390,
+          18.772510        
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Central Chiang Mai",
+        "coordinates": [
+          99.003980,
+          18.811450
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "Astra Sky River",
+        "coordinates": [
+          98.998390,
+          18.772510        
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Grazie Thai",
+        "coordinates": [
+          98.993305,
+          18.791374        
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "Astra Sky River",
+        "coordinates": [
+          98.998390,
+          18.772510        
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Wat Pha Lat",
+        "coordinates": [
+          98.966610,
+          18.788470        
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "Police Station District 5",
+        "coordinates": [
+          99.002530,
+          18.789280      
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "Bo Sang Umbrella Village",
+        "coordinates": [
+          99.081961,
+          18.764817     
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      }
+    ]
+  },
+  {
+    "name": "Bangkok",
+    "markers": [
+      {
+        "name": "Suvarnabhumi Airport",
+        "coordinates": [
+          100.7502555,
+          13.68970625        
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "bangkok",
+        "images": []
+      },
+      {
+        "name": "St. Regis",
+        "coordinates": [
+          100.540184,
+          13.739923
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": []
+      },
+      {
+        "name": "Maggie Choos",
+        "coordinates": [
+          100.518442,
+          13.722892
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": []
+      },
+      {
+        "name": "St. Regis",
+        "coordinates": [
+          100.540184,
+          13.739923
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Platinum Mall",
+        "coordinates": [
+          100.5395255,
+          13.75002299
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": []
+      },
+      {
+        "name": "St. Regis",
+        "coordinates": [
+          100.540184,
+          13.739923
+        ],
+        "ignore": true
+      },
+      {
+        "name": "All The Smoke Lounge",
+        "coordinates": [
+          100.541950,
+          13.754830
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": []
+      },
+      {
+        "name": "St. Regis",
+        "coordinates": [
+          100.540184,
+          13.739923
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Don Mueang International Airport",
+        "coordinates": [
+          100.60397,
+          13.9147915        
+        ],
+        "captions": "",
+        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "region": "bangkok",
+        "images": []
+      }
+    ]
+  },
+  {
     "name": "Bali",
     "markers": [
       {
@@ -184,7 +423,8 @@
         "images": [
           "assets/bali/batur_1.jpg",
           "assets/bali/batur_2.jpg",
-          "assets/bali/batur_3.jpg"
+          "assets/bali/batur_3.jpg",
+          "assets/bali/batur_m1.mp4"
         ]
       },
       {

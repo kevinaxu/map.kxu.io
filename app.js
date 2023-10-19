@@ -12,6 +12,8 @@
  * 
  ********************************************************************/
 
+const DEBUG = false;
+
 // TODO: make these dynamic by pulling from trip_config? 
 const COORD_PULSING_DOT = [
     115.253722,
@@ -203,22 +205,22 @@ const map = new mapboxgl.Map({
     zoom: 9.5
 });
 
-/*
-// DEBUG: Log zoom level and bounding coordinates when the map moves
-map.on('move', function() {
-    var zoom = map.getZoom();
-    var bounds = map.getBounds();
-    console.log('Zoom Level:', zoom);
-    console.log('Bounding Coordinates:', bounds.toArray()); // [southwest, northeast]
-});
-*/
+
+if (DEBUG) {
+    // Log zoom level and bounding coordinates when the map moves
+    map.on('move', function() {
+        var zoom = map.getZoom();
+        var bounds = map.getBounds();
+        console.log('Zoom Level:', zoom);
+        console.log('Bounding Coordinates:', bounds.toArray()); // [southwest, northeast]
+    });
+}
 
 function generateMap(data) {
-    for (var i = 0; i < data.length; i++) {
-        generateRegion(data[i]);
+    for (const region of data) {
+        generateRegion(region);
     }
 };
-
 
 /**
  * Adds a marker to the map using the provided feature object.
