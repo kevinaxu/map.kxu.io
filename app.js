@@ -171,6 +171,7 @@ function addPopUpToMarker(feature, marker) {
             popupCarousel.remove();
             currentOpenPopup = null;
         } else {
+            popupCarousel.buildPopupElement();
             popupCarousel.initializeCarouselControls();
             popupCarousel.setPopupPositioning();
             currentOpenPopup = popupCarousel;

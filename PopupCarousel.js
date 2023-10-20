@@ -8,16 +8,13 @@ class PopupCarousel {
      * @param {HTMLElement} popup - The popup element that contains the carousel.
      */
     constructor(feature) {
-
-        // setHTML() does not have to be chained
-        const popupHTML = this.getPopupHTML(feature.properties.images, feature.properties.captions);
+        this.feature = feature;
         this.popup = new mapboxgl
             .Popup({ 
                 anchor: "top-left",
                 closeOnClick: true,
                 closeButton: false
             })
-            .setHTML(popupHTML);
     }
 
     initializeCarouselControls() {
@@ -30,6 +27,10 @@ class PopupCarousel {
         this.handleClickEvents();
     }
 
+    buildPopupElement() {
+        const popupHTML = this.getPopupHTML(this.feature.properties.images, this.feature.properties.captions);
+        this.popup.setHTML(popupHTML);
+    }
     getMapboxPopup() {
         return this.popup;
     }
