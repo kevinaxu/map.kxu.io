@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Center the map on a clicked feature</title>
+    <title>Map Welcome Overlay</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
@@ -37,6 +37,7 @@
             padding: 10px;
 
             width: 75%; /* Set the width of the centered div */
+            max-width: 720px;
             min-height: 200px; /* Set the height of the centered div */
             background-color: #e4e0ce;
             text-align: left;
@@ -54,8 +55,14 @@
         .button-container {
             display: flex;
             justify-content: space-between; /* Space between buttons */
-            margin-top: 1rem;
+            margin-top: 1em;
         }
+        .button-container a {
+            color: inherit;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
         /* Individual button styles */
         .left-button {
             /* Add your styles for the left button */
@@ -89,6 +96,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding-bottom: 1rem;
         }
         .welcome-image {
             max-width: 100%; /* Ensure the image doesn't exceed the container's width */
@@ -96,7 +104,12 @@
             border-radius: .1em;
             height: 120px;
         }
-
+        .welcome-bullet {
+            padding-left: 1rem;
+        }
+        .button-image {
+            width: 75px;
+        }
         * {
             /* outline: 1px solid red; */
         }
@@ -109,29 +122,30 @@
             <div class="welcome-image-container">
                 <img class="welcome-image" src="https://sdk.bitmoji.com/render/panel/10217328-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1">
             </div>
-            <h2 class="welcome-title">Dear Family, Friends, Drifters,</h2>
-            <p>Welcome to our travel site! We built this site to have a little fun and document our 2023 adventures in Southeast Asia. Over the course of two months, we’ve:<p>
+            <h3 class="welcome-title">Dear Friends & Family,</h3>
+            <p>Welcome to our travel site! We built this site to have a little fun and document our 2023 adventures in Southeast Asia. Over the course of two months, we’ve been lucky enough to:<p>
             <div>
-                <div>&#128507; scuba diving in Koh Tao</div>
-                <div>&#128507; road tripped across Bali</div>
-                <div>&#128507; scuba diving in Koh Tao</div>
+                <div class="welcome-bullet"><span>🤿</span> scuba dive in Koh Tao</div>
+                <div class="welcome-bullet"><span>🛵</span> road trip across Bali</div>
+                <div class="welcome-bullet"><span>🐘</span> play with elephants in Chiang Mai </div>
             </div>
+            <p>...and so much more!<p>
+
             </ul>
             <p>This interactive map idea has been floating around the back of my mind for the past few years (see 2020 California Roadtrip). It started out as a more serious project, but over time I wanted to be more fun and playful.<p>
             <h3>How To Use:</h3>
             <div>
-                <div>&#128507; Drag the map to explore </div>
-                <div>&#128507; Use the Zoom Out buttons to see everywhere we went on the entire Trip or in a specific Region</div>
-                <div>&#128507; Swipe across images </div>
-                <div>&#128507; Click on our Bitmojis to see more! Our photos from the trip were painstakingly editing and improved by Maisa. </div>
+                <div class="welcome-bullet">🌏 Drag the map to explore </div>
+                <div class="welcome-bullet">🧘🏽‍♀️ Click on our Bitmojis to see photos</div>
+                <div class="welcome-bullet">✊ Swipe across images </div>
             </div>
+            <p>Our photos from the trip were painstakingly editing and improved by Maisa - thanks Babe 😘 </p>
             <div class="button-container">
-                <button class="" onclick="hideOverlay()">
-                    Got it, don't show this message again
-                </button>
-                <button class="">
-                    Let's Go! 
-                </button>
+                <div> 
+                </div>
+                <div> 
+                    <img class="button-image" onclick="hideOverlay(); return false;" src="https://sdk.bitmoji.com/render/panel/9090400-132533800_31-s1-v1.webp?transparent=1&scale=1">           
+                </div>
             </div>
         </div>
     </div>
