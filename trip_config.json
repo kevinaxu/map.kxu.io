@@ -269,7 +269,9 @@
         "captions": "Guesthouse in Canggu",
         "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bali",
-        "images": []
+        "images": [
+          "assets/bali/pondok_1.jpg"
+        ]
       },
       {
         "name": "Batu Balong Beach",
@@ -315,7 +317,10 @@
         "region": "bali",
         "images": [
           "assets/bali/villa_1.jpg",
-          "assets/bali/villa_2.jpg"
+          "assets/bali/villa_2.jpg",
+          "assets/bali/villa_3.jpg",
+          "assets/bali/villa_4.jpg",
+          "assets/bali/villa_5.jpg"
         ]
       },
       {
@@ -359,7 +364,21 @@
         "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bali",
         "images": [
-          "assets/bali/tulamben_m1.mp4"
+          "assets/bali/tulamben_1.jpg",
+          "assets/bali/tulamben_2.jpg",
+          "assets/bali/tulamben_3.jpg",
+          "assets/bali/tulamben_4.jpg",
+          "assets/bali/tulamben_5.jpg",
+          "assets/bali/tulamben_6.jpg",
+          "assets/bali/tulamben_7.jpg",
+          "assets/bali/tulamben_8.jpg",
+          "assets/bali/tulamben_9.jpg",
+          "assets/bali/tulamben_10.jpg",
+          "assets/bali/tulamben_11.jpg",
+          "assets/bali/tulamben_12.jpg",
+          "assets/bali/tulamben_13.jpg",
+          "assets/bali/tulamben_14.jpg",
+          "assets/bali/tulamben_15.jpg"
         ]
       },
       {
@@ -510,7 +529,11 @@
         "images": [
           "assets/singapore/changi_1.jpg",
           "assets/singapore/changi_2.jpg",
-          "assets/singapore/changi_3.jpg"
+          "assets/singapore/changi_3.jpg",
+          "assets/singapore/changi_4.jpg",
+          "assets/singapore/changi_5.jpg",
+          "assets/singapore/changi_6.jpg",
+          "assets/singapore/changi_7.jpg"
         ]
       },
       {
@@ -559,7 +582,9 @@
         "captions": "Hainese Chicken Rice",
         "icon": "https://sdk.bitmoji.com/render/panel/10226603-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "region": "singapore",
-        "images": []
+        "images": [
+          "assets/singapore/chinatown_1.jpg"
+        ]
       },
       {
         "name": "The Pod",
@@ -601,7 +626,8 @@
           "assets/singapore/gardens_20.jpg",
           "assets/singapore/gardens_21.jpg",
           "assets/singapore/gardens_22.jpg",
-          "assets/singapore/gardens_23.jpg"
+          "assets/singapore/gardens_23.jpg",
+          "assets/singapore/gardens_24.jpg"
         ]
       },
       {
@@ -624,7 +650,8 @@
         "images": [
           "assets/singapore/marina_1.jpg",
           "assets/singapore/marina_2.jpg",
-          "assets/singapore/marina_3.jpg"
+          "assets/singapore/marina_3.jpg",
+          "assets/singapore/marina_bay_1.jpg"
         ]
       },
       {
@@ -874,7 +901,10 @@
         "captions": "Scuba School took up most of our time and energy while we were in Koh Tao, but the sea life was so incredible that I [Kevin]  did a little solo trek down to Shark Bay. I got in the water as the sun was starting to set. I didn't expect to see anything we hadn't already seen, but was startled by a massive turtle peacefully crunching on some coral. It was unfazed by my presence and we were eventually joined by another one of his friends.",
         "icon": "https://sdk.bitmoji.com/render/panel/20033232-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "region": "koh_tao",
-        "images": []
+        "images": [
+          "/assets/koh_tao/shark_2.jpg",
+          "/assets/koh_tao/shark_3.jpg"
+        ]
       },
       {
         "name": "Charina",
@@ -915,7 +945,11 @@
         "images": [
           "/assets/koh_tao/tanote_2.jpg",
           "/assets/koh_tao/tanote_1.jpg",
-          "assets/koh_tao/shark_1.jpg"
+          "assets/koh_tao/shark_1.jpg",
+          "/assets/koh_tao/tanote_3.jpg",
+          "/assets/koh_tao/tanote_4.jpg",
+          "/assets/koh_tao/tanote_5.jpg",
+          "/assets/koh_tao/tanote_6.jpg"
         ]
       }
     ]
@@ -966,7 +1000,8 @@
         "region": "phuket",
         "images": [
           "/assets/phuket/pad_thai_1.jpg",
-          "/assets/phuket/pad_thai_2.jpg"
+          "/assets/phuket/pad_thai_2.jpg",
+          "/assets/phuket/pad_thai_3.jpg"
         ]
       },
       {
@@ -1161,7 +1196,12 @@
         "captions": "One of our big goals of this trip was to find some nice clothing to bring back. Though the night markets were cheap... so was the quality! Central Festival in Phuket is an absolutely massive facility - essentially two separate malls connected by sky bridge. We explored both - one felt more local while the other had more international designers.",
         "icon": "https://render.bitstrips.com/v2/cpanel/9176167-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
         "region": "phuket",
-        "images": []
+        "images": [
+          "/assets/phuket/central_1.jpg",
+          "/assets/phuket/central_2.jpg",
+          "/assets/phuket/central_3.jpg",
+          "/assets/phuket/central_4.jpg"
+        ]
       },
       {
         "name": "Laem Hin Seafood",
