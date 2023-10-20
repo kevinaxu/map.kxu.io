@@ -39,7 +39,7 @@ fetchData.then(data => {
         generateMap(data);
         renderPulsingDot();
         initMarkerCirclesAndEventListeners(data);
-        initFitBoundsAllMarkers(data);
+        initFitBoundsAllMarkers();
         initializeSwipeEventListeners();
     }
 })
@@ -57,9 +57,9 @@ fetchData.then(data => {
 * 
 ********************************************************************/
 
-function initFitBoundsAllMarkers(data) {
+function initFitBoundsAllMarkers() {
     document.getElementById('fit-all').addEventListener('click', () => {
-        map.fitBounds(BOUND_BOX_WEB["all"]);
+        map.fitBounds(BOUND_BOX_WEB["all"], { padding: 36 });
     });
 }
 
@@ -470,12 +470,12 @@ function generatePulsingDot() {
 const BOUND_BOX_WEB = {
     "all": [
         [
-            89.20004011241173,
-            -12.342977303436726
+            98.294872,
+            -8.7461124
         ],
         [
-            134.5055133573236,
-            21.517103163038342
+            115.591833,     
+            20.17247
         ]
     ],
     "phuket": [
@@ -552,12 +552,12 @@ const BOUND_BOX_WEB = {
 const BOUND_BOX_MOBILE = {
     "all": [
         [
-            95.37898714168989,
-            -17.928112411988835
+            98.294872,
+            -8.7461124        
         ],
         [
-            118.42122415521891,
-            30.142620141057122
+            115.591833,     
+            20.17247
         ]
     ],
     "phuket": [
