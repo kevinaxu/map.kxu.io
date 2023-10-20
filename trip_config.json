@@ -3,10 +3,18 @@
     "name": "Chiang Rai",
     "markers": [
       {
-        "name": "AirBnB",
+        "name": "Astra Sky River",
         "coordinates": [
-          99.8332739,
-          19.9068867     
+          98.998390,
+          18.772510        
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Saabay Guest House",
+        "coordinates": [
+          99.801750,
+          19.851310     
         ],
         "captions": "",
         "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
@@ -47,7 +55,7 @@
           18.772510        
         ],
         "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20084243-102140752402_5-s5-v1.webp?transparent=1&width=350",
         "region": "chiang_mai",
         "images": []
       },
@@ -57,8 +65,8 @@
           98.988009,
           18.781268
         ],
-        "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "captions": "Finally found some khanom khrok at the night market!",
+        "icon": "https://sdk.bitmoji.com/render/panel/10223091-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&width=350",
         "region": "chiang_mai",
         "images": []
       },
@@ -76,8 +84,8 @@
           99.003980,
           18.811450
         ],
-        "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "captions": "Chiang Mai Food Festival ",
+        "icon": "https://sdk.bitmoji.com/render/panel/10212221-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&width=350",
         "region": "chiang_mai",
         "images": []
       },
@@ -95,8 +103,8 @@
           98.993305,
           18.791374        
         ],
-        "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "captions": "Best Tom Ka Ga!",
+        "icon": "https://sdk.bitmoji.com/render/panel/20022690-132533800_31-s1-v1.webp?transparent=1&width=350",
         "region": "chiang_mai",
         "images": []
       },
@@ -125,7 +133,7 @@
           99.002530,
           18.789280      
         ],
-        "captions": "",
+        "captions": "Paying the tourist tax",
         "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
         "region": "chiang_mai",
         "images": []
