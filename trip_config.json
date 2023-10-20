@@ -87,7 +87,10 @@
         "captions": "Chiang Mai Food Festival ",
         "icon": "https://sdk.bitmoji.com/render/panel/10212221-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
-        "images": []
+        "images": [
+          "assets/chiang_mai/central_1.jpg",
+          "assets/chiang_mai/central_2.jpg"
+        ]
       },
       {
         "name": "Astra Sky River",
@@ -106,7 +109,10 @@
         "captions": "Best Tom Ka Ga!",
         "icon": "https://sdk.bitmoji.com/render/panel/20022690-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
-        "images": []
+        "images": [
+          "assets/chiang_mai/grazie_1.jpg",
+          "assets/chiang_mai/mitte_1.jpg"
+        ]
       },
       {
         "name": "Astra Sky River",
@@ -125,7 +131,14 @@
         "captions": "",
         "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
         "region": "chiang_mai",
-        "images": []
+        "images": [
+          "assets/chiang_mai/wat_pha_lat_1.jpg",
+          "assets/chiang_mai/wat_pha_lat_2.jpg",
+          "assets/chiang_mai/wat_pha_lat_3.jpg",
+          "assets/chiang_mai/wat_pha_lat_4.jpg",
+          "assets/chiang_mai/wat_pha_lat_5.jpg",
+          "assets/chiang_mai/wat_pha_lat_6.jpg"
+        ]
       },
       {
         "name": "Police Station District 5",
@@ -136,7 +149,9 @@
         "captions": "Paying the tourist tax",
         "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
         "region": "chiang_mai",
-        "images": []
+        "images": [
+          "assets/chiang_mai/police_1.jpg"
+        ]
       },
       {
         "name": "Bo Sang Umbrella Village",
@@ -147,7 +162,9 @@
         "captions": "",
         "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
         "region": "chiang_mai",
-        "images": []
+        "images": [
+          "assets/chiang_mai/bo_sang_1.jpg"
+        ]
       }
     ]
   },
@@ -223,7 +240,9 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
-        "images": []
+        "images": [
+          "assets/bangkok/mai_1.jpg"
+        ]
       },
       {
         "name": "St. Regis",
@@ -881,7 +900,9 @@
           "/assets/koh_tao/island_2.jpg",
           "/assets/koh_tao/island_3.jpg",
           "/assets/koh_tao/island_4.jpg",
-          "/assets/koh_tao/island_5.jpg"
+          "/assets/koh_tao/island_5.jpg",
+          "/assets/koh_tao/island_6.jpg",
+          "/assets/koh_tao/island_7.jpg"
         ]
       },
       {
@@ -949,7 +970,12 @@
           "/assets/koh_tao/tanote_3.jpg",
           "/assets/koh_tao/tanote_4.jpg",
           "/assets/koh_tao/tanote_5.jpg",
-          "/assets/koh_tao/tanote_6.jpg"
+          "/assets/koh_tao/tanote_6.jpg",
+          "/assets/koh_tao/tanote_7.jpg",
+          "/assets/koh_tao/tanote_8.jpg",
+          "/assets/koh_tao/tanote_9.jpg",
+          "/assets/koh_tao/tanote_10.jpg",
+          "/assets/koh_tao/tanote_11.jpg"
         ]
       }
     ]
