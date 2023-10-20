@@ -30275,9 +30275,7 @@
             "message": "Pondok Kita",
             "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
-            "images": [
-              "assets/bali/pondok_1.jpg"
-            ],
+            "images": [],
             "captions": "Guesthouse in Canggu"
           },
           "geometry": {
@@ -30328,7 +30326,8 @@
             "icon": "https://sdk.bitmoji.com/render/panel/20000963-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/dwana_1.jpg",
-              "assets/bali/dwana_2.jpg"
+              "assets/bali/dwana_2.jpg",
+              "assets/bali/pondok_1.jpg"
             ],
             "captions": "Private villa and private pool in the jungle"
           },
@@ -30433,7 +30432,6 @@
               "assets/bali/tulamben_10.jpg",
               "assets/bali/tulamben_11.jpg",
               "assets/bali/tulamben_12.jpg",
-              "assets/bali/tulamben_13.jpg",
               "assets/bali/tulamben_14.jpg",
               "assets/bali/tulamben_15.jpg"
             ],
