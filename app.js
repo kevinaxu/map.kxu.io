@@ -165,7 +165,6 @@ function addPopUpToMarker(feature, marker) {
     var popup = popupCarousel.getMapboxPopup();
     
     popup.on('open', () => {
-        console.log("popup onOpen()")
         // don't show popup if we're zooming to region 
         if (shouldZoomToRegion()) {
             popupCarousel.remove();
@@ -256,7 +255,6 @@ function handleMarkerCircleClickEvent(e) {
         
         // input: coordinates of the marker circle that was clicked (eg Marker center location) 
         var center = calculatePopupOpenPosition(e.features[0].geometry.coordinates);
-        console.log("markers flyTo():", center);
         map.flyTo({
             center: center,
             speed: 0.4,
@@ -311,27 +309,26 @@ function addLayerForMarkerCircles(features, layerID) {
 
 
 function calculatePopupOpenPosition(center) {
-    console.log("calculatePopupOpenPosition()");
     const bounds = map.getBounds();
     var heightWindow  = Math.abs(bounds.getNorthEast().lat - bounds.getSouthWest().lat),
         widthWindow   = Math.abs(bounds.getNorthEast().lng - bounds.getSouthWest().lng);
 
     var newCenter = [];
     if (isMobile() && isPortrait()) {
-        console.log("mobile portrait");
+        //console.log("mobile portrait");
         newCenter = [
             center[0],
             center[1] + (heightWindow * 0.4)
         ];
     } else {
         if (isDesktop()) {
-            console.log("desktop");
+            //console.log("desktop");
             newCenter = [
                 center[0] + (widthWindow * .25),
                 center[1] + (heightWindow * 0.4)
             ];
         } else {
-            console.log("mobile landscape / tablet");
+            //console.log("mobile landscape / tablet");
             newCenter = [
                 center[0] + (widthWindow * 0.25),
                 center[1] + (heightWindow * 0.4)
@@ -358,12 +355,10 @@ function initializeSwipeEventListeners() {
     document.addEventListener('touchend', (event) => {
         if (currentOpenPopup === null) return;
         touchendX = event.changedTouches[0].screenX
-        if (touchendX < touchstartX) {
-            console.log('swiped left!');
+        if (touchendX < touchstartX) {      // swipe left 
             currentOpenPopup.nextImage();
         }
-        if (touchendX > touchstartX) {
-            console.log('swiped right!')
+        if (touchendX > touchstartX) {      // swipe right
             currentOpenPopup.prevImage();
         }
     });
