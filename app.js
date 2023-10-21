@@ -41,6 +41,7 @@ fetchData.then(data => {
         initMarkerCirclesAndEventListeners(data);
         initFitBoundsAllMarkers();
         initializeSwipeEventListeners();
+        handleMapEventListeners();
     }
 })
 
@@ -59,6 +60,10 @@ fetchData.then(data => {
 
 function initFitBoundsAllMarkers() {
     document.getElementById('fit-all').addEventListener('click', () => {
+        if (currentOpenPopup) {
+            currentOpenPopup.remove();
+            currentOpenPopup = null;
+        }
         map.fitBounds(BOUND_BOX_WEB["all"], { padding: 36 });
     });
 }
@@ -344,6 +349,16 @@ function calculatePopupOpenPosition(center) {
 * Controls - Swipe Events 
 * 
 ********************************************************************/
+
+function handleMapEventListeners() {
+    map.on('drag', () => {
+        console.log('A drag event occurred.');
+        if (currentOpenPopup) {
+            currentOpenPopup.remove();
+            currentOpenPopup = null;
+        }
+    });
+}
 
 function initializeSwipeEventListeners() {
     let touchstartX = 0
