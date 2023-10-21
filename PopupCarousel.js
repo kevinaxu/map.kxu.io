@@ -164,7 +164,9 @@ class PopupCarousel {
                 <a class="prev arrow">&#10094;</a>
                 <a class="next arrow">&#10095;</a>
                 <div class="slide-numbers">
-                    ${this.generateDotHTML(images.length)}
+                    <div class="dot-container">
+                        ${this.generateDotHTML(images.length)}
+                    </div>
                 </div>
             </div>
             <p class="carousel-caption">${caption}</p>
