@@ -26,6 +26,7 @@ body {
     border-radius: .1em;
     box-shadow: 0 0 5px rgb(204, 204, 204);
     height: 100%;
+    background-image: url("./assets/textures/polaroid.png");
 }
 .popup-content-mobile .mapboxgl-popup-content {
     padding: 16px;
@@ -164,6 +165,31 @@ body {
 .dot:hover {
     box-shadow: 0 0 5px #fff;
 }
+
+/* Info Button */
+.info-container {
+    position: fixed; 
+    top: 0.5rem; 
+    right: 0.5rem; 
+}
+.info-button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    border-radius: 0.1rem; 
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1rem; 
+    font-weight: 600; 
+    color: #6B7280; 
+    background-color: #ffffff; 
+}
+.info-button:hover {
+    background-color: #cbcfd5; 
+}
+
+
 
 /* Zoom Buttons */
 .zoom-container {
