@@ -470,6 +470,57 @@ function generatePulsingDot() {
     };
 }
 
+/*******************************************************************
+* 
+* Welcome Overlay
+* 
+********************************************************************/
+
+function hideOverlay() {
+    document.querySelector("#overlay").style.display = "none";
+}
+
+function handleWelcomeOverlay() {
+    const welcomeCheckbox = document.getElementById('welcomeOverlayCheckbox');
+    const welcomeCheckboxKey = "shouldShowWelcomeOverlay";
+    const welcomeCheckboxState = localStorage.getItem(welcomeCheckboxKey);
+
+    // Show / Hide Overlay based on previous State
+    if (welcomeCheckboxState === null || welcomeCheckboxState === "null" ) {
+        localStorage.setItem(welcomeCheckboxKey, true);
+    } else if (welcomeCheckboxState === "true") {
+        welcomeCheckbox.checked = false;
+    } else {
+        welcomeCheckbox.checked = true;
+        hideOverlay();
+        // TODO: check state before rendering welcome overlay
+    }
+
+    // Event Listener - "Don't Show Again" Checkbox
+    welcomeCheckbox.addEventListener('change', function () {
+        if (welcomeCheckbox.checked) {
+            console.log("checkbox is checked, don't show next time");
+            localStorage.setItem(welcomeCheckboxKey, false);
+        } else {
+            console.log("checkbox is unchecked, show next time");
+            localStorage.setItem(welcomeCheckboxKey, true);
+        }
+    });
+
+    // Event Listener - Hide Overlay if Clicked Outside
+    window.addEventListener('click', function(e){   
+        if (!document.getElementById('welcome-message-container').contains(e.target)) {
+            hideOverlay();
+        }
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    handleWelcomeOverlay();
+});
+
+
 
 /*******************************************************************
 * 
