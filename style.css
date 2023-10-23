@@ -1,0 +1,294 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.marker {
+    background-size: cover;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    /* filter: grayscale(100); */
+    cursor: pointer;
+}
+
+/* Polaroid Card Component */
+.mapboxgl-popup-tip {
+    display: none;
+}
+.mapboxgl-popup-content {
+    border-radius: .1em;
+    box-shadow: 0 0 5px rgb(204, 204, 204);
+    height: 100%;
+}
+.popup-content-mobile .mapboxgl-popup-content {
+    padding: 16px;
+    width: 320px;
+}
+.popup-content-tablet .mapboxgl-popup-content {
+    padding: 16px;
+    width: 400px;
+}
+.popup-content-desktop .mapboxgl-popup-content {
+    padding: 16px;
+    width: 480px;
+}
+.popup-content-mobile-landscape .mapboxgl-popup-content {
+    padding: 16px;
+    width: 240px;
+}
+
+/* Carousel */
+.carousel-container {
+    position: relative;
+    margin: 0 auto 0 auto;
+    width: 100%;
+}
+.carousel-container img {
+    border-radius: .1em;
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+}
+.carousel-container video {
+    border-radius: .1em;
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+}
+.carousel-caption {
+    font-family: monospace;
+    overflow: scroll;
+    width: 100%;
+    max-height: 10em;
+    font-size: 16px;
+    margin-top: 1em;
+    line-height: normal;
+}
+/* Media query for screens with a maximum width of 767px (adjust as needed) */
+@media screen and (max-width: 767px) {
+    .carousel-container img {
+        height: 360px;
+    }
+    .carousel-container video {
+        height: 360px;
+    }
+    .carousel-caption {
+        max-height: 5em;
+        font-size: 12px;
+        margin-bottom: 1em;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .carousel-container img {
+        height: 400px;
+    }
+    .carousel-container video {
+        height: 400px;
+    }
+    .carousel-caption {
+        max-height: 6em;
+        font-size: 14px;
+        margin-bottom: 1em;
+    }
+}
+
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.arrow {
+    display: inline;
+}
+.prev,
+.arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin: -1.5em .3em 0 .3em;
+    padding: 1em;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: 0.3s ease;
+    border-radius: .5em;
+    user-select: none;
+    background-color: rgba(204, 204, 204, 0.3);
+}
+.next {
+    right: 0;
+}
+.prev:hover,
+.next:hover {
+    box-shadow: 0 0 5px #fff;
+    border: 1px solid #fff;
+}
+.slide-numbers {
+    position: absolute;
+    bottom: 1em;
+    width: 100%;
+    padding: 0 .5em    
+}
+.dot-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: rgba(204, 204, 204, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot:hover,
+.active {
+    background-color: rgb(204, 204, 204);
+    height: 12px;
+    width: 12px;
+}
+.dot:hover {
+    box-shadow: 0 0 5px #fff;
+}
+
+/* Zoom Buttons */
+.zoom-container {
+    position: fixed; 
+    top: 0.5rem; 
+    left: 0.5rem; 
+}
+.zoom-button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    border-radius: 0.1rem; 
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1rem; 
+    font-weight: 600; 
+    color: #6B7280; 
+    background-color: #ffffff; 
+}
+.zoom-button:hover {
+    background-color: #cbcfd5; 
+}
+
+
+/* Welcome Overlay */ 
+
+#overlay {
+    position: fixed;    /* Sit on top of the page content */
+    width: 100%;
+    height: 100%;
+    background-color: rgb(129 129 129 / 50%);
+    z-index: 1;         /* Specify a stack order in case you're using a different order for other elements */
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Makes the container occupy the full viewport height */
+}
+
+#welcome-message-container {
+    margin: auto;
+    padding: 10px;
+    width: 75%; /* Set the width of the centered div */
+    max-width: 720px;
+    min-height: 200px; /* Set the height of the centered div */
+    background-color: #e4e0ce;
+    text-align: left;
+    font-family: monospace;
+    font-size: 16px;
+    border-radius: .5em;
+    box-shadow: 0 0 5px rgb(204, 204, 204);
+    border: 2px solid #111827;       /* 2px width, solid style, and dark gray color */
+    padding: 10px;                  /* Optional padding to create space inside the element */
+}
+.welcome-image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: .1em;
+    height: 120px;
+}
+/* Media query for screens with a maximum width of 767px (adjust as needed) */
+@media screen and (max-width: 767px) {
+    .welcome-image {
+        height: 100px;
+    }
+    #welcome-message-container {
+        font-size: 12px;
+    }
+}
+
+/* Container for the buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 1em;
+    align-items: baseline;
+}
+.button-container a {
+    color: inherit;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Individual button styles */
+.left-button {
+    /* Add your styles for the left button */
+    background-color: lightblue;
+    padding: 10px 20px;
+}
+
+.right-button {
+    /* Add your styles for the right button */
+    background-color: lightgreen;
+    padding: 10px 20px;
+}
+
+.exit-button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    border-radius: 0.1rem; 
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1rem; 
+    background-color: #f0fdf4; 
+}
+
+.welcome-message-title {
+    margin-top: 0px;
+}
+
+.welcome-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcome-message-bullet {
+    padding-left: 1rem;
+}
+.button-image {
+    width: 75px;
+    cursor: pointer;
+}
+.checkbox-container {
+    opacity: 0.5
+}
