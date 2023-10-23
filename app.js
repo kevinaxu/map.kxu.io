@@ -41,6 +41,7 @@ fetchData.then(data => {
         initMarkerCirclesAndEventListeners(data);
         initFitBoundsAllMarkers();
         initializeSwipeEventListeners();
+        initShowOverlayButton();
         handleMapEventListeners();
     }
 })
@@ -59,12 +60,21 @@ fetchData.then(data => {
 ********************************************************************/
 
 function initFitBoundsAllMarkers() {
-    document.getElementById('fit-all').addEventListener('click', () => {
+    document.getElementById('fitAllButton').addEventListener('click', () => {
         if (currentOpenPopup) {
             currentOpenPopup.remove();
             currentOpenPopup = null;
         }
         map.fitBounds(BOUND_BOX_WEB["all"], { padding: 36 });
+    });
+}
+
+
+function initShowOverlayButton() {
+    document.getElementById('showOverlayButton').addEventListener('click', () => {
+        console.log("showOverlay()");
+        document.querySelector("#overlay").style.display = 'flex';
+        console.log("overlay", overlay);
     });
 }
 
@@ -477,10 +487,13 @@ function generatePulsingDot() {
 ********************************************************************/
 
 function hideOverlay() {
+    console.log("hideOverlay()");
     document.querySelector("#overlay").style.display = "none";
 }
 
 function handleWelcomeOverlay() {
+    console.log("handleWelcomeOverlay()");
+
     const welcomeCheckbox = document.getElementById('welcomeOverlayCheckbox');
     const welcomeCheckboxKey = "shouldShowWelcomeOverlay";
     const welcomeCheckboxState = localStorage.getItem(welcomeCheckboxKey);
@@ -507,10 +520,15 @@ function handleWelcomeOverlay() {
         }
     });
 
-    // Event Listener - Hide Overlay if Clicked Outside
-    window.addEventListener('click', function(e){   
-        if (!document.getElementById('welcome-message-container').contains(e.target)) {
-            hideOverlay();
+    // Event Listener - Hide Overlay if Overlay is showing and Clicked Outside
+    window.addEventListener('click', function(e) {
+        var display = document.querySelector("#overlay").style.display;
+        console.log("overlay display:", display);
+        if (document.querySelector("#overlay").style.display !== "none") {
+            if (!document.getElementById('welcome-message-container').contains(e.target)) {
+                console.log("clicked outside while overlay is showing!");
+                hideOverlay();
+            }
         }
     });
 }
