@@ -41,7 +41,7 @@ fetchData.then(data => {
         initMarkerCirclesAndEventListeners(data);
         initFitBoundsAllMarkers();
         initializeSwipeEventListeners();
-        initShowOverlayButton();
+        initializeWelcomeOverlay();
         handleMapEventListeners();
     }
 })
@@ -66,15 +66,6 @@ function initFitBoundsAllMarkers() {
             currentOpenPopup = null;
         }
         map.fitBounds(BOUND_BOX_WEB["all"], { padding: 36 });
-    });
-}
-
-
-function initShowOverlayButton() {
-    document.getElementById('showOverlayButton').addEventListener('click', () => {
-        console.log("showOverlay()");
-        document.querySelector("#overlay").style.display = 'flex';
-        console.log("overlay", overlay);
     });
 }
 
@@ -486,59 +477,43 @@ function generatePulsingDot() {
 * 
 ********************************************************************/
 
+const WELCOME_OVERLAY_STATE_KEY = "shouldShowWelcomeOverlay";
+function initializeWelcomeOverlay() {
+    const welcomeCheckboxState = localStorage.getItem(WELCOME_OVERLAY_STATE_KEY);
+    console.log(`localStorage[${WELCOME_OVERLAY_STATE_KEY}]: ${welcomeCheckboxState}`);
+    (shouldShowWelcomeOverlay()) ? showOverlay() : hideOverlay();
+}
+function showOverlay() {
+    document.querySelector("#overlay").style.display = "flex";
+    if (!shouldShowWelcomeOverlay()) {
+        document.getElementById('welcomeOverlayCheckbox').checked = true;
+    }
+}
 function hideOverlay() {
-    console.log("hideOverlay()");
     document.querySelector("#overlay").style.display = "none";
 }
-
-function handleWelcomeOverlay() {
-    console.log("handleWelcomeOverlay()");
-
-    const welcomeCheckbox = document.getElementById('welcomeOverlayCheckbox');
-    const welcomeCheckboxKey = "shouldShowWelcomeOverlay";
-    const welcomeCheckboxState = localStorage.getItem(welcomeCheckboxKey);
-
-    // Show / Hide Overlay based on previous State
-    if (welcomeCheckboxState === null || welcomeCheckboxState === "null" ) {
-        localStorage.setItem(welcomeCheckboxKey, true);
-    } else if (welcomeCheckboxState === "true") {
-        welcomeCheckbox.checked = false;
-    } else {
-        welcomeCheckbox.checked = true;
-        hideOverlay();
-        // TODO: check state before rendering welcome overlay
-    }
-
-    // Event Listener - "Don't Show Again" Checkbox
-    welcomeCheckbox.addEventListener('change', function () {
-        if (welcomeCheckbox.checked) {
-            console.log("checkbox is checked, don't show next time");
-            localStorage.setItem(welcomeCheckboxKey, false);
-        } else {
-            console.log("checkbox is unchecked, show next time");
-            localStorage.setItem(welcomeCheckboxKey, true);
-        }
-    });
-
-    // Event Listener - Hide Overlay if Overlay is showing and Clicked Outside
-    window.addEventListener('click', function(e) {
-        var display = document.querySelector("#overlay").style.display;
-        console.log("overlay display:", display);
-        if (document.querySelector("#overlay").style.display !== "none") {
-            if (!document.getElementById('welcome-message-container').contains(e.target)) {
-                console.log("clicked outside while overlay is showing!");
-                hideOverlay();
-            }
-        }
-    });
+function shouldShowWelcomeOverlay() {
+    var state = localStorage[WELCOME_OVERLAY_STATE_KEY];
+    if (state === null || state === "false") return false;
+    else return true;
 }
 
+// Event Listener - update "Don't Show Again" Checkbox state in Local Storage
+function toggleWelcomeOverlay() {
+    const welcomeCheckbox = document.getElementById('welcomeOverlayCheckbox');
+    if (welcomeCheckbox.checked) {
+        localStorage[WELCOME_OVERLAY_STATE_KEY] = "false";
+    } else {
+        localStorage[WELCOME_OVERLAY_STATE_KEY] = "true";
+    }
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-    handleWelcomeOverlay();
+// Event Listener - Hide Overlay if clicked outside container
+document.querySelector("#overlay").addEventListener('click', function(e) {
+    if (!document.getElementById('welcome-message-container').contains(e.target)) {
+        hideOverlay();
+    }
 });
-
-
 
 /*******************************************************************
 * 
