@@ -1,5 +1,59 @@
 [
   {
+    "name": "Chiang Mai Redux",
+    "markers": [
+      {
+        "name": "Saabay Guest House",
+        "coordinates": [
+          99.80175,
+          19.85131
+        ],
+        "ignore": true
+      },
+      {
+        "name": "The Old City Wall Inn",
+        "coordinates": [
+          99.0017,
+          18.78134
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20078148-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "Sunday Night Bazaar",
+        "coordinates": [
+          98.98631,
+          18.78913
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      },
+      {
+        "name": "The Old City Wall Inn",
+        "coordinates": [
+          99.0017,
+          18.78134
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Pakorns",
+        "coordinates": [
+          98.98286,
+          18.77606
+        ],
+        "captions": "Absolutely fantastic Masasman Curry!",
+        "icon": "https://sdk.bitmoji.com/render/panel/10215998-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": []
+      }
+    ]
+  },
+  {
     "name": "Chiang Rai",
     "markers": [
       {
@@ -11,24 +65,65 @@
         "ignore": true
       },
       {
+        "name": "Baan Plai Na",
+        "coordinates": [
+          99.517570,
+          19.197800
+        ],
+        "captions": "Pit stop along the way to Chiang Mai. Gorgeous restraurant and greenhouse with water lily ponds",
+        "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "chiang_rai",
+        "images": []      
+      },
+      {
         "name": "Saabay Guest House",
         "coordinates": [
           99.80175,
           19.85131
         ],
         "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
         "images": []
       },
       {
-        "name": "Wat Rong Khun (White Temple)",
+        "name": "Chiou Fong Tea Plantation",
         "coordinates": [
-          99.874324,
-          20.17247
+          99.818276,
+          20.199193
         ],
         "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/10220545-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "region": "chiang_rai",
+        "images": []
+      },
+      {
+        "name": "Wat Rong Suea Ten (Blue Temple)",
+        "coordinates": [
+          99.841872,
+          19.923414
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/10208401-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "chiang_rai",
+        "images": []
+      },
+      {
+        "name": "Saabay Guest House",
+        "coordinates": [
+          99.80175,
+          19.85131
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Wat Rong Khun (White Temple)",
+        "coordinates": [
+          99.83181,
+          19.91163
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20090213-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
         "images": []
       }
@@ -129,7 +224,7 @@
           18.78847
         ],
         "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20002114-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": [
           "assets/chiang_mai/wat_pha_lat_1.jpg",
@@ -147,7 +242,7 @@
           18.78928
         ],
         "captions": "Paying the tourist tax",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20084714-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": [
           "assets/chiang_mai/police_1.jpg"
@@ -160,7 +255,7 @@
           18.764817
         ],
         "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20088216-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": [
           "assets/chiang_mai/bo_sang_1.jpg"
