@@ -50,6 +50,28 @@
         "icon": "https://sdk.bitmoji.com/render/panel/10215998-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": []
+      },
+      {
+        "name": "The Old City Wall Inn",
+        "coordinates": [
+          99.0017,
+          18.78134
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Elephant Nature Park",
+        "coordinates": [
+          98.98631,
+          18.78913
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": [
+          "assets/chiang_mai/elephant_1.jpg",
+          "assets/chiang_mai/elephant_2.jpg"
+        ]
       }
     ]
   },
@@ -84,7 +106,10 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
-        "images": []
+        "images": [
+          "assets/chiang_rai/airbnb_1.jpg",
+          "assets/chiang_rai/airbnb_2.jpg"
+        ]
       },
       {
         "name": "Chiou Fong Tea Plantation",
@@ -95,7 +120,12 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/10220545-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
-        "images": []
+        "images": [
+          "assets/chiang_rai/tea_1.jpg",
+          "assets/chiang_rai/tea_2.jpg",
+          "assets/chiang_rai/tea_3.jpg",
+          "assets/chiang_rai/tea_4.jpg"
+        ]
       },
       {
         "name": "Wat Rong Suea Ten (Blue Temple)",
@@ -106,7 +136,12 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/10208401-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
-        "images": []
+        "images": [
+          "assets/chiang_rai/blue_1.jpg",
+          "assets/chiang_rai/blue_2.jpg",
+          "assets/chiang_rai/blue_3.jpg",
+          "assets/chiang_rai/blue_4.jpg"
+        ]
       },
       {
         "name": "Saabay Guest House",
@@ -125,7 +160,13 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20090213-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
-        "images": []
+        "images": [
+          "assets/chiang_rai/white_1.jpg",
+          "assets/chiang_rai/white_2.jpg",
+          "assets/chiang_rai/white_3.jpg",
+          "assets/chiang_rai/white_4.jpg",
+          "assets/chiang_rai/white_5.jpg"          
+        ]
       }
     ]
   },
