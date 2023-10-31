@@ -30,7 +30,9 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
-        "images": []
+        "images": [
+          "assets/chiang_mai/sunday_market_1.jpg"
+        ]
       },
       {
         "name": "The Old City Wall Inn",
@@ -70,7 +72,10 @@
         "region": "chiang_mai",
         "images": [
           "assets/chiang_mai/elephant_1.jpg",
-          "assets/chiang_mai/elephant_2.jpg"
+          "assets/chiang_mai/elephant_2.jpg",
+          "assets/chiang_mai/elephant_3.jpg",
+          "assets/chiang_mai/elephant_4.jpg",
+          "assets/chiang_mai/elephant_5.jpg"
         ]
       }
     ]
@@ -95,7 +100,12 @@
         "captions": "Pit stop along the way to Chiang Mai. Gorgeous restraurant and greenhouse with water lily ponds",
         "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
-        "images": []      
+        "images": [
+          "assets/chiang_rai/baan_1.jpg",
+          "assets/chiang_rai/baan_2.jpg",
+          "assets/chiang_rai/baan_3.jpg",
+          "assets/chiang_rai/baan_4.jpg"
+        ]      
       },
       {
         "name": "Saabay Guest House",
@@ -140,7 +150,10 @@
           "assets/chiang_rai/blue_1.jpg",
           "assets/chiang_rai/blue_2.jpg",
           "assets/chiang_rai/blue_3.jpg",
-          "assets/chiang_rai/blue_4.jpg"
+          "assets/chiang_rai/blue_4.jpg",
+          "assets/chiang_rai/blue_5.jpg",
+          "assets/chiang_rai/blue_6.jpg"
+
         ]
       },
       {
@@ -299,7 +312,9 @@
         "icon": "https://sdk.bitmoji.com/render/panel/20088216-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": [
-          "assets/chiang_mai/bo_sang_1.jpg"
+          "assets/chiang_mai/bo_sang_1.jpg",
+          "assets/chiang_mai/bo_sang_2.jpg"
+
         ]
       }
     ]
