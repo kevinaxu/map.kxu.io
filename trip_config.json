@@ -8,7 +8,102 @@
           100.7502555,
           13.68970625
         ],
-        "ignore": true
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": [
+          "assets/bangkok/airport_1.jpg",
+          "assets/bangkok/airport_2.jpg"
+        ]        
+      },
+      {
+        "name": "Blossom Condo",
+        "coordinates": [
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": [
+          "assets/bangkok/blossom_1.jpg"
+        ]          
+      },
+      {
+        "name": "Conrad Bangkok",
+        "coordinates": [
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": [
+          "assets/bangkok/conrad_1.jpg",
+          "assets/bangkok/conrad_2.jpg",
+          "assets/bangkok/conrad_3.jpg",
+          "assets/bangkok/conrad_4.jpg",
+          "assets/bangkok/conrad_5.jpg",
+          "assets/bangkok/conrad_6.jpg"
+        ]          
+      },
+      {
+        "name": "Chatuchak Weekend Market",
+        "coordinates": [
+        ],
+        "captions": "Brass shop",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": [
+          "assets/bangkok/brass_1.jpg",
+          "assets/bangkok/brass_2.jpg"
+        ]      
+      },
+      {
+        "name": "Conrad Bangkok",
+        "coordinates": [
+        ],
+        "ignore": true      
+      },
+      {
+        "name": "Chu Tailor's",
+        "coordinates": [
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": [
+        ]      
+      },
+      {
+        "name": "Conrad Bangkok",
+        "coordinates": [
+        ],
+        "ignore": true      
+      },
+      {
+        "name": "Rajadamnan Muay Thai Arena",
+        "coordinates": [
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": [
+          "assets/bangkok/rws_1.jpg",
+          "assets/bangkok/rws_2.jpg",
+          "assets/bangkok/rws_3.jpg",
+          "assets/bangkok/rws_4.jpg"
+        ]      
+      },
+      {
+        "name": "Conrad Bangkok",
+        "coordinates": [
+        ],
+        "ignore": true      
+      },
+      {
+        "name": "Suvarnabhumi Airport",
+        "coordinates": [
+          100.7502555,
+          13.68970625
+        ],
+        "ignore": true     
       }
     ]
   },
@@ -44,7 +139,8 @@
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": [
-          "assets/chiang_mai/sunday_market_1.jpg"
+          "assets/chiang_mai/sunday_market_1.jpg",
+          "assets/chiang_mai/sunday_market_m1.mov"
         ]
       },
       {
@@ -88,7 +184,8 @@
           "assets/chiang_mai/elephant_2.jpg",
           "assets/chiang_mai/elephant_3.jpg",
           "assets/chiang_mai/elephant_4.jpg",
-          "assets/chiang_mai/elephant_5.jpg"
+          "assets/chiang_mai/elephant_5.jpg",
+          "assets/chiang_mai/elephant_6.jpg"
         ]
       }
     ]
@@ -324,7 +421,11 @@
         "region": "chiang_mai",
         "images": [
           "assets/chiang_mai/bo_sang_1.jpg",
-          "assets/chiang_mai/bo_sang_2.jpg"
+          "assets/chiang_mai/bo_sang_2.jpg",
+          "assets/chiang_mai/bo_sang_3.jpg",
+          "assets/chiang_mai/bo_sang_4.jpg",
+          "assets/chiang_mai/bo_sang_5.jpg",
+          "assets/chiang_mai/bo_sang_6.jpg"
         ]
       }
     ]
@@ -402,7 +503,8 @@
         "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
-          "assets/bangkok/mai_1.jpg"
+          "assets/bangkok/mai_1.jpg",
+          "assets/bangkok/mai_2.jpg"
         ]
       },
       {
