@@ -19,8 +19,8 @@
       {
         "name": "Blossom Condo",
         "coordinates": [
-          100.519150,
-          13.706000
+          100.51915,
+          13.706
         ],
         "captions": "Living like a local in Charoen Rat",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
@@ -32,87 +32,108 @@
       {
         "name": "Conrad Bangkok",
         "coordinates": [
-          100.546230,
-          13.734470
+          100.54623,
+          13.73447
         ],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/conrad_1.jpg",
-          "assets/bangkok/conrad_2.jpg",
-          "assets/bangkok/conrad_3.jpg",
-          "assets/bangkok/conrad_4.jpg",
           "assets/bangkok/conrad_5.jpg",
-          "assets/bangkok/conrad_6.jpg"
+          "assets/bangkok/conrad_4.jpg",
+          "assets/bangkok/conrad_3.jpg"
         ]
       },
       {
         "name": "Chatuchak Plaza",
         "coordinates": [
-          100.548610,
-          13.800860
+          100.54861,
+          13.80086
         ],
         "captions": "Brass shop",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
-          "assets/bangkok/brass_1.jpg",
-          "assets/bangkok/brass_2.jpg"
+          "assets/bangkok/chat_1.jpg",
+          "assets/bangkok/chat_2.jpg",
+          "assets/bangkok/chat_3.jpg"
         ]
       },
       {
         "name": "Conrad Bangkok",
         "coordinates": [
-          100.546230,
-          13.734470
-        ],       
+          100.54623,
+          13.73447
+        ],
         "ignore": true
       },
       {
         "name": "Chu Tailor's",
         "coordinates": [
-          100.542440,
-          13.756380
+          100.54244,
+          13.75638
         ],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
-          "assets/bangkok/chu_1.jpg",
-          "assets/bangkok/chu_2.jpg"
+          "assets/bangkok/chu_2.jpg",
+          "assets/bangkok/chu_1.jpg"
         ]
       },
       {
         "name": "Conrad Bangkok",
         "coordinates": [
-          100.546230,
-          13.734470
-        ],        
+          100.54623,
+          13.73447
+        ],
         "ignore": true
       },
       {
-        "name": "Rajadamnern Muay Thai Stadium",
+        "name": "MBK Mall ",
         "coordinates": [
-          100.507690,
-          13.759990
+          100.5309592,
+          13.7442011
         ],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
-          "assets/bangkok/rws_1.jpg",
+          "assets/bangkok/mbk_1.jpg",
+          "assets/bangkok/mbk_2.jpg"
+        ]
+      },
+      {
+        "name": "Conrad Bangkok",
+        "coordinates": [
+          100.54623,
+          13.73447
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Rajadamnern Muay Thai Stadium",
+        "coordinates": [
+          100.50769,
+          13.75999
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": [
           "assets/bangkok/rws_2.jpg",
           "assets/bangkok/rws_3.jpg",
+          "assets/bangkok/rws_1.jpg",
           "assets/bangkok/rws_4.jpg"
         ]
       },
       {
         "name": "Conrad Bangkok",
         "coordinates": [
-          100.546230,
-          13.734470
-        ],        
+          100.54623,
+          13.73447
+        ],
         "ignore": true
       },
       {
@@ -139,13 +160,16 @@
       {
         "name": "The Old City Wall Inn",
         "coordinates": [
-          99.0017,
-          18.78134
+          98.995094,
+          18.781139
         ],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20078148-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
-        "images": []
+        "images": [
+          "assets/chiang_mai/old_city_inn_1.jpg",
+          "assets/chiang_mai/old_city_inn_2.jpg"
+        ]
       },
       {
         "name": "Sunday Night Bazaar",
@@ -164,8 +188,32 @@
       {
         "name": "The Old City Wall Inn",
         "coordinates": [
-          99.0017,
-          18.78134
+          98.995094,
+          18.781139
+        ],
+        "ignore": true
+      },
+      {
+        "name": "Wat Chedi Luang",
+        "coordinates": [
+          98.986958,
+          18.7869655
+        ],
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/10215998-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "region": "chiang_mai",
+        "images": [
+          "assets/chiang_mai/chedi_1.jpg",
+          "assets/chiang_mai/chedi_2.jpg",
+          "assets/chiang_mai/chedi_3.jpg",
+          "assets/chiang_mai/chedi_4.jpg"
+        ]
+      },
+      {
+        "name": "The Old City Wall Inn",
+        "coordinates": [
+          98.995094,
+          18.781139
         ],
         "ignore": true
       },
@@ -183,8 +231,8 @@
       {
         "name": "The Old City Wall Inn",
         "coordinates": [
-          99.0017,
-          18.78134
+          98.995094,
+          18.781139
         ],
         "ignore": true
       },
@@ -203,7 +251,20 @@
           "assets/chiang_mai/elephant_3.jpg",
           "assets/chiang_mai/elephant_4.jpg",
           "assets/chiang_mai/elephant_5.jpg",
-          "assets/chiang_mai/elephant_6.jpg"
+          "assets/chiang_mai/elephant_6.jpg",
+          "assets/chiang_mai/elephant_7.jpg",
+          "assets/chiang_mai/elephant_8.jpg",
+          "assets/chiang_mai/elephant_9.jpg",
+          "assets/chiang_mai/elephant_10.jpg",
+          "assets/chiang_mai/elephant_11.jpg",
+          "assets/chiang_mai/elephant_12.jpg",
+          "assets/chiang_mai/elephant_13.jpg",
+          "assets/chiang_mai/elephant_14.jpg",
+          "assets/chiang_mai/elephant_15.jpg",
+          "assets/chiang_mai/elephant_16.jpg",
+          "assets/chiang_mai/elephant_17.jpg",
+          "assets/chiang_mai/elephant_18.jpg"
+
         ]
       }
     ]
@@ -332,7 +393,13 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20084243-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
-        "images": []
+        "images": [
+          "assets/chiang_mai/astra_1.jpg",
+          "assets/chiang_mai/astra_2.jpg",
+          "assets/chiang_mai/astra_3.jpg",
+          "assets/chiang_mai/astra_4.jpg",
+          "assets/chiang_mai/astra_5.jpg"
+        ]
       },
       {
         "name": "Chiang Mai Gate Night Market",
@@ -364,7 +431,8 @@
         "region": "chiang_mai",
         "images": [
           "assets/chiang_mai/central_1.jpg",
-          "assets/chiang_mai/central_2.jpg"
+          "assets/chiang_mai/central_2.jpg",
+          "assets/chiang_mai/central_3.jpg"
         ]
       },
       {
@@ -443,7 +511,10 @@
           "assets/chiang_mai/bo_sang_3.jpg",
           "assets/chiang_mai/bo_sang_4.jpg",
           "assets/chiang_mai/bo_sang_5.jpg",
-          "assets/chiang_mai/bo_sang_6.jpg"
+          "assets/chiang_mai/bo_sang_6.jpg",
+          "assets/chiang_mai/bo_sang_7.jpg",
+          "assets/chiang_mai/bo_sang_8.jpg",
+          "assets/chiang_mai/bo_sang_9.jpg"
         ]
       }
     ]
@@ -471,7 +542,16 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
-        "images": []
+        "images": [
+          "assets/bangkok/regis_1.jpg",
+          "assets/bangkok/regis_2.jpg",
+          "assets/bangkok/regis_3.jpg",
+          "assets/bangkok/regis_4.jpg",
+          "assets/bangkok/regis_5.jpg",
+          "assets/bangkok/regis_6.jpg",
+          "assets/bangkok/regis_7.jpg",
+          "assets/bangkok/regis_8.jpg" 
+        ]
       },
       {
         "name": "Maggie Choos",
@@ -482,7 +562,12 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
-        "images": []
+        "images": [
+          "assets/bangkok/maggie_1.jpg",
+          "assets/bangkok/maggie_2.jpg",
+          "assets/bangkok/maggie_3.jpg",
+          "assets/bangkok/maggie_4.jpg"
+        ]
       },
       {
         "name": "St. Regis",
