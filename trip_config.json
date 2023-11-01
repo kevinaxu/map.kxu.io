@@ -246,25 +246,21 @@
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": [
-          "assets/chiang_mai/elephant_1.jpg",
-          "assets/chiang_mai/elephant_2.jpg",
-          "assets/chiang_mai/elephant_3.jpg",
-          "assets/chiang_mai/elephant_4.jpg",
-          "assets/chiang_mai/elephant_5.jpg",
-          "assets/chiang_mai/elephant_6.jpg",
           "assets/chiang_mai/elephant_7.jpg",
+          "assets/chiang_mai/elephant_3.jpg",
+          "assets/chiang_mai/elephant_1.jpg",
+          "assets/chiang_mai/elephant_10.jpg",
           "assets/chiang_mai/elephant_8.jpg",
           "assets/chiang_mai/elephant_9.jpg",
-          "assets/chiang_mai/elephant_10.jpg",
-          "assets/chiang_mai/elephant_11.jpg",
           "assets/chiang_mai/elephant_12.jpg",
           "assets/chiang_mai/elephant_13.jpg",
           "assets/chiang_mai/elephant_14.jpg",
-          "assets/chiang_mai/elephant_15.jpg",
           "assets/chiang_mai/elephant_16.jpg",
+          "assets/chiang_mai/elephant_4.jpg",
+          "assets/chiang_mai/elephant_6.jpg",
           "assets/chiang_mai/elephant_17.jpg",
+          "assets/chiang_mai/elephant_5.jpg",
           "assets/chiang_mai/elephant_18.jpg"
-
         ]
       }
     ]
@@ -402,25 +398,6 @@
         ]
       },
       {
-        "name": "Chiang Mai Gate Night Market",
-        "coordinates": [
-          98.988009,
-          18.781268
-        ],
-        "captions": "Finally found some khanom khrok at the night market!",
-        "icon": "https://sdk.bitmoji.com/render/panel/10223091-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
-        "region": "chiang_mai",
-        "images": []
-      },
-      {
-        "name": "Astra Sky River",
-        "coordinates": [
-          98.99839,
-          18.77251
-        ],
-        "ignore": true
-      },
-      {
         "name": "Central Chiang Mai",
         "coordinates": [
           99.00398,
@@ -433,28 +410,6 @@
           "assets/chiang_mai/central_1.jpg",
           "assets/chiang_mai/central_2.jpg",
           "assets/chiang_mai/central_3.jpg"
-        ]
-      },
-      {
-        "name": "Astra Sky River",
-        "coordinates": [
-          98.99839,
-          18.77251
-        ],
-        "ignore": true
-      },
-      {
-        "name": "Grazie Thai",
-        "coordinates": [
-          98.993305,
-          18.791374
-        ],
-        "captions": "Best Tom Ka Ga!",
-        "icon": "https://sdk.bitmoji.com/render/panel/20022690-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
-        "region": "chiang_mai",
-        "images": [
-          "assets/chiang_mai/grazie_1.jpg",
-          "assets/chiang_mai/mitte_1.jpg"
         ]
       },
       {
@@ -510,10 +465,8 @@
           "assets/chiang_mai/bo_sang_2.jpg",
           "assets/chiang_mai/bo_sang_3.jpg",
           "assets/chiang_mai/bo_sang_4.jpg",
-          "assets/chiang_mai/bo_sang_5.jpg",
           "assets/chiang_mai/bo_sang_6.jpg",
           "assets/chiang_mai/bo_sang_7.jpg",
-          "assets/chiang_mai/bo_sang_8.jpg",
           "assets/chiang_mai/bo_sang_9.jpg"
         ]
       }
@@ -543,14 +496,13 @@
         "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
-          "assets/bangkok/regis_1.jpg",
+          "assets/bangkok/regis_8.jpg",
           "assets/bangkok/regis_2.jpg",
-          "assets/bangkok/regis_3.jpg",
-          "assets/bangkok/regis_4.jpg",
-          "assets/bangkok/regis_5.jpg",
+          "assets/bangkok/regis_1.jpg",
           "assets/bangkok/regis_6.jpg",
+          "assets/bangkok/regis_4.jpg",
           "assets/bangkok/regis_7.jpg",
-          "assets/bangkok/regis_8.jpg" 
+          "assets/bangkok/regis_5.jpg"
         ]
       },
       {
@@ -563,30 +515,11 @@
         "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
-          "assets/bangkok/maggie_1.jpg",
-          "assets/bangkok/maggie_2.jpg",
           "assets/bangkok/maggie_3.jpg",
-          "assets/bangkok/maggie_4.jpg"
+          "assets/bangkok/maggie_4.jpg",
+          "assets/bangkok/maggie_2.jpg",
+          "assets/bangkok/maggie_1.jpg"
         ]
-      },
-      {
-        "name": "St. Regis",
-        "coordinates": [
-          100.540184,
-          13.739923
-        ],
-        "ignore": true
-      },
-      {
-        "name": "Platinum Mall",
-        "coordinates": [
-          100.5395255,
-          13.75002299
-        ],
-        "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
-        "region": "bangkok",
-        "images": []
       },
       {
         "name": "St. Regis",
