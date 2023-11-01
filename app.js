@@ -354,7 +354,6 @@ function calculatePopupOpenPosition(center) {
 
 function handleMapEventListeners() {
     map.on('drag', () => {
-        console.log('A drag event occurred.');
         if (currentOpenPopup) {
             currentOpenPopup.remove();
             currentOpenPopup = null;
