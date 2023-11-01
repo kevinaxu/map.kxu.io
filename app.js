@@ -16,12 +16,12 @@ const DEBUG = false;
 
 // TODO: make these dynamic by pulling from trip_config? 
 const COORD_PULSING_DOT = [
-    98.99839,
-    18.77251
+    100.546230,
+    13.734470
 ];
 const COORD_CENTER = [
-    98.985,
-    18.79
+    106.9433525,
+    5.67482454
 ];
 
 const fetchData = fetch('data.json')
@@ -80,7 +80,7 @@ const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
     center: COORD_CENTER,
-    zoom: 11.989
+    zoom: 4.098763897292317
 });
 
 if (DEBUG) {
@@ -105,8 +105,9 @@ function addMarkerToMap(feature) {
     el.style.backgroundImage = `url(${feature.properties.icon})`;
     
     var marker = new mapboxgl.Marker(el)
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
+        .setLngLat(feature.geometry.coordinates)
+        .addTo(map);
+
     return marker;
 }
 
