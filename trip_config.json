@@ -1,5 +1,18 @@
 [
   {
+    "name": "Bangkok The Finale",
+    "markers": [
+      {
+        "name": "Suvarnabhumi Airport",
+        "coordinates": [
+          100.7502555,
+          13.68970625
+        ],
+        "ignore": true
+      }
+    ]
+  },
+  {
     "name": "Chiang Mai Redux",
     "markers": [
       {
@@ -94,8 +107,8 @@
       {
         "name": "Baan Plai Na",
         "coordinates": [
-          99.517570,
-          19.197800
+          99.51757,
+          19.1978
         ],
         "captions": "Pit stop along the way to Chiang Mai. Gorgeous restraurant and greenhouse with water lily ponds",
         "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
@@ -103,9 +116,8 @@
         "images": [
           "assets/chiang_rai/baan_1.jpg",
           "assets/chiang_rai/baan_2.jpg",
-          "assets/chiang_rai/baan_3.jpg",
           "assets/chiang_rai/baan_4.jpg"
-        ]      
+        ]
       },
       {
         "name": "Saabay Guest House",
@@ -153,7 +165,6 @@
           "assets/chiang_rai/blue_4.jpg",
           "assets/chiang_rai/blue_5.jpg",
           "assets/chiang_rai/blue_6.jpg"
-
         ]
       },
       {
@@ -178,7 +189,7 @@
           "assets/chiang_rai/white_2.jpg",
           "assets/chiang_rai/white_3.jpg",
           "assets/chiang_rai/white_4.jpg",
-          "assets/chiang_rai/white_5.jpg"          
+          "assets/chiang_rai/white_5.jpg"
         ]
       }
     ]
@@ -314,7 +325,6 @@
         "images": [
           "assets/chiang_mai/bo_sang_1.jpg",
           "assets/chiang_mai/bo_sang_2.jpg"
-
         ]
       }
     ]
@@ -977,7 +987,7 @@
           99.829385,
           10.099625
         ],
-        "captions": "Scuba School",
+        "captions": "Longboats waiting along Sairee Beach to take you on a tour around Koh Tao or just across the water to Nang Yuan",
         "icon": "https://sdk.bitmoji.com/render/panel/20088271-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "region": "koh_tao",
         "images": [
@@ -998,7 +1008,7 @@
           99.828757,
           10.09394
         ],
-        "captions": "Had a nice time exploring the cafes and restaurants around the island",
+        "captions": "Exploring the cafes and restaurants around Koh Tao. We found that the food overall was not as good and a bit more expensive than in Phuket - not surprising since all food needs to get shipped in!",
         "icon": "https://sdk.bitmoji.com/render/panel/20083780-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "koh_tao",
         "images": [
@@ -1109,7 +1119,7 @@
           99.848052,
           10.084799
         ],
-        "captions": "Our first experience in the water at Koh Tao! We had no expectations other than a few things we read online - it ended up being the most incredible snorkeling experience! Just a few feet into the water, we encountered brightly colored Parrot Fish, meandering Sea Cucumbers, coral in all shapes and sizes. The water was warm with barely any current, and we were able to stay among the fish until the sunset. Truly a stunning moment in a beautiful place.",
+        "captions": "Our first experience in the water at Koh Tao! We had no expectations going in but it ended up being the most incredible experiences of the entire trip! As we got in the water, we saw brightly colored Parrot Fish, Sea Cucumbers, coral in all shapes and sizes. The water was warm with barely any current, and we stayed out until sunset",
         "icon": "https://sdk.bitmoji.com/render/panel/20050246-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "region": "koh_tao",
         "images": [
