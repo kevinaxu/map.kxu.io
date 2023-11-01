@@ -28,7 +28,7 @@ class PopupCarousel {
     }
 
     buildPopupElement() {
-        const popupHTML = this.getPopupHTML(this.feature.properties.images, this.feature.properties.captions);
+        const popupHTML = this.getPopupHTML(this.feature.properties);
         this.popup.setHTML(popupHTML);
     }
     getMapboxPopup() {
@@ -155,7 +155,10 @@ class PopupCarousel {
      * 
      ********************************************************************/
 
-    getPopupHTML(images, caption) {
+    getPopupHTML(properties) {
+        const images = properties.images;
+        const caption = (properties.captions) ? properties.captions : properties.message;
+
         const popupHTML = `
             <div class="carousel-container">
                 <div class="carousel-imgs">
