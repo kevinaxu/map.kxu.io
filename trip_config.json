@@ -13,7 +13,11 @@
         "region": "bangkok",
         "images": [
           "assets/bangkok/airport_1.jpg",
-          "assets/bangkok/airport_2.jpg"
+          "assets/bangkok/airport_2.jpg",
+          "assets/bangkok/airport_3.jpg",
+          "assets/bangkok/airport_4.jpg",
+          "assets/bangkok/airport_5.jpg",
+          "assets/bangkok/airport_6.jpg"
         ]
       },
       {
@@ -598,7 +602,13 @@
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20090589-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "bali",
-        "images": []
+        "images": [
+          "assets/bali/surf_1.jpg",
+          "assets/bali/surf_2.jpg",
+          "assets/bali/surf_3.jpg",
+          "assets/bali/surf_4.jpg",
+          "assets/bali/surf_5.jpg"
+        ]
       },
       {
         "name": "Pondok Kita",
@@ -694,7 +704,8 @@
           "assets/bali/tulamben_11.jpg",
           "assets/bali/tulamben_12.jpg",
           "assets/bali/tulamben_14.jpg",
-          "assets/bali/tulamben_15.jpg"
+          "assets/bali/tulamben_15.jpg",
+          "assets/bali/tulamben_16.jpg"
         ]
       },
       {

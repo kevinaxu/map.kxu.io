@@ -12,7 +12,11 @@
             "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
             "images": [
               "assets/bangkok/airport_1.jpg",
-              "assets/bangkok/airport_2.jpg"
+              "assets/bangkok/airport_2.jpg",
+              "assets/bangkok/airport_3.jpg",
+              "assets/bangkok/airport_4.jpg",
+              "assets/bangkok/airport_5.jpg",
+              "assets/bangkok/airport_6.jpg"
             ],
             "captions": ""
           },
@@ -63102,7 +63106,13 @@
             "message": "Batu Balong Beach",
             "region": "Bali",
             "icon": "https://sdk.bitmoji.com/render/panel/20090589-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
-            "images": [],
+            "images": [
+              "assets/bali/surf_1.jpg",
+              "assets/bali/surf_2.jpg",
+              "assets/bali/surf_3.jpg",
+              "assets/bali/surf_4.jpg",
+              "assets/bali/surf_5.jpg"
+            ],
             "captions": ""
           },
           "geometry": {
@@ -63243,7 +63253,8 @@
               "assets/bali/tulamben_11.jpg",
               "assets/bali/tulamben_12.jpg",
               "assets/bali/tulamben_14.jpg",
-              "assets/bali/tulamben_15.jpg"
+              "assets/bali/tulamben_15.jpg",
+              "assets/bali/tulamben_16.jpg"
             ],
             "captions": ""
           },
