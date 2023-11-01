@@ -57,7 +57,8 @@
               "assets/bangkok/conrad_1.jpg",
               "assets/bangkok/conrad_5.jpg",
               "assets/bangkok/conrad_4.jpg",
-              "assets/bangkok/conrad_3.jpg"
+              "assets/bangkok/conrad_3.jpg",
+              "assets/bangkok/conrad_7.jpg"
             ],
             "captions": ""
           },
@@ -185,7 +186,8 @@
               "assets/bangkok/rws_2.jpg",
               "assets/bangkok/rws_3.jpg",
               "assets/bangkok/rws_1.jpg",
-              "assets/bangkok/rws_4.jpg"
+              "assets/bangkok/rws_4.jpg",
+              "assets/bangkok/rws_5.jpg"
             ],
             "captions": ""
           },
@@ -12156,7 +12158,9 @@
             "message": "Pakorns",
             "region": "Chiang Mai Redux",
             "icon": "https://sdk.bitmoji.com/render/panel/10215998-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
-            "images": [],
+            "images": [
+              "assets/chiang_mai/pakorns_1.jpg"
+            ],
             "captions": "Absolutely fantastic Masasman Curry!"
           },
           "geometry": {
@@ -29410,8 +29414,8 @@
             "region": "Chiang Rai",
             "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
-              "assets/chiang_rai/airbnb_1.jpg",
-              "assets/chiang_rai/airbnb_2.jpg"
+              "assets/chiang_rai/airbnb_3.jpg",
+              "assets/chiang_rai/airbnb_1.jpg"
             ],
             "captions": ""
           },
@@ -52703,7 +52707,8 @@
               "assets/chiang_mai/bo_sang_4.jpg",
               "assets/chiang_mai/bo_sang_6.jpg",
               "assets/chiang_mai/bo_sang_7.jpg",
-              "assets/chiang_mai/bo_sang_9.jpg"
+              "assets/chiang_mai/bo_sang_9.jpg",
+              "assets/chiang_mai/bo_sang_5.jpg"
             ],
             "captions": ""
           },
