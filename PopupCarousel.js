@@ -167,9 +167,7 @@ class PopupCarousel {
                 <a class="prev arrow">&#10094;</a>
                 <a class="next arrow">&#10095;</a>
                 <div class="slide-numbers">
-                    <div class="dot-container">
-                        ${this.generateDotHTML(images.length)}
-                    </div>
+                    ${this.generateDotHTML(images.length)}
                 </div>
             </div>
             <p class="carousel-caption">${caption}</p>
@@ -210,7 +208,14 @@ class PopupCarousel {
                 strings.push(`<span class="dot"></span>`);
             }
         }
-        return strings.join("\n");
+
+        // if there are more than 15 images, don't show dots 
+        const style = (count >= 15) ? 'style="display:none"' : "";
+        return `
+            <div class="dot-container" ${style}>
+                ${strings.join("\n")}
+            </div>
+        `;
     }
 
     isMobileScreenSize() {
