@@ -14,23 +14,21 @@
         "images": [
           "assets/bangkok/airport_1.jpg",
           "assets/bangkok/airport_2.jpg"
-        ]        
+        ]
       },
       {
         "name": "Blossom Condo",
-        "coordinates": [
-        ],
+        "coordinates": [],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/blossom_1.jpg"
-        ]          
+        ]
       },
       {
         "name": "Conrad Bangkok",
-        "coordinates": [
-        ],
+        "coordinates": [],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
@@ -41,46 +39,40 @@
           "assets/bangkok/conrad_4.jpg",
           "assets/bangkok/conrad_5.jpg",
           "assets/bangkok/conrad_6.jpg"
-        ]          
+        ]
       },
       {
         "name": "Chatuchak Weekend Market",
-        "coordinates": [
-        ],
+        "coordinates": [],
         "captions": "Brass shop",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/brass_1.jpg",
           "assets/bangkok/brass_2.jpg"
-        ]      
+        ]
       },
       {
         "name": "Conrad Bangkok",
-        "coordinates": [
-        ],
-        "ignore": true      
+        "coordinates": [],
+        "ignore": true
       },
       {
         "name": "Chu Tailor's",
-        "coordinates": [
-        ],
+        "coordinates": [],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
-        "images": [
-        ]      
+        "images": []
       },
       {
         "name": "Conrad Bangkok",
-        "coordinates": [
-        ],
-        "ignore": true      
+        "coordinates": [],
+        "ignore": true
       },
       {
         "name": "Rajadamnan Muay Thai Arena",
-        "coordinates": [
-        ],
+        "coordinates": [],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
@@ -89,13 +81,12 @@
           "assets/bangkok/rws_2.jpg",
           "assets/bangkok/rws_3.jpg",
           "assets/bangkok/rws_4.jpg"
-        ]      
+        ]
       },
       {
         "name": "Conrad Bangkok",
-        "coordinates": [
-        ],
-        "ignore": true      
+        "coordinates": [],
+        "ignore": true
       },
       {
         "name": "Suvarnabhumi Airport",
@@ -103,7 +94,7 @@
           100.7502555,
           13.68970625
         ],
-        "ignore": true     
+        "ignore": true
       }
     ]
   },
