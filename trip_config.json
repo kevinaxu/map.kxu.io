@@ -30,7 +30,8 @@
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
-          "assets/bangkok/blossom_1.jpg"
+          "assets/bangkok/blossom_1.jpg",
+          "assets/bangkok/blossom_2.jpg"
         ]
       },
       {
@@ -247,8 +248,8 @@
       {
         "name": "Elephant Nature Park",
         "coordinates": [
-          98.98631,
-          18.78913
+          98.8586730,
+          19.2142245
         ],
         "captions": "",
         "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
@@ -305,7 +306,7 @@
           99.80175,
           19.85131
         ],
-        "captions": "",
+        "captions": "Lush oasis tucked away on a quiet side street in Chiang Rai",
         "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
         "images": [
@@ -443,7 +444,8 @@
           "assets/chiang_mai/wat_pha_lat_3.jpg",
           "assets/chiang_mai/wat_pha_lat_4.jpg",
           "assets/chiang_mai/wat_pha_lat_5.jpg",
-          "assets/chiang_mai/wat_pha_lat_6.jpg"
+          "assets/chiang_mai/wat_pha_lat_6.jpg",
+          "assets/chiang_mai/wat_pha_lat_7.jpg"
         ]
       },
       {
@@ -476,8 +478,8 @@
           "assets/chiang_mai/bo_sang_6.jpg",
           "assets/chiang_mai/bo_sang_7.jpg",
           "assets/chiang_mai/bo_sang_9.jpg",
-          "assets/chiang_mai/bo_sang_5.jpg"
-
+          "assets/chiang_mai/bo_sang_5.jpg",
+          "assets/chiang_mai/bo_sang_8.jpg"
         ]
       }
     ]
@@ -597,7 +599,11 @@
         "captions": "Guesthouse in Canggu",
         "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bali",
-        "images": []
+        "images": [
+          "assets/bali/gron_1.jpg",
+          "assets/bali/gron_2.jpg",
+          "assets/bali/gron_3.jpg"
+        ]
       },
       {
         "name": "Batu Balong Beach",
@@ -605,7 +611,7 @@
           115.130244,
           -8.659581
         ],
-        "captions": "",
+        "captions": "Not shown: my surf guide Pera holding me steady while we wait for the perfect wave!",
         "icon": "https://sdk.bitmoji.com/render/panel/20090589-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "bali",
         "images": [
@@ -817,7 +823,7 @@
           115.25948,
           -8.518191
         ],
-        "captions": "After many years of tireless service, here rests the best water bottle I've ever had (thanks Algolia)",
+        "captions": "Monkeys are devious little creatures who should never be trusted ",
         "icon": "https://sdk.bitmoji.com/render/panel/10220061-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "bali",
         "images": [
@@ -875,7 +881,7 @@
           103.860678,
           1.300783
         ],
-        "captions": "From private villa to living in a window-less box... welcome to the city",
+        "captions": "From private villa to being trapped in a cage... I mean pod. Welcome to Singapore! ",
         "icon": "https://sdk.bitmoji.com/render/panel/10217067-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "region": "singapore",
         "images": [
@@ -888,7 +894,7 @@
           103.858991,
           1.302222
         ],
-        "captions": "First day exploring Little India",
+        "captions": "First day exploring around Singapore",
         "icon": "https://sdk.bitmoji.com/render/panel/10079860-132533800_29-s1-v1.webp?transparent=1&amp;scale=1",
         "region": "singapore",
         "images": [
@@ -912,7 +918,7 @@
           103.864644,
           1.303086
         ],
-        "captions": "Hainese Chicken Rice",
+        "captions": "Getting a taste of world-famous Hainese Chicken Rice",
         "icon": "https://sdk.bitmoji.com/render/panel/10226603-102140752402_2-s5-v1.webp?transparent=1&amp;width=350",
         "region": "singapore",
         "images": [
@@ -933,7 +939,7 @@
           103.863932,
           1.282868
         ],
-        "captions": "Gardens by the Bay",
+        "captions": "Absolutely beautiful gardens with lots of different exhibits ",
         "icon": "https://sdk.bitmoji.com/render/panel/20049506-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;width=350",
         "region": "singapore",
         "images": [
@@ -1240,25 +1246,6 @@
           "/assets/koh_tao/shark_2.jpg",
           "/assets/koh_tao/shark_3.jpg"
         ]
-      },
-      {
-        "name": "Charina",
-        "coordinates": [
-          99.830464,
-          10.089049
-        ],
-        "ignore": true
-      },
-      {
-        "name": "Mae Haad Pier",
-        "coordinates": [
-          99.823642,
-          10.084211
-        ],
-        "captions": "First impressions from the ferry... lots of westerners being shepherded by their Thai handlers",
-        "icon": "https://sdk.bitmoji.com/render/panel/10212244-102140752402_2-s5-132533800_29-s1-v1.webp?transparent=1&amp;palette=1&amp;width=350",
-        "region": "koh_tao",
-        "images": []
       },
       {
         "name": "Charina",
