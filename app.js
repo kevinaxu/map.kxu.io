@@ -14,16 +14,6 @@
 
 const DEBUG = false;
 
-// TODO: make these dynamic by pulling from trip_config? 
-const COORD_PULSING_DOT = [
-    100.7502555,
-    13.68970625
-];
-const COORD_CENTER = [
-    106.9433525,
-    5.67482454
-];
-
 const fetchData = fetch('data.json')
 .then(response => {
     if (!response.ok) {
@@ -75,12 +65,33 @@ function initFitBoundsAllMarkers() {
 * 
 ********************************************************************/
 
+
+// TODO: make these dynamic by pulling from trip_config? 
+const COORD_PULSING_DOT = [
+    100.7502555,
+    13.68970625
+];
+const ZOOM_LEVEL = {
+    desktop:    4.098763897292316,
+    mobile:     3.692289371775777
+}
+const COORD_CENTER = {
+    desktop: [
+        106.94335249999995,
+        5.900714423198394
+    ],
+    mobile: [
+        106.94335249999995,
+        5.900714423198394
+    ]
+}
+
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1MTYiLCJhIjoiY2p5NXh1bzZqMGNrMzNkbzB1bjlsazluaCJ9.LWKf9jAXZmDmKgAWA-IS9g';;
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/navigation-guidance-night-v2',
-    center: COORD_CENTER,
-    zoom: 4.098763897292317
+    center: isMobile()  ? COORD_CENTER.mobile   : COORD_CENTER.desktop,
+    zoom:   isMobile()  ? ZOOM_LEVEL.mobile     : ZOOM_LEVEL.desktop
 });
 
 if (DEBUG) {
@@ -88,8 +99,10 @@ if (DEBUG) {
     map.on('move', function() {
         var zoom = map.getZoom();
         var bounds = map.getBounds();
+        var center = map.getCenter();
         console.log('Zoom Level:', zoom);
         console.log('Bounding Coordinates:', bounds.toArray()); // [southwest, northeast]
+        console.log('Center Coordinates:', center); // [southwest, northeast]
     });
 }
 
@@ -601,17 +614,27 @@ const BOUND_BOX_WEB = {
             99.03126271046528,
             18.81928640722313
         ]
+    ],
+    "chiang_rai": [ 
+        [
+            99.28395137849958,
+            19.72147992995886
+        ],
+        [
+            100.4266006663247,
+            20.30899367851228
+        ]
     ]
 }
 const BOUND_BOX_MOBILE = {
     "all": [
         [
-            98.294872,
-            -8.7461124        
+            96.06902162715028,
+            -19.144605873381607
         ],
         [
-            115.591833,     
-            20.17247
+            118.14786248838402,
+            27.187959268243034
         ]
     ],
     "phuket": [
@@ -646,42 +669,52 @@ const BOUND_BOX_MOBILE = {
     ],
     "singapore":[
         [
-            103.793504757118,
-            1.103401776461638
+            103.82616842430167,
+            1.2347071267121095
         ],
         [
-            104.02827547922914,
-            1.6113254662341348
+            103.8714950288894,
+            1.3327739157118117
         ]
     ],
     "bali": [
         [
-            115.02402650911682,
-            -9.279355792538908
+            115.04882397695417,
+            -9.251644503810567
         ],
         [
-            115.70661479062204,
-            -7.818618975760501
+            115.66627411336361,
+            -7.930442480391477
         ]
     ],
     "bangkok": [
         [
-            100.44853522130012,
-            13.408825303907761
+            100.49901228923403,
+            13.691014324894738
         ],
         [
-            100.80990089579558,
-            14.168314726597643
+            100.55837851949411,
+            13.81580527444136
         ]
     ],
     "chiang_mai": [
         [
-            98.95718136128619,
-            18.731843392220753
+            98.95974266018857,
+            18.730448067683895
         ],
         [
-            99.01311274373882,
-            18.84643436901412
+            99.00879550484177,
+            18.830951488375703
+        ]
+    ],
+    "chiang_rai": [
+        [
+            99.69773606165899,
+            19.763452995237756
+        ],
+        [
+            99.94202094374464,
+            20.260189300571128
         ]
     ]
 }
