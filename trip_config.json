@@ -8,17 +8,7 @@
           100.7502555,
           13.68970625
         ],
-        "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
-        "region": "bangkok",
-        "images": [
-          "assets/bangkok/airport_1.jpg",
-          "assets/bangkok/airport_2.jpg",
-          "assets/bangkok/airport_3.jpg",
-          "assets/bangkok/airport_4.jpg",
-          "assets/bangkok/airport_5.jpg",
-          "assets/bangkok/airport_6.jpg"
-        ]
+        "ignore": true
       },
       {
         "name": "Blossom Condo",
@@ -26,8 +16,8 @@
           100.51915,
           13.706
         ],
-        "captions": "Living like a local in Charoen Rat",
-        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "captions": "Living like a local ",
+        "icon": "https://sdk.bitmoji.com/render/panel/10234972-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;widht=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/blossom_1.jpg",
@@ -41,7 +31,7 @@
           13.73447
         ],
         "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/10212157-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/conrad_1.jpg",
@@ -58,7 +48,7 @@
           13.80086
         ],
         "captions": "Brass shop",
-        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/7622034-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/chat_1.jpg",
@@ -81,7 +71,7 @@
           13.75638
         ],
         "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/10219614-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/chu_2.jpg",
@@ -125,7 +115,7 @@
           13.75999
         ],
         "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/10139382-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/rws_2.jpg",
@@ -207,7 +197,7 @@
           18.7869655
         ],
         "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/10215998-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20078584-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": [
           "assets/chiang_mai/chedi_1.jpg",
@@ -248,11 +238,11 @@
       {
         "name": "Elephant Nature Park",
         "coordinates": [
-          98.8586730,
+          98.858673,
           19.2142245
         ],
         "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/10224364-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_mai",
         "images": [
           "assets/chiang_mai/elephant_7.jpg",
@@ -292,7 +282,7 @@
           19.1978
         ],
         "captions": "Pit stop along the way to Chiang Mai. Gorgeous restraurant and greenhouse with water lily ponds",
-        "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20085098-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
         "images": [
           "assets/chiang_rai/baan_1.jpg",
@@ -363,7 +353,7 @@
           19.91163
         ],
         "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/20090213-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20090206-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "chiang_rai",
         "images": [
           "assets/chiang_rai/white_1.jpg",
@@ -493,7 +483,16 @@
           100.7502555,
           13.68970625
         ],
-        "ignore": true
+        "captions": "",
+        "icon": "https://sdk.bitmoji.com/render/panel/20087551-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+        "region": "bangkok",
+        "images": [
+          "assets/bangkok/airport_2.jpg",
+          "assets/bangkok/airport_3.jpg",
+          "assets/bangkok/airport_4.jpg",
+          "assets/bangkok/airport_5.jpg",
+          "assets/bangkok/airport_6.jpg"
+        ]
       },
       {
         "name": "St. Regis",
@@ -502,7 +501,7 @@
           13.739923
         ],
         "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/10222897-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/regis_8.jpg",
@@ -521,7 +520,7 @@
           13.722892
         ],
         "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20090213-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/maggie_3.jpg",
@@ -544,8 +543,8 @@
           100.54195,
           13.75483
         ],
-        "captions": "",
-        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "captions": "Randomly walked into a shop and met the owner... who went to Auburn University!! What are the chances!?",
+        "icon": "https://sdk.bitmoji.com/render/panel/20040692-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": [
           "assets/bangkok/mai_1.jpg",
@@ -567,7 +566,7 @@
           13.9147915
         ],
         "captions": "",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20067566-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bangkok",
         "images": []
       }
@@ -594,7 +593,7 @@
           -8.655942
         ],
         "captions": "Guesthouse in Canggu",
-        "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20081375-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "bali",
         "images": [
           "assets/bali/gron_1.jpg",
@@ -1041,8 +1040,8 @@
           100.063072,
           9.547981
         ],
-        "captions": "The coziest airport on the plains",
-        "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+        "captions": "Cozy little open-air airport",
+        "icon": "https://sdk.bitmoji.com/render/panel/10214041-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
         "region": "koh_samui",
         "images": []
       },
@@ -1189,7 +1188,7 @@
           10.072388
         ],
         "captions": "Chasing the sunset on the motorbike  ",
-        "icon": "https://sdk.bitmoji.com/render/panel/20089003-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+        "icon": "https://sdk.bitmoji.com/render/panel/20088142-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
         "region": "koh_tao",
         "images": [
           "/assets/koh_tao/sai_nuan_1.jpg"

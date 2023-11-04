@@ -9,16 +9,7 @@
           "properties": {
             "message": "Suvarnabhumi Airport",
             "region": "Bangkok The Finale",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
-            "images": [
-              "assets/bangkok/airport_1.jpg",
-              "assets/bangkok/airport_2.jpg",
-              "assets/bangkok/airport_3.jpg",
-              "assets/bangkok/airport_4.jpg",
-              "assets/bangkok/airport_5.jpg",
-              "assets/bangkok/airport_6.jpg"
-            ],
-            "captions": ""
+            "ignore": true
           },
           "geometry": {
             "type": "Point",
@@ -33,12 +24,12 @@
           "properties": {
             "message": "Blossom Condo",
             "region": "Bangkok The Finale",
-            "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10234972-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;widht=350",
             "images": [
               "assets/bangkok/blossom_1.jpg",
               "assets/bangkok/blossom_2.jpg"
             ],
-            "captions": "Living like a local in Charoen Rat"
+            "captions": "Living like a local "
           },
           "geometry": {
             "type": "Point",
@@ -53,7 +44,7 @@
           "properties": {
             "message": "Conrad Bangkok",
             "region": "Bangkok The Finale",
-            "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10212157-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bangkok/conrad_1.jpg",
               "assets/bangkok/conrad_5.jpg",
@@ -76,7 +67,7 @@
           "properties": {
             "message": "Chatuchak Plaza",
             "region": "Bangkok The Finale",
-            "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/7622034-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bangkok/chat_1.jpg",
               "assets/bangkok/chat_2.jpg",
@@ -112,7 +103,7 @@
           "properties": {
             "message": "Chu Tailor's",
             "region": "Bangkok The Finale",
-            "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10219614-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bangkok/chu_2.jpg",
               "assets/bangkok/chu_1.jpg"
@@ -182,7 +173,7 @@
           "properties": {
             "message": "Rajadamnern Muay Thai Stadium",
             "region": "Bangkok The Finale",
-            "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10139382-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bangkok/rws_2.jpg",
               "assets/bangkok/rws_3.jpg",
@@ -3841,6 +3832,10 @@
               13.721461
             ],
             [
+              100.545634,
+              13.721484
+            ],
+            [
               100.545533,
               13.721623
             ],
@@ -3877,8 +3872,20 @@
               13.722682
             ],
             [
-              100.544845,
-              13.722733
+              100.544849,
+              13.722723
+            ],
+            [
+              100.544813,
+              13.722796
+            ],
+            [
+              100.544685,
+              13.723051
+            ],
+            [
+              100.544552,
+              13.723316
             ],
             [
               100.544487,
@@ -12121,7 +12128,7 @@
           "properties": {
             "message": "Wat Chedi Luang",
             "region": "Chiang Mai Redux",
-            "icon": "https://sdk.bitmoji.com/render/panel/10215998-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20078584-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/chiang_mai/chedi_1.jpg",
               "assets/chiang_mai/chedi_2.jpg",
@@ -12192,7 +12199,7 @@
           "properties": {
             "message": "Elephant Nature Park",
             "region": "Chiang Mai Redux",
-            "icon": "https://sdk.bitmoji.com/render/panel/20053185-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10224364-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/chiang_mai/elephant_7.jpg",
               "assets/chiang_mai/elephant_3.jpg",
@@ -34144,7 +34151,7 @@
           "properties": {
             "message": "Baan Plai Na",
             "region": "Chiang Rai",
-            "icon": "https://sdk.bitmoji.com/render/panel/10236265-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20085098-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/chiang_rai/baan_1.jpg",
               "assets/chiang_rai/baan_2.jpg",
@@ -34246,7 +34253,7 @@
           "properties": {
             "message": "Wat Rong Khun (White Temple)",
             "region": "Chiang Rai",
-            "icon": "https://sdk.bitmoji.com/render/panel/20090213-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20090206-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/chiang_rai/white_1.jpg",
               "assets/chiang_rai/white_2.jpg",
@@ -61680,7 +61687,15 @@
           "properties": {
             "message": "Suvarnabhumi Airport",
             "region": "Bangkok",
-            "ignore": true
+            "icon": "https://sdk.bitmoji.com/render/panel/20087551-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
+            "images": [
+              "assets/bangkok/airport_2.jpg",
+              "assets/bangkok/airport_3.jpg",
+              "assets/bangkok/airport_4.jpg",
+              "assets/bangkok/airport_5.jpg",
+              "assets/bangkok/airport_6.jpg"
+            ],
+            "captions": ""
           },
           "geometry": {
             "type": "Point",
@@ -61695,7 +61710,7 @@
           "properties": {
             "message": "St. Regis",
             "region": "Bangkok",
-            "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10222897-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bangkok/regis_8.jpg",
               "assets/bangkok/regis_2.jpg",
@@ -61720,7 +61735,7 @@
           "properties": {
             "message": "Maggie Choos",
             "region": "Bangkok",
-            "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20090213-132533800_31-s1-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bangkok/maggie_3.jpg",
               "assets/bangkok/maggie_4.jpg",
@@ -61757,12 +61772,12 @@
           "properties": {
             "message": "All The Smoke Lounge",
             "region": "Bangkok",
-            "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20040692-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bangkok/mai_1.jpg",
               "assets/bangkok/mai_2.jpg"
             ],
-            "captions": ""
+            "captions": "Randomly walked into a shop and met the owner... who went to Auburn University!! What are the chances!?"
           },
           "geometry": {
             "type": "Point",
@@ -61792,7 +61807,7 @@
           "properties": {
             "message": "Don Mueang International Airport",
             "region": "Bangkok",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20067566-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [],
             "captions": ""
           },
@@ -67846,7 +67861,7 @@
           "properties": {
             "message": "Pondok Kita",
             "region": "Bali",
-            "icon": "https://sdk.bitmoji.com/render/panel/10215439-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20081375-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "assets/bali/gron_1.jpg",
               "assets/bali/gron_2.jpg",
@@ -125370,8 +125385,8 @@
               -8.668079
             ],
             [
-              115.205644,
-              -8.668516
+              115.205636,
+              -8.668534
             ],
             [
               115.205489,
@@ -134788,9 +134803,9 @@
           "properties": {
             "message": "Airport",
             "region": "Koh Samui",
-            "icon": "https://render.bitstrips.com/v2/cpanel/10217328-102140752402_2-s5-132533800_29-s1-v1.png?transparent=1&amp;palette=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/10214041-102140752402_5-s5-v1.webp?transparent=1&amp;width=350",
             "images": [],
-            "captions": "The coziest airport on the plains"
+            "captions": "Cozy little open-air airport"
           },
           "geometry": {
             "type": "Point",
@@ -142246,7 +142261,7 @@
           "properties": {
             "message": "Sai Nuan Beach",
             "region": "Koh Tao",
-            "icon": "https://sdk.bitmoji.com/render/panel/20089003-102140752402_5-s5-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
+            "icon": "https://sdk.bitmoji.com/render/panel/20088142-132533800_31-s1-v1.webp?transparent=1&amp;width=350",
             "images": [
               "/assets/koh_tao/sai_nuan_1.jpg"
             ],
@@ -150082,32 +150097,36 @@
               7.92083
             ],
             [
-              98.280341,
-              7.920711
+              98.280282,
+              7.920709
             ],
             [
-              98.28048,
-              7.920616
+              98.280419,
+              7.920624
             ],
             [
-              98.280561,
-              7.920493
+              98.280476,
+              7.920515
             ],
             [
-              98.280604,
-              7.92027
+              98.280518,
+              7.920207
             ],
             [
-              98.280665,
-              7.920135
+              98.280606,
+              7.92009
             ],
             [
-              98.280775,
-              7.920023
+              98.280769,
+              7.919971
             ],
             [
               98.281371,
               7.919704
+            ],
+            [
+              98.281468,
+              7.919621
             ],
             [
               98.281513,
@@ -150242,12 +150261,12 @@
               7.916532
             ],
             [
-              98.291038,
-              7.916351
+              98.291011,
+              7.916328
             ],
             [
-              98.291168,
-              7.916263
+              98.291095,
+              7.916264
             ],
             [
               98.291267,
@@ -150386,20 +150405,24 @@
               7.909546
             ],
             [
-              98.296546,
-              7.90939
+              98.296537,
+              7.909352
             ],
             [
-              98.296624,
-              7.909254
+              98.296589,
+              7.909207
             ],
             [
-              98.296747,
-              7.908858
+              98.296667,
+              7.90889
             ],
             [
-              98.296886,
-              7.908567
+              98.296749,
+              7.908703
+            ],
+            [
+              98.29683,
+              7.908605
             ],
             [
               98.296924,
@@ -152618,16 +152641,60 @@
               7.827745
             ],
             [
-              98.313098,
-              7.827751
+              98.312933,
+              7.827678
             ],
             [
-              98.313687,
-              7.827776
+              98.31289,
+              7.827625
             ],
             [
-              98.313749,
-              7.827779
+              98.31288,
+              7.827467
+            ],
+            [
+              98.31307,
+              7.827392
+            ],
+            [
+              98.31312,
+              7.827343
+            ],
+            [
+              98.313155,
+              7.827275
+            ],
+            [
+              98.313251,
+              7.827231
+            ],
+            [
+              98.313298,
+              7.827235
+            ],
+            [
+              98.31334,
+              7.827298
+            ],
+            [
+              98.313351,
+              7.827403
+            ],
+            [
+              98.31339,
+              7.82759
+            ],
+            [
+              98.313515,
+              7.827634
+            ],
+            [
+              98.313546,
+              7.82764
+            ],
+            [
+              98.31378,
+              7.827686
             ],
             [
               98.313761,
@@ -153454,8 +153521,8 @@
               7.829587
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301232,
@@ -153700,10 +153767,6 @@
             [
               98.300207,
               7.815356
-            ],
-            [
-              98.300035,
-              7.815127
             ],
             [
               98.299713,
@@ -154102,10 +154165,6 @@
               7.814827
             ],
             [
-              98.300035,
-              7.815127
-            ],
-            [
               98.300207,
               7.815356
             ],
@@ -154446,8 +154505,8 @@
               7.829152
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301114,
@@ -154526,8 +154585,8 @@
               7.829587
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301232,
@@ -154858,8 +154917,8 @@
               7.819414
             ],
             [
-              98.310721,
-              7.819473
+              98.310731,
+              7.81946
             ],
             [
               98.310942,
@@ -158094,8 +158153,8 @@
               7.819509
             ],
             [
-              98.310721,
-              7.819473
+              98.310731,
+              7.81946
             ],
             [
               98.310502,
@@ -158426,8 +158485,8 @@
               7.829152
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301114,
@@ -158506,8 +158565,8 @@
               7.829587
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301232,
@@ -158826,8 +158885,8 @@
               7.829152
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301114,
@@ -158906,8 +158965,8 @@
               7.829587
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301232,
@@ -159238,8 +159297,8 @@
               7.819414
             ],
             [
-              98.310721,
-              7.819473
+              98.310731,
+              7.81946
             ],
             [
               98.310942,
@@ -160220,6 +160279,10 @@
             [
               98.334487,
               7.847379
+            ],
+            [
+              98.334487,
+              7.847568
             ],
             [
               98.334454,
@@ -161698,6 +161761,10 @@
               7.847774
             ],
             [
+              98.334404,
+              7.847564
+            ],
+            [
               98.334415,
               7.847501
             ],
@@ -162670,8 +162737,8 @@
               7.819509
             ],
             [
-              98.310721,
-              7.819473
+              98.310731,
+              7.81946
             ],
             [
               98.310502,
@@ -163002,8 +163069,8 @@
               7.829152
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301114,
@@ -163082,8 +163149,8 @@
               7.829587
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301232,
@@ -163414,8 +163481,8 @@
               7.819414
             ],
             [
-              98.310721,
-              7.819473
+              98.310731,
+              7.81946
             ],
             [
               98.310942,
@@ -164396,6 +164463,10 @@
             [
               98.334487,
               7.847379
+            ],
+            [
+              98.334487,
+              7.847568
             ],
             [
               98.334454,
@@ -168198,6 +168269,10 @@
               7.847774
             ],
             [
+              98.334404,
+              7.847564
+            ],
+            [
               98.334415,
               7.847501
             ],
@@ -169170,8 +169245,8 @@
               7.819509
             ],
             [
-              98.310721,
-              7.819473
+              98.310731,
+              7.81946
             ],
             [
               98.310502,
@@ -169502,8 +169577,8 @@
               7.829152
             ],
             [
-              98.301206,
-              7.829322
+              98.301184,
+              7.829354
             ],
             [
               98.301114,
